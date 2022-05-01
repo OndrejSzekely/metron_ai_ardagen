@@ -1,0 +1,4 @@
+defaults:
+  - ground_synthesizer_schema # do not touch
+
+enabled: True

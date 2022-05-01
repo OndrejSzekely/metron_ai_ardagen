@@ -1,0 +1,4 @@
+defaults:
+  - isaac_sim_schema # do not touch
+
+headless: False

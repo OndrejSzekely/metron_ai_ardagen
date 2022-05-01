@@ -1,0 +1,4 @@
+defaults:
+  - physics_synthesizer_schema # do not touch
+
+enabled: True
