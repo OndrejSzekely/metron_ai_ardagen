@@ -23,40 +23,31 @@ class IsaacSimSchema:
 
 
 @dataclass
-class BaseSynthesizerSchema:
-    """
-    Main Hydra Config Schema for `Base Synthesizer`.
-
-    Attributes:
-    """
-
-
-@dataclass
-class PhysicsSynthesizerSchema(BaseSynthesizerSchema):
+class PhysicsSynthesizerSchema:
     """
     Main Hydra Config Schema for `Physics Synthesizer`.
 
     Attributes:
         enabled (bool): Whether the synthesizer is enabled.
-        _target_ (str): Loacation of the corresponding class.
+        target_class (str): Loacation of the corresponding class.
     """
 
     enabled: bool
-    _target_: str = "synthesizers.synthesizer_workers.physics_synthesizer.PhysicsSynthesizer"
+    target_class: str = "synthesizers.synthesizer_workers.physics_synthesizer.PhysicsSynthesizer"
 
 
 @dataclass
-class GroundSynthesizerSchema(BaseSynthesizerSchema):
+class GroundSynthesizerSchema:
     """
     Main Hydra Config Schema for `Ground Synthesizer`.
 
     Attributes:
         enabled (bool): Whether the synthesizer is enabled.
-        _target_ (str): Loacation of the corresponding class.
+        target_class (str): Loacation of the corresponding class.
     """
 
     enabled: bool
-    _target_: str = "synthesizers.synthesizer_workers.ground_synthesizer.GroundSynthesizer"
+    target_class: str = "synthesizers.synthesizer_workers.ground_synthesizer.GroundSynthesizer"
 
 
 @dataclass
