@@ -1,3 +1,4 @@
 [submodule "metron_shared"]
 	path = metron_shared
 	url = https://github.com/OndrejSzekely/metron_shared
+	branch = main
