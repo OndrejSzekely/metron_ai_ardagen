@@ -35,7 +35,8 @@ Follow the instruction steps.
 3. Install [Microsoft Visual Studio Code](https://code.visualstudio.com/).
 **Other IDEs are not supported out of the box, nor tested.**
 
-4. Download the repository using `git clone https://github.com/OndrejSzekely/metron_ai_ardagen.git`.
+4. Download the repository using
+`git clone --recurse-submodules https://github.com/OndrejSzekely/metron_ai_ardagen.git`.
 
 5. Move ArDaGen repository into Isaac Sim's root folder.
 
@@ -51,5 +52,14 @@ downloaded dataset into any arbitraty location, but a fast storage is recommende
 7. To start Visual Studio project, go into Isaac Sim's root folder and run `code .`. It will open a setup Visual
 Studio project with everything predefined.
 
-    In the *Explorer* tab whole Isaac Sim folder is present, but everything else, except *metron_ai_garden* folder,  
+    In the *Explorer* tab whole Isaac Sim folder is present, but everything else, except *metron_ai_garden* folder,
     is irrelevant for the development.
+
+    > ##### :clipboard: Remark :raised_hand:
+    > Be aware that debuging is performed using the *Python: Current File* option in *Run & Debug*.
+
+8. Append `"./metron_ai_ardagen",` into `python.analysis.extraPaths` list in 
+`<ISAAC_SIM_ROOT_FOLDER_PATH>/.vscode/settings.json` file.
+
+9. Install missing Python requirements. Go into Isaac Sim's root folder and run
+`./python.sh -m pip install -r metron_ai_ardagen/requirements.txt`.
