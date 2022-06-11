@@ -4,11 +4,10 @@
 
 
 import importlib
-from omegaconf import OmegaConf
+from omegaconf import OmegaConf, DictConfig
 from tools.isaac_sim import IsaacSimApp
 from metron_shared.config.config import GetHydraConfig
 from metron_shared import param_validators as param_val
-from miscellaneous.metron_ai_argagen_config_schema import MetronAIArDaGenConfigSchema
 
 
 class MasterSynthesizer:  # pylint: disable=too-few-public-methods
@@ -33,7 +32,7 @@ class MasterSynthesizer:  # pylint: disable=too-few-public-methods
         self._instantiate_synthesizer_workers()  # pylint: disable=no-value-for-parameter
 
     @GetHydraConfig
-    def _instantiate_synthesizer_workers(self, hydra_config: MetronAIArDaGenConfigSchema) -> None:
+    def _instantiate_synthesizer_workers(self, hydra_config: DictConfig) -> None:
         """
         Instantiates all enabled `Synthesizer Workers`. Objects can't be instantiated directly using Hydra's
         `initialize`, because it has to be get rid of each `Synthesizer Worker` config's `enabled` attribute
@@ -41,7 +40,7 @@ class MasterSynthesizer:  # pylint: disable=too-few-public-methods
         be used or not.
 
         Args:
-            hydra_config (GRE2GConfigSchema): GRE2G configuration parameters provided by Hydra's config.
+            hydra_config (DictConfig): GRE2G configuration parameters provided by Hydra's config.
         """
         ms_synth: OmegaConf = hydra_config.master_synthesizer
 
@@ -53,8 +52,9 @@ class MasterSynthesizer:  # pylint: disable=too-few-public-methods
                 ].target_class.rpartition(".")
                 synth_worker_module = importlib.import_module(synth_worker_module_path)
                 synth_worker_conf_dict = OmegaConf.to_container(ms_synth.synthesizer_workers[synth_worker])
-                synth_worker_conf_dict.pop("_target_")
+                synth_worker_conf_dict.pop("target_class")
                 synth_worker_conf_dict.pop("enabled")
                 self.worker_synthesizers.append(
                     getattr(synth_worker_module, synth_worker_class_name)(**synth_worker_conf_dict)
                 )
+                self.isaac_sim_app.update()

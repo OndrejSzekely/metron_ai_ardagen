@@ -1,4 +1,2 @@
-defaults:
-  - physics_synthesizer_schema # do not touch
-
+target_class: synthesizers.synthesizer_workers.physics_synthesizer.PhysicsSynthesizer # do not touch
 enabled: True

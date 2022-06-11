@@ -1,4 +1,2 @@
-defaults:
-  - isaac_sim_schema # do not touch
-
+_target_: tools.isaac_sim.IsaacSimApp # do not touch
 headless: False

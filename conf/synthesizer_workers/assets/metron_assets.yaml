@@ -1,0 +1,2 @@
+metron_assets:
+  _target_: synthesizers.assets_synthesizers.ov_assets_synthesizer.MetronAssetsSynthesizer # do not touch
