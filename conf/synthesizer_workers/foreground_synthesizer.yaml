@@ -1,0 +1,6 @@
+defaults:
+  - assets: 
+    - ov_assets
+    - metron_assets
+
+target_class: synthesizers.synthesizer_workers.foreground_synthesizer.ForegroundSynthesizer # do not touch
