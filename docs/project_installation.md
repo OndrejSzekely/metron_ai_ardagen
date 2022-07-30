@@ -58,8 +58,15 @@ Studio project with everything predefined.
     > ##### :clipboard: Remark :raised_hand:
     > Be aware that debuging is performed using the *Python: Current File* option in *Run & Debug*.
 
-8. Append `"./metron_ai_ardagen",` into `python.analysis.extraPaths` list in 
-`<ISAAC_SIM_ROOT_FOLDER_PATH>/.vscode/settings.json` file.
+8. Append
+
+    ```yaml
+    "./metron_ai_ardagen",
+    "./exts/omni.replicator.core-1.2.0+cp37",
+    ```
+
+    into `python.analysis.extraPaths` list in 
+    `<ISAAC_SIM_ROOT_FOLDER_PATH>/.vscode/settings.json` file.
 
 9. Install missing Python requirements. Go into Isaac Sim's root folder and run
 `./python.sh -m pip install -r metron_ai_ardagen/requirements.txt`.
