@@ -1,0 +1,2 @@
+_target_: tools.writer.OVWriter # do not touch
+fs_store_path: ???

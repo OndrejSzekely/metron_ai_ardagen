@@ -1,2 +1,2 @@
 _target_: tools.isaac_sim.IsaacSimApp # do not touch
-headless: False
+headless: True
