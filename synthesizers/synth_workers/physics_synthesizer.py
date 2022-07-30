@@ -34,4 +34,7 @@ class PhysicsSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-met
         PhysicsSchemaTools.addGroundPlane(stage, "/World/groundPlane", "Z", 400, Gf.Vec3f(0, 0, 0), Gf.Vec3f(1.0))
 
     def __call__(self) -> None:
-        pass
+        """
+        Nothing to do.
+        """
+        ...

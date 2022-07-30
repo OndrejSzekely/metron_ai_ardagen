@@ -26,7 +26,7 @@ class MasterSynthesizer:  # pylint: disable=too-few-public-methods
 
         Returns (None):
         """
-        param_val.type_check(isaac_sim, IsaacSimApp)
+        param_val.check_type(isaac_sim, IsaacSimApp)
 
         self.isaac_sim_app = isaac_sim
         self._instantiate_synthesizer_workers()  # pylint: disable=no-value-for-parameter

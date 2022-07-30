@@ -7,7 +7,8 @@ import os
 import hydra
 from omegaconf import DictConfig
 from synthesizers.master_synthesizer import MasterSynthesizer
-from miscellaneous.metron_ai_ardagen_utils import instantiate_isaac_sim
+from tools.isaac_sim import IsaacSimApp
+from miscellaneous.metron_ai_ardagen_utils import instantiate_from_hydra_config
 from metron_shared.config.config import set_hydra_config
 
 
@@ -25,7 +26,9 @@ def main(hydra_config: DictConfig) -> None:  # pylint: disable=unused-argument
 
     Returns (None):
     """
-    isaac_sim = instantiate_isaac_sim()  # pylint: disable=no-value-for-parameter
+    isaac_sim: IsaacSimApp = instantiate_from_hydra_config(
+        hydra_config.isaac_sim
+    )  # pylint: disable=no-value-for-parameter
     MasterSynthesizer(isaac_sim)
 
     while True:

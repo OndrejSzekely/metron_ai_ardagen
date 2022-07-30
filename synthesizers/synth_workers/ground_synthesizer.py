@@ -25,4 +25,6 @@ class GroundSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-meth
         )
 
     def __call__(self) -> None:
-        """ """
+        """
+        Nothing to do.
+        """

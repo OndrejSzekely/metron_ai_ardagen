@@ -3,20 +3,18 @@ This file contains small domain-free functions specific to GRE2G.
 """
 
 
+from typing import Any
 import hydra
 from omegaconf import DictConfig
-from metron_shared.config.config import GetHydraConfig
-from tools.isaac_sim import IsaacSimApp
 
 
-@GetHydraConfig
-def instantiate_isaac_sim(hydra_config: DictConfig) -> IsaacSimApp:
+def instantiate_from_hydra_config(hydra_object_config: DictConfig) -> Any:
     """
-    Instantiates `Isaac Sim App`.
+    Instantiates object from Hydra object config <hydra_object_config>. It has to contain <_target_> attribute.
 
     Args:
-        hydra_config (DictConfig): GRE2G configuration parameters provided by Hydra's config.
+        hydra_object_config (DictConfig): Object's Hydra config DictConfig.
 
-    Returns (IsaacSimApp): Instantiated `IsaacSimApp`.
+    Returns (Any): Instantiated object.
     """
-    return hydra.utils.instantiate(hydra_config.isaac_sim)
+    return hydra.utils.instantiate(hydra_object_config)
