@@ -6,8 +6,10 @@ The script runs *Metron AI ArDaGen*.
 import os
 import hydra
 from omegaconf import DictConfig
-from synthesizers.master_synthesizer import MasterSynthesizer
 from tools.isaac_sim import IsaacSimApp
+from tools.scenarios_manager import ScenariosManager
+from tools.replicator import OVReplicator
+from tools.writer import OVWriter
 from miscellaneous.metron_ai_ardagen_utils import instantiate_from_hydra_config
 from metron_shared.config.config import set_hydra_config
 
@@ -29,10 +31,11 @@ def main(hydra_config: DictConfig) -> None:  # pylint: disable=unused-argument
     isaac_sim: IsaacSimApp = instantiate_from_hydra_config(
         hydra_config.isaac_sim
     )  # pylint: disable=no-value-for-parameter
-    MasterSynthesizer(isaac_sim)
-
-    while True:
-        isaac_sim.update()
+    scenarios_manager = ScenariosManager(hydra_config.scenarios, isaac_sim)
+    ov_writer: OVWriter = instantiate_from_hydra_config(hydra_config.writer)  # pylint: disable=no-value-for-parameter
+    ov_replicator = OVReplicator(isaac_sim, scenarios_manager, ov_writer)
+    ov_replicator()
+    isaac_sim.close()
 
 
 if __name__ == "__main__":
