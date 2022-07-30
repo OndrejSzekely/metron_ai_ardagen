@@ -1,0 +1,20 @@
+defaults:
+  - common_scenario@development_scenario # do not touch
+  - /synthesizer_workers/scene_synthesizer@development_scenario.synthesizer_workers.scene_synthesizer # do not touch
+  - /synthesizer_workers/development_synthesizer@development_scenario.synthesizer_workers.development_synthesizer # do not touch
+development_scenario:
+  synthesizer_workers:
+    scene_synthesizer:
+      scene_path: /Isaac/Environments/Simple_Warehouse/full_warehouse.usd
+  cameras:
+    camera_1:
+      position:
+        - -2.5
+        - 1.2
+        - 2.5
+      clipping_range:
+        - 0.01
+        - 10000.0
+      resolution:
+        - 1280
+        - 720

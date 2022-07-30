@@ -1,3 +1,5 @@
 defaults:
-  - master_synthesizer@master_synthesizer # do not touch
+  - scenarios:
+    - development_scenario
   - isaac_sim@isaac_sim # do not touch
+  - writer@writer
