@@ -34,4 +34,4 @@ class IsaacSimApp:
 
         Returns (None):
         """
-        self.close()
+        self.app.close()
