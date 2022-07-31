@@ -81,6 +81,9 @@ class OVReplicator:
         # Isaac Sim app has to be created before modules can be imported, so called in here.
         import omni.replicator.core as rep
 
+        param_val.check_type(camera_setup, List[str])
+        param_val.check_type(writer_name, str)
+
         stage = omni.usd.get_context().get_stage()
         for camera_setup_item in camera_setup:
             stage.Unload(camera_setup_item)
