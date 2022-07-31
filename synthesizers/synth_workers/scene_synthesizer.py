@@ -38,7 +38,7 @@ class SceneSynthesizer:
         nucleus_root_path = get_assets_root_path()
         param_val.check_type(nucleus_root_path, str)
 
-        self.scene_node = self.rep.create.from_usd(nucleus_root_path + self.scene_path)
+        self.scene_node = rep.create.from_usd(nucleus_root_path + self.scene_path)
 
     def __call__(self) -> None:
         """
