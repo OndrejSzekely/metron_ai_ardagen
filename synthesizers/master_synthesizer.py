@@ -5,7 +5,7 @@
 
 import importlib
 from typing import Dict, Iterable
-from omegaconf import OmegaConf
+from omegaconf import OmegaConf, DictConfig
 from tools.isaac_sim import IsaacSimApp
 from .synth_workers.base_synthesizer import BaseSynthesizer
 from metron_shared import param_validators as param_val
@@ -21,19 +21,19 @@ class MasterSynthesizer:  # pylint: disable=too-few-public-methods
         synthesizers_worker_names (list[str]): List of `Synthesizer Worker` names.
     """
 
-    def __init__(self, isaac_sim: IsaacSimApp, synthesizer_workers: Dict) -> None:
+    def __init__(self, isaac_sim: IsaacSimApp, synthesizer_workers: DictConfig) -> None:
         """
         Args:
             isaac_sim (IsaacSimApp): `Isaac Sim App` instance.
 
         """
         param_val.check_type(isaac_sim, IsaacSimApp)
-        param_val.check_type(synthesizer_workers, Dict)
+        param_val.check_type(synthesizer_workers, DictConfig)
 
         self.isaac_sim_app = isaac_sim
         self._instantiate_synthesizer_workers(synthesizer_workers)  # pylint: disable=no-value-for-parameter
 
-    def _instantiate_synthesizer_workers(self, synthesizer_workers: Dict) -> None:
+    def _instantiate_synthesizer_workers(self, synthesizer_workers: DictConfig) -> None:
         """
         Instantiates all enabled `Synthesizer Workers`. Objects can't be instantiated directly using Hydra's
         `initialize`, because it has to be get rid of each `Synthesizer Worker` config's `enabled` attribute
@@ -41,8 +41,10 @@ class MasterSynthesizer:  # pylint: disable=too-few-public-methods
         be used or not.
 
         Args:
-            synthesizer_workers (Dict): `Synthesizer Workers` dict.
+            synthesizer_workers (DictConfig): `Synthesizer Workers` dict.
         """
+        param_val.check_type(synthesizer_workers, DictConfig)
+
         self.synthesizers_workers = []
         self.synthesizers_worker_names = []
         for synth_worker in synthesizer_workers:
@@ -53,7 +55,7 @@ class MasterSynthesizer:  # pylint: disable=too-few-public-methods
             synth_worker_conf_dict = OmegaConf.to_container(synthesizer_workers[synth_worker])
             synth_worker_conf_dict.pop("target_class")
             self.synthesizers_workers.append(
-                getattr(synth_worker_module, synth_worker_class_name)(rep, **synth_worker_conf_dict)
+                getattr(synth_worker_module, synth_worker_class_name)(**synth_worker_conf_dict)
             )
             self.isaac_sim_app.update()
             self.synthesizers_worker_names.append(synth_worker)
