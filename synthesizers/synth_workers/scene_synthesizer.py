@@ -2,9 +2,9 @@
 Defines *Scene Synthesizer* class which is responsible for scene loading.
 """
 
+from typing import Any, List
 from omni.isaac.core.utils.nucleus import get_assets_root_path
 from metron_shared import param_validators as param_val
-from omni.graph.core import Node
 
 
 class SceneSynthesizer:
@@ -15,7 +15,7 @@ class SceneSynthesizer:
             __name__(str): Defines name of the <__call__> magic method, which Omniverse Replicator
                 uses to register a method. It returns `Synthesizer's` name as defined in the config.
             scene_path (str): Path of a USD scene to be loaded inside OV Nucleus.
-            scene_node (Node): Scene stage node.
+            scene_node (og.Node, but can't be used as annotation): Scene stage node.
     """
 
     def __init__(self, scene_path: str) -> None:
@@ -31,7 +31,13 @@ class SceneSynthesizer:
         self.scene_path = scene_path
         self.scene_node = self._load_from_nucleus()
 
-    def _load_from_nucleus(self) -> Node:
+    def _load_from_nucleus(self) -> Any:
+        """
+        Loads the scene from OV Nucleus server.
+
+        Returns:
+            og.Node, but can't be used as annotation: Reference to the scene node.
+        """
         # Isaac Sim app has to be created before modules can be imported, so called in here.
         import omni.replicator.core as rep
 
@@ -40,8 +46,12 @@ class SceneSynthesizer:
 
         self.scene_node = rep.create.from_usd(nucleus_root_path + self.scene_path)
 
-    def __call__(self) -> None:
+    def __call__(self, camera_setup: List[str]) -> None:
         """
         Called by Replicator to make changes in the scene.
+
+        Args:
+            camera_setup (List[str]): List of camera primitive paths in for the camera setup. It can contain more than
+                one camera, e.g. stereo camera or more complicated camera rigs.
         """
         ...

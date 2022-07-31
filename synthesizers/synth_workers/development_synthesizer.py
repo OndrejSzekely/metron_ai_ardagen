@@ -2,7 +2,7 @@
 Defines *Development Synthesizer* class which is responsible for scene loading.
 """
 
-from omni.graph.core import Node
+from typing import List
 
 
 class DevelopmentSynthesizer:
@@ -20,7 +20,14 @@ class DevelopmentSynthesizer:
         """
         self.__name__: str = "development_synthesizer"
 
-    def __call__(self) -> Node:
+    def __call__(self, camera_setup: List[str]) -> None:
+        """
+        Called by Replicator to make changes in the scene.
+
+        Args:
+            camera_setup (List[str]): List of camera primitive paths in for the camera setup. It can contain more than
+                one camera, e.g. stereo camera or more complicated camera rigs.
+        """
         # Isaac Sim app has to be created before modules can be imported, so called in here.
         import omni.replicator.core as rep
 
@@ -28,4 +35,3 @@ class DevelopmentSynthesizer:
         with box:
             rep.modify.semantics([("class", "box")])
             rep.modify.visibility(rep.distribution.choice([True, False]))
-        return box.node
