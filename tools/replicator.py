@@ -3,7 +3,6 @@ Implements Omniverse Replicator handler class.
 """
 
 from typing import Any, List
-import omni.usd
 from metron_shared.structures import Singleton
 from tools.isaac_sim import IsaacSimApp
 from tools.scenarios_manager import ScenariosManager
@@ -63,14 +62,14 @@ class OVReplicator:
                     scenario_writer_name = self.ov_writer.create(scenario.scenario_name)
                     self.ov_writer.attach(render_product_setup)
 
-                    with rep.trigger.on_frame(num_frames=scenario.frames_number):
+                    with rep.trigger.on_frame(num_frames=scenario.frames_number + 1):
                         for synthesizer_worker_name in scenario.master_synthesizer.synthesizers_worker_names:
                             getattr(rep.randomizer, synthesizer_worker_name)(camera_setup)
 
                     self._run_orchestration()
                     self._remove_camera(camera_setup, scenario_writer_name)
 
-    def _remove_camera(camera_setup: List[str], writer_name: str) -> None:
+    def _remove_camera(self, camera_setup: List[str], writer_name: str) -> None:
         """
         Unloads a camera given by <camera> primitive path from the scene and removes writer given by <writer_name>.
 
@@ -80,6 +79,7 @@ class OVReplicator:
         """
         # Isaac Sim app has to be created before modules can be imported, so called in here.
         import omni.replicator.core as rep
+        import omni.usd
 
         param_val.check_type(camera_setup, List[str])
         param_val.check_type(writer_name, str)
