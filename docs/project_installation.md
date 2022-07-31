@@ -79,11 +79,15 @@ Studio project with everything predefined.
 'dict' object has no attribute 'discard'
   File "/ssd_crucial/omniverse/library/isaac_sim-2022.1.0/exts/omni.replicator.core-1.2.0+cp37/omni/replicator/core/scripts/writer_registry.py", line 313, in detach
 ```
+
 In `exts/omni.replicator.core-1.2.0+cp37/omni/replicator/core/scripts/writer_registry.py` on line **315** change
+
 ```python
 cls._render_product_writer_mapping[render_product].discard(writer_name)
 ```
+
 into
+
 ```python
 cls._render_product_writer_mapping[render_product].pop(writer_name)
 ```
