@@ -1,8 +1,8 @@
 defaults:
-  - common_scenario@development_scenario # do not touch
-  - /synthesizer_workers/scene_synthesizer@development_scenario.synthesizer_workers.scene_synthesizer # do not touch
-  - /synthesizer_workers/development_synthesizer@development_scenario.synthesizer_workers.development_synthesizer # do not touch
-development_scenario:
+  - common_scenario@dummy_scenario # do not touch
+  - /synthesizer_workers/scene_synthesizer@dummy_scenario.synthesizer_workers.scene_synthesizer # do not touch
+  - /synthesizer_workers/dummy_synthesizer@dummy_scenario.synthesizer_workers.dummy_synthesizer # do not touch
+dummy_scenario:
   synthesizer_workers:
     scene_synthesizer:
       scene_path: /Isaac/Environments/Simple_Warehouse/full_warehouse.usd

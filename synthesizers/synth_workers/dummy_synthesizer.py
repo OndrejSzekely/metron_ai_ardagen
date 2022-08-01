@@ -1,13 +1,13 @@
 """
-Defines *Development Synthesizer* class which is responsible for scene loading.
+Defines *Dummy Synthesizer* class which is responsible for scene loading.
 """
 
 from typing import List
 
 
-class DevelopmentSynthesizer:
+class DummySynthesizer:
     """
-    Defines *Development Synthesizer* class which is responsible for scene loading.
+    Defines *Dummy Synthesizer* class which is responsible for scene loading.
 
     Attributes:
             __name__(str): Defines name of the <__call__> magic method, which Omniverse Replicator
@@ -18,7 +18,7 @@ class DevelopmentSynthesizer:
         """
         Init.
         """
-        self.__name__: str = "development_synthesizer"
+        self.__name__: str = "dummy_synthesizer"
 
     def __call__(self, camera_setup: List[str]) -> None:
         """

@@ -1,5 +1,5 @@
 defaults:
   - scenarios:
-    - development_scenario
+    - dummy_scenario
   - isaac_sim@isaac_sim # do not touch
   - writer@writer
