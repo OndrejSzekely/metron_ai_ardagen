@@ -2,7 +2,7 @@
 Implements Omniverse Replicator handler class.
 """
 
-from typing import Any, List
+from typing import List
 from metron_shared.structures import Singleton
 from tools.isaac_sim import IsaacSimApp
 from tools.scenarios_manager import ScenariosManager

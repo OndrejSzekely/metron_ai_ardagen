@@ -4,7 +4,7 @@
 
 
 import importlib
-from typing import Dict, Iterable
+from typing import Iterable
 from omegaconf import OmegaConf, DictConfig
 from tools.isaac_sim import IsaacSimApp
 from .synth_workers.base_synthesizer import BaseSynthesizer
