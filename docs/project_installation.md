@@ -22,7 +22,7 @@ TODO
 ## Development Installation
 
 Follow the instruction steps.
-**Linux (Ubuntu 20.04) installation was tested only. The installation might not work on Windows.**
+**Linux (Ubuntu 21.04) installation was tested only. The installation might not work on Windows.**
 
 > ##### :warning: Attention :exclamation: :raised_hands: :exclamation: <!--markdownlint-disable header-increment no-duplicate-header blanks-around-headers-->
 > NVIDIA GPU is required.
@@ -42,7 +42,7 @@ Follow the instruction steps.
 
     ```shell
     # a sample command, your paths will be different
-    mv  /ssd_crucial/projects/metron_ai_ardagen /ssd_crucial/omniverse/isaac_sim-2021.2.1/
+    mv  /ssd_crucial/projects/metron_ai_ardagen /ssd_crucial/omniverse/isaac_sim-2022.1.0/
     ```
 
 6. Download [Shapenet's](https://shapenet.org/) ShapeNetCore v2 dataset.
@@ -58,8 +58,36 @@ Studio project with everything predefined.
     > ##### :clipboard: Remark :raised_hand:
     > Be aware that debuging is performed using the *Python: Current File* option in *Run & Debug*.
 
-8. Append `"./metron_ai_ardagen",` into `python.analysis.extraPaths` list in 
-`<ISAAC_SIM_ROOT_FOLDER_PATH>/.vscode/settings.json` file.
+8. Append
+
+    ```yaml
+    "./metron_ai_ardagen",
+    "./exts/omni.replicator.core-1.2.0+cp37",
+    ```
+
+    into `python.analysis.extraPaths` list in 
+    `<ISAAC_SIM_ROOT_FOLDER_PATH>/.vscode/settings.json` file.
 
 9. Install missing Python requirements. Go into Isaac Sim's root folder and run
 `./python.sh -m pip install -r metron_ai_ardagen/requirements.txt`.
+
+## Bug Fixes
+
+#### Bug #1: OV Replicator camera detach fails at the end of data generation
+
+```shell
+'dict' object has no attribute 'discard'
+  File "/ssd_crucial/omniverse/library/isaac_sim-2022.1.0/exts/omni.replicator.core-1.2.0+cp37/omni/replicator/core/scripts/writer_registry.py", line 313, in detach
+```
+
+In `exts/omni.replicator.core-1.2.0+cp37/omni/replicator/core/scripts/writer_registry.py` on line **315** change
+
+```python
+cls._render_product_writer_mapping[render_product].discard(writer_name)
+```
+
+into
+
+```python
+cls._render_product_writer_mapping[render_product].pop(writer_name)
+```

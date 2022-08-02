@@ -4,11 +4,32 @@
 
 
 import importlib
-from omegaconf import OmegaConf
+from typing import Iterator, List, Any
+from omegaconf import OmegaConf, DictConfig
 from tools.isaac_sim import IsaacSimApp
-from metron_shared.config.config import GetHydraConfig
 from metron_shared import param_validators as param_val
-from miscellaneous.metron_ai_argagen_config_schema import MetronAIArDaGenConfigSchema
+from .synth_workers.base_synthesizer import BaseSynthesizer
+
+
+class NullMasterSynthesizer:  # pylint: disable=too-few-public-methods
+    """
+    Represents a non-instantiated `Master Synthesizer` in `Scenario`. Follows Null Object design pattern.
+
+    Attributes:
+        synthesizers_worker_names (list[str]): Empty list of `Synthesizer Worker` names.
+    """
+
+    def __init__(self) -> None:
+        self.synthesizers_worker_names: List[Any] = []
+
+    def __iter__(self) -> Iterator[BaseSynthesizer]:
+        """
+        Duck-type interface of null object for `Scenario`.
+
+        Returns:
+            iter(Any): Returns empty iterator.
+        """
+        return iter([])
 
 
 class MasterSynthesizer:  # pylint: disable=too-few-public-methods
@@ -17,23 +38,23 @@ class MasterSynthesizer:  # pylint: disable=too-few-public-methods
 
     Attributes:
         isaac_sim_app (IsaacSimApp): `Isaac Sim App` instance.
-        worker_synthesizers (List[BaseSynthesizer]): List of `Worker Synthesizers`.
+        synthesizers_workers (List[BaseSynthesizer]): List of `Synthesizer Workers`.
+        synthesizers_worker_names (list[str]): List of `Synthesizer Worker` names.
     """
 
-    def __init__(self, isaac_sim: IsaacSimApp) -> None:
+    def __init__(self, isaac_sim: IsaacSimApp, synthesizer_workers: DictConfig) -> None:
         """
         Args:
             isaac_sim (IsaacSimApp): `Isaac Sim App` instance.
 
-        Returns (None):
         """
-        param_val.type_check(isaac_sim, IsaacSimApp)
+        param_val.check_type(isaac_sim, IsaacSimApp)
+        param_val.check_type(synthesizer_workers, DictConfig)
 
         self.isaac_sim_app = isaac_sim
-        self._instantiate_synthesizer_workers()  # pylint: disable=no-value-for-parameter
+        self._instantiate_synthesizer_workers(synthesizer_workers)  # pylint: disable=no-value-for-parameter
 
-    @GetHydraConfig
-    def _instantiate_synthesizer_workers(self, hydra_config: MetronAIArDaGenConfigSchema) -> None:
+    def _instantiate_synthesizer_workers(self, synthesizer_workers: DictConfig) -> None:
         """
         Instantiates all enabled `Synthesizer Workers`. Objects can't be instantiated directly using Hydra's
         `initialize`, because it has to be get rid of each `Synthesizer Worker` config's `enabled` attribute
@@ -41,20 +62,30 @@ class MasterSynthesizer:  # pylint: disable=too-few-public-methods
         be used or not.
 
         Args:
-            hydra_config (GRE2GConfigSchema): GRE2G configuration parameters provided by Hydra's config.
+            synthesizer_workers (DictConfig): `Synthesizer Workers` dict.
         """
-        ms_synth: OmegaConf = hydra_config.master_synthesizer
+        param_val.check_type(synthesizer_workers, DictConfig)
 
-        self.worker_synthesizers = []
-        for synth_worker in ms_synth.synthesizer_workers:
-            if ms_synth.synthesizer_workers[synth_worker].enabled:
-                synth_worker_module_path, _, synth_worker_class_name = ms_synth.synthesizer_workers[
-                    synth_worker
-                ].target_class.rpartition(".")
-                synth_worker_module = importlib.import_module(synth_worker_module_path)
-                synth_worker_conf_dict = OmegaConf.to_container(ms_synth.synthesizer_workers[synth_worker])
-                synth_worker_conf_dict.pop("_target_")
-                synth_worker_conf_dict.pop("enabled")
-                self.worker_synthesizers.append(
-                    getattr(synth_worker_module, synth_worker_class_name)(**synth_worker_conf_dict)
-                )
+        self.synthesizers_workers = []
+        self.synthesizers_worker_names = []
+        for synth_worker in synthesizer_workers:
+            synth_worker_module_path, _, synth_worker_class_name = synthesizer_workers[
+                synth_worker
+            ].target_class.rpartition(".")
+            synth_worker_module = importlib.import_module(synth_worker_module_path)
+            synth_worker_conf_dict = OmegaConf.to_container(synthesizer_workers[synth_worker])
+            synth_worker_conf_dict.pop("target_class")
+            self.synthesizers_workers.append(
+                getattr(synth_worker_module, synth_worker_class_name)(**synth_worker_conf_dict)
+            )
+            self.isaac_sim_app.update()
+            self.synthesizers_worker_names.append(synth_worker)
+
+    def __iter__(self) -> Iterator[BaseSynthesizer]:
+        """
+        Returns iterator over the `Synthesizer Workers`.
+
+        Returns:
+            Iterator[BaseSynthesizer]: Iterator over the `Synthesizer Workers`.
+        """
+        return iter(self.synthesizers_workers)

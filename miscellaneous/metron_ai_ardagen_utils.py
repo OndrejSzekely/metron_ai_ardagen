@@ -1,22 +1,37 @@
 """
-This file contains small domain-free functions specific to GRE2G.
+This file contains small domain-free functions specific to Metron AI ArDaGen.
 """
 
 
+from enum import Enum
+from typing import Any
 import hydra
-from metron_shared.config.config import GetHydraConfig
-from miscellaneous.metron_ai_argagen_config_schema import MetronAIArDaGenConfigSchema
-from tools.isaac_sim import IsaacSimApp
+from omegaconf import DictConfig
 
 
-@GetHydraConfig
-def instantiate_isaac_sim(hydra_config: MetronAIArDaGenConfigSchema) -> IsaacSimApp:
+class HydraInstantiateConversion(Enum):
     """
-    Instantiates `Isaac Sim App`.
+    Defines Hydra's instantiation conversion options. Basically how to handle list and dict like objects,
+    whether they are represented via OmegaConf structs or Python structs.
+    """
+
+    NO_CONVERSION = "none"
+    PARTIAL = "partial"
+    ALL = "all"
+
+
+def instantiate_from_hydra_config(
+    hydra_object_config: DictConfig, conversion: HydraInstantiateConversion = HydraInstantiateConversion.NO_CONVERSION
+) -> Any:
+    """
+    Instantiates object from Hydra object config <hydra_object_config>. It has to contain <_target_> attribute.
 
     Args:
-        hydra_config (GRE2GConfigSchema): GRE2G configuration parameters provided by Hydra's config.
+        hydra_object_config (DictConfig): Object's Hydra config DictConfig.
+        conversion
+        conversion (HydraInstantiateConversion): Defined how non-primitive values in OmegaConf are handled.
+            See https://hydra.cc/docs/advanced/instantiate_objects/overview/#parameter-conversion-strategies.
 
-    Returns (IsaacSimApp): Instantiated `IsaacSimApp`.
+    Returns (Any): Instantiated object.
     """
-    return hydra.utils.instantiate(hydra_config.isaac_sim)
+    return hydra.utils.instantiate(hydra_object_config, _convert_=conversion.value)

@@ -1,4 +1,1 @@
-defaults:
-  - ground_synthesizer_schema # do not touch
-
-enabled: True
+target_class: synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer # do not touch

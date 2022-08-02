@@ -10,10 +10,13 @@ from metron_shared import param_validators as param_val
 class IsaacSimApp:
     """
     Implements Isaac App wrapper class.
+
+    Attributes:
+        app (SimulationApp): Isaac Sim app.
     """
 
     def __init__(self, headless: bool) -> None:
-        param_val.type_check(headless, bool)
+        param_val.check_type(headless, bool)
 
         self.app = SimulationApp({"headless": headless})
 
@@ -31,4 +34,4 @@ class IsaacSimApp:
 
         Returns (None):
         """
-        self.close()
+        self.app.close()

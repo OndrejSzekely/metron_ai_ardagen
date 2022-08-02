@@ -1,0 +1,25 @@
+defaults:
+  - common_scenario@dummy_scenario # do not touch
+  - /synthesizer_workers/scene_synthesizer@dummy_scenario.synthesizer_workers.scene_synthesizer # do not touch
+  - /synthesizer_workers/dummy_synthesizer@dummy_scenario.synthesizer_workers.dummy_synthesizer # do not touch
+dummy_scenario:
+  synthesizer_workers:
+    scene_synthesizer:
+      scene_path: /Isaac/Environments/Simple_Warehouse/full_warehouse.usd
+  frames_number: 5
+  cameras:
+    camera_1:
+      position:
+        - -0.501886
+        - 6.2717293
+        - 1.0542809
+      rotation:
+        - 75.627
+        - 0
+        - 25.0
+      clipping_range:
+        - 0.01
+        - 10000.0
+      resolution:
+        - 1280
+        - 720

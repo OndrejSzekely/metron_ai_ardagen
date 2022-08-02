@@ -1,0 +1,5 @@
+defaults:
+  - /cameras/common_single_camera@cameras.camera_1 # do not touch
+
+frames_number: 100
+synthesizer_workers: ???

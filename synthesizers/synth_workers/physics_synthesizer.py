@@ -3,6 +3,7 @@ Defines *Physics Synthesizer* class which is responsible for ground synthesis.
 """
 
 
+from typing import List
 import omni
 from pxr import Gf, Sdf, UsdPhysics, PhysxSchema, PhysicsSchemaTools
 from .base_synthesizer import BaseSynthesizer
@@ -14,6 +15,7 @@ class PhysicsSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-met
     """
 
     def __init__(self) -> None:
+        self.__name__: str = "scene_synthesizer"
         stage = omni.usd.get_context().get_stage()
         physics_scene = UsdPhysics.Scene.Define(stage, Sdf.Path("/World/physicsScene"))
 
@@ -33,5 +35,11 @@ class PhysicsSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-met
         # add ground plane
         PhysicsSchemaTools.addGroundPlane(stage, "/World/groundPlane", "Z", 400, Gf.Vec3f(0, 0, 0), Gf.Vec3f(1.0))
 
-    def __call__(self) -> None:
-        pass
+    def __call__(self, camera_setup: List[str]) -> None:
+        """
+        With this magic function, a command is executed.
+
+        Args:
+            camera_setup (List[str]): List of camera primitive paths in for the camera setup. It can contain more than
+                one camera, e.g. stereo camera or more complicated camera rigs.
+        """

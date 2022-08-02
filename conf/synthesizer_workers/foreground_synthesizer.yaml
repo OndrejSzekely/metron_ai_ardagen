@@ -1,0 +1,5 @@
+defaults:
+  - assets: 
+    - ov_assets
+
+target_class: synthesizers.synth_workers.foreground_synthesizer.ForegroundSynthesizer # do not touch

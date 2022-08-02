@@ -1,0 +1,2 @@
+ov_assets:
+  _target_: synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer # do not touch

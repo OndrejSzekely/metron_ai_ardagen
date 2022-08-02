@@ -1,4 +1,5 @@
 defaults:
-  - metron_ai_ardagen_config_schema # do not touch
-  - master_synthesizer@master_synthesizer # do not touch
+  - scenarios:
+    - dummy_scenario
   - isaac_sim@isaac_sim # do not touch
+  - writer@writer
