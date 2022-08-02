@@ -3,15 +3,15 @@ Implements Omniverse Replicator handler class.
 """
 
 from typing import List
+from metron_shared import param_validators as param_val
 from metron_shared.structures import Singleton
 from tools.isaac_sim import IsaacSimApp
 from tools.scenarios_manager import ScenariosManager
 from tools.writer import OVWriter
-from metron_shared import param_validators as param_val
 
 
 @Singleton
-class OVReplicator:
+class OVReplicator:  # pylint: disable=too-few-public-methods
     """
     Implements Omniverse Replicator handler class.
 
@@ -45,7 +45,7 @@ class OVReplicator:
         Runs the whole OV Replicator data generation.
         """
         # Isaac Sim app has to be created before modules can be imported, so called in here.
-        import omni.replicator.core as rep
+        import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
 
         for scenario in self.scenarios_manager:
             with rep.new_layer():
@@ -69,7 +69,7 @@ class OVReplicator:
                     self._run_orchestration()
                     self._remove_camera(camera_setup, scenario_writer_name)
 
-    def _remove_camera(self, camera_setup: List[str], writer_name: str) -> None:
+    def _remove_camera(self, camera_setup: List[str], writer_name: str) -> None:  # pylint: disable=no-self-use
         """
         Unloads a camera given by <camera> primitive path from the scene and removes writer given by <writer_name>.
 
@@ -78,8 +78,8 @@ class OVReplicator:
             writer_name (str): Writer which is removed.
         """
         # Isaac Sim app has to be created before modules can be imported, so called in here.
-        import omni.replicator.core as rep
-        import omni.usd
+        import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
+        import omni.usd  # pylint: disable=import-outside-toplevel
 
         param_val.check_type(camera_setup, List[str])
         param_val.check_type(writer_name, str)
@@ -89,12 +89,12 @@ class OVReplicator:
             stage.Unload(camera_setup_item)
         rep.WriterRegistry.detach(writer_name)
 
-    def _run_orchestration(self):
+    def _run_orchestration(self) -> None:
         """
         Orchestrates Omniverse Replicator exection.
         """
         # Isaac Sim app has to be created before modules can be imported, so called in here.
-        import omni.replicator.core as rep
+        import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
 
         rep.orchestrator.run()
 

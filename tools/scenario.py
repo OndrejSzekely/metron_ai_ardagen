@@ -2,12 +2,12 @@
 Implements `Scenario` class.
 """
 
-from typing import Any, Generator, Tuple, List
+from typing import Any, Generator, Tuple, List, Union
 from omegaconf import DictConfig
-from synthesizers.master_synthesizer import MasterSynthesizer
+from synthesizers.master_synthesizer import MasterSynthesizer, NullMasterSynthesizer
 from tools.isaac_sim import IsaacSimApp
-from metron_shared import param_validators as param_val
 from tools.single_camera import SingleCamera
+from metron_shared import param_validators as param_val
 from miscellaneous.metron_ai_ardagen_utils import instantiate_from_hydra_config, HydraInstantiateConversion
 
 
@@ -16,9 +16,10 @@ class Scenario:
     Implements `Scenario` class which is a configuration description what and how should be rendered.
 
     Attributes:
-        master_synthesizer (Optinal[MasterSynthesizer]): `Master Synthesizer` instance containing all `Synthesizer`
-            instances to be executed in the given scenario.
-        isaac_sim (IsaacSimApp): Reference to Isaac Sim wrapper.
+        master_synthesizer (Union[NullMasterSynthesizer, MasterSynthesizer]): `Master Synthesizer` instance
+            containing all `Synthesizer` instances to be executed in the given scenario.
+        isaac_sim (IsaacSimApp): Reference to Isaac Sim wrapper. Till MasterSynthesizer is not instantiated, it stores
+            NullMasterSynthesizer class instance as a Null Object duck-type instance.
         scenario_name (str): Name of the scenario.
         scenario_dict_config (DictConfig): Hydra's configuration of given scenario's Synthesizers.
         frames_number (int): Number of images which are generated for given scenario.
@@ -39,7 +40,7 @@ class Scenario:
         param_val.check_type(scenario_dict_config.frames_number, int)
         param_val.check_parameter_value_in_range(scenario_dict_config.frames_number, 1, 1e10)  # hardcoded value
 
-        self.master_synthesizer = None
+        self.master_synthesizer: Union[NullMasterSynthesizer, MasterSynthesizer] = NullMasterSynthesizer()
         self.isaac_sim = isaac_sim
         self.scenario_name = scenario_name
         self.scenario_dict_config = scenario_dict_config
@@ -62,6 +63,6 @@ class Scenario:
         """
         for camera_conf_name in self.scenario_dict_config.cameras.keys():
             camera: SingleCamera = instantiate_from_hydra_config(
-                self.scenario_dict_config.cameras[camera_conf_name], HydraInstantiateConversion.partial
+                self.scenario_dict_config.cameras[camera_conf_name], HydraInstantiateConversion.PARTIAL
             )
             yield from camera.get_cameras()

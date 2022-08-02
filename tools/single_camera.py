@@ -6,7 +6,7 @@ from typing import Tuple, Any, Generator, List
 from metron_shared import param_validators as param_val
 
 
-class SingleCamera:
+class SingleCamera:  # pylint: disable=too-few-public-methods
     """
     Defines `Single Camera` camera setup.
 
@@ -55,8 +55,8 @@ class SingleCamera:
                 render product.
         """
         # Isaac Sim app has to be created before modules can be imported, so called in here.
-        import omni.replicator.core as rep
-        import omni.usd
+        import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
+        import omni.usd  # pylint: disable=import-outside-toplevel
 
         camera = rep.create.camera(
             position=self.position, rotation=self.rotation, clipping_range=tuple(self.clipping_range)

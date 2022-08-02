@@ -3,9 +3,10 @@ Defines *Dummy Synthesizer* class which is responsible for scene loading.
 """
 
 from typing import List
+from .base_synthesizer import BaseSynthesizer
 
 
-class DummySynthesizer:
+class DummySynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-methods
     """
     Defines *Dummy Synthesizer* class which is responsible for scene loading.
 
@@ -14,11 +15,7 @@ class DummySynthesizer:
                 uses to register a method. It returns `Synthesizer's` name as defined in the config.
     """
 
-    def __init__(self) -> None:
-        """
-        Init.
-        """
-        self.__name__: str = "dummy_synthesizer"
+    __name__ = "dummy_synthesizer"
 
     def __call__(self, camera_setup: List[str]) -> None:
         """
@@ -29,7 +26,7 @@ class DummySynthesizer:
                 one camera, e.g. stereo camera or more complicated camera rigs.
         """
         # Isaac Sim app has to be created before modules can be imported, so called in here.
-        import omni.replicator.core as rep
+        import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
 
         box = rep.get.prims(path_pattern="/Replicator/Ref/SM_CardBoxA_3")
         with box:

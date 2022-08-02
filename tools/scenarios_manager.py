@@ -5,7 +5,8 @@ Defines `Scenarios Manager` class which iterates over all scenarios.
 
 from __future__ import (
     annotations,
-)  # allowing future references -> return class under which return value is returned
+)
+from typing import Iterator, Any  # allowing future references -> return class under which return value is returned
 from omegaconf import DictConfig
 from tools.scenario import Scenario
 from tools.isaac_sim import IsaacSimApp
@@ -18,7 +19,8 @@ class ScenariosManager:
 
     Attributes:
         scenarios (DictConfig): Dict Config of all passed in scenarios.
-        scenario_names (Optiona[Iterable[str]]): List of scenario names. Instantiated on <__iter__> call.
+        scenario_names (Iterable[str]): List of scenario names. Instantiated on <__iter__> call, till that contains
+            empty iterator.
         isaac_sim (IsaacSimApp): Issac Sim App wrapper instance.
     """
 
@@ -34,7 +36,7 @@ class ScenariosManager:
         param_val.check_type(isaac_sim, IsaacSimApp)
 
         self.scenarios = scenarios
-        self.scenario_names = None
+        self.scenario_names: Iterator[Any] = iter([])
         self.isaac_sim = isaac_sim
 
     def __iter__(self) -> ScenariosManager:

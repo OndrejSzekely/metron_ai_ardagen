@@ -5,9 +5,10 @@ Defines *Scene Synthesizer* class which is responsible for scene loading.
 from typing import Any, List
 from omni.isaac.core.utils.nucleus import get_assets_root_path
 from metron_shared import param_validators as param_val
+from .base_synthesizer import BaseSynthesizer
 
 
-class SceneSynthesizer:
+class SceneSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-methods
     """
     Defines *Scene Synthesizer* class which is responsible for scene loading.
 
@@ -18,6 +19,8 @@ class SceneSynthesizer:
             scene_node (og.Node, but can't be used as annotation): Scene stage node.
     """
 
+    __name__ = "scene_synthesizer"
+
     def __init__(self, scene_path: str) -> None:
         """
         Init.
@@ -27,9 +30,8 @@ class SceneSynthesizer:
         """
         param_val.check_type(scene_path, str)
 
-        self.__name__ = "scene_synthesizer"
         self.scene_path = scene_path
-        self.scene_node = self._load_from_nucleus()
+        self._load_from_nucleus()
 
     def _load_from_nucleus(self) -> Any:
         """
@@ -39,7 +41,7 @@ class SceneSynthesizer:
             og.Node, but can't be used as annotation: Reference to the scene node.
         """
         # Isaac Sim app has to be created before modules can be imported, so called in here.
-        import omni.replicator.core as rep
+        import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
 
         nucleus_root_path = get_assets_root_path()
         param_val.check_type(nucleus_root_path, str)
@@ -54,4 +56,3 @@ class SceneSynthesizer:
             camera_setup (List[str]): List of camera primitive paths in for the camera setup. It can contain more than
                 one camera, e.g. stereo camera or more complicated camera rigs.
         """
-        ...

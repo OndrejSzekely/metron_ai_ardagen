@@ -4,11 +4,32 @@
 
 
 import importlib
-from typing import Iterable
+from typing import Iterator, List, Any
 from omegaconf import OmegaConf, DictConfig
 from tools.isaac_sim import IsaacSimApp
-from .synth_workers.base_synthesizer import BaseSynthesizer
 from metron_shared import param_validators as param_val
+from .synth_workers.base_synthesizer import BaseSynthesizer
+
+
+class NullMasterSynthesizer:  # pylint: disable=too-few-public-methods
+    """
+    Represents a non-instantiated `Master Synthesizer` in `Scenario`. Follows Null Object design pattern.
+
+    Attributes:
+        synthesizers_worker_names (list[str]): Empty list of `Synthesizer Worker` names.
+    """
+
+    def __init__(self) -> None:
+        self.synthesizers_worker_names: List[Any] = []
+
+    def __iter__(self) -> Iterator[BaseSynthesizer]:
+        """
+        Duck-type interface of null object for `Scenario`.
+
+        Returns:
+            iter(Any): Returns empty iterator.
+        """
+        return iter([])
 
 
 class MasterSynthesizer:  # pylint: disable=too-few-public-methods
@@ -60,11 +81,11 @@ class MasterSynthesizer:  # pylint: disable=too-few-public-methods
             self.isaac_sim_app.update()
             self.synthesizers_worker_names.append(synth_worker)
 
-    def __iter__(self) -> Iterable[BaseSynthesizer]:
+    def __iter__(self) -> Iterator[BaseSynthesizer]:
         """
         Returns iterator over the `Synthesizer Workers`.
 
         Returns:
-            Iterable[BaseSynthesizer]: Iterator over the `Synthesizer Workers`.
+            Iterator[BaseSynthesizer]: Iterator over the `Synthesizer Workers`.
         """
         return iter(self.synthesizers_workers)

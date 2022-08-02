@@ -10,13 +10,18 @@ from omegaconf import DictConfig
 
 
 class HydraInstantiateConversion(Enum):
-    no_conversion = "none"
-    partial = "partial"
-    all = "all"
+    """
+    Defines Hydra's instantiation conversion options. Basically how to handle list and dict like objects,
+    whether they are represented via OmegaConf structs or Python structs.
+    """
+
+    NO_CONVERSION = "none"
+    PARTIAL = "partial"
+    ALL = "all"
 
 
 def instantiate_from_hydra_config(
-    hydra_object_config: DictConfig, conversion: HydraInstantiateConversion = HydraInstantiateConversion.no_conversion
+    hydra_object_config: DictConfig, conversion: HydraInstantiateConversion = HydraInstantiateConversion.NO_CONVERSION
 ) -> Any:
     """
     Instantiates object from Hydra object config <hydra_object_config>. It has to contain <_target_> attribute.
