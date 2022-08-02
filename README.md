@@ -18,4 +18,17 @@ images and annotations to train Metron AI.
 
 [1. Project Installation](/docs/project_installation.md)\
 [2. Architecture](/docs/architecture.md)\
-[3. Development Notes (Metron project link)](https://github.com/OndrejSzekely/metron/blob/main/docs/development_notes.md)
+[3. Configuration](/docs/configuration.md)\
+[4. Synthesizer Workers](/docs/synthesizer_workers.md)\
+[5. Scenarios](/docs/scenarios.md)\
+[6. Development Notes (Metron project link)](https://github.com/OndrejSzekely/metron/blob/main/docs/development_notes.md)
+
+## How to run
+
+After you install the solution, go into *Isaac Sim* root folder in a terminal and run
+
+```shell
+./python.sh metron_ai_ardagen/metron_ai_ardagen_run.py
+```
+
+It loads ArDaGen's configuration via *Hydra* framework. See [configuration](/docs/configuration.md) for mode details.

@@ -30,7 +30,8 @@ camera setup or 360 degree view. It defines also camera type, e.g. pinhole or fi
 It represents a 3D scene layer handler which contributes to the complete scene. For instance, it might represent a
 ground plane handler, lighting handler, foreground 3D objects handler for annotations generation, etc. It provides
 also a randomization of the contributed layer assets, so each generated artificial data record has a different
-placement of assets, materials, parameters, etc.
+placement of assets, materials, parameters, etc. See [existing synthesizer workers overview](/docs/scenarios.md)
+for more details.
 
 ### Master Synthesizer
 
@@ -40,7 +41,7 @@ It manages multiple layer scenes, which create a whole scene, defined by a serie
 
 Scenario represents a scenario, which means a scene with all assets, lighting, physics, etc. and camera rigs. It means
 that one scenario has one Master Synthesizer with various Synthesizer Workers and one or more Camera Rigs to record
-data with various optics and setup.
+data with various optics and setup. See [existing scenarios overview](/docs/scenarios.md) for more details.
 
 ### Scenarios Manager
 
@@ -56,3 +57,6 @@ saves data on the filesystem.
 
 It is a handler of *Omniverse Isaac Sim Replicator*. It does the orchestration of execution of scenarios defines by
 Scenarios Manager inside sice *Omniverse Isaac Sim Replicator*. Generated data is saved via Writer.
+
+## Implementation Detail
+
