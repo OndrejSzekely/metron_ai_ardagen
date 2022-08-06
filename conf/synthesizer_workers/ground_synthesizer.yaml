@@ -1,1 +1,14 @@
+defaults:
+  - materials:
+      - ov_base_architecture
+      - ov_base_carpet
+      - ov_base_glass
+      - ov_base_masonry
+      - ov_base_metals
+
 target_class: synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer # do not touch
+position:
+  - ???
+  - ???
+  - ???
+semantics: ???
