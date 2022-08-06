@@ -73,7 +73,7 @@ class MasterSynthesizer:  # pylint: disable=too-few-public-methods
                 synth_worker
             ].target_class.rpartition(".")
             synth_worker_module = importlib.import_module(synth_worker_module_path)
-            synth_worker_conf_dict = OmegaConf.to_container(synthesizer_workers[synth_worker])
+            synth_worker_conf_dict = OmegaConf.to_container(synthesizer_workers[synth_worker], resolve=True)
             synth_worker_conf_dict.pop("target_class")
             self.synthesizers_workers.append(
                 getattr(synth_worker_module, synth_worker_class_name)(**synth_worker_conf_dict)
