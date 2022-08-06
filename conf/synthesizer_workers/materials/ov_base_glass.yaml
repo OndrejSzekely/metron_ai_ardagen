@@ -1,0 +1,16 @@
+ov_base_glass:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Blue_Glass.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Clear_Glass.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Dull_Glass.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Frosted_Glass.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Glazed_Glass.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Green_Glass.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Mirror.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Red_Glass.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Tinted_Glass_R02.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Tinted_Glass_R25.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Tinted_Glass_R50.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Tinted_Glass_R75.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Tinted_Glass_R85.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Tinted_Glass_R98.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Glass/Tinted_Glass.mdl
