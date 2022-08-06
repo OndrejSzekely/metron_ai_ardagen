@@ -1,5 +1,8 @@
 defaults:
   - scenarios:
-    - dummy_scenario
+    - metron_trivial_scenario
   - isaac_sim@isaac_sim # do not touch
   - writer@writer
+
+settings:
+  ov_nucleus_ip: localhost
