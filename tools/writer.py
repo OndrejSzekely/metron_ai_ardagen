@@ -56,33 +56,36 @@ class OVWriter:
         Args:
             fs_store_path (str): Defines `Writer` output folder path.
         """
+
         param_val.check_type(fs_store_path, str)
 
         self.fs_store_path = fs_store_path
         self.writer = NullWriter()
-        self.writer_name = "BasicWriter"
+        self.writer_name = "OffsetWriter"
 
-    def create(self, scenario_name: str) -> str:
+    def create(self, scenario_name: str, frames_readout_offset: int) -> str:
         """
         Creates a writer for given <scenario_name> scenario. It creates a new folder with <scenario_name> name on
         <fs_store_path> path to sepearte data for each scenario.
 
         Args:
             scenario_name (str): scenario name.
+            frames_readout_offset (int): Scenario's frames readout offset before saving a frame.
 
         Returns:
             str: Returns the name name of created writer. This name is used later on to delete the writer.
         """
         # Isaac Sim app has to be created before modules can be imported, so called in here.
         import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
+        import miscellaneous.offset_writer
 
         self.writer = rep.WriterRegistry.get(self.writer_name)
         self.writer.initialize(
             output_dir=path.join(self.fs_store_path, scenario_name),
             rgb=True,
-            bounding_box_2d_tight=True,
+            bounding_box_2d_tight=False,
             bounding_box_2d_loose=False,
-            semantic_segmentation=False,
+            semantic_segmentation=True,
             instance_segmentation=False,
             distance_to_camera=False,
             distance_to_image_plane=False,
@@ -90,6 +93,7 @@ class OVWriter:
             occlusion=False,
             normals=False,
             motion_vectors=False,
+            frame_content_lifespan=frames_readout_offset,
         )
 
         return self.writer_name

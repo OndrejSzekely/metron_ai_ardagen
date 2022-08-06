@@ -59,10 +59,12 @@ class OVReplicator:  # pylint: disable=too-few-public-methods
                     rep.randomizer.register(synthesizer)
 
                 for camera_setup, render_product_setup in scenario.get_cameras():
-                    scenario_writer_name = self.ov_writer.create(scenario.scenario_name)
+                    scenario_writer_name = self.ov_writer.create(scenario.scenario_name, scenario.frames_readout_offset)
                     self.ov_writer.attach(render_product_setup)
 
-                    with rep.trigger.on_frame(num_frames=scenario.frames_number + 1):
+                    with rep.trigger.on_frame(
+                        interval=scenario.frames_readout_offset, num_frames=scenario.frames_number
+                    ):
                         for synthesizer_worker_name in scenario.master_synthesizer.synthesizers_worker_names:
                             getattr(rep.randomizer, synthesizer_worker_name)(camera_setup)
 

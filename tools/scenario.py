@@ -38,13 +38,16 @@ class Scenario:
         param_val.check_type(scenario_name, str)
         param_val.check_type(scenario_dict_config, DictConfig)
         param_val.check_type(scenario_dict_config.frames_number, int)
+        param_val.check_type(scenario_dict_config.frames_readout_offset, int)
         param_val.check_parameter_value_in_range(scenario_dict_config.frames_number, 1, 1e10)  # hardcoded value
+        param_val.check_parameter_value_in_range(scenario_dict_config.frames_readout_offset, 1, 1e10)  # hardcoded value
 
         self.master_synthesizer: Union[NullMasterSynthesizer, MasterSynthesizer] = NullMasterSynthesizer()
         self.isaac_sim = isaac_sim
         self.scenario_name = scenario_name
         self.scenario_dict_config = scenario_dict_config
         self.frames_number = scenario_dict_config.frames_number
+        self.frames_readout_offset = scenario_dict_config.frames_readout_offset
 
     def prepare(self) -> None:
         """
