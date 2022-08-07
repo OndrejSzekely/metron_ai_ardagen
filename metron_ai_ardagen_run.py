@@ -10,7 +10,7 @@ from tools.isaac_sim import IsaacSimApp
 from tools.scenarios_manager import ScenariosManager
 from tools.replicator import OVReplicator
 from tools.writer import OVWriter
-from miscellaneous.metron_ai_ardagen_utils import instantiate_from_hydra_config
+from metron_shared.config.instantiate import instantiate_from_hydra_config
 from metron_shared.config.config import set_hydra_config
 
 
