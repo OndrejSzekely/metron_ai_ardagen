@@ -14,7 +14,7 @@ class GroundSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-meth
 
     __name__ = "ground_synthesizer"
 
-    def __init__(self, position: List[int], semantics: str, materials: Dict[str, List[str]]) -> None:
+    def __init__(self, position: List[int], semantics: str, materials: Dict[str, List[str]], scale: float) -> None:
         # Isaac Sim app has to be created before modules can be imported, so called in here.
         import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
         import omni.usd  # pylint: disable=import-outside-toplevel
@@ -23,9 +23,10 @@ class GroundSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-meth
         param_val.check_type(position, List[int])
         param_val.check_type(semantics, str)
         param_val.check_type(materials, Dict[str, List[str]])
+        param_val.check_type(scale, float)
         param_val.check_length_of_list(position, 3)
 
-        plane_node = rep.create.plane(position, semantics=[("class", semantics)])
+        plane_node = rep.create.plane(position, semantics=[("class", semantics)], scale=scale)
         self.stage = omni.usd.get_context().get_stage()
         self.stage_plane_path = (
             self.stage.GetPrimAtPath(plane_node.node.get_prim_path())
