@@ -1,0 +1,19 @@
+ov_vmaterials2_plastic:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/PCB_Prepreg.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/PCB_Solder_Mask.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/PET_Clear.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Plastic_Thick_Translucent_Flakes.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Plastic_Thick_Translucent.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Polycarbonate_Clear.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Polycarbonate_Cloudy.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Polycarbonate_Opaque.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Polycarbonate_Spectral_Clear.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Polyethylene_Clear.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Polyethylene_Cloudy.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Polyethylene_Opaque.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Polymethylmethacrylate_Clear.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Polypropylene_Clear.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Polypropylene_Cloudy.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Polypropylene_Opaque.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Polystyrene_Clear.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plastic/Styrofoam.mdl

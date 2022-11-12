@@ -1,0 +1,5 @@
+ov_vmaterials2_plaster:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plaster/Stucco.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plaster/Plaster_Wall.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plaster/Mosaic_Multi_Color_Stone.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Plaster/Facade_Plaster_Rough.mdl

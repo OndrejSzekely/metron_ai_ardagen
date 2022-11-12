@@ -1,0 +1,8 @@
+ov_vmaterials2_glass:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Glass/Glass_Clear.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Glass/Glass_Colored.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Glass/Glass_Optical.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Glass/Glass_Smudged.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Glass/Glazing_Clear.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Glass/Glazing_Float.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Glass/Mirror.mdl

@@ -1,0 +1,12 @@
+ov_base_natural:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Natural/Asphalt.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Natural/Dirt.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Natural/Grass_Countryside.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Natural/Grass_Cut.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Natural/Grass_Winter.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Natural/Leaves.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Natural/Mulch_Brown.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Natural/Sand.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Natural/Soil_Rocky.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Natural/Water_Opaque.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Natural/Water.mdl
