@@ -1,6 +1,0 @@
-ov_box_assets:
-  _target_: synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer # do not touch
-  usds:
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/2022.1/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxB_01_1344.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/2022.1/Isaac/Environments/Simple_Warehouse/Props/SM_BucketPlastic_B.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/2022.1/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxD_05_947.usd
