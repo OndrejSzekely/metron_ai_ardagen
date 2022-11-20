@@ -1,4 +1,0 @@
-defaults:
-  - synthesizer_workers/physics_synthesizer@synthesizer_workers.physics_synthesizer # do not touch
-  - synthesizer_workers/ground_synthesizer@synthesizer_workers.ground_synthesizer # do not touch
-  - synthesizer_workers/foreground_synthesizer@synthesizer_workers.foreground_synthesizer # do not touch

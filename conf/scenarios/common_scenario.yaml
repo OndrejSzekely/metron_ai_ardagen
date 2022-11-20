@@ -1,6 +1,7 @@
 defaults:
   - /cameras/common_single_camera@cameras.camera_1 # do not touch
 
-generated_samples: 100
+frames_number: 100
 frames_readout_offset: 20
+
 synthesizer_workers: ???
