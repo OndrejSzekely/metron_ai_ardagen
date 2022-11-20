@@ -62,7 +62,6 @@ Studio project with everything predefined.
 
     ```yaml
     "./metron_ai_ardagen",
-    "./exts/omni.replicator.core-1.2.0+cp37",
     ```
 
     into `python.analysis.extraPaths` list in 
@@ -77,10 +76,10 @@ Studio project with everything predefined.
 
 ```shell
 'dict' object has no attribute 'discard'
-  File "/ssd_crucial/omniverse/library/isaac_sim-2022.1.0/exts/omni.replicator.core-1.2.0+cp37/omni/replicator/core/scripts/writer_registry.py", line 313, in detach
+  File "/ssd_crucial/omniverse/library/isaac_sim-2022.1.0/exts/omni.replicator.core-1.2.0+cp37/omni/replicator/core/scripts/writer_registry.py", line <line_num>, in detach
 ```
 
-In `exts/omni.replicator.core-1.2.0+cp37/omni/replicator/core/scripts/writer_registry.py` on line **315** change
+In `exts/omni.replicator.core<VERSION>/omni/replicator/core/scripts/writer_registry.py` on line **<line_num>** change
 
 ```python
 cls._render_product_writer_mapping[render_product].discard(writer_name)
