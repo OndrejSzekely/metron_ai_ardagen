@@ -59,4 +59,3 @@ It is a handler of *Omniverse Isaac Sim Replicator*. It does the orchestration o
 Scenarios Manager inside sice *Omniverse Isaac Sim Replicator*. Generated data is saved via Writer.
 
 ## Implementation Detail
-
