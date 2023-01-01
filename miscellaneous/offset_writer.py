@@ -1,24 +1,18 @@
-__copyright__ = "Copyright (c) 2022, NVIDIA CORPORATION. All rights reserved."
-__license__ = """
-NVIDIA CORPORATION and its licensors retain all intellectual property
-and proprietary rights in and to this software, related documentation
-and any modifications thereto. Any use, reproduction, disclosure or
-distribution of this software and related documentation without an express
-license agreement from NVIDIA CORPORATION is strictly prohibited.
+"""
+Implements OV Writer with offset.
 """
 
 import io
 import json
-from typing import List
-
+from typing import List, Optional
+import numpy as np
 from omni.replicator.core import WriterRegistry, Writer, AnnotatorRegistry
 from omni.replicator.core import BackendDispatch
-import numpy as np
-
-from omni.replicator.core.scripts.writers.tools import colorize_segmentation, colorize_normals
+from omni.replicator.core.scripts.writers_default.tools import colorize_normals
 
 
-class OffsetWriter(Writer):
+# TODO: Refactor the class. Too many SCA exceptions. pylint: disable=fixme
+class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too-few-public-methods
     """Offset writer which is built upon <BasicWriter>, but has a frames offset before readout the frame. It assumes
     that stage content holds still for number of frames given by <frame_content_lifespan> before some change. This
     offset allows renderer to render everything properly and stabilize quality of RTX and DLSS. It has to be empirically
@@ -79,10 +73,10 @@ class OffsetWriter(Writer):
 
     __name__ = "OffsetWriter"
 
-    def __init__(
+    def __init__(  # pylint: disable=too-many-arguments, too-many-locals, too-many-branches
         self,
         output_dir: str,
-        semantic_types: List[str] = None,
+        semantic_types: Optional[List[str]] = None,
         rgb: bool = False,
         bounding_box_2d_tight: bool = False,
         bounding_box_2d_loose: bool = False,
@@ -104,10 +98,11 @@ class OffsetWriter(Writer):
         self._backend = BackendDispatch({"paths": {"out_dir": output_dir}})
         self._frame_id = 0
         self._image_output_format = image_output_format
-        self._output_data_format = {}
         self.annotators = []
         self.frame_read_out_num = 1 if frame_content_lifespan == 1 else frame_content_lifespan - 1
         self.content_lifespan = 1
+        # To have correct `difference` for no-offset and offset writing
+        self.content_lifespan_init_val = 0 if frame_content_lifespan == 1 else -1
 
         # Specify the semantic types that will be included in output
         if semantic_types is None:
@@ -174,7 +169,7 @@ class OffsetWriter(Writer):
         if camera_params:
             self.annotators.append(AnnotatorRegistry.get_annotator("camera_params"))
 
-    def write(self, data: dict):
+    def write(self, data: dict) -> None:  # pylint: disable=too-many-locals, too-many-branches, too-many-statements
         """Write function called from the OgnWriter node on every frame to process annotator output.
 
         Args:
@@ -325,7 +320,7 @@ class OffsetWriter(Writer):
                 self._backend.write_blob(file_path, buf.getvalue())
 
             self._frame_id += 1
-            self.content_lifespan = 0
+            self.content_lifespan = self.content_lifespan_init_val
         self.content_lifespan += 1
 
 
