@@ -2,19 +2,26 @@
 Implements `Base Synthesizer` which defines an interface across all `Synthesizer Workers`.
 """
 
+from __future__ import (
+    annotations,
+)  # allowing future references -> return class under which return value is returned
+from abc import abstractmethod
+from typing import List, Dict
 
-from abc import ABC, abstractmethod
-from typing import List
 
-
-class BaseSynthesizer(ABC):  # pylint: disable=too-few-public-methods
+class BaseSynthesizer:  # pylint: disable=too-few-public-methods
     """
     Implements `Base Synthesizer` which defines an interface across all `Synthesizer Workers`.
 
     Attributes:
         __name__(str): Defines name of the <__call__> magic method, which Omniverse Replicator
             uses to register a method. It has to return synthesizer name, the same name as is used in the config.
+        scenario_owner (str): Defines the name of owning `Scenario`.
     """
+
+    def __init__(self, class_name: str, scenario_owner: str) -> None:
+        self.__name__ = class_name
+        self.scenario_owner = scenario_owner
 
     @abstractmethod
     def __call__(self, camera_setup: List[str]) -> None:
@@ -26,12 +33,19 @@ class BaseSynthesizer(ABC):  # pylint: disable=too-few-public-methods
                 one camera, e.g. stereo camera or more complicated camera rigs.
         """
 
-    @property
-    def __name__(self) -> str:
+    @abstractmethod
+    def get_prims(self) -> List[str]:
         """
-        Defines name of the <__call__> magic method, which Omniverse Replicator uses to register a method.
-        It has to return synthesizer name, the same name as is used in the config.
+        Returns paths in stage to `Synthesizer's` created prims.
 
-        Returns (str):
+        Returns:
+            List[str]: List of stage prim paths.
         """
-        raise NotImplementedError
+
+    @abstractmethod
+    def register_synthesizers_prims(self, synthesizer_workers: Dict[str, BaseSynthesizer]) -> None:
+        """
+        Allows an access to other `Synthesizer's` prims if needed.
+
+        Returns (None):
+        """
