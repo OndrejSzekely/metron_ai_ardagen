@@ -3,12 +3,14 @@ Implements OV Writer with offset.
 """
 
 import io
+from os import path
 import json
-from typing import List, Optional
+from typing import List, Optional, Any
 import numpy as np
 from omni.replicator.core import WriterRegistry, Writer, AnnotatorRegistry
 from omni.replicator.core import BackendDispatch
 from omni.replicator.core.scripts.writers_default.tools import colorize_normals
+from metron_shared import param_validators as param_val
 
 
 # TODO: Refactor the class. Too many SCA exceptions. pylint: disable=fixme
@@ -19,61 +21,29 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
     determined what is a good offset for given scenario.
 
     Attributes:
-        output_dir:
-            Output directory string that indicates the directory to save the results.
-        semantic_types:
-            List of semantic types to consider when filtering annotator data. Default: ["class"]
-        rgb:
-            Boolean value that indicates whether the rgb annotator will be activated
-            and the data will be written or not. Default: False.
-        bounding_box_2d_tight:
-            Boolean value that indicates whether the bounding_box_2d_tight annotator will be activated
-            and the data will be written or not. Default: False.
-        bounding_box_2d_loose:
-            Boolean value that indicates whether the bounding_box_2d_loose annotator will be activated
-            and the data will be written or not. Default: False.
-        semantic_segmentation:
-            Boolean value that indicates whether the semantic_segmentation annotator will be activated
-            and the data will be written or not. Default: False.
-        instance_segmentation:
-            Boolean value that indicates whether the instance_segmentation annotator will be activated
-            and the data will be written or not. Default: False.
-        distance_to_camera:
-            Boolean value that indicates whether the distance_to_camera annotator will be activated
-            and the data will be written or not. Default: False.
-        distance_to_image_plane:
-            Boolean value that indicates whether the distance_to_image_plane annotator will be activated
-            and the data will be written or not. Default: False.
-        bounding_box_3d:
-            Boolean value that indicates whether the bounding_box_3d annotator will be activated
-            and the data will be written or not. Default: False.
-        occlusion:
-            Boolean value that indicates whether the occlusion annotator will be activated
-            and the data will be written or not. Default: False.
-        normals:
-            Boolean value that indicates whether the normals annotator will be activated
-            and the data will be written or not. Default: False.
-        motion_vectors:
-            Boolean value that indicates whether the motion_vectors annotator will be activated
-            and the data will be written or not. Default: False.
-        camera_params:
-            Boolean value that indicates whether the camera_params annotator will be activated
-            and the data will be written or not. Default: False.
-        image_output_format:
-            String that indicates the format of saved RGB images. Default: "png"
-        colorize_semantic_segmentation:
-            If ``True``, semantic segmentation is converted to an image where semantic IDs are mapped to colors
-            and saved as a uint8 4 channel PNG image. If ``False``, the output is saved as a uint32 PNG image.
-            Defaults to ``True``.
-        colorize_instance_segmentation:
-            If True, semantic segmentation is converted to an image where semantic IDs are mapped to colors.
-            and saved as a uint8 4 channel PNG image. If ``False``, the output is saved as a uint32 PNG image.
-            Defaults to ``True``.
+        __name__ (str): Class name.
+        _MAX_FRAMES_OFFSET (int): Defines the maximal allowed frames offset.
+        _WRITER_NUMBERING_PADDING (int): Defines the leading zeros for saved files naming.
+        _output_dir (str): Output directory string that indicates the directory to save the results.
+        _backend(BackendDispatch): OV backend dispatcher.
+        _frame_id (int): Frame index.
+        _image_output_format (str): Output image format.
+        _content_lifespan (int): Internal aux variable for the loop. Indicates how many frames passed since the last
+            read out.
+        annotators (List[Any]): List of annotators.
+        frame_read_out_num (int): Defines frame number after which the frame is read out and saved.
+            For <frame_content_lifespan> = 1 it is every frame. For <frame_content_lifespan> > 1, the value is
+             <frame_content_lifespan> - 1. This is because we want to read the frame every <frame_content_lifespan>th
+             frame.
+        content_lifespan_init_val (int): Init value for the helper loop, to decide when to perform a new read out.
+            Depends on <content_lifespan_init_val>. For single frame read out, it's set to 0, otherwise to -1.
     """
 
     __name__ = "OffsetWriter"
+    _MAX_FRAMES_OFFSET: int = 60 * 3  # Final is missing in this Python version.
+    _WRITER_NUMBERING_PADDING = 3
 
-    def __init__(  # pylint: disable=too-many-arguments, too-many-locals, too-many-branches
+    def __init__(  # pylint: disable=too-many-arguments, too-many-locals, too-many-branches, too-many-statements
         self,
         output_dir: str,
         semantic_types: Optional[List[str]] = None,
@@ -89,18 +59,75 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
         normals: bool = False,
         motion_vectors: bool = False,
         camera_params: bool = False,
+        # TODO: Create enum for file format.
         image_output_format: str = "png",
         colorize_semantic_segmentation: bool = True,
         colorize_instance_segmentation: bool = True,
         frame_content_lifespan: int = 1,
     ):
+        """
+        output_dir (str): Output FS folder where to save data.
+        semantic_types (Optional[List[str]], optional): Semantic classes to be kept. Defaults to None.
+        rgb (bool, optional): `True` will generate RGB images. Defaults to False.
+        bounding_box_2d_tight (bool, optional): `True` will generate 2D bboxes, not covering obscured object's
+            parts. Defaults to False.
+        bounding_box_2d_loose (bool, optional): `True` will generate 2D bboxes, covering also obscured object's
+            parts. Defaults to False.
+        semantic_segmentation (bool, optional): `True` will generate semantic segmentaion annotations.
+            Defaults to False.
+        instance_segmentation (bool, optional): `True` will generate instance segmentation annotations.
+            Defaults to False.
+        distance_to_camera (bool, optional): `True` will generate inverse depth map to camera. Defaults to False.
+        distance_to_image_plane (bool, optional): `True` will generate inverse depth map to image plane.
+            This means, it's not exact distance, but Z component of the distance. Defaults to False.
+        bounding_box_3d (bool, optional): `True` will generate 3D bounding boxes. Defaults to False.
+        occlusion (bool, optional): TODO add the description. Defaults to False.
+        normals (bool, optional): `True` will generate normals for each pixels in the image. Defaults to False.
+        motion_vectors (bool, optional): `True` will generate motion vector of the pixels inside the image.
+            Defaults to False.
+        camera_params (bool, optional): `True` will store camera's parameters (intrinsics, extrinsics).
+            Defaults to False.
+        image_output_format (str, optional): String that indicates the format of saved RGB images.
+            Defaults to "png".
+        colorize_semantic_segmentation (bool, optional): If ``True``, semantic segmentation is converted to an image
+            where semantic IDs are mapped to colors and saved as a uint8 4 channel PNG image. If ``False``,
+            the output is saved as a uint32 PNG image. Defaults to ``True``
+        colorize_instance_segmentation (bool, optional): If ``True``, semantic segmentation is converted to an image
+            where semantic IDs are mapped to colors and saved as a uint8 4 channel PNG image. If ``False``,
+            the output is saved as a uint32 PNG image. Defaults to ``True``.
+        frame_content_lifespan (int, optional): Number of frames for which the scene content holds still and
+            no frames readout is performed. Defaults to 1.
+        semantic_types (List[str], optional): List of semantic types to consider when filtering annotator data.
+            Default: ["class"]
+        writer_name (str): OV Writer type name.
+        """
+        param_val.check_type(output_dir, str)
+        param_val.check_type(semantic_types, Optional[List[str]])
+        param_val.check_type(rgb, bool)
+        param_val.check_type(bounding_box_2d_tight, bool)
+        param_val.check_type(bounding_box_2d_loose, bool)
+        param_val.check_type(semantic_segmentation, bool)
+        param_val.check_type(instance_segmentation, bool)
+        param_val.check_type(distance_to_camera, bool)
+        param_val.check_type(distance_to_image_plane, bool)
+        param_val.check_type(bounding_box_3d, bool)
+        param_val.check_type(occlusion, bool)
+        param_val.check_type(normals, bool)
+        param_val.check_type(motion_vectors, bool)
+        param_val.check_type(camera_params, bool)
+        param_val.check_type(image_output_format, str)
+        param_val.check_type(colorize_semantic_segmentation, bool)
+        param_val.check_type(colorize_instance_segmentation, bool)
+        param_val.check_type(frame_content_lifespan, int)
+        param_val.check_parameter_value_in_range(frame_content_lifespan, 1, self._MAX_FRAMES_OFFSET)
+
         self._output_dir = output_dir
         self._backend = BackendDispatch({"paths": {"out_dir": output_dir}})
         self._frame_id = 0
         self._image_output_format = image_output_format
         self.annotators = []
         self.frame_read_out_num = 1 if frame_content_lifespan == 1 else frame_content_lifespan - 1
-        self.content_lifespan = 1
+        self._content_lifespan = 1
         # To have correct `difference` for no-offset and offset writing
         self.content_lifespan_init_val = 0 if frame_content_lifespan == 1 else -1
 
@@ -114,14 +141,10 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
 
         # Bounding Box 2D
         if bounding_box_2d_tight:
-            self.annotators.append(
-                AnnotatorRegistry.get_annotator("bounding_box_2d_tight", init_params={"semanticTypes": semantic_types})
-            )
+            self.annotators.append(AnnotatorRegistry.get_annotator("bounding_box_2d_tight_fast"))
 
         if bounding_box_2d_loose:
-            self.annotators.append(
-                AnnotatorRegistry.get_annotator("bounding_box_2d_loose", init_params={"semanticTypes": semantic_types})
-            )
+            self.annotators.append(AnnotatorRegistry.get_annotator("bounding_box_2d_loose_fast"))
 
         # Semantic Segmentation
         if semantic_segmentation:
@@ -136,7 +159,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
         if instance_segmentation:
             self.annotators.append(
                 AnnotatorRegistry.get_annotator(
-                    "instance_segmentation", init_params={"colorize": colorize_instance_segmentation}
+                    "instance_segmentation_fast", init_params={"colorize": colorize_instance_segmentation}
                 )
             )
 
@@ -149,9 +172,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
 
         # Bounding Box 3D
         if bounding_box_3d:
-            self.annotators.append(
-                AnnotatorRegistry.get_annotator("bounding_box_3d", init_params={"semanticTypes": semantic_types})
-            )
+            self.annotators.append(AnnotatorRegistry.get_annotator("bounding_box_3d_fast"))
 
         # Motion Vectors
         if motion_vectors:
@@ -175,153 +196,254 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
         Args:
             data: A dictionary containing the annotator data for the current frame.
         """
+        param_val.check_type(data, dict)
 
-        if self.content_lifespan == self.frame_read_out_num:
+        if self._content_lifespan == self.frame_read_out_num:
+            for annotator in data.keys():
+                if annotator.startswith("rgb"):
+                    fs_path = "rgb/"
+                    self._write_rgb(fs_path, data[annotator])
 
-            if "rgb" in data:
-                file_path = f"rgb_{self._frame_id}.{self._image_output_format}"
-                self._backend.write_image(file_path, data["rgb"])
+                if annotator.startswith("normals"):
+                    fs_path = "normals/"
+                    self._write_normals(fs_path, data[annotator])
 
-            if "normals" in data:
-                normals_data = data["normals"]
+                if annotator.startswith("distance_to_camera"):
+                    fs_path = "dist_to_cam/"
+                    self._write_distance_to_camera(fs_path, data[annotator])
 
-                file_path = f"normals_{self._frame_id}.png"
-                colorized_normals_data = colorize_normals(normals_data)
-                self._backend.write_image(file_path, colorized_normals_data)
+                if annotator.startswith("distance_to_image_plane"):
+                    fs_path = "dist_to_img_plane/"
+                    self._write_distance_to_image_plane(fs_path, data[annotator])
 
-            if "distance_to_camera" in data:
-                dis_to_cam_data = data["distance_to_camera"]
+                if annotator.startswith("semantic_segmentation"):
+                    fs_path = "sem_seg/"
+                    self._write_semantic_segmentation(fs_path, data[annotator])
 
-                file_path = f"distance_to_camera_{self._frame_id}.npy"
-                buf = io.BytesIO()
-                np.save(buf, dis_to_cam_data)
-                self._backend.write_blob(file_path, buf.getvalue())
+                if annotator.startswith("instance_segmentation"):
+                    fs_path = "instance_seg/"
+                    self._write_instance_segmentation(fs_path, data[annotator])
 
-            if "distance_to_image_plane" in data:
-                dis_to_img_plane_data = data["distance_to_image_plane"]
+                if annotator.startswith("motion_vectors"):
+                    fs_path = "motion_vector/"
+                    self._write_motion_vectors(fs_path, data[annotator])
 
-                file_path = f"distance_to_image_plane_{self._frame_id}.npy"
-                buf = io.BytesIO()
-                np.save(buf, dis_to_img_plane_data)
-                self._backend.write_blob(file_path, buf.getvalue())
+                if annotator.startswith("occlusion"):
+                    fs_path = "occlusion/"
+                    self._write_occlusion(fs_path, data[annotator])
 
-            if "semantic_segmentation" in data:
-                semantic_seg_data = data["semantic_segmentation"]["data"]
-                height, width = semantic_seg_data.shape[:2]
+                if annotator.startswith("bounding_box_3d"):
+                    fs_path = "bbox_3d/"
+                    self._write_bounding_box_data("3d", fs_path, data[annotator])
 
-                file_path = f"semantic_segmentation_{self._frame_id}.png"
-                if semantic_seg_data.shape[-1] == 1:
-                    semantic_seg_data = semantic_seg_data.view(np.uint32).reshape(height, width)
-                    self._backend.write_image(file_path, semantic_seg_data)
-                else:
-                    semantic_seg_data = semantic_seg_data.view(np.uint8).reshape(height, width, -1)
-                    self._backend.write_image(file_path, semantic_seg_data)
+                if annotator.startswith("bounding_box_2d_loose"):
+                    fs_path = "bbox_2d_loose/"
+                    self._write_bounding_box_data("2d_loose", fs_path, data[annotator])
 
-                id_to_labels = data["semantic_segmentation"]["info"]["idToLabels"]
-                file_path = f"semantic_segmentation_labels_{self._frame_id}.json"
-                buf = io.BytesIO()
-                buf.write(json.dumps({str(k): v for k, v in id_to_labels.items()}).encode())
-                self._backend.write_blob(file_path, buf.getvalue())
+                if annotator.startswith("bounding_box_2d_tight"):
+                    fs_path = "bbox_2d_tight/"
+                    self._write_bounding_box_data("2d_tight", fs_path, data[annotator])
 
-            if "instance_segmentation" in data:
-                instance_seg_data = data["instance_segmentation"]["data"]
-                height, width = instance_seg_data.shape[:2]
-
-                file_path = f"instance_segmentation_{self._frame_id}.png"
-                if instance_seg_data.shape[-1] == 1:
-                    instance_seg_data = instance_seg_data.view(np.uint32).reshape(height, width)
-                    self._backend.write_image(file_path, instance_seg_data)
-                else:
-                    instance_seg_data = instance_seg_data.view(np.uint8).reshape(height, width, -1)
-                    self._backend.write_image(file_path, instance_seg_data)
-
-                id_to_labels = data["instance_segmentation"]["info"]["idToLabels"]
-                file_path = f"instance_segmentation_mapping_{self._frame_id}.json"
-                buf = io.BytesIO()
-                buf.write(json.dumps({str(k): v for k, v in id_to_labels.items()}).encode())
-                self._backend.write_blob(file_path, buf.getvalue())
-
-            if "motion_vectors" in data:
-                motion_vec_data = data["motion_vectors"]
-
-                file_path = f"motion_vectors_{self._frame_id}.npy"
-                buf = io.BytesIO()
-                np.save(buf, motion_vec_data)
-                self._backend.write_blob(file_path, buf.getvalue())
-
-            if "occlusion" in data:
-                occlusion_data = data["occlusion"]
-
-                file_path = f"occlusion_{self._frame_id}.npy"
-                buf = io.BytesIO()
-                np.save(buf, occlusion_data)
-                self._backend.write_blob(file_path, buf.getvalue())
-
-            if "bounding_box_3d" in data:
-                bbox_3d_data = data["bounding_box_3d"]["data"]
-
-                id_to_labels = data["bounding_box_3d"]["info"]["idToLabels"]
-
-                file_path = f"bounding_box_3d_{self._frame_id}.npy"
-                buf = io.BytesIO()
-                np.save(buf, bbox_3d_data)
-                self._backend.write_blob(file_path, buf.getvalue())
-
-                labels_file_path = f"bounding_box_3d_labels_{self._frame_id}.json"
-                buf = io.BytesIO()
-                buf.write(json.dumps(id_to_labels).encode())
-                self._backend.write_blob(labels_file_path, buf.getvalue())
-
-            if "bounding_box_2d_loose" in data:
-                bbox_2d_loose_data = data["bounding_box_2d_loose"]["data"]
-
-                id_to_labels = data["bounding_box_2d_loose"]["info"]["idToLabels"]
-
-                file_path = f"bounding_box_2d_loose_{self._frame_id}.npy"
-                buf = io.BytesIO()
-                np.save(buf, bbox_2d_loose_data)
-                self._backend.write_blob(file_path, buf.getvalue())
-
-                labels_file_path = f"bounding_box_2d_loose_labels_{self._frame_id}.json"
-                buf = io.BytesIO()
-                buf.write(json.dumps(id_to_labels).encode())
-                self._backend.write_blob(labels_file_path, buf.getvalue())
-
-            if "bounding_box_2d_tight" in data:
-                bbox_2d_tight_data = data["bounding_box_2d_tight"]["data"]
-
-                id_to_labels = data["bounding_box_2d_tight"]["info"]["idToLabels"]
-
-                file_path = f"bounding_box_2d_tight_{self._frame_id}.npy"
-                buf = io.BytesIO()
-                np.save(buf, bbox_2d_tight_data)
-                self._backend.write_blob(file_path, buf.getvalue())
-
-                labels_file_path = f"bounding_box_2d_tight_labels_{self._frame_id}.json"
-                buf = io.BytesIO()
-                buf.write(json.dumps(id_to_labels).encode())
-                self._backend.write_blob(labels_file_path, buf.getvalue())
-
-            if "camera_params" in data:
-                camera_data = data["camera_params"]
-
-                serializable_data = {}
-
-                for key, val in camera_data.items():
-                    if isinstance(val, np.ndarray):
-                        serializable_data[key] = val.tolist()
-                    else:
-                        serializable_data[key] = val
-
-                file_path = f"camera_params_{self._frame_id}.json"
-
-                buf = io.BytesIO()
-                buf.write(json.dumps(serializable_data).encode())
-                self._backend.write_blob(file_path, buf.getvalue())
+                if annotator.startswith("camera_params"):
+                    fs_path = "camera_params/"
+                    self._write_camera_params(fs_path, data[annotator])
 
             self._frame_id += 1
-            self.content_lifespan = self.content_lifespan_init_val
-        self.content_lifespan += 1
+            self._content_lifespan = self.content_lifespan_init_val
+        self._content_lifespan += 1
+
+    def _write_rgb(self, fs_relative_path: str, annotator_data: Any) -> None:
+        """
+        Writes RGB image data.
+
+        Args:
+            fs_relative_path (str): FS relative path where to save RGB images.
+            annotator_data (str): Annotator data.
+        """
+        param_val.check_type(fs_relative_path, str)
+
+        rel_file_path = path.join(
+            fs_relative_path, f"rgb_{self._frame_id:0{self._WRITER_NUMBERING_PADDING}d}.{self._image_output_format}"
+        )
+        self._backend.write_image(rel_file_path, annotator_data)
+
+    def _write_bounding_box_data(self, bbox_type: str, fs_relative_path: str, annotator_data: Any) -> None:
+        """
+        Writes bounding box data.
+
+        Args:
+            bbox_type (str): Specifies bbox type.
+            fs_relative_path (str): FS relative path where to save bounding box data.
+            annotator_data (str): Annotator data.
+        """
+        param_val.check_type(fs_relative_path, str)
+        param_val.check_type(bbox_type, str)
+
+        bbox_data = annotator_data["data"]
+
+        file_path = path.join(
+            fs_relative_path, f"bbox_{bbox_type}_{self._frame_id:0{self._WRITER_NUMBERING_PADDING}d}.npy"
+        )
+        buf = io.BytesIO()
+        np.save(buf, bbox_data)
+        self._backend.write_blob(file_path, buf.getvalue())
+
+    def _write_camera_params(self, fs_relative_path: str, annotator_data: Any) -> None:
+        """
+        Writes camera parameters data.
+
+        Args:
+            fs_relative_path (str): FS relative path where to save camera parameters data.
+            annotator_data (str): Annotator data.
+        """
+        param_val.check_type(fs_relative_path, str)
+
+        serializable_data = {}
+
+        for key, val in annotator_data.items():
+            if isinstance(val, np.ndarray):
+                serializable_data[key] = val.tolist()
+            else:
+                serializable_data[key] = val
+
+        file_path = path.join(
+            fs_relative_path, f"camera_params_{self._frame_id:0{self._WRITER_NUMBERING_PADDING}d}.json"
+        )
+        buf = io.BytesIO()
+        buf.write(json.dumps(serializable_data).encode())
+        self._backend.write_blob(file_path, buf.getvalue())
+
+    def _write_instance_segmentation(self, fs_relative_path: str, annotator_data: Any) -> None:
+        """
+        Writes instance segmentation data.
+
+        Args:
+            fs_relative_path (str): FS relative path where to save instance segmentatino data.
+            annotator_data (str): Annotator data.
+        """
+        param_val.check_type(fs_relative_path, str)
+
+        instant_seg_data = annotator_data["data"]
+        height, width = instant_seg_data.shape[:2]
+
+        file_path = path.join(fs_relative_path, f"instance_seg_{self._frame_id:0{self._WRITER_NUMBERING_PADDING}d}.png")
+        if instant_seg_data.shape[-1] == 1:
+            instance_seg_data = instant_seg_data.view(np.uint32).reshape(height, width)
+            self._backend.write_image(file_path, instance_seg_data)
+        else:
+            instance_seg_data = instant_seg_data.view(np.uint8).reshape(height, width, -1)
+            self._backend.write_image(file_path, instance_seg_data)
+
+        id_to_labels = annotator_data["info"]["idToLabels"]
+        file_path = path.join(
+            fs_relative_path, f"instance_seg_mapping_{self._frame_id:0{self._WRITER_NUMBERING_PADDING}d}.json"
+        )
+        buf = io.BytesIO()
+        buf.write(json.dumps({str(k): v for k, v in id_to_labels.items()}).encode())
+        self._backend.write_blob(file_path, buf.getvalue())
+
+    def _write_semantic_segmentation(self, fs_relative_path: str, annotator_data: Any) -> None:
+        """
+        Writes semantic segmentation data.
+
+        Args:
+            fs_relative_path (str): FS relative path where to save semantic segmentatino data.
+            annotator_data (str): Annotator data.
+        """
+        param_val.check_type(fs_relative_path, str)
+
+        sem_seg_data = annotator_data["data"]
+        height, width = sem_seg_data.shape[:2]
+
+        file_path = path.join(fs_relative_path, f"sem_seg_{self._frame_id:0{self._WRITER_NUMBERING_PADDING}d}.png")
+        if sem_seg_data.shape[-1] == 1:
+            semantic_seg_data = sem_seg_data.view(np.uint32).reshape(height, width)
+            self._backend.write_image(file_path, semantic_seg_data)
+        else:
+            semantic_seg_data = sem_seg_data.view(np.uint8).reshape(height, width, -1)
+            self._backend.write_image(file_path, semantic_seg_data)
+
+        id_to_labels = annotator_data["info"]["idToLabels"]
+        file_path = path.join(
+            fs_relative_path, f"sem_seg_labels_{self._frame_id:0{self._WRITER_NUMBERING_PADDING}d}.json"
+        )
+        buf = io.BytesIO()
+        buf.write(json.dumps({str(k): v for k, v in id_to_labels.items()}).encode())
+        self._backend.write_blob(file_path, buf.getvalue())
+
+    def _write_normals(self, fs_relative_path: str, annotator_data: Any) -> None:
+        """
+        Writes normals data.
+
+        Args:
+            fs_relative_path (str): FS relative path where to save normals data.
+            annotator_data (str): Annotator data.
+        """
+        param_val.check_type(fs_relative_path, str)
+
+        file_path = path.join(fs_relative_path, f"normals_{self._frame_id:0{self._WRITER_NUMBERING_PADDING}d}.png")
+        colorized_normals_data = colorize_normals(annotator_data)
+        self._backend.write_image(file_path, colorized_normals_data)
+
+    def _write_distance_to_camera(self, fs_relative_path: str, annotator_data: Any) -> None:
+        """
+        Writes distance to camera data.
+
+        Args:
+            fs_relative_path (str): FS relative path where to save distance to camera data.
+            annotator_data (str): Annotator data.
+        """
+        param_val.check_type(fs_relative_path, str)
+
+        file_path = path.join(fs_relative_path, f"dist_to_cam_{self._frame_id:0{self._WRITER_NUMBERING_PADDING}d}.npy")
+        buf = io.BytesIO()
+        np.save(buf, annotator_data)
+        self._backend.write_blob(file_path, buf.getvalue())
+
+    def _write_distance_to_image_plane(self, fs_relative_path: str, annotator_data: Any) -> None:
+        """
+        Writes distance to image plane data.
+
+        Args:
+            fs_relative_path (str): FS relative path where to save distance to image plane data.
+            annotator_data (str): Annotator data.
+        """
+        param_val.check_type(fs_relative_path, str)
+
+        file_path = path.join(
+            fs_relative_path, f"dist_to_img_plane_{self._frame_id:0{self._WRITER_NUMBERING_PADDING}d}.npy"
+        )
+        buf = io.BytesIO()
+        np.save(buf, annotator_data)
+        self._backend.write_blob(file_path, buf.getvalue())
+
+    def _write_occlusion(self, fs_relative_path: str, annotator_data: Any) -> None:
+        """
+        Writes occlusion data.
+
+        Args:
+            fs_relative_path (str): FS relative path where to save occlusion data.
+            annotator_data (str): Annotator data.
+        """
+        file_path = path.join(fs_relative_path, f"occlusion_{self._frame_id:0{self._WRITER_NUMBERING_PADDING}d}.npy")
+        buf = io.BytesIO()
+        np.save(buf, annotator_data)
+        self._backend.write_blob(file_path, buf.getvalue())
+
+    def _write_motion_vectors(self, fs_relative_path: str, annotator_data: Any) -> None:
+        """
+        Writes motion vectors data.
+
+        Args:
+            fs_relative_path (str): FS relative path where to save motion vectors data.
+            annotator_data (str): Annotator data.
+        """
+        file_path = path.join(
+            fs_relative_path, f"motion_vector_{self._frame_id:0{self._WRITER_NUMBERING_PADDING}d}.npy"
+        )
+        buf = io.BytesIO()
+        np.save(buf, annotator_data)
+        self._backend.write_blob(file_path, buf.getvalue())
 
 
 WriterRegistry.register(OffsetWriter)
