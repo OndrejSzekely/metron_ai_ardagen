@@ -12,9 +12,9 @@ class GroundSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-meth
     Defines *Ground Synthesizer* class which is responsible for ground plane synthesis.
 
     Attributes:
-        stage (Any): Current Isaac Sim stage.
-        stage_plane_path (str): Prim path of the created ground.
-        plane_node (og.Node): Plane primitive as a OmniGraph Node representation.
+        _stage (Any): Current Isaac Sim stage.
+        _stage_plane_path (str): Prim path of the created ground.
+        _plane_node (og.Node): Plane primitive as a OmniGraph Node representation.
         materials_list (List[str]): List of material Nucelus paths.
     """
 
@@ -53,14 +53,14 @@ class GroundSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-meth
         super().__init__(class_name, scenario_owner)
 
         plane_node = rep.create.plane(position, semantics=[("class", semantics)], scale=scale)
-        self.stage = omni.usd.get_context().get_stage()
-        self.stage_plane_path = (
-            self.stage.GetPrimAtPath(plane_node.node.get_prim_path())
+        self._stage = omni.usd.get_context().get_stage()
+        self._stage_plane_path = (
+            self._stage.GetPrimAtPath(plane_node.node.get_prim_path())
             .GetRelationship("inputs:prims")
             .GetTargets()[0]
             .pathString
         )
-        self.plane_node = plane_node.node
+        self._plane_node = plane_node.node
         self.materials_list = []
         for material_group in materials.values():
             self.materials_list.extend(material_group)
@@ -79,7 +79,7 @@ class GroundSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-meth
 
         rep.randomizer.materials(
             self.materials_list,
-            input_prims=[self.stage_plane_path],
+            input_prims=[self._stage_plane_path],
         )
 
     def get_prims(self) -> List[str]:
@@ -89,7 +89,7 @@ class GroundSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-meth
         Returns:
             List[str]: List of stage prim paths.
         """
-        return [self.stage_plane_path]
+        return [self._stage_plane_path]
 
     def register_synthesizers_prims(self, synthesizer_workers: Dict[str, BaseSynthesizer]) -> None:
         """
