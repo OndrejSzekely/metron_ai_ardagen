@@ -3,8 +3,8 @@ Defines *Ground Synthesizer* class which is responsible for ground plane synthes
 """
 
 from typing import List, Dict
-from .base_synthesizer import BaseSynthesizer
 from metron_shared import param_validators as param_val
+from .base_synthesizer import BaseSynthesizer
 
 
 class GroundSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-methods
@@ -18,7 +18,7 @@ class GroundSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-meth
         materials_list (List[str]): List of material Nucelus paths.
     """
 
-    def __init__(
+    def __init__(  # pylint: disable=too-many-arguments
         self,
         class_name: str,
         scenario_owner: str,
@@ -50,7 +50,7 @@ class GroundSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-meth
         param_val.check_length_of_list(position, 3)
         param_val.check_length_of_list(scale, 3)
 
-        super(GroundSynthesizer, self).__init__(class_name, scenario_owner)
+        super().__init__(class_name, scenario_owner)
 
         plane_node = rep.create.plane(position, semantics=[("class", semantics)], scale=scale)
         self.stage = omni.usd.get_context().get_stage()
