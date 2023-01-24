@@ -18,7 +18,7 @@ class SingleItemSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-
         _stage_prim_path (str): Path of the loaded asset in the stage.
     """
 
-    def __init__(
+    def __init__(  # pylint: disable=too-many-arguments
         self, class_name: str, scenario_owner: str, usd_path: str, position: List[float], semantics: str
     ) -> None:
         """
