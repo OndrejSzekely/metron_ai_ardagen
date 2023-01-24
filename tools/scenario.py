@@ -22,7 +22,7 @@ class Scenario:
             NullMasterSynthesizer class instance as a Null Object duck-type instance.
         scenario_name (str): Name of the scenario.
         scenario_dict_config (DictConfig): Hydra's configuration of given scenario's Synthesizers.
-        generated_samples (int): Number of images which are generated for given scenario.
+        frames_number (int): Number of images which are generated for given scenario.
     """
 
     def __init__(self, isaac_sim: IsaacSimApp, scenario_name: str, scenario_dict_config: DictConfig) -> None:
@@ -37,23 +37,30 @@ class Scenario:
         param_val.check_type(isaac_sim, IsaacSimApp)
         param_val.check_type(scenario_name, str)
         param_val.check_type(scenario_dict_config, DictConfig)
-        param_val.check_type(scenario_dict_config.generated_samples, int)
+        param_val.check_type(scenario_dict_config.frames_number, int)
         param_val.check_type(scenario_dict_config.frames_readout_offset, int)
-        param_val.check_parameter_value_in_range(scenario_dict_config.generated_samples, 1, 1e10)  # hardcoded value
+        param_val.check_parameter_value_in_range(scenario_dict_config.frames_number, 1, 1e10)  # hardcoded value
         param_val.check_parameter_value_in_range(scenario_dict_config.frames_readout_offset, 1, 1e10)  # hardcoded value
 
         self.master_synthesizer: Union[NullMasterSynthesizer, MasterSynthesizer] = NullMasterSynthesizer()
         self.isaac_sim = isaac_sim
         self.scenario_name = scenario_name
         self.scenario_dict_config = scenario_dict_config
-        self.generated_samples = scenario_dict_config.generated_samples
+        self.frames_number = scenario_dict_config.frames_number
         self.frames_readout_offset = scenario_dict_config.frames_readout_offset
 
-    def prepare(self) -> None:
+    def prepare(self, scenario_name: str) -> None:
         """
         Prepares the scenario, which means to instantiate all `Synthesizers` encapsulated in `Master Synthesizer`.
+
+        Args:
+            scenario_name (str): Corresponding scenario name, as defined in the Hydra config.
         """
-        self.master_synthesizer = MasterSynthesizer(self.isaac_sim, self.scenario_dict_config.synthesizer_workers)
+        param_val.check_type(scenario_name, str)
+
+        self.master_synthesizer = MasterSynthesizer(
+            self.isaac_sim, self.scenario_dict_config.synthesizer_workers, scenario_name
+        )
 
     def get_cameras(self) -> Generator[Tuple[List[Any], List[Any]], None, None]:
         """
