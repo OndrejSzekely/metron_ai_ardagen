@@ -6,3 +6,7 @@ defaults:
 
 settings:
   ov_nucleus_ip: localhost
+  issac_sim_version: 2022.2.0
+  ardagen_extension:
+    name: metron.ai.ardagen
+    fs_path: ???
