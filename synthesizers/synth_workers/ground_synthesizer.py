@@ -75,6 +75,8 @@ class GroundSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-meth
         """
         import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
 
+        param_val.check_type(camera_setup, List[str])
+
         rep.randomizer.materials(
             self.materials_list,
             input_prims=[self.stage_plane_path],
@@ -97,3 +99,4 @@ class GroundSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-meth
             synthesizer_workers (Dict[str, BaseSynthesizer]): Dict of all Synthesizers.
         Returns (None):
         """
+        param_val.check_type(synthesizer_workers, Dict[str, BaseSynthesizer])
