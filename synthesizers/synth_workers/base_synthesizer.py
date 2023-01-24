@@ -47,5 +47,7 @@ class BaseSynthesizer:  # pylint: disable=too-few-public-methods
         """
         Allows an access to other `Synthesizer's` prims if needed.
 
+        Args:
+            synthesizer_workers (Dict[str, BaseSynthesizer]): Dict of all Synthesizers.
         Returns (None):
         """
