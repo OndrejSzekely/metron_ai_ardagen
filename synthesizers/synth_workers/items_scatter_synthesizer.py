@@ -65,14 +65,14 @@ class ItemsScatterSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-publi
         self.semantics = semantics
         self.number_of_assets_displayed_at_once = number_of_assets_displayed_at_once
         self.assets_pool_size = assets_pool_size
-        self.placement_prims: List[str] = []
+        self._placement_prims: List[str] = []
 
         assets_keys = list(assets.keys())
         assets_distribution = np.random.randint(0, len(assets_keys), self.assets_pool_size, np.int32)
         unique_assets_stats = np.unique(assets_distribution, return_counts=True)
 
         self.fg_assets_synthesizers = []
-        self.scattered_prims = []
+        self._scattered_prims = []
         # Only used `Assets Synthesizers` are instantiated.
         for ind, (fg_asset_ind, assets_num_per_synth) in enumerate(zip(*unique_assets_stats)):
             assets_synth = instantiate_from_hydra_config(
@@ -83,7 +83,7 @@ class ItemsScatterSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-publi
                 scenario_owner=self.scenario_owner,
             )
             self.fg_assets_synthesizers.append(assets_synth)
-            self.scattered_prims.extend(assets_synth.get_prims())
+            self._scattered_prims.extend(assets_synth.get_prims())
 
     def register_synthesizers_prims(self, synthesizer_workers: Dict[str, BaseSynthesizer]) -> None:
         """
@@ -94,7 +94,7 @@ class ItemsScatterSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-publi
         Returns (None):
         """
         for placement_synth in self.placement_synths:
-            self.placement_prims.extend(synthesizer_workers[placement_synth].get_prims())
+            self._placement_prims.extend(synthesizer_workers[placement_synth].get_prims())
 
     def __call__(self, camera_setup: List[str]) -> None:
         """
@@ -109,9 +109,9 @@ class ItemsScatterSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-publi
 
         visibility_choice = [False] * (self.assets_pool_size - self.number_of_assets_displayed_at_once)
         visibility_choice.extend([True] * self.number_of_assets_displayed_at_once)
-        rep.randomizer.scatter_2d(surface_prims=self.placement_prims, input_prims=self.scattered_prims)
+        rep.randomizer.scatter_2d(surface_prims=self._placement_prims, input_prims=self._scattered_prims)
 
-        with rep.create.group(self.scattered_prims):
+        with rep.create.group(self._scattered_prims):
             rep.modify.visibility(
                 # Calling registered ArDaGen Extension function.
                 rep.distribution.shuffle(choices=visibility_choice)
