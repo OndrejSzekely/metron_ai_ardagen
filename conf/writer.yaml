@@ -1,5 +1,5 @@
 _target_: tools.writer.OVWriter # do not touch
-fs_store_path: /ssd_crucial/omniverse/pkg/isaac_sim-2022.2.0/metron_ai_ardagen/output
+fs_store_path: ???
 write_rgb: True
 write_bounding_box_2d_tight: True
 write_bounding_box_2d_loose: False
