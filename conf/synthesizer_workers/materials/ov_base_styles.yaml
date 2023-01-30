@@ -1,0 +1,2 @@
+ov_base_styles:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Styles/WhiteMode.mdl

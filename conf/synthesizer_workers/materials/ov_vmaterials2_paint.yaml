@@ -1,0 +1,5 @@
+ov_vmaterials2_paint:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Paint/Paint_Gun_Metal.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Paint/Paint_Eggshell.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Paint/Chalk_Paint.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Paint/Chalk_Paint_Pebbles.mdl

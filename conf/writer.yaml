@@ -1,2 +1,14 @@
 _target_: tools.writer.OVWriter # do not touch
 fs_store_path: ???
+write_rgb: True
+write_bounding_box_2d_tight: True
+write_bounding_box_2d_loose: False
+write_semantic_segmentation: True
+write_instance_segmentation: False
+write_distance_to_camera: False
+write_distance_to_image_plane: True
+write_bounding_box_3d: True
+write_occlusion: False
+write_normals: False
+write_motion_vectors: False
+write_camera_params: True

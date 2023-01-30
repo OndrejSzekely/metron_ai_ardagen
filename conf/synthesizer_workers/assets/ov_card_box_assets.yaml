@@ -1,0 +1,14 @@
+ov_card_box_assets:
+  _target_: synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer # do not touch
+  usds:
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/${settings.issac_sim_version}/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxA_01.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/${settings.issac_sim_version}/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxA_02.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/${settings.issac_sim_version}/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxB_01.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/${settings.issac_sim_version}/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxB_02.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/${settings.issac_sim_version}/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxC_01.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/${settings.issac_sim_version}/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxC_02.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/${settings.issac_sim_version}/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxD_01.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/${settings.issac_sim_version}/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxD_02.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/${settings.issac_sim_version}/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxD_03.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/${settings.issac_sim_version}/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxD_04.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/${settings.issac_sim_version}/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxD_05.usd

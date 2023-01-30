@@ -1,0 +1,26 @@
+ov_base_stone:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Adobe_Octagon_Dots.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Ceramic_Smooth_Fired.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Ceramic_Tile_12.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Porcelain_Tile_4_Linen.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Porcelain_Smooth.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Pea_Gravel.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Marble.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Marble_Tile_18.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Marble_Tile_12.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Marble_Smooth.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Gravel.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Gravel_River_Rock.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Granite_Light.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Granite_Dark.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Fieldstone.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Ceramic_Tile_6.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Ceramic_Tile_18.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Porcelain_Tile_4.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Porcelain_Tile_6_Linen.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Porcelain_Tile_6.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Retaining_Block.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Slate.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Terracotta.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Stone_Wall.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Stone/Terrazzo.mdl

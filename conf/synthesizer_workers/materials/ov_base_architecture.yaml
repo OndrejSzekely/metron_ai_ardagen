@@ -1,0 +1,4 @@
+ov_base_architecture:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Architecture/Ceiling_Tiles.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Architecture/Roof_Tiles.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Architecture/Shingles_01.mdl

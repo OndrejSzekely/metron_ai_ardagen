@@ -1,0 +1,8 @@
+target_class: synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer # do not touch
+position:
+  - ??? #X
+  - ??? #Y
+  - ??? #Z
+usd_path: ???
+semantics: ???
+

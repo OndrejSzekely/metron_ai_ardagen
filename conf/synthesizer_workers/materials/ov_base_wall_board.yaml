@@ -1,0 +1,6 @@
+ov_base_wall_board:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wall_Board/Cardboard.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wall_Board/Gypsum.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wall_Board/MDF.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wall_Board/Paper.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wall_Board/Plaster.mdl

@@ -20,6 +20,7 @@ class OVReplicator:  # pylint: disable=too-few-public-methods
         scenarios_manager (ScenariosManager): Scenarios manager containing scenarios
             for data generation to be performed.
         ov_writer (OVWriter): Writer which saved generated data produced by Isaac Sim Omniverse app.
+        isaac_sim (IsaacSimApp): Isaac Sim app instance.
     """
 
     def __init__(self, isaac_sim: IsaacSimApp, scenarios_manager: ScenariosManager, ov_writer: OVWriter) -> None:
@@ -53,16 +54,24 @@ class OVReplicator:  # pylint: disable=too-few-public-methods
                 # the new layer. Without adding the new layer to the USD file, the changes made via the script will
                 # alter the scene permanently.
 
-                scenario.prepare()
+                scenario.prepare(scenario.scenario_name)
 
                 for synthesizer in scenario.master_synthesizer:
                     rep.randomizer.register(synthesizer)
 
                 for camera_setup, render_product_setup in scenario.get_cameras():
-                    scenario_writer_name = self.ov_writer.create(scenario.scenario_name)
+                    scenario_writer_name = self.ov_writer.create(scenario.scenario_name, scenario.frames_readout_offset)
                     self.ov_writer.attach(render_product_setup)
 
-                    with rep.trigger.on_frame(num_frames=scenario.frames_number + 1):
+                    # OV Replicator takes <num_frames> as exclusive, which doesn't work for <interval> equal to `1`
+                    rep_frames_to_generate = (
+                        scenario.frames_number if scenario.frames_readout_offset > 1 else scenario.frames_number + 1
+                    )
+
+                    with rep.trigger.on_frame(
+                        interval=scenario.frames_readout_offset + 1,  # On <frames_readout_offset> + 1 randomize
+                        num_frames=rep_frames_to_generate,
+                    ):
                         for synthesizer_worker_name in scenario.master_synthesizer.synthesizers_worker_names:
                             getattr(rep.randomizer, synthesizer_worker_name)(camera_setup)
 
@@ -74,7 +83,7 @@ class OVReplicator:  # pylint: disable=too-few-public-methods
         Unloads a camera given by <camera> primitive path from the scene and removes writer given by <writer_name>.
 
         Args:
-            camera (List[str]): Camera setup paths in the stage.
+            camera_setup (List[str]): Camera setup paths in the stage.
             writer_name (str): Writer which is removed.
         """
         # Isaac Sim app has to be created before modules can be imported, so called in here.
@@ -90,20 +99,24 @@ class OVReplicator:  # pylint: disable=too-few-public-methods
         rep.WriterRegistry.detach(writer_name)
 
     def _run_orchestration(self) -> None:
-        """
-        Orchestrates Omniverse Replicator exection.
-        """
-        # Isaac Sim app has to be created before modules can be imported, so called in here.
-        import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
+        """Orchestrates Omniverse Replicator exection."""
 
-        rep.orchestrator.run()
+        if self.isaac_sim.debug:
+            while True:
+                self.isaac_sim.update()
+        else:
 
-        # Wait until started
-        while not rep.orchestrator.get_is_started():
-            self.isaac_sim.update()
+            # Isaac Sim app has to be created before modules can be imported, so called in here.
+            import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
 
-        # Wait until stopped
-        while rep.orchestrator.get_is_started():
-            self.isaac_sim.update()
+            rep.orchestrator.run()
 
-        rep.BackendDispatch.wait_until_done()
+            # Wait until started
+            while not rep.orchestrator.get_is_started():
+                self.isaac_sim.update()
+
+            # Wait until stopped
+            while rep.orchestrator.get_is_started():
+                self.isaac_sim.update()
+
+            rep.BackendDispatch.wait_until_done()

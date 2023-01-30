@@ -1,0 +1,11 @@
+ov_base_plastics:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Plastics/Plastic_ABS.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Plastics/Plastic_Acrylic.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Plastics/Plastic_Clear.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Plastics/Plastic.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Plastics/Rubber_Smooth.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Plastics/Rubber_Textured.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Plastics/Veneer_OU_Walnut.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Plastics/Veneer_UX_Walnut_Cherry.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Plastics/Veneer_Z5_Maple.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Plastics/Vinyl.mdl

@@ -1,0 +1,21 @@
+ov_base_wood:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Cherry.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Cork.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Mahogany_Planks.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Mahogany.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Oak_Planks.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Oak.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Parquet_Floor.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Ash_Planks.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Ash.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Plywood.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Timber_Cladding.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Bamboo_Planks.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Bamboo.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Timber.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Walnut_Planks.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Beadboard.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Birch_Planks.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Walnut.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Birch.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Wood/Cherry_Planks.mdl

@@ -2,36 +2,35 @@
 This file contains small domain-free functions specific to Metron AI ArDaGen.
 """
 
+from os import path
+import logging
+from metron_shared import param_validators as param_val
+from miscellaneous.custom_exceptions import OVExtNotLoaded
 
-from enum import Enum
-from typing import Any
-import hydra
-from omegaconf import DictConfig
 
-
-class HydraInstantiateConversion(Enum):
+def load_ov_extension(ext_path: str, extension_name: str) -> None:
     """
-    Defines Hydra's instantiation conversion options. Basically how to handle list and dict like objects,
-    whether they are represented via OmegaConf structs or Python structs.
-    """
-
-    NO_CONVERSION = "none"
-    PARTIAL = "partial"
-    ALL = "all"
-
-
-def instantiate_from_hydra_config(
-    hydra_object_config: DictConfig, conversion: HydraInstantiateConversion = HydraInstantiateConversion.NO_CONVERSION
-) -> Any:
-    """
-    Instantiates object from Hydra object config <hydra_object_config>. It has to contain <_target_> attribute.
+    Loads <ext_path> extension. Has to be invoked after Isaac Sim app is running.
 
     Args:
-        hydra_object_config (DictConfig): Object's Hydra config DictConfig.
-        conversion
-        conversion (HydraInstantiateConversion): Defined how non-primitive values in OmegaConf are handled.
-            See https://hydra.cc/docs/advanced/instantiate_objects/overview/#parameter-conversion-strategies.
+        ext_path (str): Path to the extension's root folder.
+        extension_name(str): Name of the extension.
 
-    Returns (Any): Instantiated object.
+    Raise:
+        OVExtNotLoaded: Raised when OV can't load given extension.
     """
-    return hydra.utils.instantiate(hydra_object_config, _convert_=conversion.value)
+    param_val.check_type(ext_path, str)
+    param_val.check_type(extension_name, str)
+    param_val.check_folder_existence(ext_path)
+
+    # Isaac Sim app has to be created before modules can be imported, so called in here.
+    import omni.kit.app  # pylint: disable=import-outside-toplevel
+
+    ext_manager = omni.kit.app.get_app().get_extension_manager()
+    ext_manager.add_path(path.join(ext_path, "exts"))
+    ext_manager.set_extension_enabled_immediate(extension_name, True)
+
+    if not ext_manager.is_extension_enabled(extension_name):
+        raise OVExtNotLoaded(extension_name)
+
+    logging.info("Extension `%s` enabled.", extension_name)

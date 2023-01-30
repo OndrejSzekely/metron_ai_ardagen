@@ -13,12 +13,20 @@ class IsaacSimApp:
 
     Attributes:
         app (SimulationApp): Isaac Sim app.
+        debug (bool): If `True` OV Replicator won't be executed and allows the user to inspect the generated scene.
     """
 
-    def __init__(self, headless: bool) -> None:
-        param_val.check_type(headless, bool)
+    def __init__(self, debug: bool) -> None:
+        """
 
-        self.app = SimulationApp({"headless": headless})
+        Args:
+            debug (bool): Switch whether to run ArDaGen in debug mode (headful).
+        """
+        param_val.check_type(debug, bool)
+
+        self.debug = debug
+
+        self.app = SimulationApp({"headless": True ^ debug})  # Non-headless mode for debug only.
 
     def update(self) -> None:
         """

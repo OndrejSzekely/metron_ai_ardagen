@@ -1,0 +1,9 @@
+ov_base_emissives:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Emissives/Light_12000K.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Emissives/Light_1900K.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Emissives/Light_2600K.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Emissives/Light_2900K.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Emissives/Light_5000K.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Emissives/Light_5500K.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Emissives/Light_6000K.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Emissives/Light_7000K.mdl
