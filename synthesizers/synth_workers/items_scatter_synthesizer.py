@@ -14,14 +14,14 @@ class ItemsScatterSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-publi
     Defines *Items Scatter Synthesizer* class which is responsible for items scatter placement.
 
     Attributes:
+        _placement_prims (List[str]): List of placement prims of the corresponding Synthesizers, defined by
+            <placement_synths> in constructor.
+        _scattered_prims (List[str]): List of prims of the assets added to the scene from the pool.
         placement_synths (List[str]): Target Synthesizers. The assets are placed on their prims.
         semantics (str): Semantic class for the Synthesizer's primitives.
         number_of_assets_displayed_at_once (int): Number of assets displayed at once. The corresponding number of
                 assets are sampled.
         assets_pool_size (int): Number of assets in the pool.
-        placement_prims (List[str]): List of placement prims of the corresponding Synthesizers, defined by
-            <placement_synths> in constructor.
-        scattered_prims (List[str]): List of prims of the assets added to the scene from the pool.
     """
 
     def __init__(  # pylint: disable=too-many-arguments
