@@ -30,7 +30,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
         _image_output_format (str): Output image format.
         _content_lifespan (int): Internal aux variable for the loop. Indicates how many frames passed since the last
             read out.
-        cam_setup_name (str): Camera setup name.
+        camera_setup_name (str): Camera setup name.
         annotators (List[Any]): List of annotators.
         frame_read_out_num (int): Defines frame number after which the frame is read out and saved.
             For <frame_content_lifespan> = 1 it is every frame. For <frame_content_lifespan> > 1, the value is
@@ -46,7 +46,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
 
     def __init__(  # pylint: disable=too-many-arguments, too-many-locals, too-many-branches, too-many-statements
         self,
-        cam_setup_name: str,
+        camera_setup_name: str,
         output_dir: str,
         semantic_types: Optional[List[str]] = None,
         rgb: bool = False,
@@ -68,7 +68,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
         frame_content_lifespan: int = 1,
     ):
         """
-        cam_setup_name (str): Camera setup name.
+        camera_setup_name (str): Camera setup name.
         output_dir (str): Output FS folder where to save data.
         semantic_types (Optional[List[str]], optional): Semantic classes to be kept. Defaults to None.
         rgb (bool, optional): `True` will generate RGB images. Defaults to False.
@@ -104,7 +104,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
             Default: ["class"]
         writer_name (str): OV Writer type name.
         """
-        param_val.check_type(cam_setup_name, str)
+        param_val.check_type(camera_setup_name, str)
         param_val.check_type(output_dir, str)
         param_val.check_type(semantic_types, Optional[List[str]])
         param_val.check_type(rgb, bool)
@@ -125,7 +125,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
         param_val.check_type(frame_content_lifespan, int)
         param_val.check_parameter_value_in_range(frame_content_lifespan, 1, self._MAX_FRAMES_OFFSET)
 
-        self.cam_setup_name = cam_setup_name
+        self.camera_setup_name = camera_setup_name
         self._output_dir = output_dir
         self._backend = BackendDispatch({"paths": {"out_dir": output_dir}})
         self._frame_id = 0
@@ -269,7 +269,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
 
         rel_file_path = path.join(
             fs_relative_path,
-            f"{self.cam_setup_name}_rgb_{self._frame_id:0{self._NUMBERING_PADDING}d}.{self._image_output_format}",
+            f"{self.camera_setup_name}_rgb_{self._frame_id:0{self._NUMBERING_PADDING}d}.{self._image_output_format}",
         )
         self._backend.write_image(rel_file_path, annotator_data)
 
@@ -289,7 +289,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
 
         file_path = path.join(
             fs_relative_path,
-            f"{self.cam_setup_name}_bbox_{bbox_type}_{self._frame_id:0{self._NUMBERING_PADDING}d}.npy",
+            f"{self.camera_setup_name}_bbox_{bbox_type}_{self._frame_id:0{self._NUMBERING_PADDING}d}.npy",
         )
         buf = io.BytesIO()
         np.save(buf, bbox_data)
@@ -315,7 +315,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
 
         file_path = path.join(
             fs_relative_path,
-            f"{self.cam_setup_name}_camera_params_{self._frame_id:0{self._NUMBERING_PADDING}d}.json",
+            f"{self.camera_setup_name}_camera_params_{self._frame_id:0{self._NUMBERING_PADDING}d}.json",
         )
         buf = io.BytesIO()
         buf.write(json.dumps(serializable_data).encode())
@@ -345,7 +345,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
         id_to_labels = annotator_data["info"]["idToLabels"]
         file_path = path.join(
             fs_relative_path,
-            f"{self.cam_setup_name}_instance_seg_mapping_{self._frame_id:0{self._NUMBERING_PADDING}d}.json",
+            f"{self.camera_setup_name}_instance_seg_mapping_{self._frame_id:0{self._NUMBERING_PADDING}d}.json",
         )
         buf = io.BytesIO()
         buf.write(json.dumps({str(k): v for k, v in id_to_labels.items()}).encode())
@@ -366,7 +366,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
 
         file_path = path.join(
             fs_relative_path,
-            f"{self.cam_setup_name}_sem_seg_{self._frame_id:0{self._NUMBERING_PADDING}d}.png",
+            f"{self.camera_setup_name}_sem_seg_{self._frame_id:0{self._NUMBERING_PADDING}d}.png",
         )
         if sem_seg_data.shape[-1] == 1:
             semantic_seg_data = sem_seg_data.view(np.uint32).reshape(height, width)
@@ -378,7 +378,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
         id_to_labels = annotator_data["info"]["idToLabels"]
         file_path = path.join(
             fs_relative_path,
-            f"{self.cam_setup_name}_sem_seg_labels_{self._frame_id:0{self._NUMBERING_PADDING}d}.json",
+            f"{self.camera_setup_name}_sem_seg_labels_{self._frame_id:0{self._NUMBERING_PADDING}d}.json",
         )
         buf = io.BytesIO()
         buf.write(json.dumps({str(k): v for k, v in id_to_labels.items()}).encode())
@@ -396,7 +396,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
 
         file_path = path.join(
             fs_relative_path,
-            f"{self.cam_setup_name}_normals_{self._frame_id:0{self._NUMBERING_PADDING}d}.png",
+            f"{self.camera_setup_name}_normals_{self._frame_id:0{self._NUMBERING_PADDING}d}.png",
         )
         colorized_normals_data = colorize_normals(annotator_data)
         self._backend.write_image(file_path, colorized_normals_data)
@@ -413,7 +413,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
 
         file_path = path.join(
             fs_relative_path,
-            f"{self.cam_setup_name}_dist_to_cam_{self._frame_id:0{self._NUMBERING_PADDING}d}.npy",
+            f"{self.camera_setup_name}_dist_to_cam_{self._frame_id:0{self._NUMBERING_PADDING}d}.npy",
         )
         buf = io.BytesIO()
         np.save(buf, annotator_data)
@@ -431,7 +431,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
 
         file_path = path.join(
             fs_relative_path,
-            f"{self.cam_setup_name}_dist_to_img_plane_{self._frame_id:0{self._NUMBERING_PADDING}d}.npy",
+            f"{self.camera_setup_name}_dist_to_img_plane_{self._frame_id:0{self._NUMBERING_PADDING}d}.npy",
         )
         buf = io.BytesIO()
         np.save(buf, annotator_data)
@@ -447,7 +447,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
         """
         file_path = path.join(
             fs_relative_path,
-            f"{self.cam_setup_name}_occlusion_{self._frame_id:0{self._NUMBERING_PADDING}d}.npy",
+            f"{self.camera_setup_name}_occlusion_{self._frame_id:0{self._NUMBERING_PADDING}d}.npy",
         )
         buf = io.BytesIO()
         np.save(buf, annotator_data)
@@ -463,7 +463,7 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
         """
         file_path = path.join(
             fs_relative_path,
-            f"{self.cam_setup_name}_motion_vector_{self._frame_id:0{self._NUMBERING_PADDING}d}.npy",
+            f"{self.camera_setup_name}_motion_vector_{self._frame_id:0{self._NUMBERING_PADDING}d}.npy",
         )
         buf = io.BytesIO()
         np.save(buf, annotator_data)
