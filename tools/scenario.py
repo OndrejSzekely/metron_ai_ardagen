@@ -62,17 +62,19 @@ class Scenario:
             self.isaac_sim, self.scenario_dict_config.synthesizer_workers, scenario_name
         )
 
-    def get_cameras(self) -> Generator[Tuple[List[Any], List[Any]], None, None]:
+    def get_cameras(self) -> Generator[Tuple[str, List[Any], List[Any]], None, None]:
         """
         Collects all camera setups defined for the scenario. Camera setup means, that in one setup there could be more
         cameras (e.g. stereo camera setup)
 
         Yields:
-            Generator[Tuple[List[Any], List[Any]], None, None]: Camera setup given by list of camera stage paths and
-                list of corresponding camera render products.
+            Generator[str, Tuple[List[Any], List[Any]], None, None]: Camera setup given by camera setup name,
+            list of camera stage paths and list of corresponding camera render products.
         """
         for camera_conf_name in self.scenario_dict_config.cameras.keys():
             camera: SingleCamera = instantiate_from_hydra_config(
-                self.scenario_dict_config.cameras[camera_conf_name], HydraInstantiateConversion.PARTIAL
+                self.scenario_dict_config.cameras[camera_conf_name],
+                HydraInstantiateConversion.PARTIAL,
+                cam_name=camera_conf_name,
             )
             yield from camera.get_cameras()

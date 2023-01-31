@@ -128,7 +128,7 @@ class OVWriter:  # pylint: disable=too-many-instance-attributes), too-many-argum
         self.writer = NullWriter()
         self.writer_name = "OffsetWriter"
 
-    def create(self, scenario_name: str, frames_readout_offset: int) -> str:
+    def create(self, scenario_name: str, cam_setup_name: str, frames_readout_offset: int) -> str:
         """
         Creates a writer for given <scenario_name> scenario. It creates a new folder with <scenario_name> name on
         <fs_store_path> path to sepearte data for each scenario.
@@ -148,9 +148,12 @@ class OVWriter:  # pylint: disable=too-many-instance-attributes), too-many-argum
 
         scenario_folder_path = path.join(self.fs_store_path, scenario_name)
         io_utils.force_folder_create(scenario_folder_path)
+        cam_folder_path = path.join(scenario_folder_path, cam_setup_name)
+        io_utils.force_folder_create(cam_folder_path)
         self.writer = rep.WriterRegistry.get(self.writer_name)
         self.writer.initialize(
-            output_dir=scenario_folder_path,
+            camera_setup_name=cam_setup_name,
+            output_dir=cam_folder_path,
             rgb=self.write_rgb,
             bounding_box_2d_tight=self.write_bounding_box_2d_tight,
             bounding_box_2d_loose=self.write_bounding_box_2d_loose,
