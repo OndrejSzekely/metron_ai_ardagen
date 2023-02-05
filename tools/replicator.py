@@ -59,10 +59,8 @@ class OVReplicator:  # pylint: disable=too-few-public-methods
                 for synthesizer in scenario.master_synthesizer:
                     rep.randomizer.register(synthesizer)
 
-                for cam_setup_name, camera_setup, render_product_setup in scenario.get_cameras():
-                    scenario_writer_name = self.ov_writer.create(
-                        scenario.scenario_name, cam_setup_name, scenario.frames_readout_offset
-                    )
+                for camera_setup, render_product_setup in scenario.get_cameras():
+                    scenario_writer_name = self.ov_writer.create(scenario.scenario_name, scenario.frames_readout_offset)
                     self.ov_writer.attach(render_product_setup)
 
                     # OV Replicator takes <num_frames> as exclusive, which doesn't work for <interval> equal to `1`
