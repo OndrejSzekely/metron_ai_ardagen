@@ -17,8 +17,8 @@ class DummySynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-metho
 
     _box_primitive_path = "SM_CardBoxA_3"
 
-    def __init__(self, class_name: str, scenario_owner: str) -> None:
-        super(DummySynthesizer, self).__init__(class_name, scenario_owner)
+    def __init__(self, class_name: str, scenario_owner: str) -> None:  # pylint: disable=useless-super-delegation
+        super().__init__(class_name, scenario_owner)
 
     def __call__(self, camera_setup: List[str]) -> None:
         """
