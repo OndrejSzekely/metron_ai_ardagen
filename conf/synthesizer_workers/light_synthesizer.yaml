@@ -1,14 +1,14 @@
 target_class: synthesizers.synth_workers.light_synthesizer.LightSynthesizer # do not touch
 position:
-  - ???
-  - ???
-  - ???
+  - ??? #X
+  - ??? #Y
+  - ??? #Z
 rotation:
-  - 0
-  - 0
-  - 0
+  - 0 #X
+  - 0 #Y
+  - 0 #Z
 scale:
-  - 1
-  - 1
-  - 1
+  - 1 #X
+  - 1 #Y
+  - 1 #Z
 light_type: distant
