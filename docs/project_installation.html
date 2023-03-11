@@ -1,0 +1,356 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+
+    <!-- Generated with Sphinx 5.0.2 and Furo 2022.12.07 -->
+        <title>Project Installation - Metron AI - ArDaGen 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Metron AI - ArDaGen 0.1.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Metron AI - ArDaGen 0.1.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section class="tex2jax_ignore mathjax_ignore" id="project-installation">
+<h1>Project Installation<a class="headerlink" href="#project-installation" title="Permalink to this heading">#</a></h1>
+<p>Solution is based on <a class="reference external" href="https://developer.nvidia.com/nvidia-omniverse-platform">NVIDIA Omniverse</a> with Python interface.
+There are two ways of installation. End user installation and development installation. <em>The guide follows Linux based
+installation steps</em>, which is also the recommended option.</p>
+<section id="end-user-installation">
+<h2>End User Installation<a class="headerlink" href="#end-user-installation" title="Permalink to this heading">#</a></h2>
+<section id="docker-compose">
+<h3>Docker Compose<a class="headerlink" href="#docker-compose" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div></div></blockquote>
+<section id="warning-attention-exclamation-raised-hands-exclamation-markdownlint-disable-header-increment-no-duplicate-header-blanks-around-headers">
+<h4>:warning: Attention :exclamation: :raised_hands: :exclamation: <!--markdownlint-disable header-increment no-duplicate-header blanks-around-headers--><a class="headerlink" href="#warning-attention-exclamation-raised-hands-exclamation-markdownlint-disable-header-increment-no-duplicate-header-blanks-around-headers" title="Permalink to this heading">#</a></h4>
+<p>NVIDIA GPU is required.</p>
+</section>
+<p>To be able to run ArDaGen using Docker Compose, perform following steps:</p>
+<ol class="arabic simple">
+<li><p>Install Docker (<a class="reference external" href="https://docs.docker.com/get-docker/">how to install</a>).</p></li>
+<li><p>Install Docker Compose (<a class="reference external" href="https://docs.docker.com/compose/install/">how to install</a>).</p></li>
+<li><p>Pull <a class="reference external" href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/isaac-sim">NVIDIA Omniverse Isaac Sim Docker image</a>.</p></li>
+</ol>
+<p>TODO</p>
+</section>
+</section>
+<section id="development-installation">
+<h2>Development Installation<a class="headerlink" href="#development-installation" title="Permalink to this heading">#</a></h2>
+<p>Follow the instruction steps.
+<strong>Linux (Ubuntu 21.04) installation was tested only. The installation might not work on Windows.</strong></p>
+<blockquote>
+<div></div></blockquote>
+<section id="id1">
+<h3>:warning: Attention :exclamation: :raised_hands: :exclamation: <!--markdownlint-disable header-increment no-duplicate-header blanks-around-headers--><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>NVIDIA GPU is required.</p>
+</section>
+<ol class="arabic">
+<li><p>Download and install NVIDIA Omniverse Launcher from <a class="reference external" href="https://developer.nvidia.com/nvidia-omniverse-platform">here</a>.</p></li>
+<li><p>Run Omniverse Launcher and install Isaac Sim application.
+<a class="reference external" href="https://docs.omniverse.nvidia.com/app_isaacsim/app_isaacsim/install_basic.html">See the link.</a></p></li>
+<li><p>Install <a class="reference external" href="https://code.visualstudio.com/">Microsoft Visual Studio Code</a>.
+<strong>Other IDEs are not supported out of the box, nor tested.</strong></p></li>
+<li><p>Download the repository using
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recurse-submodules</span> <span class="pre">https://github.com/OndrejSzekely/metron_ai_ardagen.git</span></code>.</p></li>
+<li><p>Move ArDaGen repository into Isaac Sim’s root folder.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># a sample command, your paths will be different</span>
+mv  /ssd_crucial/projects/metron_ai_ardagen /ssd_crucial/omniverse/isaac_sim-2022.1.0/
+</pre></div>
+</div>
+</li>
+<li><p>Download <a class="reference external" href="https://shapenet.org/">Shapenet’s</a> ShapeNetCore v2 dataset.
+You have to register on the page to be allowed to download the dataset. Place the
+downloaded dataset into any arbitraty location, but a fast storage is recommended.</p></li>
+<li><p>To start Visual Studio project, go into Isaac Sim’s root folder and run <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">.</span></code>. It will open a setup Visual
+Studio project with everything predefined.</p>
+<p>In the <em>Explorer</em> tab whole Isaac Sim folder is present, but everything else, except <em>metron_ai_garden</em> folder,
+is irrelevant for the development.</p>
+<blockquote>
+<div></div></blockquote>
+</li>
+<li><p>Append</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>&quot;./metron_ai_ardagen&quot;,
+</pre></div>
+</div>
+<p>into <code class="docutils literal notranslate"><span class="pre">python.analysis.extraPaths</span></code> list in
+<code class="docutils literal notranslate"><span class="pre">&lt;ISAAC_SIM_ROOT_FOLDER_PATH&gt;/.vscode/settings.json</span></code> file.</p>
+</li>
+<li><p>Install missing Python requirements. Go into Isaac Sim’s root folder and run
+<code class="docutils literal notranslate"><span class="pre">./python.sh</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">metron_ai_ardagen/requirements.txt</span></code>.</p></li>
+</ol>
+<section id="clipboard-remark-raised-hand">
+<h3>:clipboard: Remark :raised_hand:<a class="headerlink" href="#clipboard-remark-raised-hand" title="Permalink to this heading">#</a></h3>
+<p>Be aware that debuging is performed using the <em>Python: Current File</em> option in <em>Run &amp; Debug</em>.</p>
+</section>
+</section>
+<section id="bug-fixes">
+<h2>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this heading">#</a></h2>
+<section id="bug-1-ov-replicator-camera-detach-fails-at-the-end-of-data-generation">
+<h3>Bug #1: OV Replicator camera detach fails at the end of data generation<a class="headerlink" href="#bug-1-ov-replicator-camera-detach-fails-at-the-end-of-data-generation" title="Permalink to this heading">#</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;dict&#39;</span> object has no attribute <span class="s1">&#39;discard&#39;</span>
+  File <span class="s2">&quot;/ssd_crucial/omniverse/library/isaac_sim-2022.1.0/exts/omni.replicator.core-1.2.0+cp37/omni/replicator/core/scripts/writer_registry.py&quot;</span>, line &lt;line_num&gt;, <span class="k">in</span> detach
+</pre></div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">exts/omni.replicator.core&lt;VERSION&gt;/omni/replicator/core/scripts/writer_registry.py</span></code> on line <strong>&lt;line_num&gt;</strong> change</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">cls</span><span class="o">.</span><span class="n">_render_product_writer_mapping</span><span class="p">[</span><span class="n">render_product</span><span class="p">]</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">writer_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>into</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">cls</span><span class="o">.</span><span class="n">_render_product_writer_mapping</span><span class="p">[</span><span class="n">render_product</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">writer_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>dont forget of dev env to install myst and sphinx, sphinxemoji</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, ondra.szekely@gmail.com
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Project Installation</a><ul>
+<li><a class="reference internal" href="#end-user-installation">End User Installation</a><ul>
+<li><a class="reference internal" href="#docker-compose">Docker Compose</a><ul>
+<li><a class="reference internal" href="#warning-attention-exclamation-raised-hands-exclamation-markdownlint-disable-header-increment-no-duplicate-header-blanks-around-headers">:warning: Attention :exclamation: :raised_hands: :exclamation: <!--markdownlint-disable header-increment no-duplicate-header blanks-around-headers--></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#development-installation">Development Installation</a><ul>
+<li><a class="reference internal" href="#id1">:warning: Attention :exclamation: :raised_hands: :exclamation: <!--markdownlint-disable header-increment no-duplicate-header blanks-around-headers--></a></li>
+<li><a class="reference internal" href="#clipboard-remark-raised-hand">:clipboard: Remark :raised_hand:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bug-fixes">Bug Fixes</a><ul>
+<li><a class="reference internal" href="#bug-1-ov-replicator-camera-detach-fails-at-the-end-of-data-generation">Bug #1: OV Replicator camera detach fails at the end of data generation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
+</html>
