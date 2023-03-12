@@ -35,6 +35,5 @@ After you install the solution, go into *Isaac Sim* root folder in a terminal an
 It loads ArDaGen's configuration via *Hydra* framework. See [configuration section](https://ondrejszekely.github.io/metron_ai_ardagen/configuration.html) for mode details.
 
 ## Status
-[![License: GPL v3](https://img.shields.io/github/license/ondrejszekely/metron_ai_ardagen)](https://www.gnu.org/licenses/gpl-3.0) [![License: GPL v3](https://img.shields.io/github/v/release/ondrejszekely/metron_ai_ardagen)]()
-
+[![License: GPL v3](https://img.shields.io/github/license/ondrejszekely/metron_ai_ardagen)](https://www.gnu.org/licenses/gpl-3.0) [![Release](https://img.shields.io/github/v/release/ondrejszekely/metron_ai_ardagen)]() [![Last commit](https://img.shields.io/github/last-commit/ondrejszekely/metron_ai_ardagen/develop)]()
 ## Documentation
