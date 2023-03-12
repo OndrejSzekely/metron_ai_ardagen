@@ -1,7 +1,7 @@
 <h1 align="center">Metron AI - Artificial Data Generator (ArDaGen)</h1>
 
 <p align="center">
-  <kbd><img src="docs_src/imgs/title_img.jpg" alt="Title Illustative Image" width="600"></kbd>
+  <kbd><img src="docs_src/imgs/title_img.jpg" alt="Title Illustative Image" width="700"></kbd>
 </p>
 
 Metron AI ArDaGen is a synthetic data generator build on
@@ -35,6 +35,6 @@ After you install the solution, go into *Isaac Sim* root folder in a terminal an
 It loads ArDaGen's configuration via *Hydra* framework. See [configuration section](https://ondrejszekely.github.io/metron_ai_ardagen/configuration.html) for mode details.
 
 ## Status
-[![License: GPL v3](https://img.shields.io/github/license/ondrejszekely/metron_ai_ardagen)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: GPL v3](https://img.shields.io/github/license/ondrejszekely/metron_ai_ardagen)](https://www.gnu.org/licenses/gpl-3.0) [![License: GPL v3](https://img.shields.io/github/v/release/ondrejszekely/metron_ai_ardagen)]()
 
 ## Documentation
