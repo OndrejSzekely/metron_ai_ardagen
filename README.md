@@ -67,9 +67,9 @@ Online documentation of the latest commit on the *development* branch can be fou
     ##### :bulb: Reference Installation Steps :point_down: <!-- omit in toc -->
     In the activated environment run following commands:
     ```shell
-    conda install -c anaconda sphinx
-    conda install -c conda-forge myst-parser
-    pip install sphinxemoji
+    conda install -c anaconda sphinx=5.0.2
+    conda install -c conda-forge myst-parser=1.0.0
+    pip install sphinxemoji=0.2.0
     ```
 
 4. Go into repository's root folder and in the activated environment build the documentation:
