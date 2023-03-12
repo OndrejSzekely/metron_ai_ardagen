@@ -39,7 +39,7 @@ It loads ArDaGen's configuration via *Hydra* framework. See [configuration secti
 [![License: GPL v3](https://img.shields.io/github/license/ondrejszekely/metron_ai_ardagen)](https://www.gnu.org/licenses/gpl-3.0) [![Release](https://img.shields.io/github/v/release/ondrejszekely/metron_ai_ardagen)](https://github.com/OndrejSzekely/metron_ai_ardagen/releases) [![Last commit](https://img.shields.io/github/last-commit/ondrejszekely/metron_ai_ardagen/develop)](https://github.com/OndrejSzekely/metron_ai_ardagen/compare/main...develop)
 
 ## Documentation
-Online documentation of the latest commit on the *development* branch can be found [here](https://ondrejszekely.github.io/metron_ai_ardagen).
+Online documentation of the latest commit on the *development* branch can be found [here](https://ondrejszekely.github.io/metron_ai_ardagen). *If you don't want to build a new documentation and use the build in the repository, go to step 5 directly*.
 
 ### Building & running documentation locally
 1. Download the repository using `git clone https://github.com/OndrejSzekely/metron_ai_ardagen.git`
