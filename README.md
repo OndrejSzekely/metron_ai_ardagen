@@ -1,7 +1,7 @@
 <h1 align="center">Metron AI - Artificial Data Generator (ArDaGen)</h1>
 
 <p align="center">
-  <img src="docs_src/imgs/title_img.jpg" alt="Title Illustative Image" width="600">
+  <img style="border: 3px solid #555;" src="docs_src/imgs/title_img.jpg" alt="Title Illustative Image" width="600">
 </p>
 
 Metron AI ArDaGen is a synthetic data generator build on
