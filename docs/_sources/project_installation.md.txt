@@ -90,5 +90,3 @@ into
 ```python
 cls._render_product_writer_mapping[render_product].pop(writer_name)
 ```
-
-dont forget of dev env to install myst and sphinx, sphinxemoji

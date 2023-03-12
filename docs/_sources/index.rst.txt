@@ -10,4 +10,4 @@ Metron AI - ArDaGen Docs
    :maxdepth: 2
    :caption: Contents:
 
-   foo
+   development_notes
