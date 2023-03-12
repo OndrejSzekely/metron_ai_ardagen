@@ -20,9 +20,9 @@ images and annotations to train Metron AI.
 :boom: uses SOTA configuration framework - Meta's Hydra
 :boom: modular architecture with custom design scenarios
 
-## Table of Content
+## Table of Contents
 
-[1. Project Installation](/docs/project_installation.md)\
+[How to run](#how-to-run)\
 [2. Architecture](/docs/architecture.md)\
 [3. Configuration](/docs/configuration.md)\
 [4. Synthesizer Workers](/docs/synthesizer_workers.md)\
