@@ -25,8 +25,6 @@ images and annotations to train Metron AI.
 - [Status](#status)
 - [Documentation](#documentation)
   - [Building \& running documentation locally](#building--running-documentation-locally)
-      - [:bulb: Reference Installation Steps :point\_down:](#bulb-reference-installation-steps-point_down)
-      - [:bulb: Reference Installation Steps :point\_down:](#bulb-reference-installation-steps-point_down-1)
 ## How to run
 
 After you install the solution, go into *Isaac Sim* root folder in a terminal and run
@@ -47,7 +45,7 @@ Online documentation of the latest commit on the *development* branch can be fou
 1. Download the repository using `git clone https://github.com/OndrejSzekely/metron_ai_ardagen.git`
 2. It is recommended to use virtual environment, to encapsulate the dev tools (Python frameworks and other software components). Create Python **3.7** virtual environment using Python dependency management tool you are using (e.g. Conda, Pipenv, etc...).
    
-    ##### :bulb: Reference Installation Steps :point_down:
+    ##### :bulb: Reference Installation Steps :point_down: <!-- omit in toc -->
     It is recommended to use Anaconda channel ([how to get Anaconda](https://www.anaconda.com/products/individual)),
     which also provides installation management of non-Python software components, and Python. Run following
     command to create a new virtual environment:
@@ -66,7 +64,7 @@ Online documentation of the latest commit on the *development* branch can be fou
     sphinxemoji (=0.2.0)
     ```
 
-    ##### :bulb: Reference Installation Steps :point_down:
+    ##### :bulb: Reference Installation Steps :point_down: <!-- omit in toc -->
     In the activated environment run following commands:
     ```shell
     conda install -c anaconda sphinx
@@ -79,7 +77,7 @@ Online documentation of the latest commit on the *development* branch can be fou
    sphinx-build -b html docs_src docs
    ```
 
-   ##### :bulb: Reference Installation Steps :point_down:
+   ##### :bulb: Reference Installation Steps :point_down: <!-- omit in toc -->
    In the activated environment run following command:
    ```shell
    sphinx-build -b html docs_src docs
@@ -93,7 +91,7 @@ Online documentation of the latest commit on the *development* branch can be fou
 
    GOOD JOB! :raised_hands: :rocket: :dizzy:
 
-   ##### :bulb: Reference Installation Steps :point_down:
+   ##### :bulb: Reference Installation Steps :point_down: <!-- omit in toc -->
    In repository's root folder and activated environment run a HTTP server with the documentation:
    ```shell
    python -m http.server --directory docs 4444
