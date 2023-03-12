@@ -62,6 +62,8 @@ Online documentation of the latest commit on the *development* branch can be fou
     sphinx (~5.0.2)
     myst-parser (=1.0.0)
     sphinxemoji (=0.2.0)
+    sphinx-design (=0.3.0)
+    sphinx-book-theme (=1.0.0)
     ```
 
     ##### :bulb: Reference Installation Steps :point_down: <!-- omit in toc -->
@@ -70,6 +72,8 @@ Online documentation of the latest commit on the *development* branch can be fou
     conda install -c anaconda sphinx=5.0.2
     conda install -c conda-forge myst-parser=1.0.0
     pip install sphinxemoji=0.2.0
+    pip install sphinx-design=0.3.0
+    pip install sphinx-book-theme=1.0.0
     ```
 
 4. Go into repository's root folder and in the activated environment build the documentation:
