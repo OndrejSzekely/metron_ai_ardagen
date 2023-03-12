@@ -1,7 +1,7 @@
 # Development Notes
 
-```{seealso}
-sfsfs
-```
+:::{seealso}
+asdsfsd
+:::
 
 [6. Development Notes (Metron project link)](https://github.com/OndrejSzekely/metron/blob/main/docs/development_notes.md)
