@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
+    <title>Architecture &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
   
   
   
@@ -47,6 +47,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'architecture';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Project Installation" href="project_installation.html" />
+    <link rel="prev" title="Metron AI - ArDaGen Docs" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,7 +126,9 @@
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_installation.html">Project Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development_notes.html">Development Notes</a></li>
 </ul>
 
@@ -180,7 +184,7 @@
       
       
       
-      <li><a href="_sources/architecture.rst" target="_blank"
+      <li><a href="_sources/architecture.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -190,7 +194,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.rst</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -262,7 +266,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Architecture</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -271,9 +275,21 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architectural-decisions">Architectural Decisions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architectural-description">Architectural Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaac-sim-app">Isaac Sim App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#camera-rig">Camera Rig</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthesizer-worker">Synthesizer Worker</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#master-synthesizer">Master Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">Scenario</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenarios-manager">Scenarios Manager</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writer">Writer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replicator">Replicator</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-detail">Implementation Detail</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -284,7 +300,68 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p>😍</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="architecture">
+<h1>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading">#</a></h1>
+<section id="architectural-decisions">
+<h2>Architectural Decisions<a class="headerlink" href="#architectural-decisions" title="Permalink to this heading">#</a></h2>
+<p>Metron AI ArDaGen is based on <em>NVIDIA Omniverse</em> which performs all the work. ArDaGen is just a wrapper which defines
+a configuration of <a class="reference external" href="https://developer.nvidia.com/blog/closing-the-sim2real-gap-with-nvidia-isaac-sim-and-nvidia-isaac-replicator/">Omniverse Isaac Sim Replicator</a>. On top of that it uses Meta’s Hydra
+configuration framework and reuses primitives from Metron Shared. Module and packages design adress easy and flexible
+configuration and follow high code standards.</p>
+</section>
+<section id="architectural-description">
+<h2>Architectural Description<a class="headerlink" href="#architectural-description" title="Permalink to this heading">#</a></h2>
+<p>The architecture is based on <em>Linux OS</em>, specifically <em>Ubuntu</em> running on <em>NVIDIA GPU</em> powered machine.</p>
+<p><img alt="High Level Architecture" src="_images/high_level_architecture.png" /></p>
+<p>The solution is consisted only of one component which is consisted of eight modules.</p>
+<section id="isaac-sim-app">
+<h3>Isaac Sim App<a class="headerlink" href="#isaac-sim-app" title="Permalink to this heading">#</a></h3>
+<p>It is a wrapper around <em>Isaac Sim</em> app from <em>Omniverse</em> platform. It provides basic app handle operations, such as
+application initialization and destruction.</p>
+</section>
+<section id="camera-rig">
+<h3>Camera Rig<a class="headerlink" href="#camera-rig" title="Permalink to this heading">#</a></h3>
+<p>Camera Rig defines camera setup, which could be in the simplest case just one camera. More complex cases might be stereo
+camera setup or 360 degree view. It defines also camera type, e.g. pinhole or fisheye with camera intrinsic parameters.</p>
+</section>
+<section id="synthesizer-worker">
+<h3>Synthesizer Worker<a class="headerlink" href="#synthesizer-worker" title="Permalink to this heading">#</a></h3>
+<p>It represents a 3D scene layer handler which contributes to the complete scene. For instance, it might represent a
+ground plane handler, lighting handler, foreground 3D objects handler for annotations generation, etc. It provides
+also a randomization of the contributed layer assets, so each generated artificial data record has a different
+placement of assets, materials, parameters, etc. See <a class="reference internal" href="scenarios.html"><span class="doc std std-doc">existing synthesizer workers overview</span></a>
+for more details.</p>
+</section>
+<section id="master-synthesizer">
+<h3>Master Synthesizer<a class="headerlink" href="#master-synthesizer" title="Permalink to this heading">#</a></h3>
+<p>It manages multiple layer scenes, which create a whole scene, defined by a series of Synthesizer Workers.</p>
+</section>
+<section id="scenario">
+<h3>Scenario<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h3>
+<p>Scenario represents a scenario, which means a scene with all assets, lighting, physics, etc. and camera rigs. It means
+that one scenario has one Master Synthesizer with various Synthesizer Workers and one or more Camera Rigs to record
+data with various optics and setup. See <a class="reference internal" href="scenarios.html"><span class="doc std std-doc">existing scenarios overview</span></a> for more details.</p>
+</section>
+<section id="scenarios-manager">
+<h3>Scenarios Manager<a class="headerlink" href="#scenarios-manager" title="Permalink to this heading">#</a></h3>
+<p>In one run there can be multiple scenarios defines by Scenario, therefore Scenarios Manager orchestrates the execution
+of all Scenarios.</p>
+</section>
+<section id="writer">
+<h3>Writer<a class="headerlink" href="#writer" title="Permalink to this heading">#</a></h3>
+<p>It is a writer of generated artificial data. Basically it is a wrapper of <em>Omniverse Isaac Sim Replicator</em> writer. It
+saves data on the filesystem.</p>
+</section>
+<section id="replicator">
+<h3>Replicator<a class="headerlink" href="#replicator" title="Permalink to this heading">#</a></h3>
+<p>It is a handler of <em>Omniverse Isaac Sim Replicator</em>. It does the orchestration of execution of scenarios defines by
+Scenarios Manager inside sice <em>Omniverse Isaac Sim Replicator</em>. Generated data is saved via Writer.</p>
+</section>
+</section>
+<section id="implementation-detail">
+<h2>Implementation Detail<a class="headerlink" href="#implementation-detail" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
 
 
                 </article>
@@ -295,6 +372,24 @@ document.write(`
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Metron AI - ArDaGen Docs</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="project_installation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Project Installation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -309,9 +404,21 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architectural-decisions">Architectural Decisions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architectural-description">Architectural Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaac-sim-app">Isaac Sim App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#camera-rig">Camera Rig</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthesizer-worker">Synthesizer Worker</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#master-synthesizer">Master Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">Scenario</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenarios-manager">Scenarios Manager</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writer">Writer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replicator">Replicator</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-detail">Implementation Detail</a></li>
+</ul>
   </nav></div>
 
 </div></div>

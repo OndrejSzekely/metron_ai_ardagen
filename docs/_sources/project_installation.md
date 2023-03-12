@@ -7,9 +7,13 @@ installation steps*, which is also the recommended option.
 ## End User Installation
 
 ### Docker Compose
+::::{admonition} Attention
+:class: warning
 
-> ##### :warning: Attention :exclamation: :raised_hands: :exclamation: <!--markdownlint-disable header-increment no-duplicate-header blanks-around-headers-->
-> NVIDIA GPU is required.
+:::{eval-rst}
+|:exclamation:| NVIDIA GPU is required. |:exclamation:|
+:::
+::::
 
 To be able to run ArDaGen using Docker Compose, perform following steps:
 
@@ -24,8 +28,13 @@ TODO
 Follow the instruction steps.
 **Linux (Ubuntu 21.04) installation was tested only. The installation might not work on Windows.**
 
-> ##### :warning: Attention :exclamation: :raised_hands: :exclamation: <!--markdownlint-disable header-increment no-duplicate-header blanks-around-headers-->
-> NVIDIA GPU is required.
+::::{admonition} Attention
+:class: warning
+
+:::{eval-rst}
+|:exclamation:| NVIDIA GPU is required. |:exclamation:|
+:::
+::::
 
 1. Download and install NVIDIA Omniverse Launcher from [here](https://developer.nvidia.com/nvidia-omniverse-platform).
 
@@ -55,10 +64,14 @@ Studio project with everything predefined.
     In the *Explorer* tab whole Isaac Sim folder is present, but everything else, except *metron_ai_garden* folder,
     is irrelevant for the development.
 
-    > ##### :clipboard: Remark :raised_hand:
-    > Be aware that debuging is performed using the *Python: Current File* option in *Run & Debug*.
+    ::::{hint}
 
-8. Append
+    :::{eval-rst}
+    |:clipboard:| |:raised_hand:| Be aware that debuging is performed using the *Python: Current File* option in *Run & Debug*.
+    :::
+    ::::
+
+1. Append
 
     ```yaml
     "./metron_ai_ardagen",
@@ -67,7 +80,7 @@ Studio project with everything predefined.
     into `python.analysis.extraPaths` list in 
     `<ISAAC_SIM_ROOT_FOLDER_PATH>/.vscode/settings.json` file.
 
-9. Install missing Python requirements. Go into Isaac Sim's root folder and run
+2. Install missing Python requirements. Go into Isaac Sim's root folder and run
 `./python.sh -m pip install -r metron_ai_ardagen/requirements.txt`.
 
 ## Bug Fixes

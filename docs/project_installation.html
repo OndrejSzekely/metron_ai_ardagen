@@ -47,6 +47,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'project_installation';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Development Notes" href="development_notes.html" />
+    <link rel="prev" title="Architecture" href="architecture.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,7 +126,9 @@
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Project Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development_notes.html">Development Notes</a></li>
 </ul>
 
@@ -273,17 +277,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end-user-installation">End User Installation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose">Docker Compose</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warning-attention-exclamation-raised-hands-exclamation-markdownlint-disable-header-increment-no-duplicate-header-blanks-around-headers">:warning: Attention :exclamation: :raised_hands: :exclamation: <!--markdownlint-disable header-increment no-duplicate-header blanks-around-headers--></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose">Docker Compose</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-installation">Development Installation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">:warning: Attention :exclamation: :raised_hands: :exclamation: <!--markdownlint-disable header-increment no-duplicate-header blanks-around-headers--></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipboard-remark-raised-hand">:clipboard: Remark :raised_hand:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-installation">Development Installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug Fixes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-1-ov-replicator-camera-detach-fails-at-the-end-of-data-generation">Bug #1: OV Replicator camera detach fails at the end of data generation</a></li>
 </ul>
@@ -308,12 +305,10 @@ installation steps</em>, which is also the recommended option.</p>
 <h2>End User Installation<a class="headerlink" href="#end-user-installation" title="Permalink to this heading">#</a></h2>
 <section id="docker-compose">
 <h3>Docker Compose<a class="headerlink" href="#docker-compose" title="Permalink to this heading">#</a></h3>
-<blockquote>
-<div></div></blockquote>
-<section id="warning-attention-exclamation-raised-hands-exclamation-markdownlint-disable-header-increment-no-duplicate-header-blanks-around-headers">
-<h4>:warning: Attention :exclamation: :raised_hands: :exclamation: <!--markdownlint-disable header-increment no-duplicate-header blanks-around-headers--><a class="headerlink" href="#warning-attention-exclamation-raised-hands-exclamation-markdownlint-disable-header-increment-no-duplicate-header-blanks-around-headers" title="Permalink to this heading">#</a></h4>
-<p>NVIDIA GPU is required.</p>
-</section>
+<div class="warning admonition">
+<p class="admonition-title">Attention</p>
+<p>❗ NVIDIA GPU is required. ❗</p>
+</div>
 <p>To be able to run ArDaGen using Docker Compose, perform following steps:</p>
 <ol class="arabic simple">
 <li><p>Install Docker (<a class="reference external" href="https://docs.docker.com/get-docker/">how to install</a>).</p></li>
@@ -327,12 +322,10 @@ installation steps</em>, which is also the recommended option.</p>
 <h2>Development Installation<a class="headerlink" href="#development-installation" title="Permalink to this heading">#</a></h2>
 <p>Follow the instruction steps.
 <strong>Linux (Ubuntu 21.04) installation was tested only. The installation might not work on Windows.</strong></p>
-<blockquote>
-<div></div></blockquote>
-<section id="id1">
-<h3>:warning: Attention :exclamation: :raised_hands: :exclamation: <!--markdownlint-disable header-increment no-duplicate-header blanks-around-headers--><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<p>NVIDIA GPU is required.</p>
-</section>
+<div class="warning admonition">
+<p class="admonition-title">Attention</p>
+<p>❗ NVIDIA GPU is required. ❗</p>
+</div>
 <ol class="arabic">
 <li><p>Download and install NVIDIA Omniverse Launcher from <a class="reference external" href="https://developer.nvidia.com/nvidia-omniverse-platform">here</a>.</p></li>
 <li><p>Run Omniverse Launcher and install Isaac Sim application.
@@ -354,8 +347,10 @@ downloaded dataset into any arbitraty location, but a fast storage is recommende
 Studio project with everything predefined.</p>
 <p>In the <em>Explorer</em> tab whole Isaac Sim folder is present, but everything else, except <em>metron_ai_garden</em> folder,
 is irrelevant for the development.</p>
-<blockquote>
-<div></div></blockquote>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>📋 ✋ Be aware that debuging is performed using the <em>Python: Current File</em> option in <em>Run &amp; Debug</em>.</p>
+</div>
 </li>
 <li><p>Append</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>&quot;./metron_ai_ardagen&quot;,
@@ -367,10 +362,6 @@ is irrelevant for the development.</p>
 <li><p>Install missing Python requirements. Go into Isaac Sim’s root folder and run
 <code class="docutils literal notranslate"><span class="pre">./python.sh</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">metron_ai_ardagen/requirements.txt</span></code>.</p></li>
 </ol>
-<section id="clipboard-remark-raised-hand">
-<h3>:clipboard: Remark :raised_hand:<a class="headerlink" href="#clipboard-remark-raised-hand" title="Permalink to this heading">#</a></h3>
-<p>Be aware that debuging is performed using the <em>Python: Current File</em> option in <em>Run &amp; Debug</em>.</p>
-</section>
 </section>
 <section id="bug-fixes">
 <h2>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this heading">#</a></h2>
@@ -401,6 +392,24 @@ is irrelevant for the development.</p>
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="architecture.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Architecture</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="development_notes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Development Notes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -417,17 +426,10 @@ is irrelevant for the development.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end-user-installation">End User Installation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose">Docker Compose</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warning-attention-exclamation-raised-hands-exclamation-markdownlint-disable-header-increment-no-duplicate-header-blanks-around-headers">:warning: Attention :exclamation: :raised_hands: :exclamation: <!--markdownlint-disable header-increment no-duplicate-header blanks-around-headers--></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose">Docker Compose</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-installation">Development Installation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">:warning: Attention :exclamation: :raised_hands: :exclamation: <!--markdownlint-disable header-increment no-duplicate-header blanks-around-headers--></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipboard-remark-raised-hand">:clipboard: Remark :raised_hand:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-installation">Development Installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug Fixes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-1-ov-replicator-camera-detach-fails-at-the-end-of-data-generation">Bug #1: OV Replicator camera detach fails at the end of data generation</a></li>
 </ul>
