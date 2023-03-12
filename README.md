@@ -1,13 +1,15 @@
 <h1 align="center">Metron AI - Artificial Data Generator (ArDaGen)</h1>
 
+<p align="center">
+  <img src="docs_src/imgs/title_img.jpg" alt="Title Illustative Image" width="600">
+</p>
+
 Metron AI ArDaGen is a synthetic data generator build on
 [NVIDIA Omniverse](https://developer.nvidia.com/nvidia-omniverse-platform) platform to generate physically accurate
 images and annotations to train Metron AI.
 
 <p align="center">
 </p>
-
-![Title Illustative Image](docs/imgs/title_img.jpg)
 
 ## Key Features
 
