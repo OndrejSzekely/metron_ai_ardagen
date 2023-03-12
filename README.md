@@ -12,7 +12,7 @@ images and annotations to train Metron AI.
     <a href="https://ondrejszekely.github.io/metron_ai_ardagen"><strong>Explore Metron AI ArDaGen docs »</strong></a>
 </p>
 
-## Key Features
+## Key Features <!-- omit in toc -->
 
 :boom: photorealistic physical based rendering via NVIDIA Omniverse
 :boom: vast image content variations
@@ -20,15 +20,10 @@ images and annotations to train Metron AI.
 :boom: uses SOTA configuration framework - Meta's Hydra
 :boom: modular architecture with custom design scenarios
 
-## Table of Contents
-
-[How to run](#how-to-run)\
-[2. Architecture](/docs/architecture.md)\
-[3. Configuration](/docs/configuration.md)\
-[4. Synthesizer Workers](/docs/synthesizer_workers.md)\
-[5. Scenarios](/docs/scenarios.md)\
-[6. Development Notes (Metron project link)](https://github.com/OndrejSzekely/metron/blob/main/docs/development_notes.md)
-
+## Table of Contents <!-- omit in toc -->
+- [How to run](#how-to-run)
+- [Status](#status)
+- [Documentation](#documentation)
 ## How to run
 
 After you install the solution, go into *Isaac Sim* root folder in a terminal and run
@@ -37,4 +32,9 @@ After you install the solution, go into *Isaac Sim* root folder in a terminal an
 ./python.sh metron_ai_ardagen/metron_ai_ardagen_run.py
 ```
 
-It loads ArDaGen's configuration via *Hydra* framework. See [configuration](/docs/configuration.md) for mode details.
+It loads ArDaGen's configuration via *Hydra* framework. See [configuration section](https://ondrejszekely.github.io/metron_ai_ardagen/configuration.html) for mode details.
+
+## Status
+[![License: GPL v3](https://img.shields.io/github/license/ondrejszekely/metron_ai_ardagen)](https://www.gnu.org/licenses/gpl-3.0)
+
+## Documentation
