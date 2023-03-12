@@ -9,6 +9,7 @@ Metron AI ArDaGen is a synthetic data generator build on
 images and annotations to train Metron AI.
 
 <p align="center">
+    <a href="https://ondrejszekely.github.io/metron_ai_ardagen"><strong>Explore Metron AI ArDaGen docs »</strong></a>
 </p>
 
 ## Key Features
