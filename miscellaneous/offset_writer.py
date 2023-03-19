@@ -33,8 +33,8 @@ class OffsetWriter(Writer):  # pylint: disable=too-many-instance-attributes, too
         annotators (List[Any]): List of annotators.
         frame_read_out_num (int): Defines frame number after which the frame is read out and saved.
             For <frame_content_lifespan> = 1 it is every frame. For <frame_content_lifespan> > 1, the value is
-             <frame_content_lifespan> - 1. This is because we want to read the frame every <frame_content_lifespan>th
-             frame.
+            <frame_content_lifespan> - 1. This is because we want to read the frame every <frame_content_lifespan>th
+            frame.
         content_lifespan_init_val (int): Init value for the helper loop, to decide when to perform a new read out.
             Depends on <content_lifespan_init_val>. For single frame read out, it's set to 0, otherwise to -1.
     """
