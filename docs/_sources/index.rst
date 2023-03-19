@@ -10,6 +10,6 @@ Metron AI - ArDaGen Docs
    :maxdepth: 2
    :caption: Contents:
 
-   architecture
    project_installation
+   architecture
    development_notes
