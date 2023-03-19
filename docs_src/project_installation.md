@@ -77,7 +77,7 @@ Studio project with everything predefined.
     "./metron_ai_ardagen",
     ```
 
-    into `python.analysis.extraPaths` list in 
+    into `python.analysis.extraPaths` list in
     `<ISAAC_SIM_ROOT_FOLDER_PATH>/.vscode/settings.json` file.
 
 2. Install missing Python requirements. Go into Isaac Sim's root folder and run
