@@ -1,7 +1,7 @@
 API Docs
 ========
 
-.. toctree::
-    :maxdepth: 3
+.. autosummary::
+   :toctree: api
 
-    api_docs/miscellaneous/custom_exceptions
+   modules

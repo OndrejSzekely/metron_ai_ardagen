@@ -1,0 +1,983 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>synthesizers.synth_workers package &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/synthesizers.synth_workers';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Metron AI - ArDaGen 0.1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development_notes.html">Development Notes</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/api/synthesizers.synth_workers.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>synthesizers.synth_workers package</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.base_synthesizer">synthesizers.synth_workers.base_synthesizer module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.dummy_synthesizer">synthesizers.synth_workers.dummy_synthesizer module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.ground_synthesizer">synthesizers.synth_workers.ground_synthesizer module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.items_scatter_synthesizer">synthesizers.synth_workers.items_scatter_synthesizer module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.light_synthesizer">synthesizers.synth_workers.light_synthesizer module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.physics_synthesizer">synthesizers.synth_workers.physics_synthesizer module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.scene_synthesizer">synthesizers.synth_workers.scene_synthesizer module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.single_item_synthesizer">synthesizers.synth_workers.single_item_synthesizer module</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-synthesizers.synth_workers">
+<span id="synthesizers-synth-workers-package"></span><h1>synthesizers.synth_workers package<a class="headerlink" href="#module-synthesizers.synth_workers" title="Permalink to this heading">#</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="synthesizers.synth_workers.assets_synths.html">synthesizers.synth_workers.assets_synths package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="synthesizers.synth_workers.assets_synths.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="synthesizers.synth_workers.assets_synths.html#module-synthesizers.synth_workers.assets_synths.ov_assets_synthesizer">synthesizers.synth_workers.assets_synths.ov_assets_synthesizer module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#module-synthesizers.synth_workers.base_synthesizer" title="synthesizers.synth_workers.base_synthesizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synthesizers.synth_workers.base_synthesizer</span></code></a></p></td>
+<td><p>Implements <cite>Base Synthesizer</cite> which defines an interface across all <cite>Synthesizer Workers</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#module-synthesizers.synth_workers.dummy_synthesizer" title="synthesizers.synth_workers.dummy_synthesizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synthesizers.synth_workers.dummy_synthesizer</span></code></a></p></td>
+<td><p>Defines <em>Dummy Synthesizer</em> class which is responsible for scene loading.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#module-synthesizers.synth_workers.ground_synthesizer" title="synthesizers.synth_workers.ground_synthesizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synthesizers.synth_workers.ground_synthesizer</span></code></a></p></td>
+<td><p>Defines <em>Ground Synthesizer</em> class which is responsible for ground plane synthesis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#module-synthesizers.synth_workers.items_scatter_synthesizer" title="synthesizers.synth_workers.items_scatter_synthesizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synthesizers.synth_workers.items_scatter_synthesizer</span></code></a></p></td>
+<td><p>Defines <em>Items Scatter Synthesizer</em> class which is responsible for items scatter placement.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#module-synthesizers.synth_workers.light_synthesizer" title="synthesizers.synth_workers.light_synthesizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synthesizers.synth_workers.light_synthesizer</span></code></a></p></td>
+<td><p>Defines <em>Light Synthesizer</em> class which is responsible for one light source synthesis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#module-synthesizers.synth_workers.physics_synthesizer" title="synthesizers.synth_workers.physics_synthesizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synthesizers.synth_workers.physics_synthesizer</span></code></a></p></td>
+<td><p>Defines <em>Physics Synthesizer</em> class which is responsible for ground synthesis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#module-synthesizers.synth_workers.scene_synthesizer" title="synthesizers.synth_workers.scene_synthesizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synthesizers.synth_workers.scene_synthesizer</span></code></a></p></td>
+<td><p>Defines <em>Scene Synthesizer</em> class which is responsible for scene loading.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#module-synthesizers.synth_workers.single_item_synthesizer" title="synthesizers.synth_workers.single_item_synthesizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synthesizers.synth_workers.single_item_synthesizer</span></code></a></p></td>
+<td><p>Defines <em>Single Item Synthesizer</em> class which is responsible for single item synthesis.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-synthesizers.synth_workers.base_synthesizer">
+<span id="synthesizers-synth-workers-base-synthesizer-module"></span><h2>synthesizers.synth_workers.base_synthesizer module<a class="headerlink" href="#module-synthesizers.synth_workers.base_synthesizer" title="Permalink to this heading">#</a></h2>
+<p>Implements <cite>Base Synthesizer</cite> which defines an interface across all <cite>Synthesizer Workers</cite>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">synthesizers.synth_workers.base_synthesizer.</span></span><span class="sig-name descname"><span class="pre">BaseSynthesizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_owner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Implements <cite>Base Synthesizer</cite> which defines an interface across all <cite>Synthesizer Workers</cite>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer.__name__">
+<span class="sig-name descname"><span class="pre">__name__</span></span><a class="headerlink" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer.__name__" title="Permalink to this definition">#</a></dt>
+<dd><p>Defines name of the &lt;__call__&gt; magic method, which Omniverse Replicator
+uses to register a method. It has to return synthesizer name, the same name as is used in the config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer.scenario_owner">
+<span class="sig-name descname"><span class="pre">scenario_owner</span></span><a class="headerlink" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer.scenario_owner" title="Permalink to this definition">#</a></dt>
+<dd><p>Defines the name of owning <cite>Scenario</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer.get_prims">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_prims</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer.get_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns paths in stage to <cite>Synthesizer’s</cite> created prims.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of stage prim paths.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer.register_synthesizers_prims">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register_synthesizers_prims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synthesizer_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><span class="pre">BaseSynthesizer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer.register_synthesizers_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows an access to other <cite>Synthesizer’s</cite> prims if needed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>synthesizer_workers</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><em>BaseSynthesizer</em></a><em>]</em>) – Dict of all Synthesizers.</p>
+</dd>
+</dl>
+<p>Returns (None):</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-synthesizers.synth_workers.dummy_synthesizer">
+<span id="synthesizers-synth-workers-dummy-synthesizer-module"></span><h2>synthesizers.synth_workers.dummy_synthesizer module<a class="headerlink" href="#module-synthesizers.synth_workers.dummy_synthesizer" title="Permalink to this heading">#</a></h2>
+<p>Defines <em>Dummy Synthesizer</em> class which is responsible for scene loading.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.dummy_synthesizer.DummySynthesizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">synthesizers.synth_workers.dummy_synthesizer.</span></span><span class="sig-name descname"><span class="pre">DummySynthesizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_owner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#synthesizers.synth_workers.dummy_synthesizer.DummySynthesizer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSynthesizer</span></code></a></p>
+<p>Defines <em>Dummy Synthesizer</em> class which is responsible for scene loading.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.dummy_synthesizer.DummySynthesizer.__name__">
+<span class="sig-name descname"><span class="pre">__name__</span></span><a class="headerlink" href="#synthesizers.synth_workers.dummy_synthesizer.DummySynthesizer.__name__" title="Permalink to this definition">#</a></dt>
+<dd><p>Defines name of the &lt;__call__&gt; magic method, which Omniverse Replicator
+uses to register a method. It returns <cite>Synthesizer’s</cite> name as defined in the config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.dummy_synthesizer.DummySynthesizer._box_primitive_path">
+<span class="sig-name descname"><span class="pre">_box_primitive_path</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SM_CardBoxA_3'</span></em><a class="headerlink" href="#synthesizers.synth_workers.dummy_synthesizer.DummySynthesizer._box_primitive_path" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.dummy_synthesizer.DummySynthesizer.get_prims">
+<span class="sig-name descname"><span class="pre">get_prims</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#synthesizers.synth_workers.dummy_synthesizer.DummySynthesizer.get_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns paths in stage to <cite>Synthesizer’s</cite> created prims.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of stage prim paths.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.dummy_synthesizer.DummySynthesizer.register_synthesizers_prims">
+<span class="sig-name descname"><span class="pre">register_synthesizers_prims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synthesizer_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><span class="pre">BaseSynthesizer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.dummy_synthesizer.DummySynthesizer.register_synthesizers_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows an access to other <cite>Synthesizer’s</cite> prims if needed.</p>
+<p>Returns (None):</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-synthesizers.synth_workers.ground_synthesizer">
+<span id="synthesizers-synth-workers-ground-synthesizer-module"></span><h2>synthesizers.synth_workers.ground_synthesizer module<a class="headerlink" href="#module-synthesizers.synth_workers.ground_synthesizer" title="Permalink to this heading">#</a></h2>
+<p>Defines <em>Ground Synthesizer</em> class which is responsible for ground plane synthesis.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">synthesizers.synth_workers.ground_synthesizer.</span></span><span class="sig-name descname"><span class="pre">GroundSynthesizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_owner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">semantics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">materials</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSynthesizer</span></code></a></p>
+<p>Defines <em>Ground Synthesizer</em> class which is responsible for ground plane synthesis.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer._stage">
+<span class="sig-name descname"><span class="pre">_stage</span></span><a class="headerlink" href="#synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer._stage" title="Permalink to this definition">#</a></dt>
+<dd><p>Current Isaac Sim stage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer._stage_plane_path">
+<span class="sig-name descname"><span class="pre">_stage_plane_path</span></span><a class="headerlink" href="#synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer._stage_plane_path" title="Permalink to this definition">#</a></dt>
+<dd><p>Prim path of the created ground.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer._plane_node">
+<span class="sig-name descname"><span class="pre">_plane_node</span></span><a class="headerlink" href="#synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer._plane_node" title="Permalink to this definition">#</a></dt>
+<dd><p>Plane primitive as a OmniGraph Node representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>og.Node</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer.materials_list">
+<span class="sig-name descname"><span class="pre">materials_list</span></span><a class="headerlink" href="#synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer.materials_list" title="Permalink to this definition">#</a></dt>
+<dd><p>List of material Nucelus paths.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer.get_prims">
+<span class="sig-name descname"><span class="pre">get_prims</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer.get_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns paths in stage to <cite>Synthesizer’s</cite> created prims.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of stage prim paths.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer.register_synthesizers_prims">
+<span class="sig-name descname"><span class="pre">register_synthesizers_prims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synthesizer_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><span class="pre">BaseSynthesizer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer.register_synthesizers_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows an access to other <cite>Synthesizer’s</cite> prims if needed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>synthesizer_workers</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><em>BaseSynthesizer</em></a><em>]</em>) – Dict of all Synthesizers.</p>
+</dd>
+</dl>
+<p>Returns (None):</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-synthesizers.synth_workers.items_scatter_synthesizer">
+<span id="synthesizers-synth-workers-items-scatter-synthesizer-module"></span><h2>synthesizers.synth_workers.items_scatter_synthesizer module<a class="headerlink" href="#module-synthesizers.synth_workers.items_scatter_synthesizer" title="Permalink to this heading">#</a></h2>
+<p>Defines <em>Items Scatter Synthesizer</em> class which is responsible for items scatter placement.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">synthesizers.synth_workers.items_scatter_synthesizer.</span></span><span class="sig-name descname"><span class="pre">ItemsScatterSynthesizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_owner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_assets_displayed_at_once</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assets_pool_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement_synths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">semantics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSynthesizer</span></code></a></p>
+<p>Defines <em>Items Scatter Synthesizer</em> class which is responsible for items scatter placement.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer._placement_prims">
+<span class="sig-name descname"><span class="pre">_placement_prims</span></span><a class="headerlink" href="#synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer._placement_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>List of placement prims of the corresponding Synthesizers, defined by
+&lt;placement_synths&gt; in constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer._scattered_prims">
+<span class="sig-name descname"><span class="pre">_scattered_prims</span></span><a class="headerlink" href="#synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer._scattered_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>List of prims of the assets added to the scene from the pool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer.placement_synths">
+<span class="sig-name descname"><span class="pre">placement_synths</span></span><a class="headerlink" href="#synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer.placement_synths" title="Permalink to this definition">#</a></dt>
+<dd><p>Target Synthesizers. The assets are placed on their prims.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer.semantics">
+<span class="sig-name descname"><span class="pre">semantics</span></span><a class="headerlink" href="#synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer.semantics" title="Permalink to this definition">#</a></dt>
+<dd><p>Semantic class for the Synthesizer’s primitives.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer.number_of_assets_displayed_at_once">
+<span class="sig-name descname"><span class="pre">number_of_assets_displayed_at_once</span></span><a class="headerlink" href="#synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer.number_of_assets_displayed_at_once" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of assets displayed at once. The corresponding number of
+assets are sampled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer.assets_pool_size">
+<span class="sig-name descname"><span class="pre">assets_pool_size</span></span><a class="headerlink" href="#synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer.assets_pool_size" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of assets in the pool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer.get_prims">
+<span class="sig-name descname"><span class="pre">get_prims</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer.get_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns paths in stage to <cite>Synthesizer’s</cite> created prims.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of stage prim paths.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer.register_synthesizers_prims">
+<span class="sig-name descname"><span class="pre">register_synthesizers_prims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synthesizer_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><span class="pre">BaseSynthesizer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer.register_synthesizers_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows an access to other <cite>Synthesizer’s</cite> prims if needed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>synthesizer_workers</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><em>BaseSynthesizer</em></a><em>]</em>) – Dict of all Synthesizers.</p>
+</dd>
+</dl>
+<p>Returns (None):</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-synthesizers.synth_workers.light_synthesizer">
+<span id="synthesizers-synth-workers-light-synthesizer-module"></span><h2>synthesizers.synth_workers.light_synthesizer module<a class="headerlink" href="#module-synthesizers.synth_workers.light_synthesizer" title="Permalink to this heading">#</a></h2>
+<p>Defines <em>Light Synthesizer</em> class which is responsible for one light source synthesis.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.light_synthesizer.LightSynthesizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">synthesizers.synth_workers.light_synthesizer.</span></span><span class="sig-name descname"><span class="pre">LightSynthesizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_owner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">light_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#synthesizers.synth_workers.light_synthesizer.LightSynthesizer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSynthesizer</span></code></a></p>
+<p>Defines <em>Light Synthesizer</em> class which is responsible for one light source synthesis.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.light_synthesizer.LightSynthesizer._stage_light_path">
+<span class="sig-name descname"><span class="pre">_stage_light_path</span></span><a class="headerlink" href="#synthesizers.synth_workers.light_synthesizer.LightSynthesizer._stage_light_path" title="Permalink to this definition">#</a></dt>
+<dd><p>Prim path of the created light.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.light_synthesizer.LightSynthesizer._light_node">
+<span class="sig-name descname"><span class="pre">_light_node</span></span><a class="headerlink" href="#synthesizers.synth_workers.light_synthesizer.LightSynthesizer._light_node" title="Permalink to this definition">#</a></dt>
+<dd><p>Light primitive as a OmniGraph Node representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>og.Node</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.light_synthesizer.LightSynthesizer.position">
+<span class="sig-name descname"><span class="pre">position</span></span><a class="headerlink" href="#synthesizers.synth_workers.light_synthesizer.LightSynthesizer.position" title="Permalink to this definition">#</a></dt>
+<dd><p>Light position in the scene given by XYZ coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.light_synthesizer.LightSynthesizer.rotation">
+<span class="sig-name descname"><span class="pre">rotation</span></span><a class="headerlink" href="#synthesizers.synth_workers.light_synthesizer.LightSynthesizer.rotation" title="Permalink to this definition">#</a></dt>
+<dd><p>Euler angles in degrees in XYZ order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.light_synthesizer.LightSynthesizer.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#synthesizers.synth_workers.light_synthesizer.LightSynthesizer.scale" title="Permalink to this definition">#</a></dt>
+<dd><p>Scaling factors for XYZ axes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.light_synthesizer.LightSynthesizer.light_type">
+<span class="sig-name descname"><span class="pre">light_type</span></span><a class="headerlink" href="#synthesizers.synth_workers.light_synthesizer.LightSynthesizer.light_type" title="Permalink to this definition">#</a></dt>
+<dd><p>Light type. Select from “cylinder”, “disk”, “distant”, “dome”, “rect”, “sphere”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.light_synthesizer.LightSynthesizer.get_prims">
+<span class="sig-name descname"><span class="pre">get_prims</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#synthesizers.synth_workers.light_synthesizer.LightSynthesizer.get_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns paths in stage to <cite>Synthesizer’s</cite> created prims.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of stage prim paths.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.light_synthesizer.LightSynthesizer.register_synthesizers_prims">
+<span class="sig-name descname"><span class="pre">register_synthesizers_prims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synthesizer_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><span class="pre">BaseSynthesizer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.light_synthesizer.LightSynthesizer.register_synthesizers_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows an access to other <cite>Synthesizer’s</cite> prims if needed.</p>
+<p>Returns (None):</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-synthesizers.synth_workers.physics_synthesizer">
+<span id="synthesizers-synth-workers-physics-synthesizer-module"></span><h2>synthesizers.synth_workers.physics_synthesizer module<a class="headerlink" href="#module-synthesizers.synth_workers.physics_synthesizer" title="Permalink to this heading">#</a></h2>
+<p>Defines <em>Physics Synthesizer</em> class which is responsible for ground synthesis.</p>
+</section>
+<section id="module-synthesizers.synth_workers.scene_synthesizer">
+<span id="synthesizers-synth-workers-scene-synthesizer-module"></span><h2>synthesizers.synth_workers.scene_synthesizer module<a class="headerlink" href="#module-synthesizers.synth_workers.scene_synthesizer" title="Permalink to this heading">#</a></h2>
+<p>Defines <em>Scene Synthesizer</em> class which is responsible for scene loading.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">synthesizers.synth_workers.scene_synthesizer.</span></span><span class="sig-name descname"><span class="pre">SceneSynthesizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_owner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scene_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSynthesizer</span></code></a></p>
+<p>Defines <em>Scene Synthesizer</em> class which is responsible for scene loading.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer._scene_node">
+<span class="sig-name descname"><span class="pre">_scene_node</span></span><a class="headerlink" href="#synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer._scene_node" title="Permalink to this definition">#</a></dt>
+<dd><p>Scene stage node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>og.Node, but can’t be used as annotation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.scene_path">
+<span class="sig-name descname"><span class="pre">scene_path</span></span><a class="headerlink" href="#synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.scene_path" title="Permalink to this definition">#</a></dt>
+<dd><p>Path of a USD scene to be loaded inside OV Nucleus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer._load_from_nucleus">
+<span class="sig-name descname"><span class="pre">_load_from_nucleus</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer._load_from_nucleus" title="Permalink to this definition">#</a></dt>
+<dd><p>Loads the scene from OV Nucleus server.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Reference to the scene node.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>og.Node, but can’t be used as annotation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.get_prims">
+<span class="sig-name descname"><span class="pre">get_prims</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.get_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns paths in stage to <cite>Synthesizer’s</cite> created prims.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of stage prim paths.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.register_synthesizers_prims">
+<span class="sig-name descname"><span class="pre">register_synthesizers_prims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synthesizer_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><span class="pre">BaseSynthesizer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.register_synthesizers_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows an access to other <cite>Synthesizer’s</cite> prims if needed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>synthesizer_workers</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><em>BaseSynthesizer</em></a><em>]</em>) – Dict of all Synthesizers.</p>
+</dd>
+</dl>
+<p>Returns (None):</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-synthesizers.synth_workers.single_item_synthesizer">
+<span id="synthesizers-synth-workers-single-item-synthesizer-module"></span><h2>synthesizers.synth_workers.single_item_synthesizer module<a class="headerlink" href="#module-synthesizers.synth_workers.single_item_synthesizer" title="Permalink to this heading">#</a></h2>
+<p>Defines <em>Single Item Synthesizer</em> class which is responsible for single item synthesis.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">synthesizers.synth_workers.single_item_synthesizer.</span></span><span class="sig-name descname"><span class="pre">SingleItemSynthesizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_owner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usd_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">semantics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSynthesizer</span></code></a></p>
+<p>Defines <em>Single Item Synthesizer</em> class which is responsible for single item synthesis.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer.position">
+<span class="sig-name descname"><span class="pre">position</span></span><a class="headerlink" href="#synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer.position" title="Permalink to this definition">#</a></dt>
+<dd><p>Asset placement position in the scene. Given by X, Y, Z coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer.usd_path">
+<span class="sig-name descname"><span class="pre">usd_path</span></span><a class="headerlink" href="#synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer.usd_path" title="Permalink to this definition">#</a></dt>
+<dd><p>Nucleus path of the USD asset to be added.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer.semantics">
+<span class="sig-name descname"><span class="pre">semantics</span></span><a class="headerlink" href="#synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer.semantics" title="Permalink to this definition">#</a></dt>
+<dd><p>Semantic class for the asset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer._stage_prim_path">
+<span class="sig-name descname"><span class="pre">_stage_prim_path</span></span><a class="headerlink" href="#synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer._stage_prim_path" title="Permalink to this definition">#</a></dt>
+<dd><p>Path of the loaded asset in the stage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer.get_prims">
+<span class="sig-name descname"><span class="pre">get_prims</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer.get_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns paths in stage to <cite>Synthesizer’s</cite> created prims.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of stage prim paths.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer.register_synthesizers_prims">
+<span class="sig-name descname"><span class="pre">register_synthesizers_prims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synthesizer_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><span class="pre">BaseSynthesizer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.single_item_synthesizer.SingleItemSynthesizer.register_synthesizers_prims" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows an access to other <cite>Synthesizer’s</cite> prims if needed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>synthesizer_workers</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><em>BaseSynthesizer</em></a><em>]</em>) – Dict of all Synthesizers.</p>
+</dd>
+</dl>
+<p>Returns (None):</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.base_synthesizer">synthesizers.synth_workers.base_synthesizer module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.dummy_synthesizer">synthesizers.synth_workers.dummy_synthesizer module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.ground_synthesizer">synthesizers.synth_workers.ground_synthesizer module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.items_scatter_synthesizer">synthesizers.synth_workers.items_scatter_synthesizer module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.light_synthesizer">synthesizers.synth_workers.light_synthesizer module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.physics_synthesizer">synthesizers.synth_workers.physics_synthesizer module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.scene_synthesizer">synthesizers.synth_workers.scene_synthesizer module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.single_item_synthesizer">synthesizers.synth_workers.single_item_synthesizer module</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ondra.szekely@gmail.com
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, ondra.szekely@gmail.com.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
