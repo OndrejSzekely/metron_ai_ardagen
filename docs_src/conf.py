@@ -17,7 +17,7 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath("../../."))
+sys.path.insert(0, os.path.abspath("../."))
 
 
 # -- Project information -----------------------------------------------------
@@ -42,6 +42,7 @@ extensions = [
     "sphinxemoji.sphinxemoji",
     "sphinx.ext.githubpages",
     "sphinx_design",
+    "sphinx.ext.autosummary",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -66,7 +67,7 @@ html_theme = "sphinx_book_theme"
 html_static_path = ["_static"]
 
 # -- autodoc configuration ---------------------------------------------------
-autodoc_mock_imports = ["omni", "typeguard", "numpy"]
+autodoc_mock_imports = ["omni", "typeguard", "numpy", "hydra", "omegaconf"]
 
 # -- MyST configuration ------------------------------------------------------
 myst_enable_extensions = ["dollarmath", "colon_fence"]
