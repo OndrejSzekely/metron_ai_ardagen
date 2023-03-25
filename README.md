@@ -71,9 +71,7 @@ Online documentation of the latest commit on the *main* branch can be found [her
     ```shell
     conda install -c anaconda sphinx=5.0.2
     conda install -c conda-forge myst-parser=1.0.0
-    pip install sphinxemoji=0.2.0
-    pip install sphinx-design=0.3.0
-    pip install sphinx-book-theme=1.0.0
+    pip install -r requirements_docs.txt
     ```
 
 4. Go into repository's root folder and in the activated environment build the documentation:
