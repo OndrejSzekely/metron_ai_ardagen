@@ -1,6 +1,6 @@
 # Documentation Generation Guide
 
-## Documentation Building
+## Manual Documentation Building
 
 1. It is recommended to use virtual environment, to encapsulate the dev tools (Python frameworks and other software components). Create Python **3.7** virtual environment using Python dependency management tool you are using (e.g. Conda, Pipenv, etc...).
 
@@ -29,6 +29,7 @@
     sphinx-design (=0.3.0)
     sphinx-book-theme (=1.0.0)
     phinx-togglebutton (=0.3.2)
+    sphinx-copybutton (=0.5.1)
     ```
 
     ::::{admonition} Reference Installation Steps
@@ -38,8 +39,8 @@
     |:point_right:| In the activated environment run following commands:
     :::
     ```shell
-    conda install -c anaconda sphinx=5.0.2
-    conda install -c conda-forge myst-parser=1.0.0
+    conda install -y -c anaconda sphinx=5.0.2
+    conda install -y -c conda-forge myst-parser=1.0.0 sphinx-copybutton=0.5.1
     pip install -r requirements_docs.txt
     ```
     ::::
@@ -80,3 +81,22 @@
     ```
     Then open your browser `http://localhost:4444` and see the documentation.
     ::::
+
+## Manual API Docs Source Files Generation
+
+1. Go into the project root folder.
+   
+   ::::{admonition} Reference Installation Steps
+   :class: tip, dropdown
+
+   :::{eval-rst}
+   |:point_right:| In repository's root folder activate the environment:
+   :::
+   ```shell
+   conda activate metron_dev_37
+   ```
+   ::::
+2. Execute following command:
+    ```shell
+    sphinx-apidoc -o docs_src/api -f -t docs_src/_template  --private --module-first .
+    ```

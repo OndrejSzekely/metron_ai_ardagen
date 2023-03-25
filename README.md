@@ -64,13 +64,14 @@ Online documentation of the latest commit on the *main* branch can be found [her
     sphinxemoji (=0.2.0)
     sphinx-design (=0.3.0)
     sphinx-book-theme (=1.0.0)
+    sphinx-copybutton (=0.5.1)
     ```
 
     ##### :bulb: Reference Installation Steps :point_down: <!-- omit in toc -->
     In the activated environment run following commands:
     ```shell
-    conda install -c anaconda sphinx=5.0.2
-    conda install -c conda-forge myst-parser=1.0.0
+    conda install -y -c anaconda sphinx=5.0.2
+    conda install -y -c conda-forge myst-parser=1.0.0 sphinx-copybutton=0.5.1
     pip install -r requirements_docs.txt
     ```
 
