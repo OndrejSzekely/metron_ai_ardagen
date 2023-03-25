@@ -49,3 +49,5 @@ Figure caption
 * - Item 1 b
   - Item 2 b
 ```
+
+sphinx-apidoc -o docs_src/api -f -t docs_src/_template  --private --module-first .
