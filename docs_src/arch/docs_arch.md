@@ -33,11 +33,14 @@ is to generate docs **manually**, see the [documentation generation guide](../gu
 ## Used Sphinx Extensions
 The list of all used Sphinx extensions could be found in `docs_src/conf.py` in `<extensions>` list with a short description.
 
-## Automatic API Docs Generation
+## Automatic API Docs Source Files Generation
 
-Metron AI ArDaGen code documenation is generated and maintained automatically using `sphinx-apidocs` with custom
-templates. The templates define the structured of generated `.rst` files. They are located in `/docs_src/_template` and
-they are based on [*Jinja templating engine*](https://jinja.palletsprojects.com/en/3.1.x/templates/).
+Documentation's source `.rst` files of the Metron AI ArDaGen code is generated and maintained automatically.
+API docs source files are updated with every commit automatically, based on the latest source code state,
+by corresponding *Git Hooks*. It uses  `sphinx-apidocs` CLI tool with custom templates.
+The templates define the structured of generated `.rst` files. They are located
+in `/docs_src/_template` and they are based on
+[*Jinja templating engine*](https://jinja.palletsprojects.com/en/3.1.x/templates/).
 
 ## Emoticons in Docs
 
