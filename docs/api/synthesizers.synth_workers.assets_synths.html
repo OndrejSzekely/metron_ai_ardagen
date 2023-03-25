@@ -31,6 +31,8 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -42,8 +44,15 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../_static/design-tabs.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/synthesizers.synth_workers.assets_synths';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -125,9 +134,18 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arch/high_level_arch.html">High Level Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/docs_arch.html">Documentation Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/docs_generation.html">Documentation Generation Guide</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../development_notes.html">Development Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html">API Docs</a></li>
 </ul>
 
     </div>
@@ -275,7 +293,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.assets_synths.ov_assets_synthesizer">synthesizers.synth_workers.assets_synths.ov_assets_synthesizer module</a></li>
 </ul>
             </nav>
         </div>
@@ -289,90 +306,16 @@ document.write(`
                   
   <section id="module-synthesizers.synth_workers.assets_synths">
 <span id="synthesizers-synth-workers-assets-synths-package"></span><h1>synthesizers.synth_workers.assets_synths package<a class="headerlink" href="#module-synthesizers.synth_workers.assets_synths" title="Permalink to this heading">#</a></h1>
+<p>The package contains <em>Assets Synthesizers</em> for generation of assets in the stage.</p>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="module-synthesizers.synth_workers.assets_synths.ov_assets_synthesizer">
-<span id="synthesizers-synth-workers-assets-synths-ov-assets-synthesizer-module"></span><h2>synthesizers.synth_workers.assets_synths.ov_assets_synthesizer module<a class="headerlink" href="#module-synthesizers.synth_workers.assets_synths.ov_assets_synthesizer" title="Permalink to this heading">#</a></h2>
-<p>Defines <em>OV Assets Synthesizer</em> class which is responsible for providing Omniverse 3D assets.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.</span></span><span class="sig-name descname"><span class="pre">OVAssetsSynthesizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_owner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assets_num_to_generate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="synthesizers.synth_workers.html#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSynthesizer</span></code></a></p>
-<p>Defines <em>OV Assets Synthesizer</em> class which is responsible for providing Omniverse 3D assets.</p>
-<p>!!!!! EACH ASSET SYNTHESIZER HAS TO IMPLEMENT &lt;assets_num_to_generate&gt; INPUT ARGUMENT IN &lt;__init__&gt; interface!!!</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer.assets_num_to_generate">
-<span class="sig-name descname"><span class="pre">assets_num_to_generate</span></span><a class="headerlink" href="#synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer.assets_num_to_generate" title="Permalink to this definition">#</a></dt>
-<dd><p>Number of assets to add to be added to the scene.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer._stage">
-<span class="sig-name descname"><span class="pre">_stage</span></span><a class="headerlink" href="#synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer._stage" title="Permalink to this definition">#</a></dt>
-<dd><p>Current Isaac Sim stage.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Any</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer._created_assets">
-<span class="sig-name descname"><span class="pre">_created_assets</span></span><a class="headerlink" href="#synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer._created_assets" title="Permalink to this definition">#</a></dt>
-<dd><p>List of added prims to the scene from the USD paths pool.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List[og.Node]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer._created_assets_paths">
-<span class="sig-name descname"><span class="pre">_created_assets_paths</span></span><a class="headerlink" href="#synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer._created_assets_paths" title="Permalink to this definition">#</a></dt>
-<dd><p>List of assets prim paths.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List[str]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer.get_prims">
-<span class="sig-name descname"><span class="pre">get_prims</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer.get_prims" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns paths in stage to <cite>Synthesizer’s</cite> created prims.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List of stage prim paths.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[str]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer.register_synthesizers_prims">
-<span class="sig-name descname"><span class="pre">register_synthesizers_prims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synthesizer_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="synthesizers.synth_workers.html#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><span class="pre">BaseSynthesizer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.OVAssetsSynthesizer.register_synthesizers_prims" title="Permalink to this definition">#</a></dt>
-<dd><p>Allows an access to other <cite>Synthesizer’s</cite> prims if needed.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>synthesizer_workers</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="synthesizers.synth_workers.html#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><em>BaseSynthesizer</em></a><em>]</em>) – Dict of all Synthesizers.</p>
-</dd>
-</dl>
-<p>Returns (None):</p>
-</dd></dl>
-
-</dd></dl>
-
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="synthesizers.synth_workers.assets_synths.ov_assets_synthesizer.html#module-synthesizers.synth_workers.assets_synths.ov_assets_synthesizer" title="synthesizers.synth_workers.assets_synths.ov_assets_synthesizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synthesizers.synth_workers.assets_synths.ov_assets_synthesizer</span></code></a></p></td>
+<td><p>Defines <em>OV Assets Synthesizer</em> class which is responsible for providing Omniverse 3D assets.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 
@@ -401,7 +344,6 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.synth_workers.assets_synths.ov_assets_synthesizer">synthesizers.synth_workers.assets_synths.ov_assets_synthesizer module</a></li>
 </ul>
   </nav></div>
 

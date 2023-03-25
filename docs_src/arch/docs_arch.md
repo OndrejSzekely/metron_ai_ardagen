@@ -37,7 +37,7 @@ The list of all used Sphinx extensions could be found in `docs_src/conf.py` in `
 
 Documentation's source `.rst` files of the Metron AI ArDaGen code is generated and maintained automatically.
 API docs source files are updated with every commit automatically, based on the latest source code state,
-by corresponding *Git Hooks*. It uses  `sphinx-apidocs` CLI tool with custom templates.
+by corresponding *Git Hooks*. It uses  [`sphinx-apidocs`](https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html) CLI tool with custom templates.
 The templates define the structured of generated `.rst` files. They are located
 in `/docs_src/_template` and they are based on
 [*Jinja templating engine*](https://jinja.palletsprojects.com/en/3.1.x/templates/).

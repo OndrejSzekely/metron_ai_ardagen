@@ -1,7 +1,15 @@
 API Docs
 ========
 
-.. toctree::
-    :maxdepth: 3
+Subpackages
+-----------
+.. autosummary::
+   miscellaneous
+   synthesizers
+   tools
+   
 
-    api_docs/miscellaneous/custom_exceptions
+Submodules
+----------
+.. autosummary::
+   metron_ai_ardagen_run

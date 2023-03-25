@@ -31,6 +31,8 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -42,8 +44,15 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../_static/design-tabs.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/miscellaneous';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -125,9 +134,18 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arch/high_level_arch.html">High Level Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/docs_arch.html">Documentation Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/docs_generation.html">Documentation Generation Guide</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../development_notes.html">Development Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html">API Docs</a></li>
 </ul>
 
     </div>
@@ -275,9 +293,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-miscellaneous.custom_exceptions">miscellaneous.custom_exceptions module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-miscellaneous.metron_ai_ardagen_utils">miscellaneous.metron_ai_ardagen_utils module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-miscellaneous.offset_writer">miscellaneous.offset_writer module</a></li>
 </ul>
             </nav>
         </div>
@@ -291,353 +306,22 @@ document.write(`
                   
   <section id="module-miscellaneous">
 <span id="miscellaneous-package"></span><h1>miscellaneous package<a class="headerlink" href="#module-miscellaneous" title="Permalink to this heading">#</a></h1>
+<p>The package contains miscellaneous tools and utilities.</p>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="module-miscellaneous.custom_exceptions">
-<span id="miscellaneous-custom-exceptions-module"></span><h2>miscellaneous.custom_exceptions module<a class="headerlink" href="#module-miscellaneous.custom_exceptions" title="Permalink to this heading">#</a></h2>
-<p>This file defines custom exceptions.</p>
-<dl class="py exception">
-<dt class="sig sig-object py" id="miscellaneous.custom_exceptions.OVExtNotLoaded">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">miscellaneous.custom_exceptions.</span></span><span class="sig-name descname"><span class="pre">OVExtNotLoaded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ext_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#miscellaneous.custom_exceptions.OVExtNotLoaded" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">OSError</span></code></p>
-<p>Omniverse Extensions was not loaded.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="miscellaneous.custom_exceptions.OVExtNotLoaded.message">
-<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#miscellaneous.custom_exceptions.OVExtNotLoaded.message" title="Permalink to this definition">#</a></dt>
-<dd><p>Exception message.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-miscellaneous.metron_ai_ardagen_utils">
-<span id="miscellaneous-metron-ai-ardagen-utils-module"></span><h2>miscellaneous.metron_ai_ardagen_utils module<a class="headerlink" href="#module-miscellaneous.metron_ai_ardagen_utils" title="Permalink to this heading">#</a></h2>
-<p>This file contains small domain-free functions specific to Metron AI ArDaGen.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="miscellaneous.metron_ai_ardagen_utils.load_ov_extension">
-<span class="sig-prename descclassname"><span class="pre">miscellaneous.metron_ai_ardagen_utils.</span></span><span class="sig-name descname"><span class="pre">load_ov_extension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ext_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extension_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#miscellaneous.metron_ai_ardagen_utils.load_ov_extension" title="Permalink to this definition">#</a></dt>
-<dd><p>Loads &lt;ext_path&gt; extension. Has to be invoked after Isaac Sim app is running.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ext_path</strong> (<em>str</em>) – Path to the extension’s root folder.</p></li>
-<li><p><strong>extension_name</strong> (<em>str</em>) – Name of the extension.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#miscellaneous.custom_exceptions.OVExtNotLoaded" title="miscellaneous.custom_exceptions.OVExtNotLoaded"><strong>OVExtNotLoaded</strong></a> – Raised when OV can’t load given extension.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-miscellaneous.offset_writer">
-<span id="miscellaneous-offset-writer-module"></span><h2>miscellaneous.offset_writer module<a class="headerlink" href="#module-miscellaneous.offset_writer" title="Permalink to this heading">#</a></h2>
-<p>Implements OV Writer with offset.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">miscellaneous.offset_writer.</span></span><span class="sig-name descname"><span class="pre">OffsetWriter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Writer</span></code></p>
-<p>Offset writer which is built upon &lt;BasicWriter&gt;, but has a frames offset before readout the frame. It assumes
-that stage content holds still for number of frames given by &lt;frame_content_lifespan&gt; before some change. This
-offset allows renderer to render everything properly and stabilize quality of RTX and DLSS. It has to be empirically
-determined what is a good offset for given scenario.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter.__name__">
-<span class="sig-name descname"><span class="pre">__name__</span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter.__name__" title="Permalink to this definition">#</a></dt>
-<dd><p>Class name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._MAX_FRAMES_OFFSET">
-<span class="sig-name descname"><span class="pre">_MAX_FRAMES_OFFSET</span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._MAX_FRAMES_OFFSET" title="Permalink to this definition">#</a></dt>
-<dd><p>Defines the maximal allowed frames offset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._WRITER_NUMBERING_PADDING">
-<span class="sig-name descname"><span class="pre">_WRITER_NUMBERING_PADDING</span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._WRITER_NUMBERING_PADDING" title="Permalink to this definition">#</a></dt>
-<dd><p>Defines the leading zeros for saved files naming.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._output_dir">
-<span class="sig-name descname"><span class="pre">_output_dir</span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._output_dir" title="Permalink to this definition">#</a></dt>
-<dd><p>Output directory string that indicates the directory to save the results.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._backend">
-<span class="sig-name descname"><span class="pre">_backend</span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._backend" title="Permalink to this definition">#</a></dt>
-<dd><p>OV backend dispatcher.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>BackendDispatch</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._frame_id">
-<span class="sig-name descname"><span class="pre">_frame_id</span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._frame_id" title="Permalink to this definition">#</a></dt>
-<dd><p>Frame index.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._image_output_format">
-<span class="sig-name descname"><span class="pre">_image_output_format</span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._image_output_format" title="Permalink to this definition">#</a></dt>
-<dd><p>Output image format.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._content_lifespan">
-<span class="sig-name descname"><span class="pre">_content_lifespan</span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._content_lifespan" title="Permalink to this definition">#</a></dt>
-<dd><p>Internal aux variable for the loop. Indicates how many frames passed since the last
-read out.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter.annotators">
-<span class="sig-name descname"><span class="pre">annotators</span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter.annotators" title="Permalink to this definition">#</a></dt>
-<dd><p>List of annotators.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List[Any]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter.frame_read_out_num">
-<span class="sig-name descname"><span class="pre">frame_read_out_num</span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter.frame_read_out_num" title="Permalink to this definition">#</a></dt>
-<dd><p>Defines frame number after which the frame is read out and saved.
-For &lt;frame_content_lifespan&gt; = 1 it is every frame. For &lt;frame_content_lifespan&gt; &gt; 1, the value is
-&lt;frame_content_lifespan&gt; - 1. This is because we want to read the frame every &lt;frame_content_lifespan&gt;th
-frame.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter.content_lifespan_init_val">
-<span class="sig-name descname"><span class="pre">content_lifespan_init_val</span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter.content_lifespan_init_val" title="Permalink to this definition">#</a></dt>
-<dd><p>Init value for the helper loop, to decide when to perform a new read out.
-Depends on &lt;content_lifespan_init_val&gt;. For single frame read out, it’s set to 0, otherwise to -1.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">_MAX_FRAMES_OFFSET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">180</span></em><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id1">
-<span class="sig-name descname"><span class="pre">_WRITER_NUMBERING_PADDING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#id1" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._write_bounding_box_data">
-<span class="sig-name descname"><span class="pre">_write_bounding_box_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bbox_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fs_relative_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotator_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._write_bounding_box_data" title="Permalink to this definition">#</a></dt>
-<dd><p>Writes bounding box data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>bbox_type</strong> (<em>str</em>) – Specifies bbox type.</p></li>
-<li><p><strong>fs_relative_path</strong> (<em>str</em>) – FS relative path where to save bounding box data.</p></li>
-<li><p><strong>annotator_data</strong> (<em>str</em>) – Annotator data.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._write_camera_params">
-<span class="sig-name descname"><span class="pre">_write_camera_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs_relative_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotator_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._write_camera_params" title="Permalink to this definition">#</a></dt>
-<dd><p>Writes camera parameters data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fs_relative_path</strong> (<em>str</em>) – FS relative path where to save camera parameters data.</p></li>
-<li><p><strong>annotator_data</strong> (<em>str</em>) – Annotator data.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._write_distance_to_camera">
-<span class="sig-name descname"><span class="pre">_write_distance_to_camera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs_relative_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotator_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._write_distance_to_camera" title="Permalink to this definition">#</a></dt>
-<dd><p>Writes distance to camera data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fs_relative_path</strong> (<em>str</em>) – FS relative path where to save distance to camera data.</p></li>
-<li><p><strong>annotator_data</strong> (<em>str</em>) – Annotator data.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._write_distance_to_image_plane">
-<span class="sig-name descname"><span class="pre">_write_distance_to_image_plane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs_relative_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotator_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._write_distance_to_image_plane" title="Permalink to this definition">#</a></dt>
-<dd><p>Writes distance to image plane data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fs_relative_path</strong> (<em>str</em>) – FS relative path where to save distance to image plane data.</p></li>
-<li><p><strong>annotator_data</strong> (<em>str</em>) – Annotator data.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._write_instance_segmentation">
-<span class="sig-name descname"><span class="pre">_write_instance_segmentation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs_relative_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotator_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._write_instance_segmentation" title="Permalink to this definition">#</a></dt>
-<dd><p>Writes instance segmentation data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fs_relative_path</strong> (<em>str</em>) – FS relative path where to save instance segmentatino data.</p></li>
-<li><p><strong>annotator_data</strong> (<em>str</em>) – Annotator data.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._write_motion_vectors">
-<span class="sig-name descname"><span class="pre">_write_motion_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs_relative_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotator_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._write_motion_vectors" title="Permalink to this definition">#</a></dt>
-<dd><p>Writes motion vectors data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fs_relative_path</strong> (<em>str</em>) – FS relative path where to save motion vectors data.</p></li>
-<li><p><strong>annotator_data</strong> (<em>str</em>) – Annotator data.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._write_normals">
-<span class="sig-name descname"><span class="pre">_write_normals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs_relative_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotator_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._write_normals" title="Permalink to this definition">#</a></dt>
-<dd><p>Writes normals data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fs_relative_path</strong> (<em>str</em>) – FS relative path where to save normals data.</p></li>
-<li><p><strong>annotator_data</strong> (<em>str</em>) – Annotator data.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._write_occlusion">
-<span class="sig-name descname"><span class="pre">_write_occlusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs_relative_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotator_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._write_occlusion" title="Permalink to this definition">#</a></dt>
-<dd><p>Writes occlusion data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fs_relative_path</strong> (<em>str</em>) – FS relative path where to save occlusion data.</p></li>
-<li><p><strong>annotator_data</strong> (<em>str</em>) – Annotator data.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._write_rgb">
-<span class="sig-name descname"><span class="pre">_write_rgb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs_relative_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotator_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._write_rgb" title="Permalink to this definition">#</a></dt>
-<dd><p>Writes RGB image data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fs_relative_path</strong> (<em>str</em>) – FS relative path where to save RGB images.</p></li>
-<li><p><strong>annotator_data</strong> (<em>str</em>) – Annotator data.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter._write_semantic_segmentation">
-<span class="sig-name descname"><span class="pre">_write_semantic_segmentation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs_relative_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotator_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter._write_semantic_segmentation" title="Permalink to this definition">#</a></dt>
-<dd><p>Writes semantic segmentation data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fs_relative_path</strong> (<em>str</em>) – FS relative path where to save semantic segmentatino data.</p></li>
-<li><p><strong>annotator_data</strong> (<em>str</em>) – Annotator data.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="miscellaneous.offset_writer.OffsetWriter.write">
-<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#miscellaneous.offset_writer.OffsetWriter.write" title="Permalink to this definition">#</a></dt>
-<dd><p>Write function called from the OgnWriter node on every frame to process annotator output.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> – A dictionary containing the annotator data for the current frame.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="miscellaneous.custom_exceptions.html#module-miscellaneous.custom_exceptions" title="miscellaneous.custom_exceptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">miscellaneous.custom_exceptions</span></code></a></p></td>
+<td><p>This file defines custom exceptions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="miscellaneous.metron_ai_ardagen_utils.html#module-miscellaneous.metron_ai_ardagen_utils" title="miscellaneous.metron_ai_ardagen_utils"><code class="xref py py-obj docutils literal notranslate"><span class="pre">miscellaneous.metron_ai_ardagen_utils</span></code></a></p></td>
+<td><p>This file contains small domain-free functions specific to Metron AI ArDaGen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="miscellaneous.offset_writer.html#module-miscellaneous.offset_writer" title="miscellaneous.offset_writer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">miscellaneous.offset_writer</span></code></a></p></td>
+<td><p>Implements OV Writer with offset.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 
@@ -666,9 +350,6 @@ Depends on &lt;content_lifespan_init_val&gt;. For single frame read out, it’s 
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-miscellaneous.custom_exceptions">miscellaneous.custom_exceptions module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-miscellaneous.metron_ai_ardagen_utils">miscellaneous.metron_ai_ardagen_utils module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-miscellaneous.offset_writer">miscellaneous.offset_writer module</a></li>
 </ul>
   </nav></div>
 

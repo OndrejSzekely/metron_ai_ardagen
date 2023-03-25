@@ -18,7 +18,7 @@
    :maxdepth: {{ maxdepth }}
 {% for docname in docnames %}
    {{ docname }}
-{%- endfor %}
+{%- endfor %}  
 {%- endmacro %}
 
 {%- if is_namespace %}
@@ -38,20 +38,16 @@
 {%- if subpackages %}
 Subpackages
 -----------
+{{ autosummary(subpackages) }}
 
-{{ toctree(subpackages) }}
 {% endif %}
 
 {%- if submodules %}
 Submodules
 ----------
 
-{%- if subpackages %}
-{{ autosummary(submodules) }}
-{% endif %}
-
 {% if separatemodules %}
-{{ toctree(submodules) }}
+{{ autosummary(submodules) }}
 {% else %}
 {%- for submodule in submodules %}
 {% if show_headings %}

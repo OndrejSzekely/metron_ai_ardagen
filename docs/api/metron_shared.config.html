@@ -31,6 +31,8 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -42,8 +44,15 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../_static/design-tabs.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/metron_shared.config';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -125,9 +134,18 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arch/high_level_arch.html">High Level Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/docs_arch.html">Documentation Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/docs_generation.html">Documentation Generation Guide</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../development_notes.html">Development Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html">API Docs</a></li>
 </ul>
 
     </div>
@@ -275,9 +293,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-metron_shared.config.config">metron_shared.config.config module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-metron_shared.config.config_schema">metron_shared.config.config_schema module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-metron_shared.config.instantiate">metron_shared.config.instantiate module</a></li>
 </ul>
             </nav>
         </div>
@@ -293,125 +308,19 @@ document.write(`
 <span id="metron-shared-config-package"></span><h1>metron_shared.config package<a class="headerlink" href="#module-metron_shared.config" title="Permalink to this heading">#</a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="module-metron_shared.config.config">
-<span id="metron-shared-config-config-module"></span><h2>metron_shared.config.config module<a class="headerlink" href="#module-metron_shared.config.config" title="Permalink to this heading">#</a></h2>
-<p>This module defines variable &lt;config&gt; which stores configuration of given Metron’s component obtained by Hydra
-framework.</p>
-<p>&lt;config&gt; has to be initialized by using provided function decorator &lt;set_hydra_config&gt;,
-which has to be used right after Hydra’s &lt;hydra.main&gt; decorator. See the sample code:</p>
-<p><code class="docutils literal notranslate"><span class="pre">`</span>
-<span class="pre">&#64;hydra.main(config_path=&quot;...&quot;,</span> <span class="pre">config_name=&quot;...&quot;)</span>
-<span class="pre">&#64;set_hydra_config</span>
-<span class="pre">def</span> <span class="pre">main(cfg:</span> <span class="pre">DictConfig)</span> <span class="pre">-&gt;</span> <span class="pre">None:</span>
-<span class="pre">`</span></code></p>
-<p>&lt;config&gt; is obtained by using provided function / class method decorated &lt;GetHydraConfig&gt;, which passes Hydra’s config
-as the first argument. See the sample code:</p>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a>`
-&#64;GetHydraConfig
-def do_something(hydra_config: DictConfig):</p>
-<blockquote>
-<div><p>…</p>
-</div></blockquote>
-<p><a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">`</span></a></p>
-<dl class="py class">
-<dt class="sig sig-object py" id="metron_shared.config.config.GetHydraConfig">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">metron_shared.config.config.</span></span><span class="sig-name descname"><span class="pre">GetHydraConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">decorated_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#metron_shared.config.config.GetHydraConfig" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Decorator used to get global &lt;config&gt; variable storing Hydra’s config. The decorated might be applied on a function
-or a class method. It passes into decorated function / method the config as the first argument.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="metron_shared.config.config.GetHydraConfig._decorated_func">
-<span class="sig-name descname"><span class="pre">_decorated_func</span></span><a class="headerlink" href="#metron_shared.config.config.GetHydraConfig._decorated_func" title="Permalink to this definition">#</a></dt>
-<dd><p>Function / method on which the decorator is applied.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><em>Any</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-metron_shared.config.config_schema">
-<span id="metron-shared-config-config-schema-module"></span><h2>metron_shared.config.config_schema module<a class="headerlink" href="#module-metron_shared.config.config_schema" title="Permalink to this heading">#</a></h2>
-<p>This module provides decorator &lt;create_structured_config_schema&gt; which creates a <em>Structured Config Schema</em> used by
-Hydra framework to validate presence of expected config parameters and their type. It calls schema registration
-function passed as an argument into the function. The decorator has to be used before calling Hydra’s &lt;hydra.main&gt;.
-See the sample code:</p>
-<p><a href="#id7"><span class="problematic" id="id8">``</span></a>`
-&#64;create_structured_config_schema(schema_registration_function_to_be_called)
-&#64;hydra.main(config_path=”…”, config_name=”…”)
-&#64;other_decorators
-def main(cfg: DictConfig) -&gt; None:</p>
-<blockquote>
-<div><p>…</p>
-</div></blockquote>
-<p><a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a></p>
-<dl class="py function">
-<dt class="sig sig-object py" id="metron_shared.config.config_schema.create_structured_config_schema">
-<span class="sig-prename descclassname"><span class="pre">metron_shared.config.config_schema.</span></span><span class="sig-name descname"><span class="pre">create_structured_config_schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schema_registering_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">hydra.core.config_store.ConfigStore</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">omegaconf.DictConfig</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">omegaconf.DictConfig</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#metron_shared.config.config_schema.create_structured_config_schema" title="Permalink to this definition">#</a></dt>
-<dd><p>Creates <em>Structured Config Schema</em> of Hydra framework which is used to validate config parameters presence
-and data types. It does not validate config parameter values. The actual schema registering is done by
-&lt;schema_registering_function&gt; function. The advantage of decorator, rather than calling a function in main file,
-is code transparency from usage perspective.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>schema_registering_function</strong> (<em>Callable</em><em>[</em><em>[</em><em>ConfigStore</em><em>]</em><em>]</em><em>, </em><em>None</em><em>]</em>) – Function which does actual Structured</p></li>
-<li><p><strong>return</strong> (<em>Config Schema registration. The function has to have only one input parameter of type ConfigStore and</em>) – </p></li>
-<li><p><strong>None.</strong> – </p></li>
-</ul>
-</dd>
-</dl>
-<p>Returns (typing.Callable[[typing.Callable[…, typing.Any]], DictConfig]): Hydra’s main decorator function.</p>
-</dd></dl>
-
-</section>
-<section id="module-metron_shared.config.instantiate">
-<span id="metron-shared-config-instantiate-module"></span><h2>metron_shared.config.instantiate module<a class="headerlink" href="#module-metron_shared.config.instantiate" title="Permalink to this heading">#</a></h2>
-<p>Instantiation from Hydra Config.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="metron_shared.config.instantiate.HydraInstantiateConversion">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">metron_shared.config.instantiate.</span></span><span class="sig-name descname"><span class="pre">HydraInstantiateConversion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#metron_shared.config.instantiate.HydraInstantiateConversion" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
-<p>Defines Hydra’s instantiation conversion options. Basically how to handle list and dict like objects,
-whether they are represented via OmegaConf structs or Python structs.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="metron_shared.config.instantiate.HydraInstantiateConversion.ALL">
-<span class="sig-name descname"><span class="pre">ALL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'all'</span></em><a class="headerlink" href="#metron_shared.config.instantiate.HydraInstantiateConversion.ALL" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="metron_shared.config.instantiate.HydraInstantiateConversion.NO_CONVERSION">
-<span class="sig-name descname"><span class="pre">NO_CONVERSION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'none'</span></em><a class="headerlink" href="#metron_shared.config.instantiate.HydraInstantiateConversion.NO_CONVERSION" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="metron_shared.config.instantiate.HydraInstantiateConversion.PARTIAL">
-<span class="sig-name descname"><span class="pre">PARTIAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'partial'</span></em><a class="headerlink" href="#metron_shared.config.instantiate.HydraInstantiateConversion.PARTIAL" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="metron_shared.config.instantiate.instantiate_from_hydra_config">
-<span class="sig-prename descclassname"><span class="pre">metron_shared.config.instantiate.</span></span><span class="sig-name descname"><span class="pre">instantiate_from_hydra_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hydra_object_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">omegaconf.DictConfig</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conversion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#metron_shared.config.instantiate.HydraInstantiateConversion" title="metron_shared.config.instantiate.HydraInstantiateConversion"><span class="pre">HydraInstantiateConversion</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">HydraInstantiateConversion.NO_CONVERSION</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#metron_shared.config.instantiate.instantiate_from_hydra_config" title="Permalink to this definition">#</a></dt>
-<dd><p>Instantiates object from Hydra object config &lt;hydra_object_config&gt;. It has to contain &lt;_target_&gt; attribute.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>hydra_object_config</strong> (<em>Union</em><em>[</em><em>DictConfig</em><em>, </em><em>Dict</em><em>[</em><em>Any</em><em>]</em><em>]</em>) – Object’s Hydra config DictConfig or Dict created from that.</p></li>
-<li><p><strong>conversion</strong> (<a class="reference internal" href="#metron_shared.config.instantiate.HydraInstantiateConversion" title="metron_shared.config.instantiate.HydraInstantiateConversion"><em>HydraInstantiateConversion</em></a>) – Defined how non-primitive values in OmegaConf are handled.
-See <a class="reference external" href="https://hydra.cc/docs/advanced/instantiate_objects/overview/#parameter-conversion-strategies">https://hydra.cc/docs/advanced/instantiate_objects/overview/#parameter-conversion-strategies</a>.</p></li>
-<li><p><strong>**kwargs</strong> – Key-worded arguments which are passed into a constructor of the instantiated class.</p></li>
-</ul>
-</dd>
-</dl>
-<p>Returns (Any): Instantiated object.</p>
-</dd></dl>
-
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="metron_shared.config.config.html#module-metron_shared.config.config" title="metron_shared.config.config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metron_shared.config.config</span></code></a></p></td>
+<td><p>This module defines variable &lt;config&gt; which stores configuration of given Metron's component obtained by Hydra framework.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="metron_shared.config.config_schema.html#module-metron_shared.config.config_schema" title="metron_shared.config.config_schema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metron_shared.config.config_schema</span></code></a></p></td>
+<td><p>This module provides decorator &lt;create_structured_config_schema&gt; which creates a <em>Structured Config Schema</em> used by Hydra framework to validate presence of expected config parameters and their type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="metron_shared.config.instantiate.html#module-metron_shared.config.instantiate" title="metron_shared.config.instantiate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metron_shared.config.instantiate</span></code></a></p></td>
+<td><p>Instantiation from Hydra Config.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 
@@ -440,9 +349,6 @@ See <a class="reference external" href="https://hydra.cc/docs/advanced/instantia
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-metron_shared.config.config">metron_shared.config.config module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-metron_shared.config.config_schema">metron_shared.config.config_schema module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-metron_shared.config.instantiate">metron_shared.config.instantiate module</a></li>
 </ul>
   </nav></div>
 

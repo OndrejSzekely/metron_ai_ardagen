@@ -31,6 +31,8 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -42,8 +44,15 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../_static/design-tabs.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/tools';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -125,9 +134,18 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arch/high_level_arch.html">High Level Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/docs_arch.html">Documentation Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/docs_generation.html">Documentation Generation Guide</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../development_notes.html">Development Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html">API Docs</a></li>
 </ul>
 
     </div>
@@ -275,12 +293,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-tools.isaac_sim">tools.isaac_sim module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-tools.replicator">tools.replicator module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-tools.scenario">tools.scenario module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-tools.scenarios_manager">tools.scenarios_manager module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-tools.single_camera">tools.single_camera module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-tools.writer">tools.writer module</a></li>
 </ul>
             </nav>
         </div>
@@ -294,520 +306,31 @@ document.write(`
                   
   <section id="module-tools">
 <span id="tools-package"></span><h1>tools package<a class="headerlink" href="#module-tools" title="Permalink to this heading">#</a></h1>
+<p>The package contains various wrappers of Omniverse tools and tools specific to Metron AI ArdaGen.</p>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="module-tools.isaac_sim">
-<span id="tools-isaac-sim-module"></span><h2>tools.isaac_sim module<a class="headerlink" href="#module-tools.isaac_sim" title="Permalink to this heading">#</a></h2>
-<p>Implements Isaac App wrapper class.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="tools.isaac_sim.IsaacSimApp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tools.isaac_sim.</span></span><span class="sig-name descname"><span class="pre">IsaacSimApp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tools.isaac_sim.IsaacSimApp" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Implements Isaac App wrapper class.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.isaac_sim.IsaacSimApp.app">
-<span class="sig-name descname"><span class="pre">app</span></span><a class="headerlink" href="#tools.isaac_sim.IsaacSimApp.app" title="Permalink to this definition">#</a></dt>
-<dd><p>Isaac Sim app.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>SimulationApp</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.isaac_sim.IsaacSimApp.debug">
-<span class="sig-name descname"><span class="pre">debug</span></span><a class="headerlink" href="#tools.isaac_sim.IsaacSimApp.debug" title="Permalink to this definition">#</a></dt>
-<dd><p>If <cite>True</cite> OV Replicator won’t be executed and allows the user to inspect the generated scene.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="tools.isaac_sim.IsaacSimApp.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tools.isaac_sim.IsaacSimApp.close" title="Permalink to this definition">#</a></dt>
-<dd><p>Closes Isaac Sim.</p>
-<p>Returns (None):</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="tools.isaac_sim.IsaacSimApp.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tools.isaac_sim.IsaacSimApp.update" title="Permalink to this definition">#</a></dt>
-<dd><p>Updates Isaac Sim.</p>
-<p>Returns (None):</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-tools.replicator">
-<span id="tools-replicator-module"></span><h2>tools.replicator module<a class="headerlink" href="#module-tools.replicator" title="Permalink to this heading">#</a></h2>
-<p>Implements Omniverse Replicator handler class.</p>
-</section>
-<section id="module-tools.scenario">
-<span id="tools-scenario-module"></span><h2>tools.scenario module<a class="headerlink" href="#module-tools.scenario" title="Permalink to this heading">#</a></h2>
-<p>Implements <cite>Scenario</cite> class.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="tools.scenario.Scenario">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tools.scenario.</span></span><span class="sig-name descname"><span class="pre">Scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">isaac_sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tools.isaac_sim.IsaacSimApp" title="tools.isaac_sim.IsaacSimApp"><span class="pre">IsaacSimApp</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_dict_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">omegaconf.DictConfig</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tools.scenario.Scenario" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Implements <cite>Scenario</cite> class which is a configuration description what and how should be rendered.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.scenario.Scenario.master_synthesizer">
-<span class="sig-name descname"><span class="pre">master_synthesizer</span></span><a class="headerlink" href="#tools.scenario.Scenario.master_synthesizer" title="Permalink to this definition">#</a></dt>
-<dd><p><cite>Master Synthesizer</cite> instance
-containing all <cite>Synthesizer</cite> instances to be executed in the given scenario.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Union[<a class="reference internal" href="synthesizers.html#synthesizers.master_synthesizer.NullMasterSynthesizer" title="synthesizers.master_synthesizer.NullMasterSynthesizer">NullMasterSynthesizer</a>, <a class="reference internal" href="synthesizers.html#synthesizers.master_synthesizer.MasterSynthesizer" title="synthesizers.master_synthesizer.MasterSynthesizer">MasterSynthesizer</a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.scenario.Scenario.isaac_sim">
-<span class="sig-name descname"><span class="pre">isaac_sim</span></span><a class="headerlink" href="#tools.scenario.Scenario.isaac_sim" title="Permalink to this definition">#</a></dt>
-<dd><p>Reference to Isaac Sim wrapper. Till MasterSynthesizer is not instantiated, it stores
-NullMasterSynthesizer class instance as a Null Object duck-type instance.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#tools.isaac_sim.IsaacSimApp" title="tools.isaac_sim.IsaacSimApp">IsaacSimApp</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.scenario.Scenario.scenario_name">
-<span class="sig-name descname"><span class="pre">scenario_name</span></span><a class="headerlink" href="#tools.scenario.Scenario.scenario_name" title="Permalink to this definition">#</a></dt>
-<dd><p>Name of the scenario.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.scenario.Scenario.scenario_dict_config">
-<span class="sig-name descname"><span class="pre">scenario_dict_config</span></span><a class="headerlink" href="#tools.scenario.Scenario.scenario_dict_config" title="Permalink to this definition">#</a></dt>
-<dd><p>Hydra’s configuration of given scenario’s Synthesizers.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>DictConfig</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.scenario.Scenario.frames_number">
-<span class="sig-name descname"><span class="pre">frames_number</span></span><a class="headerlink" href="#tools.scenario.Scenario.frames_number" title="Permalink to this definition">#</a></dt>
-<dd><p>Number of images which are generated for given scenario.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="tools.scenario.Scenario.get_cameras">
-<span class="sig-name descname"><span class="pre">get_cameras</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#tools.scenario.Scenario.get_cameras" title="Permalink to this definition">#</a></dt>
-<dd><p>Collects all camera setups defined for the scenario. Camera setup means, that in one setup there could be more
-cameras (e.g. stereo camera setup)</p>
-<dl class="field-list">
-<dt class="field-odd">Yields<span class="colon">:</span></dt>
-<dd class="field-odd"><p><em>Generator[Tuple[List[Any], List[Any]], None, None]</em> –</p>
-<dl class="simple">
-<dt>Camera setup given by list of camera stage paths and</dt><dd><p>list of corresponding camera render products.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="tools.scenario.Scenario.prepare">
-<span class="sig-name descname"><span class="pre">prepare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tools.scenario.Scenario.prepare" title="Permalink to this definition">#</a></dt>
-<dd><p>Prepares the scenario, which means to instantiate all <cite>Synthesizers</cite> encapsulated in <cite>Master Synthesizer</cite>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>scenario_name</strong> (<em>str</em>) – Corresponding scenario name, as defined in the Hydra config.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-tools.scenarios_manager">
-<span id="tools-scenarios-manager-module"></span><h2>tools.scenarios_manager module<a class="headerlink" href="#module-tools.scenarios_manager" title="Permalink to this heading">#</a></h2>
-<p>Defines <cite>Scenarios Manager</cite> class which iterates over all scenarios.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="tools.scenarios_manager.ScenariosManager">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tools.scenarios_manager.</span></span><span class="sig-name descname"><span class="pre">ScenariosManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenarios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">omegaconf.DictConfig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isaac_sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tools.isaac_sim.IsaacSimApp" title="tools.isaac_sim.IsaacSimApp"><span class="pre">IsaacSimApp</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tools.scenarios_manager.ScenariosManager" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Defines <cite>Scenarios Manager</cite> class which iterates over all scenarios.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.scenarios_manager.ScenariosManager.scenarios">
-<span class="sig-name descname"><span class="pre">scenarios</span></span><a class="headerlink" href="#tools.scenarios_manager.ScenariosManager.scenarios" title="Permalink to this definition">#</a></dt>
-<dd><p>Dict Config of all passed in scenarios.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>DictConfig</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.scenarios_manager.ScenariosManager.scenario_names">
-<span class="sig-name descname"><span class="pre">scenario_names</span></span><a class="headerlink" href="#tools.scenarios_manager.ScenariosManager.scenario_names" title="Permalink to this definition">#</a></dt>
-<dd><p>List of scenario names. Instantiated on &lt;__iter__&gt; call, till that contains
-empty iterator.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Iterable[str]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.scenarios_manager.ScenariosManager.isaac_sim">
-<span class="sig-name descname"><span class="pre">isaac_sim</span></span><a class="headerlink" href="#tools.scenarios_manager.ScenariosManager.isaac_sim" title="Permalink to this definition">#</a></dt>
-<dd><p>Issac Sim App wrapper instance.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#tools.isaac_sim.IsaacSimApp" title="tools.isaac_sim.IsaacSimApp">IsaacSimApp</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-tools.single_camera">
-<span id="tools-single-camera-module"></span><h2>tools.single_camera module<a class="headerlink" href="#module-tools.single_camera" title="Permalink to this heading">#</a></h2>
-<p>Defines <cite>Single Camera</cite> class.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="tools.single_camera.SingleCamera">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tools.single_camera.</span></span><span class="sig-name descname"><span class="pre">SingleCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clipping_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tools.single_camera.SingleCamera" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Defines <cite>Single Camera</cite> camera setup.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.single_camera.SingleCamera.position">
-<span class="sig-name descname"><span class="pre">position</span></span><a class="headerlink" href="#tools.single_camera.SingleCamera.position" title="Permalink to this definition">#</a></dt>
-<dd><p>Camera’s position given by 3 numbers in 3D.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List[float]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.single_camera.SingleCamera.rotation">
-<span class="sig-name descname"><span class="pre">rotation</span></span><a class="headerlink" href="#tools.single_camera.SingleCamera.rotation" title="Permalink to this definition">#</a></dt>
-<dd><p>Camera’s rotation given by 3 numbers in 3D.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List[float]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.single_camera.SingleCamera.clipping_range">
-<span class="sig-name descname"><span class="pre">clipping_range</span></span><a class="headerlink" href="#tools.single_camera.SingleCamera.clipping_range" title="Permalink to this definition">#</a></dt>
-<dd><p>Clipping range of 3D objects given by tupple (clipping_min, clipping_max).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List[float]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.single_camera.SingleCamera.cam_resolution">
-<span class="sig-name descname"><span class="pre">cam_resolution</span></span><a class="headerlink" href="#tools.single_camera.SingleCamera.cam_resolution" title="Permalink to this definition">#</a></dt>
-<dd><p>Camera resolution.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List[int]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="tools.single_camera.SingleCamera.get_cameras">
-<span class="sig-name descname"><span class="pre">get_cameras</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#tools.single_camera.SingleCamera.get_cameras" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns camera setup for single camera, which means one camera.</p>
-<dl class="field-list">
-<dt class="field-odd">Yields<span class="colon">:</span></dt>
-<dd class="field-odd"><p><em>Generator[Tuple[List[Any], List[Any]], None, None]</em> –</p>
-<dl class="simple">
-<dt>Two return values. Both are lists of one item.</dt><dd><p>The first one contains a stage path to the camera and the second list containes a corresponding camera
-render product.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-tools.writer">
-<span id="tools-writer-module"></span><h2>tools.writer module<a class="headerlink" href="#module-tools.writer" title="Permalink to this heading">#</a></h2>
-<p>Defines <cite>OVWriter</cite> class to write generated data on a file system.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="tools.writer.NullWriter">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tools.writer.</span></span><span class="sig-name descname"><span class="pre">NullWriter</span></span><a class="headerlink" href="#tools.writer.NullWriter" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Represents a non-instantiated OV Writer. Follows Null Object design pattern.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="tools.writer.NullWriter.attach">
-<span class="sig-name descname"><span class="pre">attach</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_renders</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tools.writer.NullWriter.attach" title="Permalink to this definition">#</a></dt>
-<dd><p>Duck-type interface of null object for OV Writer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>camera_render</strong> (<em>List</em><em>[</em><em>Any</em><em>]</em>) – List of camera renders belonging to the camera setup.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="tools.writer.NullWriter.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#tools.writer.NullWriter.create" title="Permalink to this definition">#</a></dt>
-<dd><p>Duck-type interface of null object for OV Writer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>scenario_name</strong> (<em>str</em>) – scenario name.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Returns the name name of created writer. This name is used later on to delete the writer.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="tools.writer.NullWriter.initialize">
-<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tools.writer.NullWriter.initialize" title="Permalink to this definition">#</a></dt>
-<dd><p>Duck-type interface of null object for OV Writer.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="tools.writer.OVWriter">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tools.writer.</span></span><span class="sig-name descname"><span class="pre">OVWriter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs_store_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_rgb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_bounding_box_2d_tight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_bounding_box_2d_loose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_semantic_segmentation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_instance_segmentation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_distance_to_camera</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_distance_to_image_plane</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_bounding_box_3d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_occlusion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_normals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_motion_vectors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_camera_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tools.writer.OVWriter" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Defines <cite>OVWriter</cite> class to write generated data on file system.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.fs_store_path">
-<span class="sig-name descname"><span class="pre">fs_store_path</span></span><a class="headerlink" href="#tools.writer.OVWriter.fs_store_path" title="Permalink to this definition">#</a></dt>
-<dd><p>Defines <cite>Writer</cite> output folder path.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.writer">
-<span class="sig-name descname"><span class="pre">writer</span></span><a class="headerlink" href="#tools.writer.OVWriter.writer" title="Permalink to this definition">#</a></dt>
-<dd><p>Stores actual OV writer used to save data. NullWriter is used before
-OV Writer is instantiated.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Union[<a class="reference internal" href="#tools.writer.NullWriter" title="tools.writer.NullWriter">NullWriter</a>, WriterTemplate]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.writer_name">
-<span class="sig-name descname"><span class="pre">writer_name</span></span><a class="headerlink" href="#tools.writer.OVWriter.writer_name" title="Permalink to this definition">#</a></dt>
-<dd><p>OV Writer type name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.write_rgb">
-<span class="sig-name descname"><span class="pre">write_rgb</span></span><a class="headerlink" href="#tools.writer.OVWriter.write_rgb" title="Permalink to this definition">#</a></dt>
-<dd><p><cite>True</cite> will generate RGB images.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.write_bounding_box_2d_tight">
-<span class="sig-name descname"><span class="pre">write_bounding_box_2d_tight</span></span><a class="headerlink" href="#tools.writer.OVWriter.write_bounding_box_2d_tight" title="Permalink to this definition">#</a></dt>
-<dd><p><cite>True</cite> will generate 2D bboxes, not covering obscured object’s parts.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.write_bounding_box_2d_loose">
-<span class="sig-name descname"><span class="pre">write_bounding_box_2d_loose</span></span><a class="headerlink" href="#tools.writer.OVWriter.write_bounding_box_2d_loose" title="Permalink to this definition">#</a></dt>
-<dd><p><cite>True</cite> will generate 2D bboxes, covering also obscured object’s parts.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.write_semantic_segmentation">
-<span class="sig-name descname"><span class="pre">write_semantic_segmentation</span></span><a class="headerlink" href="#tools.writer.OVWriter.write_semantic_segmentation" title="Permalink to this definition">#</a></dt>
-<dd><p><cite>True</cite> will generate semantic segmentaion annotations.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.write_instance_segmentation">
-<span class="sig-name descname"><span class="pre">write_instance_segmentation</span></span><a class="headerlink" href="#tools.writer.OVWriter.write_instance_segmentation" title="Permalink to this definition">#</a></dt>
-<dd><p><cite>True</cite> will generate instance segmentation annotations.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.write_distance_to_camera">
-<span class="sig-name descname"><span class="pre">write_distance_to_camera</span></span><a class="headerlink" href="#tools.writer.OVWriter.write_distance_to_camera" title="Permalink to this definition">#</a></dt>
-<dd><p><cite>True</cite> will generate inverse depth map to camera.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.write_distance_to_image_plane">
-<span class="sig-name descname"><span class="pre">write_distance_to_image_plane</span></span><a class="headerlink" href="#tools.writer.OVWriter.write_distance_to_image_plane" title="Permalink to this definition">#</a></dt>
-<dd><p><cite>True</cite> will generate inverse depth map to image plane.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.write_bounding_box_3d">
-<span class="sig-name descname"><span class="pre">write_bounding_box_3d</span></span><a class="headerlink" href="#tools.writer.OVWriter.write_bounding_box_3d" title="Permalink to this definition">#</a></dt>
-<dd><p><cite>True</cite> will generate 3D bounding boxes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.write_occlusion">
-<span class="sig-name descname"><span class="pre">write_occlusion</span></span><a class="headerlink" href="#tools.writer.OVWriter.write_occlusion" title="Permalink to this definition">#</a></dt>
-<dd><p>TODO add the description.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.write_normals">
-<span class="sig-name descname"><span class="pre">write_normals</span></span><a class="headerlink" href="#tools.writer.OVWriter.write_normals" title="Permalink to this definition">#</a></dt>
-<dd><p><cite>True</cite> will generate normals for each pixels in the image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.write_motion_vectors">
-<span class="sig-name descname"><span class="pre">write_motion_vectors</span></span><a class="headerlink" href="#tools.writer.OVWriter.write_motion_vectors" title="Permalink to this definition">#</a></dt>
-<dd><p><cite>True</cite> will generate motion vector of the pixels inside the image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.write_camera_params">
-<span class="sig-name descname"><span class="pre">write_camera_params</span></span><a class="headerlink" href="#tools.writer.OVWriter.write_camera_params" title="Permalink to this definition">#</a></dt>
-<dd><p><cite>True</cite> will store camera’s parameters (intrinsics, extrinsics).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.attach">
-<span class="sig-name descname"><span class="pre">attach</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_renders</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tools.writer.OVWriter.attach" title="Permalink to this definition">#</a></dt>
-<dd><p>Attaches &lt;camera_renders&gt; camera renders to the writer to capture images from that cameras in the camera setup.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>camera_render</strong> (<em>List</em><em>[</em><em>Any</em><em>]</em>) – List of camera renders belonging to the camera setup.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="tools.writer.OVWriter.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames_readout_offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#tools.writer.OVWriter.create" title="Permalink to this definition">#</a></dt>
-<dd><p>Creates a writer for given &lt;scenario_name&gt; scenario. It creates a new folder with &lt;scenario_name&gt; name on
-&lt;fs_store_path&gt; path to sepearte data for each scenario.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>scenario_name</strong> (<em>str</em>) – scenario name.</p></li>
-<li><p><strong>frames_readout_offset</strong> (<em>int</em>) – Scenario’s frames readout offset before saving a frame.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Returns the name name of created writer. This name is used later on to delete the writer.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="tools.isaac_sim.html#module-tools.isaac_sim" title="tools.isaac_sim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tools.isaac_sim</span></code></a></p></td>
+<td><p>Implements Isaac App wrapper class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tools.replicator.html#module-tools.replicator" title="tools.replicator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tools.replicator</span></code></a></p></td>
+<td><p>Implements Omniverse Replicator handler class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tools.scenario.html#module-tools.scenario" title="tools.scenario"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tools.scenario</span></code></a></p></td>
+<td><p>Implements <cite>Scenario</cite> class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tools.scenarios_manager.html#module-tools.scenarios_manager" title="tools.scenarios_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tools.scenarios_manager</span></code></a></p></td>
+<td><p>Defines <cite>Scenarios Manager</cite> class which iterates over all scenarios.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tools.single_camera.html#module-tools.single_camera" title="tools.single_camera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tools.single_camera</span></code></a></p></td>
+<td><p>Defines <cite>Single Camera</cite> class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tools.writer.html#module-tools.writer" title="tools.writer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tools.writer</span></code></a></p></td>
+<td><p>Defines <cite>OVWriter</cite> class to write generated data on a file system.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 
@@ -836,12 +359,6 @@ OV Writer is instantiated.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-tools.isaac_sim">tools.isaac_sim module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-tools.replicator">tools.replicator module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-tools.scenario">tools.scenario module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-tools.scenarios_manager">tools.scenarios_manager module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-tools.single_camera">tools.single_camera module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-tools.writer">tools.writer module</a></li>
 </ul>
   </nav></div>
 
