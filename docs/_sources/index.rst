@@ -12,4 +12,6 @@ Metron AI - ArDaGen Docs
 
    project_installation
    architecture
+   guides
    development_notes
+   api_docs

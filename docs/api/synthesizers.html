@@ -31,6 +31,8 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -42,8 +44,15 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../_static/design-tabs.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/synthesizers';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -125,9 +134,18 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arch/high_level_arch.html">High Level Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/docs_arch.html">Documentation Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/docs_generation.html">Documentation Generation Guide</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../development_notes.html">Development Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html">API Docs</a></li>
 </ul>
 
     </div>
@@ -276,7 +294,6 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.master_synthesizer">synthesizers.master_synthesizer module</a></li>
 </ul>
             </nav>
         </div>
@@ -290,121 +307,26 @@ document.write(`
                   
   <section id="module-synthesizers">
 <span id="synthesizers-package"></span><h1>synthesizers package<a class="headerlink" href="#module-synthesizers" title="Permalink to this heading">#</a></h1>
+<p>The package contains all <em>Synthesizers</em> and <em>Master Synthesizer</em>.</p>
 <section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="synthesizers.synth_workers.html">synthesizers.synth_workers package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="synthesizers.synth_workers.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="synthesizers.synth_workers.assets_synths.html">synthesizers.synth_workers.assets_synths package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="synthesizers.synth_workers.assets_synths.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthesizers.synth_workers.assets_synths.html#module-synthesizers.synth_workers.assets_synths.ov_assets_synthesizer">synthesizers.synth_workers.assets_synths.ov_assets_synthesizer module</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="synthesizers.synth_workers.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="synthesizers.synth_workers.html#module-synthesizers.synth_workers.base_synthesizer">synthesizers.synth_workers.base_synthesizer module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="synthesizers.synth_workers.html#module-synthesizers.synth_workers.dummy_synthesizer">synthesizers.synth_workers.dummy_synthesizer module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="synthesizers.synth_workers.html#module-synthesizers.synth_workers.ground_synthesizer">synthesizers.synth_workers.ground_synthesizer module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="synthesizers.synth_workers.html#module-synthesizers.synth_workers.items_scatter_synthesizer">synthesizers.synth_workers.items_scatter_synthesizer module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="synthesizers.synth_workers.html#module-synthesizers.synth_workers.light_synthesizer">synthesizers.synth_workers.light_synthesizer module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="synthesizers.synth_workers.html#module-synthesizers.synth_workers.physics_synthesizer">synthesizers.synth_workers.physics_synthesizer module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="synthesizers.synth_workers.html#module-synthesizers.synth_workers.scene_synthesizer">synthesizers.synth_workers.scene_synthesizer module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="synthesizers.synth_workers.html#module-synthesizers.synth_workers.single_item_synthesizer">synthesizers.synth_workers.single_item_synthesizer module</a></li>
-</ul>
-</li>
-</ul>
-</div>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="synthesizers.synth_workers.html#module-synthesizers.synth_workers" title="synthesizers.synth_workers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synthesizers.synth_workers</span></code></a></p></td>
+<td><p>Spreadsheet Column Printer</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#module-synthesizers.master_synthesizer" title="synthesizers.master_synthesizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synthesizers.master_synthesizer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="synthesizers.master_synthesizer.html#module-synthesizers.master_synthesizer" title="synthesizers.master_synthesizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synthesizers.master_synthesizer</span></code></a></p></td>
 <td><p><cite>Master Synthesizer</cite> does virtual world orchestration and manages <cite>Synthesizer Workers</cite>.</p></td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="module-synthesizers.master_synthesizer">
-<span id="synthesizers-master-synthesizer-module"></span><h2>synthesizers.master_synthesizer module<a class="headerlink" href="#module-synthesizers.master_synthesizer" title="Permalink to this heading">#</a></h2>
-<p><cite>Master Synthesizer</cite> does virtual world orchestration and manages <cite>Synthesizer Workers</cite>.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="synthesizers.master_synthesizer.MasterSynthesizer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">synthesizers.master_synthesizer.</span></span><span class="sig-name descname"><span class="pre">MasterSynthesizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">isaac_sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="tools.html#tools.isaac_sim.IsaacSimApp" title="tools.isaac_sim.IsaacSimApp"><span class="pre">IsaacSimApp</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">synthesizer_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">omegaconf.DictConfig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#synthesizers.master_synthesizer.MasterSynthesizer" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p><cite>Master Synthesizer</cite> does virtual world orchestration and manages <cite>Synthesizer Workers</cite>.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="synthesizers.master_synthesizer.MasterSynthesizer.isaac_sim_app">
-<span class="sig-name descname"><span class="pre">isaac_sim_app</span></span><a class="headerlink" href="#synthesizers.master_synthesizer.MasterSynthesizer.isaac_sim_app" title="Permalink to this definition">#</a></dt>
-<dd><p><cite>Isaac Sim App</cite> instance.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="tools.html#tools.isaac_sim.IsaacSimApp" title="tools.isaac_sim.IsaacSimApp">IsaacSimApp</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="synthesizers.master_synthesizer.MasterSynthesizer.synthesizers_workers">
-<span class="sig-name descname"><span class="pre">synthesizers_workers</span></span><a class="headerlink" href="#synthesizers.master_synthesizer.MasterSynthesizer.synthesizers_workers" title="Permalink to this definition">#</a></dt>
-<dd><p>List of <cite>Synthesizer Workers</cite>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List[<a class="reference internal" href="synthesizers.synth_workers.html#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer">BaseSynthesizer</a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="synthesizers.master_synthesizer.MasterSynthesizer.synthesizers_worker_names">
-<span class="sig-name descname"><span class="pre">synthesizers_worker_names</span></span><a class="headerlink" href="#synthesizers.master_synthesizer.MasterSynthesizer.synthesizers_worker_names" title="Permalink to this definition">#</a></dt>
-<dd><p>List of <cite>Synthesizer Worker</cite> names.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[str]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="synthesizers.master_synthesizer.MasterSynthesizer._instantiate_synthesizer_workers">
-<span class="sig-name descname"><span class="pre">_instantiate_synthesizer_workers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synthesizer_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">omegaconf.DictConfig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.master_synthesizer.MasterSynthesizer._instantiate_synthesizer_workers" title="Permalink to this definition">#</a></dt>
-<dd><p>Instantiates all enabled <cite>Synthesizer Workers</cite>. Objects can’t be instantiated directly using Hydra’s
-<cite>initialize</cite>, because it has to be get rid of each <cite>Synthesizer Worker</cite> config’s <cite>enabled</cite> attribute
-which is not meant to be used during classes initialization. It is used only to state whether it’s meant to
-be used or not.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>synthesizer_workers</strong> (<em>DictConfig</em>) – <cite>Synthesizer Workers</cite> dict.</p></li>
-<li><p><strong>scenario_name</strong> (<em>str</em>) – Defines the name of owning <cite>Scenario</cite>.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="synthesizers.master_synthesizer.NullMasterSynthesizer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">synthesizers.master_synthesizer.</span></span><span class="sig-name descname"><span class="pre">NullMasterSynthesizer</span></span><a class="headerlink" href="#synthesizers.master_synthesizer.NullMasterSynthesizer" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Represents a non-instantiated <cite>Master Synthesizer</cite> in <cite>Scenario</cite>. Follows Null Object design pattern.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="synthesizers.master_synthesizer.NullMasterSynthesizer.synthesizers_worker_names">
-<span class="sig-name descname"><span class="pre">synthesizers_worker_names</span></span><a class="headerlink" href="#synthesizers.master_synthesizer.NullMasterSynthesizer.synthesizers_worker_names" title="Permalink to this definition">#</a></dt>
-<dd><p>Empty list of <cite>Synthesizer Worker</cite> names.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[str]</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 </section>
 
@@ -434,7 +356,6 @@ be used or not.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-synthesizers.master_synthesizer">synthesizers.master_synthesizer module</a></li>
 </ul>
   </nav></div>
 

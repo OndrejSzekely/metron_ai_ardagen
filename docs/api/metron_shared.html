@@ -31,6 +31,8 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -42,8 +44,15 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../_static/design-tabs.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/metron_shared';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -125,9 +134,18 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arch/high_level_arch.html">High Level Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/docs_arch.html">Documentation Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/docs_generation.html">Documentation Generation Guide</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../development_notes.html">Development Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html">API Docs</a></li>
 </ul>
 
     </div>
@@ -276,9 +294,6 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-metron_shared.io_utils">metron_shared.io_utils module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-metron_shared.param_validators">metron_shared.param_validators module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-metron_shared.structures">metron_shared.structures module</a></li>
 </ul>
             </nav>
         </div>
@@ -294,178 +309,29 @@ document.write(`
 <span id="metron-shared-package"></span><h1>metron_shared package<a class="headerlink" href="#module-metron_shared" title="Permalink to this heading">#</a></h1>
 <section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="metron_shared.config.html">metron_shared.config package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="metron_shared.config.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metron_shared.config.html#module-metron_shared.config.config">metron_shared.config.config module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metron_shared.config.html#module-metron_shared.config.config_schema">metron_shared.config.config_schema module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metron_shared.config.html#module-metron_shared.config.instantiate">metron_shared.config.instantiate module</a></li>
-</ul>
-</li>
-</ul>
-</div>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="metron_shared.config.html#module-metron_shared.config" title="metron_shared.config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metron_shared.config</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#module-metron_shared.io_utils" title="metron_shared.io_utils"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metron_shared.io_utils</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="metron_shared.io_utils.html#module-metron_shared.io_utils" title="metron_shared.io_utils"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metron_shared.io_utils</span></code></a></p></td>
 <td><p>Utils module for I/O.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#module-metron_shared.param_validators" title="metron_shared.param_validators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metron_shared.param_validators</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="metron_shared.param_validators.html#module-metron_shared.param_validators" title="metron_shared.param_validators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metron_shared.param_validators</span></code></a></p></td>
 <td><p>The module provides parameter validation functions common across Metron's components.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#module-metron_shared.structures" title="metron_shared.structures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metron_shared.structures</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="metron_shared.structures.html#module-metron_shared.structures" title="metron_shared.structures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metron_shared.structures</span></code></a></p></td>
 <td><p>This module provides data structures/patterns (classes or decorators).</p></td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="module-metron_shared.io_utils">
-<span id="metron-shared-io-utils-module"></span><h2>metron_shared.io_utils module<a class="headerlink" href="#module-metron_shared.io_utils" title="Permalink to this heading">#</a></h2>
-<p>Utils module for I/O.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="metron_shared.io_utils.force_folder_create">
-<span class="sig-prename descclassname"><span class="pre">metron_shared.io_utils.</span></span><span class="sig-name descname"><span class="pre">force_folder_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs_folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#metron_shared.io_utils.force_folder_create" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</section>
-<section id="module-metron_shared.param_validators">
-<span id="metron-shared-param-validators-module"></span><h2>metron_shared.param_validators module<a class="headerlink" href="#module-metron_shared.param_validators" title="Permalink to this heading">#</a></h2>
-<p>The module provides parameter validation functions common across Metron’s components. The scope of validation is all
-parameters, except validation of YAML config parameters.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="metron_shared.param_validators.check_file_existence">
-<span class="sig-prename descclassname"><span class="pre">metron_shared.param_validators.</span></span><span class="sig-name descname"><span class="pre">check_file_existence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#metron_shared.param_validators.check_file_existence" title="Permalink to this definition">#</a></dt>
-<dd><p>Validates if file path exists and is a file.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – File path.</p>
-</dd>
-</dl>
-<p>Returns (None):</p>
-<dl class="simple">
-<dt>Exceptions:</dt><dd><p>OSError: If file does not exist or path is not a file.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="metron_shared.param_validators.check_folder_existence">
-<span class="sig-prename descclassname"><span class="pre">metron_shared.param_validators.</span></span><span class="sig-name descname"><span class="pre">check_folder_existence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#metron_shared.param_validators.check_folder_existence" title="Permalink to this definition">#</a></dt>
-<dd><p>Validates if file path exists and is a folder.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>folder_path</strong> (<em>str</em>) – Folder path.</p>
-</dd>
-</dl>
-<p>Returns (None):</p>
-<dl class="simple">
-<dt>Exceptions:</dt><dd><p>OSError: If file does not exist or path is not a folder.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="metron_shared.param_validators.check_length_of_list">
-<span class="sig-prename descclassname"><span class="pre">metron_shared.param_validators.</span></span><span class="sig-name descname"><span class="pre">check_length_of_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_list_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#metron_shared.param_validators.check_length_of_list" title="Permalink to this definition">#</a></dt>
-<dd><p>Checks if a given list has expected number of items.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>list</strong> (<em>List</em><em>[</em><em>Any</em><em>]</em>) – List to be checked.</p></li>
-<li><p><strong>expected_list_len</strong> (<em>int</em>) – Number of items the list has to contain.</p></li>
-</ul>
-</dd>
-</dl>
-<p>Returns: None</p>
-<dl class="simple">
-<dt>Exceptions:</dt><dd><p>ValueError: If the list has mismatched number of items.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="metron_shared.param_validators.check_parameter_value_in_range">
-<span class="sig-prename descclassname"><span class="pre">metron_shared.param_validators.</span></span><span class="sig-name descname"><span class="pre">check_parameter_value_in_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#metron_shared.param_validators.check_parameter_value_in_range" title="Permalink to this definition">#</a></dt>
-<dd><p>Checks if parameter value is in range &lt;&lt;lower_bound&gt;, &lt;upper_bound&gt;&gt;.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>param_value</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em>) – Parameter value.</p></li>
-<li><p><strong>lower_bound</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em>) – Lower bound of allowed parameter values.</p></li>
-<li><p><strong>upper_bound</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em>) – Upper bound of allowed parameter values.</p></li>
-</ul>
-</dd>
-</dl>
-<p>Returns (None):</p>
-<dl class="simple">
-<dt>Exceptions:</dt><dd><p>ValueError: If value is not in the range.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="metron_shared.param_validators.check_type">
-<span class="sig-prename descclassname"><span class="pre">metron_shared.param_validators.</span></span><span class="sig-name descname"><span class="pre">check_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#metron_shared.param_validators.check_type" title="Permalink to this definition">#</a></dt>
-<dd><p>Validates if given &lt;variable&gt; is type of &lt;expected_type&gt;.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>variable</strong> (<em>Any</em>) – Variable.</p></li>
-<li><p><strong>expected_type</strong> (<em>Any</em>) – Type.</p></li>
-</ul>
-</dd>
-</dl>
-<p>Returns (None):</p>
-<dl class="simple">
-<dt>Exceptions:</dt><dd><p>TypeError: Raised if &lt;variable&gt; is not type of &lt;expected_type&gt;.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-metron_shared.structures">
-<span id="metron-shared-structures-module"></span><h2>metron_shared.structures module<a class="headerlink" href="#module-metron_shared.structures" title="Permalink to this heading">#</a></h2>
-<p>This module provides data structures/patterns (classes or decorators).</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="metron_shared.structures.Singleton">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">metron_shared.structures.</span></span><span class="sig-name descname"><span class="pre">Singleton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">decorated_object</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#metron_shared.structures.Singleton" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Represents singleton data pattern applicable on class / function / method . When applied on a class,
-only one instance of the class is allowed for whole program lifespan. When applied on a function / method , only
-one call is allowed for whole program lifespan. The decorator can be applied on more classes / functions / methods,
-not only on one object of the program. It does not change decorated object.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="metron_shared.structures.Singleton._called">
-<span class="sig-name descname"><span class="pre">_called</span></span><a class="headerlink" href="#metron_shared.structures.Singleton._called" title="Permalink to this definition">#</a></dt>
-<dd><p>Set data structure which keeps one use across classes / functions / methods.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><em>Set</em>[<em>Any</em>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="metron_shared.structures.Singleton._function">
-<span class="sig-name descname"><span class="pre">_function</span></span><a class="headerlink" href="#metron_shared.structures.Singleton._function" title="Permalink to this definition">#</a></dt>
-<dd><p>Class / function / method on which the decorator is applied.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><em>Any</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">_called</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{&lt;function</span> <span class="pre">set_hydra_config&gt;}</span></em><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 </section>
 </section>
 
@@ -495,9 +361,6 @@ not only on one object of the program. It does not change decorated object.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-metron_shared.io_utils">metron_shared.io_utils module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-metron_shared.param_validators">metron_shared.param_validators module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-metron_shared.structures">metron_shared.structures module</a></li>
 </ul>
   </nav></div>
 

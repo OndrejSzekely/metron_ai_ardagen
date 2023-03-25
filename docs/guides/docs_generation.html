@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
+    <title>Documentation Generation Guide &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
   
   
   
@@ -31,6 +31,8 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -42,11 +44,20 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../_static/design-tabs.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'guides/docs_generation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Development Notes" href="../development_notes.html" />
+    <link rel="prev" title="Guides" href="../guides.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,14 +135,19 @@
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../arch/high_level_arch.html">High Level Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../arch/docs_arch.html">Documentation Architecture</a></li>
 </ul>
 </li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../guides.html">Guides</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Documentation Generation Guide</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../development_notes.html">Development Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html">API Docs</a></li>
 </ul>
 
     </div>
@@ -268,7 +284,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Documentation Generation Guide</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -277,9 +293,10 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-documentation-building">Manual Documentation Building</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-api-docs-source-files-generation">Manual API Docs Source Files Generation</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -290,7 +307,96 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="documentation-generation-guide">
+<h1>Documentation Generation Guide<a class="headerlink" href="#documentation-generation-guide" title="Permalink to this heading">#</a></h1>
+<section id="manual-documentation-building">
+<h2>Manual Documentation Building<a class="headerlink" href="#manual-documentation-building" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>It is recommended to use virtual environment, to encapsulate the dev tools (Python frameworks and other software components). Create Python <strong>3.7</strong> virtual environment using Python dependency management tool you are using (e.g. Conda, Pipenv, etc…).</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Reference Installation Steps</p>
+<p>👉 It is recommended to use Anaconda channel <a class="reference external" href="https://www.anaconda.com/products/individual">(how to get Anaconda</a>),
+which also provides installation management of non-Python software components, and Python. Run following
+command to create a new virtual environment:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda create -n metron_dev_37 <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7
+</pre></div>
+</div>
+<p>Run following command to attach created virtual environment in which all further steps are executed:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda activate metron_dev_37
+</pre></div>
+</div>
+</div>
+</li>
+<li><p>Install following frameworks in the environment.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sphinx (~5.0.2)
+myst-parser (=1.0.0)
+sphinxemoji (=0.2.0)
+sphinx-design (=0.3.0)
+sphinx-book-theme (=1.0.0)
+phinx-togglebutton (=0.3.2)
+sphinx-copybutton (=0.5.1)
+</pre></div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Reference Installation Steps</p>
+<p>👉 In the activated environment run following commands:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda install -y -c anaconda <span class="nv">sphinx</span><span class="o">=</span><span class="m">5</span>.0.2
+conda install -y -c conda-forge myst-parser<span class="o">=</span><span class="m">1</span>.0.0 sphinx-copybutton<span class="o">=</span><span class="m">0</span>.5.1
+pip install -r requirements_docs.txt
+</pre></div>
+</div>
+</div>
+</li>
+<li><p>Go into repository’s root folder and in the activated environment build the documentation:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sphinx-build -b html docs_src docs
+</pre></div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Reference Installation Steps</p>
+<p>👉 In the activated environment run following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sphinx-build -b html docs_src docs
+</pre></div>
+</div>
+</div>
+</li>
+<li><p>In repository’s root folder run a HTTP server with the documentation:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python -m http.server --directory docs <span class="m">4444</span>
+</pre></div>
+</div>
+<p>Then open your browser <code class="docutils literal notranslate"><span class="pre">http://localhost:4444</span></code> and see the documentation.</p>
+<p>GOOD JOB! 🙌 🚀 💫</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Reference Installation Steps</p>
+<p>👉 In repository’s root folder and activated environment run a HTTP server with the documentation:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python -m http.server --directory docs <span class="m">4444</span>
+</pre></div>
+</div>
+<p>Then open your browser <code class="docutils literal notranslate"><span class="pre">http://localhost:4444</span></code> and see the documentation.</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="manual-api-docs-source-files-generation">
+<h2>Manual API Docs Source Files Generation<a class="headerlink" href="#manual-api-docs-source-files-generation" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Go into the project root folder.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Reference Installation Steps</p>
+<p>👉 In repository’s root folder activate the environment:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda activate metron_dev_37
+</pre></div>
+</div>
+</div>
+</li>
+<li><p>Execute following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sphinx-apidoc -o docs_src/api -f -t docs_src/_template  --private --module-first -d <span class="m">1</span> --no-toc -e  .
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+
 
                 </article>
               
@@ -300,6 +406,24 @@ document.write(`
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../guides.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Guides</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../development_notes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Development Notes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -314,9 +438,10 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-documentation-building">Manual Documentation Building</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-api-docs-source-files-generation">Manual API Docs Source Files Generation</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

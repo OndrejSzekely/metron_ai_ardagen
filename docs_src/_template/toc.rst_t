@@ -1,4 +1,5 @@
-{{ header | heading }}
+API Docs
+========
 
 .. toctree::
    :maxdepth: {{ maxdepth }}

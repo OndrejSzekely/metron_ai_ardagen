@@ -98,5 +98,5 @@
    ::::
 2. Execute following command:
     ```shell
-    sphinx-apidoc -o docs_src/api -f -t docs_src/_template  --private --module-first .
+    sphinx-apidoc -o docs_src/api -f -t docs_src/_template  --private --module-first -d 1 --no-toc -e  .
     ```

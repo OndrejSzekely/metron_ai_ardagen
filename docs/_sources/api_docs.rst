@@ -1,7 +1,15 @@
 API Docs
 ========
 
+Subpackages
+-----------
 .. autosummary::
-   :toctree: api
+   miscellaneous
+   synthesizers
+   tools
+   
 
-   modules
+Submodules
+----------
+.. autosummary::
+   metron_ai_ardagen_run

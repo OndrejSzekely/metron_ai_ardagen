@@ -70,6 +70,13 @@ html_static_path = ["_static"]
 
 # -- autodoc configuration ---------------------------------------------------
 autodoc_mock_imports = ["omni", "typeguard", "numpy", "hydra", "omegaconf"]
+autodoc_default_options = {
+    "members": True,
+    "undoc-members": True,
+    "show-inheritance": True,
+    "special-members": True,
+    "exclude-members": "__weakref__ , __module__ , __dict__",
+}
 
 # -- MyST configuration ------------------------------------------------------
 myst_enable_extensions = ["dollarmath", "colon_fence"]
