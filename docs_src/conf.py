@@ -37,12 +37,13 @@ release = "0.1.0"
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
-    "sphinx.ext.napoleon",
-    "myst_parser",
-    "sphinxemoji.sphinxemoji",
-    "sphinx.ext.githubpages",
+    "sphinx.ext.napoleon",  # Using MyST UI to support all MyST features.
+    "myst_parser",  # For parsing MyST markdown files.
+    "sphinxemoji.sphinxemoji",  # Sphinx extension to render emojis.
+    "sphinx.ext.githubpages",  # For proper rendering of the docs on GitHub pages.
     "sphinx_design",
     "sphinx.ext.autosummary",
+    "sphinx_togglebutton",  # For collapsible code blocks.
 ]
 
 # Add any paths that contain templates here, relative to this directory.
