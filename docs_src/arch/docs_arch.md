@@ -29,3 +29,23 @@ formatting using *MyST Parser* is supported for `.md` files. The `/docs_src` fol
 
 Documentation is **generated automatically** with every commit using *Git Hooks* given by *pre-commit* tool. Other option
 is to generate docs **manually**, see the [documentation generation guide](../guides/docs_generation.md).
+
+## Used Sphinx Extensions
+The list of all used Sphinx extensions could be found in `docs_src/conf.py` in `<extensions>` list with a short description.
+
+## Automatic API Docs Generation
+
+Metron AI ArDaGen code documenation is generated and maintained automatically using `sphinx-apidocs` with custom
+templates. The templates define the structured of generated `.rst` files. They are located in `/docs_src/_template` and
+they are based on [*Jinja templating engine*](https://jinja.palletsprojects.com/en/3.1.x/templates/).
+
+## Emoticons in Docs
+
+It is allowed to use emoticons in docs via *sphinxemoji* *Sphinx* extension. It can be used in `.md` and `.rst` files. Use the following syntax `|:emoticon_name:|` in `.rst` files.
+
+It is required to wrap the syntax in a special admonition for `.md` files:
+```markdown
+:::{eval-rst}
+|:emoticon_name:|
+:::
+```
