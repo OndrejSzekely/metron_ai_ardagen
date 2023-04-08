@@ -10,6 +10,7 @@ Metron AI - ArDaGen Docs
    :maxdepth: 2
    :caption: Contents:
 
+   introduction
    project_installation
    architecture
    guides
