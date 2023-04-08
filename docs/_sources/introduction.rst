@@ -58,5 +58,8 @@ randomization. Together with powerful *Hydra* configuration frameworks creates a
 configurable solution. The software architecture was designed so user can add new Python modules
 (called as *Synthesizers*) to add, control and randomize specific scene parts.
 
+See the following example. On the left hand side you can find a sample scenario configuration and on the right hand side
+you can find an output data (semseg annotations only).
+
 .. image:: imgs/ardagen_flow_illustration.jpg
   :width: 100%

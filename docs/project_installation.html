@@ -57,7 +57,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Architecture" href="architecture.html" />
-    <link rel="prev" title="Metron AI - ArDaGen Docs" href="index.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -136,6 +136,7 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Project Installation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="arch/high_level_arch.html">High Level Architecture</a></li>
@@ -323,6 +324,10 @@ installation steps</em>, which is also the recommended option.</p>
 <h2>End User Installation<a class="headerlink" href="#end-user-installation" title="Permalink to this heading">#</a></h2>
 <section id="docker-compose">
 <h3>Docker Compose<a class="headerlink" href="#docker-compose" title="Permalink to this heading">#</a></h3>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p><em>Docker Compose</em> guide is not complete!</p>
+</div>
 <div class="warning admonition">
 <p class="admonition-title">Attention</p>
 <p>❗ NVIDIA GPU is required. ❗</p>
@@ -333,13 +338,12 @@ installation steps</em>, which is also the recommended option.</p>
 <li><p>Install Docker Compose (<a class="reference external" href="https://docs.docker.com/compose/install/">how to install</a>).</p></li>
 <li><p>Pull <a class="reference external" href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/isaac-sim">NVIDIA Omniverse Isaac Sim Docker image</a>.</p></li>
 </ol>
-<p>TODO</p>
 </section>
 </section>
 <section id="development-installation">
 <h2>Development Installation<a class="headerlink" href="#development-installation" title="Permalink to this heading">#</a></h2>
 <p>Follow the instruction steps.
-<strong>Linux (Ubuntu 21.04) installation was tested only. The installation might not work on Windows.</strong></p>
+<strong>Linux (Ubuntu 22.04) installation was tested only. The installation might not work on Windows.</strong></p>
 <div class="warning admonition">
 <p class="admonition-title">Attention</p>
 <p>❗ NVIDIA GPU is required. ❗</p>
@@ -350,15 +354,18 @@ installation steps</em>, which is also the recommended option.</p>
 <a class="reference external" href="https://docs.omniverse.nvidia.com/app_isaacsim/app_isaacsim/install_basic.html">See the link.</a></p></li>
 <li><p>Install <a class="reference external" href="https://code.visualstudio.com/">Microsoft Visual Studio Code</a>.
 <strong>Other IDEs are not supported out of the box, nor tested.</strong></p></li>
-<li><p>Download the repository using
-<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recurse-submodules</span> <span class="pre">https://github.com/OndrejSzekely/metron_ai_ardagen.git</span></code>.</p></li>
+<li><p>Download the repository using</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/OndrejSzekely/metron_ai_ardagen.git
+</pre></div>
+</div>
+</li>
 <li><p>Move ArDaGen repository into Isaac Sim’s root folder.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># a sample command, your paths will be different</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># a sample command, your paths will be different and also Isaac Sim version might not match</span>
 mv  /ssd_crucial/projects/metron_ai_ardagen /ssd_crucial/omniverse/isaac_sim-2022.1.0/
 </pre></div>
 </div>
 </li>
-<li><p>Download <a class="reference external" href="https://shapenet.org/">Shapenet’s</a> ShapeNetCore v2 dataset.
+<li><p><em>(optional)</em> Download <a class="reference external" href="https://shapenet.org/">Shapenet’s</a> ShapeNetCore v2 dataset.
 You have to register on the page to be allowed to download the dataset. Place the
 downloaded dataset into any arbitraty location, but a fast storage is recommended.</p></li>
 <li><p>To start Visual Studio project, go into Isaac Sim’s root folder and run <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">.</span></code>. It will open a setup Visual
@@ -379,6 +386,16 @@ is irrelevant for the development.</p>
 </li>
 <li><p>Install missing Python requirements. Go into Isaac Sim’s root folder and run
 <code class="docutils literal notranslate"><span class="pre">./python.sh</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">metron_ai_ardagen/requirements.txt</span></code>.</p></li>
+<li><p>Download <em>Metron AI ArDaGen Omniverse Extension</em> which is an <em>Omniverse</em> Extension</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recurse</span><span class="o">-</span><span class="n">submodules</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">OndrejSzekely</span><span class="o">/</span><span class="n">metron_ai_ardagen_omni_ext</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run <em>Isaac Sim</em> and open Extension window (<em>window</em> ⟶ <em>Extensions</em>). Click on the <em>gear icon</em>
+and in <em>Extension Seatch Paths</em> add the path to <code class="docutils literal notranslate"><span class="pre">exts</span></code> folder in the cloned
+<em>Metron AI ArDaGen Omniverse Extension</em> repository.</p>
+<p><img alt="Installation of Metron AI ArDaGen OV Extension" src="_images/metron_ai_ardagen_extension_installation.jpg" /></p>
+</li>
 </ol>
 </section>
 <section id="bug-fixes">
@@ -411,12 +428,12 @@ is irrelevant for the development.</p>
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="introduction.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Metron AI - ArDaGen Docs</p>
+        <p class="prev-next-title">Introduction</p>
       </div>
     </a>
     <a class="right-next"
