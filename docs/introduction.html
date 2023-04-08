@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Architecture &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
+    <title>Introduction &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
   
   
   
@@ -53,11 +53,11 @@
     <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="_static/design-tabs.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'architecture';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'introduction';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="High Level Architecture" href="arch/high_level_arch.html" />
-    <link rel="prev" title="Project Installation" href="project_installation.html" />
+    <link rel="next" title="Project Installation" href="project_installation.html" />
+    <link rel="prev" title="Metron AI - ArDaGen Docs" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -136,9 +136,9 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="project_installation.html">Project Installation</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Architecture</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="arch/high_level_arch.html">High Level Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arch/docs_arch.html">Documentation Architecture</a></li>
 </ul>
@@ -203,7 +203,7 @@
       
       
       
-      <li><a href="_sources/architecture.rst" target="_blank"
+      <li><a href="_sources/introduction.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -272,7 +272,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -283,11 +285,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Architecture</h1>
+    <h1>Introduction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metron-ai-ardagen-overview">Metron AI ArDaGen Overview</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -297,24 +308,68 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="architecture">
-<h1>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="arch/high_level_arch.html">High Level Architecture</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="arch/high_level_arch.html#architectural-decisions">Architectural Decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="arch/high_level_arch.html#architectural-description">Architectural Description</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="arch/docs_arch.html">Documentation Architecture</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="arch/docs_arch.html#used-sphinx-extensions">Used Sphinx Extensions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="arch/docs_arch.html#automatic-api-docs-source-files-generation">Automatic API Docs Source Files Generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="arch/docs_arch.html#emoticons-in-docs">Emoticons in Docs</a></li>
-</ul>
-</li>
-</ul>
-</div>
+  <section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<p><em>Metron AI ArDaGen</em> is a member project of the <em>Metron’s</em> family. This project tackles synthetic data generation using
+<em>NVIDIA Omniverse</em>. See a digram with the Metron family members.</p>
+<img alt="_images/metron_family_overview.png" src="_images/metron_family_overview.png" />
+<p><em>ArDaGen</em> generates synthetic data which is stored, defined and versioned in a form of datasets in <em>Catalogue</em>.
+<em>DeepForge</em> uses the datasets for deep learning models training. Trained models are stored back in <em>Catalogue</em>.
+Models, algorithms and artifacts from <em>Catalogue</em> are deployed into <em>Metron RTE</em>.</p>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
+<p><em>Omniverse</em> provides <em>Replicator</em> extension, which is performing stage composition and random stage customization.
+It is designed for synthetic data generation. The extension alone is not enough for a comfort use. Therefore, NVIDIA
+created <em>OV Replicator Composer</em> which allows to configure the setup via config files and run the data generation from
+the command line.</p>
+<p>Even though it offers rich posibilities, it has gaps which <em>ArDaGen</em> fills. Pros and cons of both tools are analyzed
+in the table.</p>
+<table class="table" id="id1">
+<caption><span class="caption-text">Comparison with <em>NVIDIA Omniverse Replicator Composer</em></span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Comparison Criteria</p></th>
+<th class="head"><p><em>NVIDIA OV Replicator Composer</em></p></th>
+<th class="head"><p><em>Metron AI ArDaGen</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p><em>OV Replicator</em> usage</p></th>
+<td><p>✔️ built on <em>OV Replicator</em></p></td>
+<td><p>✔️ built on <em>OV Replicator</em></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>configuration</p></th>
+<td><p>❌ using plain YAML and TXT files</p></td>
+<td><p>✔️ using SOTA <em>Meta’s Hydra</em> configuration framework</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>configuration options</p></th>
+<td><p>✔️ vast configuration options</p></td>
+<td><p>❌ limited configuration options (first set of features integrated)</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>extendability</p></th>
+<td><p>❌ not designed to be extended by users</p></td>
+<td><p>✔️ designed to be easily extended by users</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>use case specific customization</p></th>
+<td><p>❌ not designed to be customized for customer’s specific use case</p></td>
+<td><p>✔️ designed to be customized for specific needs and complex scenarios</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>dev team size</p></th>
+<td><p>✔️ team-like size</p></td>
+<td><p>❌ single person</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="metron-ai-ardagen-overview">
+<h2>Metron AI ArDaGen Overview<a class="headerlink" href="#metron-ai-ardagen-overview" title="Permalink to this heading">#</a></h2>
+<p><em>Metron AI ArDaGen</em> was designed to create a comprehensive way to setup complex scenarios for synthetic data generation,
+which can be automatically executed in headless mode. Extendability and modularity was a key aspect to achieve the
+goal. It uses SOTA metaverse from NVIDIA called <em>Omniverse</em> with its powerful <em>Replicator</em> extension for scene
+randomization. Together with powerful <em>Hydra</em> configuration frameworks creates a foundation for a comprehensive
+configurable solution. The software architecture was designed so user can add new Python modules
+(called as <em>Synthesizers</em>) to add, control and randomize specific scene parts.</p>
+<a class="reference internal image-reference" href="_images/ardagen_flow_illustration.jpg"><img alt="_images/ardagen_flow_illustration.jpg" src="_images/ardagen_flow_illustration.jpg" style="width: 100%;" /></a>
+</section>
 </section>
 
 
@@ -327,20 +382,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="project_installation.html"
+       href="index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Project Installation</p>
+        <p class="prev-next-title">Metron AI - ArDaGen Docs</p>
       </div>
     </a>
     <a class="right-next"
-       href="arch/high_level_arch.html"
+       href="project_installation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">High Level Architecture</p>
+        <p class="prev-next-title">Project Installation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -350,6 +405,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metron-ai-ardagen-overview">Metron AI ArDaGen Overview</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
