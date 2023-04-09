@@ -53,6 +53,8 @@
     <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="_static/design-tabs.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'project_installation';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -137,12 +139,15 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Project Installation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="arch/high_level_arch.html">High Level Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arch/docs_arch.html">Documentation Architecture</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="synthesizers.html">Synthesizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="guides/docs_generation.html">Documentation Generation Guide</a></li>
 </ul>
@@ -330,7 +335,6 @@ installation steps</em>, which is also the recommended option.</p>
 </div>
 <div class="warning admonition">
 <p class="admonition-title">Attention</p>
-<p>❗ NVIDIA GPU is required. ❗</p>
 </div>
 <p>To be able to run ArDaGen using Docker Compose, perform following steps:</p>
 <ol class="arabic simple">
@@ -346,7 +350,6 @@ installation steps</em>, which is also the recommended option.</p>
 <strong>Linux (Ubuntu 22.04) installation was tested only. The installation might not work on Windows.</strong></p>
 <div class="warning admonition">
 <p class="admonition-title">Attention</p>
-<p>❗ NVIDIA GPU is required. ❗</p>
 </div>
 <ol class="arabic">
 <li><p>Download and install NVIDIA Omniverse Launcher from <a class="reference external" href="https://developer.nvidia.com/nvidia-omniverse-platform">here</a>.</p></li>
@@ -374,7 +377,6 @@ Studio project with everything predefined.</p>
 is irrelevant for the development.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>📋 ✋ Be aware that debuging is performed using the <em>Python: Current File</em> option in <em>Run &amp; Debug</em>.</p>
 </div>
 </li>
 <li><p>Append</p>

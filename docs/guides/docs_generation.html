@@ -53,6 +53,8 @@
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../_static/design-tabs.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'guides/docs_generation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -136,12 +138,16 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../arch/high_level_arch.html">High Level Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../arch/docs_arch.html">Documentation Architecture</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../synthesizers.html">Synthesizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration.html">Configuration</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../guides.html">Guides</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Documentation Generation Guide</a></li>
 </ul>
@@ -315,9 +321,6 @@ document.write(`
 <li><p>It is recommended to use virtual environment, to encapsulate the dev tools (Python frameworks and other software components). Create Python <strong>3.7</strong> virtual environment using Python dependency management tool you are using (e.g. Conda, Pipenv, etc…).</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Reference Installation Steps</p>
-<p>👉 It is recommended to use Anaconda channel <a class="reference external" href="https://www.anaconda.com/products/individual">(how to get Anaconda</a>),
-which also provides installation management of non-Python software components, and Python. Run following
-command to create a new virtual environment:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda create -n metron_dev_37 <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7
 </pre></div>
 </div>
@@ -339,9 +342,8 @@ sphinx-copybutton (=0.5.1)
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Reference Installation Steps</p>
-<p>👉 In the activated environment run following commands:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda install -y -c anaconda <span class="nv">sphinx</span><span class="o">=</span><span class="m">5</span>.0.2
-conda install -y -c conda-forge myst-parser<span class="o">=</span><span class="m">1</span>.0.0 sphinx-copybutton<span class="o">=</span><span class="m">0</span>.5.1
+conda install -y -c conda-forge myst-parser<span class="o">=</span><span class="m">1</span>.0.0 sphinx-copybutton<span class="o">=</span><span class="m">0</span>.5.1 sphinxcontrib-mermaid<span class="o">=</span><span class="m">0</span>.8.1
 pip install -r requirements_docs.txt
 </pre></div>
 </div>
@@ -353,7 +355,6 @@ pip install -r requirements_docs.txt
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Reference Installation Steps</p>
-<p>👉 In the activated environment run following command:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sphinx-build -b html docs_src docs
 </pre></div>
 </div>
@@ -364,10 +365,8 @@ pip install -r requirements_docs.txt
 </pre></div>
 </div>
 <p>Then open your browser <code class="docutils literal notranslate"><span class="pre">http://localhost:4444</span></code> and see the documentation.</p>
-<p>GOOD JOB! 🙌 🚀 💫</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Reference Installation Steps</p>
-<p>👉 In repository’s root folder and activated environment run a HTTP server with the documentation:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python -m http.server --directory docs <span class="m">4444</span>
 </pre></div>
 </div>
@@ -382,7 +381,6 @@ pip install -r requirements_docs.txt
 <li><p>Go into the project root folder.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Reference Installation Steps</p>
-<p>👉 In repository’s root folder activate the environment:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda activate metron_dev_37
 </pre></div>
 </div>
