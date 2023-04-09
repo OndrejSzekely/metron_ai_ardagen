@@ -70,3 +70,9 @@ Project Timeline
 
 .. mermaid::
   :align: center
+
+  %%{init: { 'logLevel': 'debug', 'theme': 'base', 'timeline': {'disableMulticolor': true}}}%%
+  timeline
+    2021 : project start
+    2022 : architecture definition : ArDaGen OV Extension creation
+    2023 : 0.1.0 release (April)
