@@ -64,15 +64,15 @@ you can find an output data (semseg annotations only).
 .. image:: imgs/ardagen_flow_illustration.jpg
   :width: 100%
 
-Timeline
-========
+
+Project Timeline
+****************
 
 .. mermaid::
+  :align: center
 
+  %%{init: { 'logLevel': 'debug', 'theme': 'base', 'timeline': {'disableMulticolor': true}}}%%
   timeline
-      title History of Social Media Platform
-      2002 : LinkedIn
-      2004 : Facebook
-          : Google
-      2005 : Youtube
-      2006 : Twitter
+    2021 : project start
+    2022 : architecture definition : ArDaGen OV Extension creation
+    2023 : 0.1.0 release (April)
