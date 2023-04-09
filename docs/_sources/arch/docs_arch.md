@@ -6,6 +6,7 @@ The documentation is based on following frameworks:
 - [*Sphinx*](https://www.sphinx-doc.org/en/master/index.html): Documentation generator tool.
 - [*Markedly Structured Text (MyST)*](https://myst-parser.readthedocs.io/en/latest/#): A *Sphinx* extension to parse
   a rich and extensible flavour of *Markdown*.
+- [*Mermaid*](https://mermaid.js.org/): *reST* extension framework for text based diagrams creation and plotting.
 
 ![Documentation Architecture](../imgs/documentation_architecture.png)
 
