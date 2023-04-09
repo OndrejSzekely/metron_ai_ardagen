@@ -53,6 +53,8 @@
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../_static/design-tabs.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'arch/high_level_arch';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -136,12 +138,16 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">High Level Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs_arch.html">Documentation Architecture</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../synthesizers.html">Synthesizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration.html">Configuration</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../guides/docs_generation.html">Documentation Generation Guide</a></li>
 </ul>
@@ -346,7 +352,7 @@ camera setup or 360 degree view. It defines also camera type, e.g. pinhole or fi
 <p>It represents a 3D scene layer handler which contributes to the complete scene. For instance, it might represent a
 ground plane handler, lighting handler, foreground 3D objects handler for annotations generation, etc. It provides
 also a randomization of the contributed layer assets, so each generated artificial data record has a different
-placement of assets, materials, parameters, etc. See <a class="reference internal" href="../scenarios.html"><span class="doc std std-doc">existing synthesizer workers overview</span></a>
+placement of assets, materials, parameters, etc. See <a class="reference internal" href="../scenarios.html"><span class="std std-doc">existing synthesizer workers overview</span></a>
 for more details.</p>
 </section>
 <section id="master-synthesizer">
@@ -357,7 +363,7 @@ for more details.</p>
 <h3>Scenario<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h3>
 <p>Scenario represents a scenario, which means a scene with all assets, lighting, physics, etc. and camera rigs. It means
 that one scenario has one Master Synthesizer with various Synthesizer Workers and one or more Camera Rigs to record
-data with various optics and setup. See <a class="reference internal" href="../scenarios.html"><span class="doc std std-doc">existing scenarios overview</span></a> for more details.</p>
+data with various optics and setup. See <a class="reference internal" href="../scenarios.html"><span class="std std-doc">existing scenarios overview</span></a> for more details.</p>
 </section>
 <section id="scenarios-manager">
 <h3>Scenarios Manager<a class="headerlink" href="#scenarios-manager" title="Permalink to this heading">#</a></h3>
