@@ -55,6 +55,7 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx_togglebutton",  # For collapsible code blocks.
     "sphinx_copybutton",  # For copy button on code blocks.
+    "sphinxcontrib.mermaid",
 ]
 
 # Add any paths that contain templates here, relative to this directory.

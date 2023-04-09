@@ -71,7 +71,7 @@ Online documentation of the latest commit on the *main* branch can be found [her
     In the activated environment run following commands:
     ```shell
     conda install -y -c anaconda sphinx=5.0.2
-    conda install -y -c conda-forge myst-parser=1.0.0 sphinx-copybutton=0.5.1
+    conda install -y -c conda-forge myst-parser=1.0.0 sphinx-copybutton=0.5.1 sphinxcontrib-mermaid=0.8.1
     pip install -r requirements_docs.txt
     ```
 
