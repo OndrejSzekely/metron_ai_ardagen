@@ -18,3 +18,4 @@ Metron AI - ArDaGen Docs
    guides
    development_notes
    api_docs
+   release_page
