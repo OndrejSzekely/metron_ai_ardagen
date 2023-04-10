@@ -40,7 +40,7 @@
     :::
     ```shell
     conda install -y -c anaconda sphinx=5.0.2
-    conda install -y -c conda-forge myst-parser=1.0.0 sphinx-copybutton=0.5.1 sphinxcontrib-mermaid=0.8.1
+    conda install -y -c conda-forge myst-parser=1.0.0 sphinx-copybutton=0.5.1 sphinxcontrib-mermaid=0.8.1 sphinx-subfigure=0.2.4
     pip install -r requirements_docs.txt
     ```
     ::::
