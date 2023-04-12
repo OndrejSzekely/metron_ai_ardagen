@@ -56,7 +56,7 @@ extensions = [
     "sphinx_togglebutton",  # For collapsible code blocks.
     "sphinx_copybutton",  # For copy button on code blocks.
     "sphinxcontrib.mermaid",
-    "sphinx_subfigure",
+    "sphinx_subfigure",  # https://sphinx-subfigure.readthedocs.io/en/latest/
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -92,3 +92,6 @@ autodoc_default_options = {
 
 # -- MyST configuration ------------------------------------------------------
 myst_enable_extensions = ["dollarmath", "colon_fence"]
+
+# -- sphinx-subfigure configuration ------------------------------------------------------
+numfig = False
