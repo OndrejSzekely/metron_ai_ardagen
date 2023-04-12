@@ -53,3 +53,5 @@ on the ground during the simulation.
 
     Ground synthesis in generated frames (you can notice added distant light reflection)
 ```
+
+## Light Synthesizer

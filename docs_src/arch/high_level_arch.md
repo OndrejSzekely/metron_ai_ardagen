@@ -30,7 +30,7 @@ camera setup or 360 degree view. It defines also camera type, e.g. pinhole or fi
 It represents a 3D scene layer handler which contributes to the complete scene. For instance, it might represent a
 ground plane handler, lighting handler, foreground 3D objects handler for annotations generation, etc. It provides
 also a randomization of the contributed layer assets, so each generated artificial data record has a different
-placement of assets, materials, parameters, etc. See [existing synthesizer workers overview](../scenarios.md)
+placement of assets, materials, parameters, etc. See [existing synthesizer workers overview](../synthesizers.md)
 for more details.
 
 ### Master Synthesizer

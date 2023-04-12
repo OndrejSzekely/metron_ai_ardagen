@@ -139,7 +139,6 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="project_installation.html">Project Installation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="arch/high_level_arch.html">High Level Architecture</a></li>
@@ -154,6 +153,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="development_notes.html">Development Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_docs.html">API Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_page.html">Release Page</a></li>
 </ul>
 
     </div>
@@ -277,7 +277,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -293,6 +295,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dummy-synthesizer">Dummy Synthesizer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scene-synthesizer">Scene Synthesizer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-synthesizer">Ground Synthesizer</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -302,8 +314,70 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="synthesizers">
+  
+<style>
+  .ss-layout-default-AB { grid-template-areas: 'A B'; }
+  .ss-layout-default-A { grid-template-areas: 'A'; }
+</style>
+<section class="tex2jax_ignore mathjax_ignore" id="synthesizers">
 <h1>Synthesizers<a class="headerlink" href="#synthesizers" title="Permalink to this heading">#</a></h1>
+<p>Synthesizers, more specifically Synthesizer Workers, are responsible for a stage composition and randomization.
+You can find a list of existing Synthesizers in here.</p>
+<section id="dummy-synthesizer">
+<h2>Dummy Synthesizer<a class="headerlink" href="#dummy-synthesizer" title="Permalink to this heading">#</a></h2>
+<p>It serves as a toy Synthesizer for the integration test of the chain with Demo Scenario. Beyond Demo Scenario there is
+no other practical use in other scenarios. It controls a visibility of <em>SM_CardBoxA_3</em> box in the stage. With every
+frame it randomly shows/hides the box.</p>
+<figure class="sphinx-subfigure align-default" id="id1">
+<div class="sphinx-subfigure-grid ss-layout-default-AB" style="display: grid; gap: 20px; grid-gap: 20px;">
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: A;">
+<img alt="Visible box" src="_images/dummy_scenario_w.jpg" />
+<span class="caption">Visible box</span>
+</div>
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: B;">
+<img alt="Hidden box" src="_images/dummy_scenario_w_o.jpg" />
+<span class="caption">Hidden box</span>
+</div>
+</div>
+<figcaption>
+<p><span class="caption-text">Demo Scenario output based on Dummy Synthesizer</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="scene-synthesizer">
+<h2>Scene Synthesizer<a class="headerlink" href="#scene-synthesizer" title="Permalink to this heading">#</a></h2>
+<p>Loads a scene into the stage. Scene is assumed to be stored in <em>OV Nucleus</em> in a USD file. It doesn’t perform any
+randomizations.</p>
+<figure class="sphinx-subfigure align-default" id="id2">
+<div class="sphinx-subfigure-grid ss-layout-default-A" style="display: grid;">
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: A;">
+<img alt="_images/dummy_scenario_w.jpg" src="_images/dummy_scenario_w.jpg" />
+</div>
+</div>
+<figcaption>
+<p><span class="caption-text">Loaded <em>full_warehouse</em> scene into stage</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="ground-synthesizer">
+<h2>Ground Synthesizer<a class="headerlink" href="#ground-synthesizer" title="Permalink to this heading">#</a></h2>
+<p>Creates a plain ground in the stage at given position with given dimensions and semantics. User made list of material
+options are assigned to the ground instance. Materials are randomly chosen from the list by the Synthesizer and applied
+on the ground during the simulation.</p>
+<figure class="sphinx-subfigure align-default" id="id3">
+<div class="sphinx-subfigure-grid ss-layout-default-AB" style="display: grid; gap: 20px; grid-gap: 20px;">
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: A;">
+<img alt="_images/ground_synthesizer_1.jpg" src="_images/ground_synthesizer_1.jpg" />
+</div>
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: B;">
+<img alt="_images/ground_synthesizer_2.jpg" src="_images/ground_synthesizer_2.jpg" />
+</div>
+</div>
+<figcaption>
+<p><span class="caption-text">Ground synthesis in generated frames (you can notice added distant light reflection)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 
 
@@ -339,6 +413,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dummy-synthesizer">Dummy Synthesizer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scene-synthesizer">Scene Synthesizer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-synthesizer">Ground Synthesizer</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
