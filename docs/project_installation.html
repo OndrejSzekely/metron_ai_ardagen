@@ -335,6 +335,7 @@ installation steps</em>, which is also the recommended option.</p>
 </div>
 <div class="warning admonition">
 <p class="admonition-title">Attention</p>
+<p>❗ NVIDIA GPU is required. ❗</p>
 </div>
 <p>To be able to run ArDaGen using Docker Compose, perform following steps:</p>
 <ol class="arabic simple">
@@ -350,6 +351,7 @@ installation steps</em>, which is also the recommended option.</p>
 <strong>Linux (Ubuntu 22.04) installation was tested only. The installation might not work on Windows.</strong></p>
 <div class="warning admonition">
 <p class="admonition-title">Attention</p>
+<p>❗ NVIDIA GPU is required. ❗</p>
 </div>
 <ol class="arabic">
 <li><p>Download and install NVIDIA Omniverse Launcher from <a class="reference external" href="https://developer.nvidia.com/nvidia-omniverse-platform">here</a>.</p></li>
@@ -368,6 +370,26 @@ mv  /ssd_crucial/projects/metron_ai_ardagen /ssd_crucial/omniverse/isaac_sim-202
 </pre></div>
 </div>
 </li>
+<li><p>Install <em>pre-commit</em> in your environment and then install the hook by running <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">install</span></code>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Reference Installation Steps</p>
+<p>Perform steps <strong>1</strong> and <strong>2</strong> in <a class="reference internal" href="guides/docs_generation.html#manual-documentation-building"><span class="std std-ref"><em>Manual Documentation Building</em> section</span></a>.</p>
+<p>In the activated <code class="docutils literal notranslate"><span class="pre">dev_37</span></code> environment run following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge pre_commit
+</pre></div>
+</div>
+<p>and install <em>pre-commit</em> in the repo root folder:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pre-commit install
+</pre></div>
+</div>
+<p>Detach the environment and add following lines</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> &lt;ANACONDA_ROOT_PATH&gt;/etc/profile.d/conda.sh
+conda activate dev_37
+</pre></div>
+</div>
+<p>right after <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">start</span> <span class="pre">templated</span></code> comment line in the file <code class="docutils literal notranslate"><span class="pre">.git/hooks/pre-commit</span></code>. Replace <code class="docutils literal notranslate"><span class="pre">&lt;ANACONDA_ROOT_PATH&gt;</span></code> with your <em>Anaconda</em> install dir.</p>
+</div>
+</li>
 <li><p><em>(optional)</em> Download <a class="reference external" href="https://shapenet.org/">Shapenet’s</a> ShapeNetCore v2 dataset.
 You have to register on the page to be allowed to download the dataset. Place the
 downloaded dataset into any arbitraty location, but a fast storage is recommended.</p></li>
@@ -377,6 +399,7 @@ Studio project with everything predefined.</p>
 is irrelevant for the development.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
+<p>📋 ✋ Be aware that debuging is performed using the <em>Python: Current File</em> option in <em>Run &amp; Debug</em>.</p>
 </div>
 </li>
 <li><p>Append</p>
