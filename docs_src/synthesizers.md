@@ -62,9 +62,13 @@ Creates a light at given position with given rotation and scale. The supported l
     :subcaptions: below
     :gap: 20px
 
+    .. image:: imgs/light_synthesizer_1.jpg
+    
+    .. image:: imgs/light_synthesizer_2.jpg
 
+    Different light types in generated frames - *cylinder* vs *disk* light
 ```
-adadsfsdadsfasdfadfdfas
+
 ## Single Item Synthesizer
 
 ## Item Scatter Synthesizer
