@@ -64,7 +64,7 @@ Creates a light at given position with given rotation and scale. The supported l
 
 
 ```
-
+adfasfadsfaggigiuygu
 ## Single Item Synthesizer
 
 ## Item Scatter Synthesizer
