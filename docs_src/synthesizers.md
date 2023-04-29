@@ -39,8 +39,7 @@ randomizations.
 ## Ground Synthesizer
 
 Creates a plain ground in the stage at given position with given dimensions and semantics. User made list of material
-options are assigned to the ground instance. Materials are randomly chosen from the list by the Synthesizer and applied
-on the ground during the simulation.
+options are assigned to the ground instance. Materials are randomly chosen from the list by the Synthesizer and applied on the ground during the simulation.
 
 ```{eval-rst}
 .. subfigure:: AB
@@ -55,3 +54,9 @@ on the ground during the simulation.
 ```
 
 ## Light Synthesizer
+
+Creates a light at given position with given rotation and scale. The supported light types are *cylinder*, *disk*, *distant*, *dome*, *rectangle* and *sphere*.
+
+## Single Item Synthesizer
+
+## Item Scatter Synthesizer
