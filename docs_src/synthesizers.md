@@ -57,6 +57,18 @@ options are assigned to the ground instance. Materials are randomly chosen from 
 
 Creates a light at given position with given rotation and scale. The supported light types are *cylinder*, *disk*, *distant*, *dome*, *rectangle* and *sphere*.
 
+```{eval-rst}
+.. subfigure:: AB
+    :subcaptions: below
+    :gap: 20px
+
+    .. image:: imgs/ground_synthesizer_1.jpg
+    
+    .. image:: imgs/ground_synthesizer_2.jpg
+
+    Ground synthesis in generated frames (you can notice added distant light reflection)
+```
+
 ## Single Item Synthesizer
 
 ## Item Scatter Synthesizer
