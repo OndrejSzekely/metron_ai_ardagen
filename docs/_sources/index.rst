@@ -14,6 +14,7 @@ Metron AI - ArDaGen Docs
    project_installation
    architecture
    synthesizers
+   demo_scenarios
    configuration
    guides
    development_notes
