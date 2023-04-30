@@ -20,7 +20,7 @@ frame it randomly shows/hides the box.
     .. image:: imgs/dummy_scenario_w_o.jpg
         :alt: Hidden box
 
-    Demo Scenario output based on Dummy Synthesizer
+    Demo Scenario output based on Dummy Synthesizer.
 ```
 
 ## Scene Synthesizer
@@ -33,7 +33,7 @@ randomizations.
 
     .. image:: imgs/dummy_scenario_w.jpg
 
-    Loaded *full_warehouse* scene into stage
+    Loaded *full_warehouse* scene into stage.
 ```
 
 ## Ground Synthesizer
@@ -46,11 +46,11 @@ options are assigned to the ground instance. Materials are randomly chosen from 
     :subcaptions: below
     :gap: 20px
 
-    .. image:: imgs/ground_synthesizer_1.jpg
+    .. image:: imgs/synthesizers/ground_synthesizer_1.jpg
     
-    .. image:: imgs/ground_synthesizer_2.jpg
+    .. image:: imgs/synthesizers/ground_synthesizer_2.jpg
 
-    Ground synthesis in generated frames (you can notice added distant light reflection)
+    Different textures for the generated ground.
 ```
 
 ## Light Synthesizer
@@ -62,13 +62,41 @@ Creates a light at given position with given rotation and scale. The supported l
     :subcaptions: below
     :gap: 20px
 
-    .. image:: imgs/light_synthesizer_1.jpg
+    .. image:: imgs/synthesizers/light_synthesizer_1.jpg
     
-    .. image:: imgs/light_synthesizer_2.jpg
+    .. image:: imgs/synthesizers/light_synthesizer_2.jpg
 
-    Different light types in generated frames - *cylinder* vs *disk* light
+    Different light types - *cylinder* vs *disk*.
 ```
 
 ## Single Item Synthesizer
 
+Adds a prim, given by an USD file, into the stage at given position and semantics.
+
+```{eval-rst}
+.. subfigure:: AB
+    :subcaptions: below
+    :gap: 20px
+
+    .. image:: imgs/synthesizers/single_item_synthesizer_1.jpg
+    
+    .. image:: imgs/synthesizers/single_item_synthesizer_2.jpg
+
+    Added box placed on different locations.
+```
+
 ## Item Scatter Synthesizer
+
+It selects randomly given number asset paths from given list of USD asset paths. These assets are scatered in the stage on given Synthesizer's prims randomly each frame and only given number of assets is randomly made visible. Given semantic class is assigned to all assets.
+
+```{eval-rst}
+.. subfigure:: AB
+    :subcaptions: below
+    :gap: 20px
+
+    .. image:: imgs/synthesizers/item_scatter_synthesizer_1.jpg
+    
+    .. image:: imgs/synthesizers/item_scatter_synthesizer_2.jpg
+
+    Randomly placed boxes on the ground each frame and random portion of placed boxes are made visible.
+``` 
