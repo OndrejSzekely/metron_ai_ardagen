@@ -6,5 +6,6 @@ Architecture
     :caption: Contents:
 
     arch/high_level_arch
-    arch/flow_chart
+    arch/flowchart_arch
+    arch/sequence_diag_arch
     arch/docs_arch
