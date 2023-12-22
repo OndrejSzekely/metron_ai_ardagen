@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>tools.replicator module &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
+    <title>Activity Diagram &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
   
   
   
@@ -55,7 +55,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/tools.replicator';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'arch/activity_diag';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -139,9 +139,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../arch/high_level_arch.html">High Level Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../arch/sequence_diag_arch.html">Sequence Diagram Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../arch/docs_arch.html">Documentation Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high_level_arch.html">High Level Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sequence_diag_arch.html">Sequence Diagram Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs_arch.html">Documentation Architecture</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../synthesizers.html">Synthesizers</a></li>
@@ -208,7 +208,7 @@
       
       
       
-      <li><a href="../_sources/api/tools.replicator.rst" target="_blank"
+      <li><a href="../_sources/arch/activity_diag.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -288,7 +288,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>tools.replicator module</h1>
+    <h1>Activity Diagram</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -302,10 +302,107 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="module-tools.replicator">
-<span id="tools-replicator-module"></span><h1>tools.replicator module<a class="headerlink" href="#module-tools.replicator" title="Permalink to this heading">#</a></h1>
-<p>Implements Omniverse Replicator handler class.</p>
-</section>
+  <section id="activity-diagram">
+<h1>Activity Diagram<a class="headerlink" href="#activity-diagram" title="Permalink to this heading">#</a></h1>
+<p>In <a class="reference external" href="high_level_arch.html">High Level Architecture</a> components high level overview was performed.
+This chapter depicts flow interactions inside ArDaGen using activity diagram.</p>
+<div align="center" class="mermaid align-center">
+            ---
+Flow Chart Architecture Diagram
+---
+%%{init: { &quot;theme&quot;: &quot;base&quot; } }%%
+flowchart TD
+    subgraph Metron Shared
+        hydra[&quot;Configs parsing through Hydra&quot;]
+    end
+    subgraph NVIDIA Omniverse
+        nucleus[(&quot;Nucleus&quot;)]
+        isaac_sim_start[[&quot;Start Isaac Sim&quot;]]
+        load_ardagen_ext[&quot;Load ArDaGen Extension&quot;]
+        start_replicator[[&quot;Start OV Replicator&quot;]]
+        all_frames_generated{&quot;All dataset &lt;br&gt; frames generated?&quot;}
+        render_new_frame[&quot;Render new frame&quot;]
+    end
+    start_generation([&quot;Run ArDaGen&quot;])
+    end_generation([&quot;Stop ArDaGen&quot;])
+    hydra_config[(&quot;Hydra scenarios configs&quot;)]
+    filesystem[(&quot;Filesystem&quot;)]
+    hydra_omegaconf[/&quot;Config as OmegaConf&quot;/]
+    has_scenario{&quot;Has scenario?&quot;}
+    prepare_scenario[&quot;Prepare Scenario&quot;]
+    has_synth_worker{&quot;Has Synthesizer Worker?&quot;}
+    prepare_synth_worker[&quot;Prepare Synthesizer Worker&quot;]
+    gather_synth_worker[&quot;Gather the worker into Master Synthesizer&quot;]
+    has_camera_setup{&quot;Has Camera Rig?&quot;}
+    prepare_camera_rig[&quot;Prepare Camera Rig&quot;]
+    attach_writer[&quot;Attach synthetic data Writer&quot;]
+    app_synth_workers[&quot;Apply all Synthesizer Workers &lt;br&gt; from the Master Synthesizer&quot;]
+    write_synthetic_data[&quot;Save generated synthetic data &lt;br&gt; on filesystem&quot;]
+    hydra_config --&gt; hydra
+    start_generation --&gt; hydra
+    hydra --&gt; hydra_omegaconf
+    hydra_omegaconf -.-&gt; isaac_sim_start
+    hydra --&gt; isaac_sim_start
+    isaac_sim_start --&gt; load_ardagen_ext
+    hydra_omegaconf -.-&gt; load_ardagen_ext
+    load_ardagen_ext --&gt; has_scenario
+    has_scenario -- No --&gt; end_generation
+    has_scenario -- Yes, get Scenario --&gt; prepare_scenario
+    hydra_omegaconf -.-&gt; prepare_scenario
+    prepare_scenario --&gt; has_synth_worker
+    has_synth_worker -- Yes, get Synthesizer Worker --&gt; prepare_synth_worker
+    hydra_omegaconf -.-&gt; prepare_synth_worker
+    nucleus -.-&gt; prepare_synth_worker
+    prepare_synth_worker --&gt; gather_synth_worker
+    gather_synth_worker --&gt; has_synth_worker
+    has_synth_worker -- No --&gt; has_camera_setup
+    has_camera_setup -- Yes, get Camera Rig --&gt; prepare_camera_rig
+    has_camera_setup -- No --&gt; has_scenario
+    hydra_omegaconf -.-&gt; prepare_camera_rig
+    prepare_camera_rig --&gt; attach_writer
+    hydra_omegaconf -.-&gt; attach_writer
+    attach_writer --&gt; start_replicator
+    start_replicator --&gt; all_frames_generated
+    all_frames_generated -- No --&gt; app_synth_workers
+    app_synth_workers --&gt; render_new_frame
+    render_new_frame --&gt; write_synthetic_data
+    write_synthetic_data --&gt; filesystem
+    write_synthetic_data --&gt; all_frames_generated
+    all_frames_generated -- Yes --&gt; has_camera_setup
+        </div>
+        <div align="center" class="mermaid align-center">
+            ---
+Legend_Part1
+---
+%%{init: { &quot;theme&quot;: &quot;base&quot; } }%%
+flowchart LR
+    subgraph Legend
+        db_legend[(&quot;Database&quot;)]
+        action_legend[&quot;Action performed by a function or method&quot;]
+        subrutine_legend[[&quot;Process/subprogram&quot;]]
+        start_end_legent([&quot;Program start/end&quot;])
+        subgraph Component/Module/Package
+            ...
+        end
+    end
+    style Legend fill:#65BCD8,stroke:#545A5E,stroke-width:2px,color:#fff
+        </div>
+        <div align="center" class="mermaid align-center">
+            ---
+Legend_Part2
+---
+%%{init: { &quot;theme&quot;: &quot;base&quot; } }%%
+flowchart LR
+    subgraph Legend
+        start_legend([&quot;Flow starting action&quot;])
+        io_legend[/&quot;Input / Output(JSON, data structure, etc...)&quot;/]
+        A-- interaction flow --&gt;B
+        C-. configs flow .-&gt;D
+        legend_decision{&quot;Decision&quot;}
+    end
+    style Legend fill:#65BCD8,stroke:#545A5E,stroke-width:2px,color:#fff
+        </div>
+        </section>
 
 
                 </article>

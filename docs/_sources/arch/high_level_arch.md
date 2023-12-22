@@ -7,7 +7,7 @@ a configuration of [Omniverse Isaac Sim Replicator](https://developer.nvidia.com
 configuration framework and reuses primitives from Metron Shared. Module and packages design adress easy and flexible
 configuration and follow high code standards.
 
-## Architectural Description
+## Architectural Description (Package Diagram)
 
 The architecture is based on *Linux OS*, specifically *Ubuntu* running on *NVIDIA GPU* powered machine.
 

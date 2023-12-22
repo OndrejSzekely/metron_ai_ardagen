@@ -58,7 +58,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'arch/high_level_arch';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Flow Chart Architecture Diagram" href="flow_chart_arch.html" />
+    <link rel="next" title="Sequence Diagram Architecture" href="sequence_diag_arch.html" />
     <link rel="prev" title="Architecture" href="../architecture.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -142,7 +142,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">High Level Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flow_chart_arch.html">Flow Chart Architecture Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sequence_diag_arch.html">Sequence Diagram Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs_arch.html">Documentation Architecture</a></li>
 </ul>
 </li>
@@ -303,7 +303,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architectural-decisions">Architectural Decisions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architectural-description">Architectural Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architectural-description-package-diagram">Architectural Description (Package Diagram)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaac-sim-app">Isaac Sim App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#camera-rig">Camera Rig</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthesizer-worker">Synthesizer Worker</a></li>
@@ -334,8 +334,8 @@ a configuration of <a class="reference external" href="https://developer.nvidia.
 configuration framework and reuses primitives from Metron Shared. Module and packages design adress easy and flexible
 configuration and follow high code standards.</p>
 </section>
-<section id="architectural-description">
-<h2>Architectural Description<a class="headerlink" href="#architectural-description" title="Permalink to this heading">#</a></h2>
+<section id="architectural-description-package-diagram">
+<h2>Architectural Description (Package Diagram)<a class="headerlink" href="#architectural-description-package-diagram" title="Permalink to this heading">#</a></h2>
 <p>The architecture is based on <em>Linux OS</em>, specifically <em>Ubuntu</em> running on <em>NVIDIA GPU</em> powered machine.</p>
 <p><img alt="High Level Architecture" src="../_images/high_level_architecture.png" /></p>
 <p>The solution is consisted only of one component which is consisted of eight modules.</p>
@@ -404,11 +404,11 @@ Scenarios Manager inside sice <em>Omniverse Isaac Sim Replicator</em>. Generated
       </div>
     </a>
     <a class="right-next"
-       href="flow_chart_arch.html"
+       href="sequence_diag_arch.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Flow Chart Architecture Diagram</p>
+        <p class="prev-next-title">Sequence Diagram Architecture</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -428,7 +428,7 @@ Scenarios Manager inside sice <em>Omniverse Isaac Sim Replicator</em>. Generated
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architectural-decisions">Architectural Decisions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architectural-description">Architectural Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architectural-description-package-diagram">Architectural Description (Package Diagram)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaac-sim-app">Isaac Sim App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#camera-rig">Camera Rig</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthesizer-worker">Synthesizer Worker</a></li>
