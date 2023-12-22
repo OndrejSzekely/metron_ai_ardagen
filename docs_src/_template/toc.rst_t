@@ -2,6 +2,7 @@ API Docs
 ========
 
 .. toctree::
+   :orphan:
    :maxdepth: {{ maxdepth }}
 {% for docname in docnames %}
    {{ docname }}

@@ -1,8 +1,8 @@
-Flowchart Architecture Diagram
+Activity Diagram
 ===============================
 
 In `High Level Architecture <high_level_arch.html>`_ components high level overview was performed.
-This chapter depicts flow interactions inside ArDaGen.
+This chapter depicts flow interactions inside ArDaGen using activity diagram.
 
 .. mermaid::
     :align: center
