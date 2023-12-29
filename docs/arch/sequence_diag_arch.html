@@ -59,7 +59,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Documentation Architecture" href="docs_arch.html" />
-    <link rel="prev" title="High Level Architecture" href="high_level_arch.html" />
+    <link rel="prev" title="Activity Diagram" href="activity_diag.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -142,6 +142,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="high_level_arch.html">High Level Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_diag.html">Activity Diagram</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Sequence Diagram Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs_arch.html">Documentation Architecture</a></li>
 </ul>
@@ -306,7 +307,98 @@ document.write(`
                   
   <section id="sequence-diagram-architecture">
 <h1>Sequence Diagram Architecture<a class="headerlink" href="#sequence-diagram-architecture" title="Permalink to this heading">#</a></h1>
-</section>
+<div align="center" class="mermaid align-center">
+            %%{init: {&quot;sequence&quot;: {&quot;useMaxWidth&quot;: false}}}%%
+sequenceDiagram
+    actor User
+    participant Hydra
+    participant ArDaGen Runtime
+    participant OV Replicator
+    participant Scenarios Manager
+    participant Scenario
+    participant Master Synthesizer
+    participant Synthesizer Worker
+    participant Single Camera
+    participant OV Isaac Sim
+    participant OV Writer
+    participant File System
+    User-&gt;&gt;ArDaGen Runtime: Start ArDaGen
+    activate ArDaGen Runtime
+    ArDaGen Runtime-&gt;&gt;Hydra: Load ArDaGen Hydra configuration
+    activate Hydra
+    Hydra--&gt;&gt;ArDaGen Runtime: Get ArDaGen Hydra config
+    ArDaGen Runtime-&gt;&gt;OV Isaac Sim: Run OV Isaac Sim
+    activate OV Isaac Sim
+    OV Isaac Sim--&gt;&gt;ArDaGen Runtime: Isaac Sim instance reference
+    ArDaGen Runtime-&gt;&gt;OV Isaac Sim: Load ArDaGen OV Extension
+    ArDaGen Runtime-&gt;&gt;Scenarios Manager: Initialize Scenarios Manager
+    activate Scenarios Manager
+    ArDaGen Runtime-&gt;&gt;OV Replicator: Start synthetic data generation
+    activate OV Replicator
+    loop For each Scenario
+        OV Replicator-&gt;&gt;OV Replicator: Create new layer
+        OV Replicator-&gt;&gt;Scenarios Manager: Get scenario
+        Scenarios Manager-&gt;&gt;Scenario: Initialize Scenario
+        activate Scenario
+        Scenarios Manager--&gt;&gt;OV Replicator: Scenario
+        OV Replicator-&gt;&gt;Master Synthesizer: Prepare Scenario
+        activate Master Synthesizer
+        loop For each Synthesizer Worker
+            Master Synthesizer-&gt;&gt;Synthesizer Worker: Initialize Synthesizer Worker
+            activate Synthesizer Worker
+            Synthesizer Worker--&gt;&gt;Master Synthesizer: Synthesizer Worker
+        end
+        loop For each instantiated Synthesizer Worker
+            Master Synthesizer-&gt;&gt;Synthesizer Worker: Register Synthesizer Worker's Prims
+        end
+        Master Synthesizer--&gt;&gt;OV Replicator: Giving back the control
+        loop For each Synthesizer Worker
+            OV Replicator-&gt;&gt;Master Synthesizer: Get Synthesizer Worker
+            Master Synthesizer--&gt;&gt;OV Replicator: Synthesizer Worker
+            OV Replicator-&gt;&gt;OV Replicator: Register the Synthesizer Worker into OV Randomizer
+        end
+        loop For each camera rig
+            OV Replicator-&gt;&gt;Scenario: Get camera rig
+            Scenario--&gt;&gt;OV Replicator: Camera rig
+            loop For each single camera in the camera rig
+                OV Replicator-&gt;&gt;Single Camera: Initialize the camera in OV Replicator
+                activate Single Camera
+                Single Camera--&gt;&gt;OV Replicator: Single Camera reference
+            end
+            OV Replicator-&gt;&gt;OV Writer: Instantiate OV Replicator Writer
+            activate OV Writer
+            OV Replicator-&gt;&gt;OV Writer: Attach camera rig
+            OV Replicator--&gt;&gt;+OV Replicator: Start simulation
+            loop For each frame in the frames range
+            OV Replicator-&gt;&gt;OV Replicator: Update the simulation
+            opt frame_index mod frame_capture_interval == 0
+            OV Replicator-&gt;&gt;OV Writer: Capture camera images and the labels
+            OV Writer-&gt;&gt;File System: Save images and labels on the file system
+            end
+            opt frame_index mod (frame_capture_interval + 1) == 0
+            loop For each Synthesizer Worker
+                OV Replicator-&gt;&gt;Synthesizer Worker: Randomize
+            end
+            end
+            end
+            OV Replicator-&gt;&gt;-OV Replicator: Stop the simulation
+            OV Replicator-&gt;&gt;OV Replicator: Remove camera rig
+            deactivate OV Writer
+            deactivate Single Camera
+        end
+        deactivate Synthesizer Worker
+        deactivate Scenario
+        deactivate Master Synthesizer
+        OV Replicator-&gt;&gt;OV Replicator: Remove the layer
+    end
+    ArDaGen Runtime-&gt;&gt;OV Isaac Sim: Stop OV Isaac Sim
+    deactivate OV Replicator
+    deactivate Scenarios Manager
+    deactivate OV Isaac Sim
+    deactivate Hydra
+    deactivate ArDaGen Runtime
+        </div>
+        </section>
 
 
                 </article>
@@ -318,12 +410,12 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="high_level_arch.html"
+       href="activity_diag.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">High Level Architecture</p>
+        <p class="prev-next-title">Activity Diagram</p>
       </div>
     </a>
     <a class="right-next"
