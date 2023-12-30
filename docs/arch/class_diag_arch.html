@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>synthesizers package &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
+    <title>Class Diagram Architecture &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
   
   
   
@@ -55,9 +55,11 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/synthesizers';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'arch/class_diag_arch';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Documentation Architecture" href="docs_arch.html" />
+    <link rel="prev" title="Sequence Diagram Architecture" href="sequence_diag_arch.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -135,15 +137,15 @@
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../arch/high_level_arch.html">High Level Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../arch/activity_diag.html">Activity Diagram</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../arch/sequence_diag_arch.html">Sequence Diagram Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../arch/class_diag_arch.html">Class Diagram Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../arch/docs_arch.html">Documentation Architecture</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="high_level_arch.html">High Level Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_diag.html">Activity Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sequence_diag_arch.html">Sequence Diagram Architecture</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Class Diagram Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs_arch.html">Documentation Architecture</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../synthesizers.html">Synthesizers</a></li>
@@ -210,7 +212,7 @@
       
       
       
-      <li><a href="../_sources/api/synthesizers.rst" target="_blank"
+      <li><a href="../_sources/arch/class_diag_arch.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -292,7 +294,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>synthesizers package</h1>
+    <h1>Class Diagram Architecture</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -302,8 +304,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-class-architecture">Software Class Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthesizer-workers-class-architecture">Synthesizer Workers Class Architecture</a></li>
 </ul>
             </nav>
         </div>
@@ -315,29 +317,251 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="module-synthesizers">
-<span id="synthesizers-package"></span><h1>synthesizers package<a class="headerlink" href="#module-synthesizers" title="Permalink to this heading">#</a></h1>
-<p>The package contains all <em>Synthesizers</em> and <em>Master Synthesizer</em>.</p>
-<section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">#</a></h2>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="synthesizers.synth_workers.html#module-synthesizers.synth_workers" title="synthesizers.synth_workers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synthesizers.synth_workers</span></code></a></p></td>
-<td><p>The package contains all <em>Synthesizers</em>.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="synthesizers.master_synthesizer.html#module-synthesizers.master_synthesizer" title="synthesizers.master_synthesizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synthesizers.master_synthesizer</span></code></a></p></td>
-<td><p><cite>Master Synthesizer</cite> does virtual world orchestration and manages <cite>Synthesizer Workers</cite>.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
+  <section id="class-diagram-architecture">
+<h1>Class Diagram Architecture<a class="headerlink" href="#class-diagram-architecture" title="Permalink to this heading">#</a></h1>
+<section id="software-class-architecture">
+<h2>Software Class Architecture<a class="headerlink" href="#software-class-architecture" title="Permalink to this heading">#</a></h2>
+<div align="center" class="mermaid align-center">
+            classDiagram
+
+    ScenariosManager o-- IsaacSimApp
+    ScenariosManager *-- Scenario
+    Scenario o-- IsaacSimApp
+    Scenario *-- NullMasterSynthesizer
+    Scenario *-- MasterSynthesizer
+    Scenario *-- SingleCamera
+    MasterSynthesizer o-- IsaacSimApp
+    MasterSynthesizer *-- BaseSynthesizer
+    OVWriter *-- NullWriter
+    Writer &lt;|-- OffsetWriter
+    OVWriter *-- OffsetWriter
+    OVReplicator o-- IsaacSimApp
+    OVReplicator o-- OVWriter
+    OVReplicator o-- ScenariosManager
+
+    class IsaacSimApp{
+        +bool debug
+        +app SimulationApp
+        +update() None
+        +close() None
+    }
+
+    class ScenariosManager{
+        +DictConfig scenarios
+        +Iterator[Any] scenario_names
+        +IsaacSimApp isaac_sim
+        +__iter__() ScenariosManager
+        +__next__() Scenario
+    }
+
+    class Scenario{
+        +IsaacSimApp isaac_sim
+        +Union[NullMasterSynthesizer, MasterSynthesizer] master_synthesizer
+        +str scenario_name
+        +DictConfig scenario_dict_config
+        +int frames_number
+        +int frames_readout_offset
+        +prepare(scenario_name) None
+        +get_cameras() Generator[Tuple[List[Any], List[Any]], None, None]
+    }
+
+    class NullMasterSynthesizer{
+        +List[Any] synthesizers_worker_names
+        +__iter__() Iterator[BaseSynthesizer]
+    }
+
+    class MasterSynthesizer{
+        +IsaacSimApp isaac_sim_app
+        +List[BaseSynthesizer] synthesizers_workers
+        +List[str] synthesizers_worker_names
+        +__iter__() Iterator[BaseSynthesizer]
+        -_instantiate_synthesizer_workers(synthesizer_workers, scenario_name) None
+    }
+
+    class BaseSynthesizer{
+        +str scenario_owner
+        -str __name__
+        +__call__(camera_setup) None
+        +get_prims() List[str]
+        +register_synthesizers_prims(synthesizer_workers) None
+    }
+
+    class OVWriter{
+        +str fs_store_path
+        +Union[NullWriter, Writer]
+        +str writer_name
+        +bool write_rgb
+        +bool write_bounding_box_2d_tight
+        +bool write_bounding_box_2d_loose
+        +bool write_semantic_segmentation
+        +bool write_instance_segmentation
+        +bool write_distance_to_camera
+        +bool write_distance_to_image_plane
+        +bool write_bounding_box_3d
+        +bool write_occlusion
+        +bool write_normals
+        +bool write_motion_vectors
+        +bool write_camera_params
+        +create(scenario_name, frames_readout_offset) str
+        +attach(camera_renders) None
+    }
+
+    class NullWriter{
+        +create(scenario_name) str
+        +attach(camera_renders) None
+        +initialize(*args, **kwargs) None
+    }
+
+    class OffsetWriter{
+        -str __name__
+        -int _MAX_FRAMES_OFFSET
+        -int _WRITER_NUMBERING_PADDING
+        -str _output_dir
+        -BackendDispatch _backend
+        -int _frame_id
+        -str _image_output_format
+        -int _content_lifespan
+        +List[Any] annotators
+        +int frame_read_out_num
+        +int content_lifespan_init_val
+        -_write_rgb(fs_relative_path, annotator_data) None
+        -_write_bounding_box_data(bbox_type, fs_relative_path, annotator_data) None
+        -_write_camera_params(fs_relative_path, annotator_data) None
+        -_write_instance_segmentation(fs_relative_path, annotator_data) None
+        -_write_semantic_segmentation(fs_relative_path, annotator_data) None
+        -_write_normals(fs_relative_path, annotator_data) None
+        -_write_distance_to_camera(fs_relative_path, annotator_data) None
+        -_write_distance_to_image_plane(fs_relative_path, annotator_data) None
+        -_write_occlusion(fs_relative_path, annotator_data) None
+        -_write_motion_vectors(fs_relative_path, annotator_data) None
+        +write(data) None
+    }
+
+    class OVReplicator{
+        +omni.replicator.core ov_replicator
+        +ScenariosManager scenarios_manager
+        +OVWriter ov_writer
+        +IsaacSimApp isaac_sim
+        -_remove_camera(camera_setup, writer_name) None
+        -_run_orchestration() None
+        +__call__() None
+    }
+
+    class SingleCamera{
+        +List[float] position
+        +List[float] rotation
+        +List[float] clipping_range
+        +List[int] cam_resolution
+        +get_cameras() Generator[Tuple[List[Any], List[Any]], None, None]
+    }
+        </div>
+        </section>
+<section id="synthesizer-workers-class-architecture">
+<h2>Synthesizer Workers Class Architecture<a class="headerlink" href="#synthesizer-workers-class-architecture" title="Permalink to this heading">#</a></h2>
+<div align="center" class="mermaid align-center">
+            classDiagram
+
+BaseSynthesizer &lt;|-- DummySynthesizer
+BaseSynthesizer &lt;|-- GroundSynthesizer
+BaseSynthesizer &lt;|-- ItemsScatterSynthesizer
+BaseSynthesizer &lt;|-- LightSynthesizer
+BaseSynthesizer &lt;|-- SceneSynthesizer
+BaseSynthesizer &lt;|-- SingleItemSynthesizer
+BaseSynthesizer &lt;|-- OVAssetsSynthesizer
+
+class BaseSynthesizer{
+    +str scenario_owner
+    -str __name__
+    +__call__(camera_setup) None
+    +get_prims() List[str]
+    +register_synthesizers_prims(synthesizer_workers) None
+}
+
+class DummySynthesizer{
+    +str scenario_owner
+    -str __name__
+    -str _box_primitive_path
+    +__call__(camera_setup) None
+    +get_prims() List[str]
+    +register_synthesizers_prims(synthesizer_workers) None
+}
+
+class GroundSynthesizer{
+    +str scenario_owner
+    +List[str] materials_list
+    -str __name__
+    -Any _stage
+    -str _stage_plane_path
+    -og.Node _plane_node
+    +__call__(camera_setup) None
+    +get_prims() List[str]
+    +register_synthesizers_prims(synthesizer_workers) None
+}
+
+class ItemsScatterSynthesizer{
+    +str scenario_owner
+    +List[str] placement_synths
+    +str semantics
+    +int number_of_assets_displayed_at_once
+    +int assets_pool_size
+    -str __name__
+    -List[str] _placement_prims
+    -List[str] _scattered_prims
+    +__call__(camera_setup) None
+    +get_prims() List[str]
+    +register_synthesizers_prims(synthesizer_workers) None
+}
+
+class LightSynthesizer{
+    +str scenario_owner
+    +List[float] position
+    +List[float] rotation
+    +List[float] scale
+    +str light_type
+    -str __name__
+    -str _stage_light_path
+    -og.node _light_node
+    +__call__(camera_setup) None
+    +get_prims() List[str]
+    +register_synthesizers_prims(synthesizer_workers) None
+}
+
+class SceneSynthesizer{
+    +str scenario_owner
+    +str scene_path
+    -str __name__
+    -og.Node _scene_node
+    +__call__(camera_setup) None
+    +get_prims() List[str]
+    +register_synthesizers_prims(synthesizer_workers) None
+    -_load_from_nucleus() Any
+}
+
+class SingleItemSynthesizer{
+    +str scenario_owner
+    +List[float] position
+    +str usd_path
+    +str semantics
+    -str __name__
+    -str _stage_prim_path
+    +__call__(camera_setup) None
+    +get_prims() List[str]
+    +register_synthesizers_prims(synthesizer_workers) None
+}
+
+class OVAssetsSynthesizer{
+    +str scenario_owner
+    +int assets_num_to_generate
+    -str __name__
+    -Any _stage
+    -List[og.Node] _created_assets
+    -List[str] _created_assets_paths
+    +__call__(camera_setup) None
+    +get_prims() List[str]
+    +register_synthesizers_prims(synthesizer_workers) None
+}
+        </div>
+        </section>
 </section>
 
 
@@ -349,6 +573,24 @@ document.write(`
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="sequence_diag_arch.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Sequence Diagram Architecture</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="docs_arch.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Documentation Architecture</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -364,8 +606,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-class-architecture">Software Class Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthesizer-workers-class-architecture">Synthesizer Workers Class Architecture</a></li>
 </ul>
   </nav></div>
 
