@@ -144,6 +144,7 @@
 <li class="toctree-l2"><a class="reference internal" href="arch/high_level_arch.html">High Level Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arch/activity_diag.html">Activity Diagram</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arch/sequence_diag_arch.html">Sequence Diagram Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch/class_diag_arch.html">Class Diagram Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arch/docs_arch.html">Documentation Architecture</a></li>
 </ul>
 </li>
@@ -280,7 +281,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -296,6 +299,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-logic">Configuration Logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-files-structure">Config Files Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-scenario">New Scenario</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -307,6 +320,84 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="configuration">
 <h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h1>
+<p>Configuration is done via <a class="reference external" href="https://hydra.cc/">Hydra</a> configuration framework. The configuration is based on
+configuration <em>.yaml</em> files, but also allows override option via command line arguments.
+See <a class="reference external" href="https://hydra.cc/docs/1.3/tutorials/basic/your_first_app/config_file/">Hydra’s overriding docs</a>.</p>
+<section id="configuration-logic">
+<h2>Configuration Logic<a class="headerlink" href="#configuration-logic" title="Permalink to this heading">#</a></h2>
+<p><em>ArDaGen</em> configuration setups are structured into <em>Scenarios</em>. Each <em>Scenario</em> has its own <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> file in
+<code class="docutils literal notranslate"><span class="pre">/conf/scenarios</span></code> folder. <em>Scenario</em> config file defines an interface to be populated. Along mandatory config
+parameters, it is required to define <em>Cameras</em> setup for the scenario. One <em>Scenario</em> can contain multiple camera
+setups. The scenario goes one by one <em>Camera</em> setup and for each generate all the data. Supported camera type <code class="docutils literal notranslate"><span class="pre">.yaml</span></code>
+files are located in <code class="docutils literal notranslate"><span class="pre">/conf/cameras</span></code>. <em>Omniverse</em> stage is composed and for each frame randomized by
+<em>Synthesizer Workers</em> which have to be set up in the <em>Scenario</em> config too. <em>Synthesizer Workers</em> <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> config files
+are located in <code class="docutils literal notranslate"><span class="pre">/conf/synthesizer_workers</span></code>.</p>
+</section>
+<section id="config-files-structure">
+<h2>Config Files Structure<a class="headerlink" href="#config-files-structure" title="Permalink to this heading">#</a></h2>
+<p><em>ArDaGen’s</em> configuration files are located in <code class="docutils literal notranslate"><span class="pre">conf</span></code> folder. The configuration folder structure is following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>/conf
+    /cameras <span class="c1"># Contains camera template config file. </span>
+             <span class="c1"># User can add here custom camera definition config files.</span>
+    /scenarios <span class="c1"># Contains scenario template config file. </span>
+               <span class="c1"># User can add here custom scenario definition config files.</span>
+    /synthesizer_workers <span class="c1"># Contains all defined Synthesizer Worker config files.</span>
+        /assets <span class="c1"># Contain config files of Synthesizer Workers responsible</span>
+                <span class="c1"># for stage assets.</span>
+        /materials <span class="c1"># Contains config files defining material groups.</span>
+                   <span class="c1"># Each config file defines a list of the materials of the group.</span>
+    isaac_sim.yaml <span class="c1"># Contains Isaac Sim app specific parameters.</span>
+    metron_ai_ardagen_config.yaml <span class="c1"># Root config file which puts all config files together.</span>
+                                  <span class="c1"># This is the root config file for Hydra.</span>
+    writer.yaml <span class="c1"># Config file defining what label outputs are produced.</span>
+</pre></div>
+</div>
+</section>
+<section id="new-scenario">
+<h2>New Scenario<a class="headerlink" href="#new-scenario" title="Permalink to this heading">#</a></h2>
+<p>This section guides through a new <em>Scenario</em> configuration setup. <em>The whole configuration process follows <a class="reference external" href="https://hydra.cc/">Hydra’s</a> paradigm. All Hydra’s features can be used.</em></p>
+<p>New <em>Scenario</em> <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> file has to be put into <code class="docutils literal notranslate"><span class="pre">conf/scenarios</span></code> folder. New <em>Scenario’s</em> has to include <em>Common Scenario</em>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_scenario@dummy_scenario</span><span class="w"> </span><span class="c1"># do not touch</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Sample Config</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_scenario@dummy_scenario</span><span class="w"> </span><span class="c1"># do not touch</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>Then <em>Scenario’s</em> name has to be defined:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;SCENARIO_NAME&gt;</span><span class="p">:</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Sample Config</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_scenario@dummy_scenario</span><span class="w"> </span><span class="c1"># do not touch</span><span class="w"></span>
+<span class="nt">sample_scenario</span><span class="p">:</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>By default a new <em>Scenario</em> will generate <code class="docutils literal notranslate"><span class="pre">100</span></code> frames with <code class="docutils literal notranslate"><span class="pre">20</span></code> offset frames between each generated frame. Offset frames improves visual quality, because it gives time to denoisers to stabilize ray-trayced effects/images.
+Use higher <code class="docutils literal notranslate"><span class="pre">&lt;FRAMES_OFFSET&gt;</span></code> value for more complex scenes and higher output resolution.
+To override the values use following parameters:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">frames_number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;GENERATED_FRAMES_NUM&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">frames_readout_offset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;FRAMES_OFFSET&gt;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Sample Config</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_scenario@dummy_scenario</span><span class="w"> </span><span class="c1"># do not touch</span><span class="w"></span>
+<span class="nt">sample_scenario</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">frames_number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">  </span><span class="nt">frames_readout_offset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</section>
 </section>
 
 
@@ -342,6 +433,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-logic">Configuration Logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-files-structure">Config Files Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-scenario">New Scenario</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
