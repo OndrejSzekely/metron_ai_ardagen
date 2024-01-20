@@ -6,3 +6,4 @@ Guides
     :caption: Contents:
 
     guides/docs_generation
+    guides/run_dummy_scenario
