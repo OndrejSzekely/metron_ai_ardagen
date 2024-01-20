@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Run Dummy Scenario &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
+    <title>Run Demo Scenario &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
   
   
   
@@ -55,11 +55,11 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'guides/run_dummy_scenario';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'guides/run_demo_scenario';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Run Dummy Scenario" href="run_demo_scenario.html" />
-    <link rel="prev" title="Documentation Generation Guide" href="docs_generation.html" />
+    <link rel="next" title="Run Config Composition" href="run_config_composition.html" />
+    <link rel="prev" title="Run Dummy Scenario" href="run_dummy_scenario.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,8 +153,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../configuration.html">Configuration</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../guides.html">Guides</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="docs_generation.html">Documentation Generation Guide</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Run Dummy Scenario</a></li>
-<li class="toctree-l2"><a class="reference internal" href="run_demo_scenario.html">Run Dummy Scenario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run_dummy_scenario.html">Run Dummy Scenario</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Run Demo Scenario</a></li>
 <li class="toctree-l2"><a class="reference internal" href="run_config_composition.html">Run Config Composition</a></li>
 </ul>
 </li>
@@ -215,7 +215,7 @@
       
       
       
-      <li><a href="../_sources/guides/run_dummy_scenario.md" target="_blank"
+      <li><a href="../_sources/guides/run_demo_scenario.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -295,7 +295,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Run Dummy Scenario</h1>
+    <h1>Run Demo Scenario</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -309,11 +309,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="run-dummy-scenario">
-<h1>Run Dummy Scenario<a class="headerlink" href="#run-dummy-scenario" title="Permalink to this heading">#</a></h1>
-<p><em>Dummy Scenario</em> is a default <em>Scenario</em> set for <em>ArDaGen</em> configuration.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="run-demo-scenario">
+<h1>Run Demo Scenario<a class="headerlink" href="#run-demo-scenario" title="Permalink to this heading">#</a></h1>
 <ol class="arabic simple">
 <li><p>In <code class="docutils literal notranslate"><span class="pre">conf/writer.yaml</span></code> config set <code class="docutils literal notranslate"><span class="pre">fs_store_path</span></code> to a folder (absolute path) where generated images will be stored.</p></li>
+<li><p><em>Dummy Scenario</em> is a default <em>Scenario</em> set for <em>ArDaGen</em> configuration. Go into <code class="docutils literal notranslate"><span class="pre">conf/metron_ai_ardagen_config.yaml</span></code> file and replace <code class="docutils literal notranslate"><span class="pre">dummy_scenario</span></code> with <code class="docutils literal notranslate"><span class="pre">demo_scenario</span></code>.</p></li>
 <li><p>Go into <em>Isaac Sim</em> root folder in terminal and run following command:</p></li>
 </ol>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./python.sh  metron_ai_ardagen/metron_ai_ardagen_run.py
@@ -334,20 +334,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="docs_generation.html"
+       href="run_dummy_scenario.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Documentation Generation Guide</p>
+        <p class="prev-next-title">Run Dummy Scenario</p>
       </div>
     </a>
     <a class="right-next"
-       href="run_demo_scenario.html"
+       href="run_config_composition.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Run Dummy Scenario</p>
+        <p class="prev-next-title">Run Config Composition</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
