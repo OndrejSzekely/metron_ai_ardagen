@@ -111,6 +111,35 @@ defaults:
 
 :::
 
+:::{admonition} Sample Config
+:class: tip, dropdown
+
+```yaml
+defaults:
+  - common_scenario@dummy_scenario # do not touch
+sample_scenario:
+  frames_number: 5
+  frames_readout_offset: 60
+cameras:
+  camera:
+    position:
+      - 0 #X
+      - 0 #Y
+      - 10 #Z
+    rotation:
+      - 0 #X
+      - -90 #Y
+      - 0 #Z
+    clipping_range:
+      - 0.01
+      - 100.0
+    resolution:
+      - 1280
+      - 720
+```
+
+:::
+
 Following `cameras` *Config Group* options are defined:
 
 ### Single Camera
