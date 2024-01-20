@@ -91,3 +91,37 @@ sample_scenario:
 ```
 
 :::
+
+## Cameras
+
+Each *Scenario* must have *at least one* camera setup (rig) in `cameras` *Config Group*. `common_scenario` defines a
+default camera `camera` which is of `comon_single_camera` config option.
+
+:::{admonition} Note
+:class: note
+
+Default camera's name and config option can be overridden by `<CAMERA_TYPE>` type and `<CAMERA_NAME>` camera name
+using *Hydra's* override *defaults* synthax at the very beggining of a *Scenario* file.
+
+```yaml
+defaults:
+  - /cameras/<CAMERA_TYPE>@cameras.camera
+  - cameras.camera@cameras.<CAMERA_NAME>
+```
+
+:::
+
+Following `cameras` *Config Group* options are defined:
+
+### Single Camera
+
+Defined in `cameras/common_single_camera.yaml` file. It provides following config options:
+
+- `position` (**required**)
+  - World coordinate of camera defined by 3 float values. Metric system depends on OV stage setup. Defualt metric unit is cm.
+- `rotation` (**required**)
+  - Camera rotation given by 3 float values - roll, pitch, yaw.
+- `clipping_range` (**required**)
+  - Clipping range from/up to which distance objects are captured in the camera. Metric system depends on OV stage setup. Defualt metric unit is cm. The frist float value sets the minimal distance from camera at which objects are captured. The second float value sets the maximal distance up to which are objects captured.
+- `resolution` (**required**)
+  - Camera pixel resolution given by two int values - width and height.
