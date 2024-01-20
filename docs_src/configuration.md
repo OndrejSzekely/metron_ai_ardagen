@@ -33,6 +33,11 @@ are located in `/conf/synthesizer_workers`.
     writer.yaml # Config file defining what label outputs are produced.
 ```
 
+## Path to ArDaGen OV Extension
+
+Path to *Metron AI ArDaGen Omniverse Extension* **must be set either for existing scenarios or new ones**.
+Set `fs_path` option for `settings.ardagen_extension` in `metron_ai_ardagen_config.yaml` to a valid path. The path is supposed to be absolute and should point to `metron_ai_ardagen_omni_ext` folder of git cloned extension.
+
 ## New Scenario
 
 This section guides through a new *Scenario* configuration setup. *The whole configuration process follows [Hydra's](https://hydra.cc/) paradigm. All Hydra's features can be used.*
