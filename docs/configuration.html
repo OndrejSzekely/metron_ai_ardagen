@@ -306,6 +306,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-logic">Configuration Logic</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-files-structure">Config Files Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-to-ardagen-ov-extension">Path to ArDaGen OV Extension</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-scenario">New Scenario</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cameras">Cameras</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-camera">Single Camera</a></li>
@@ -356,6 +357,11 @@ are located in <code class="docutils literal notranslate"><span class="pre">/con
     writer.yaml <span class="c1"># Config file defining what label outputs are produced.</span>
 </pre></div>
 </div>
+</section>
+<section id="path-to-ardagen-ov-extension">
+<h2>Path to ArDaGen OV Extension<a class="headerlink" href="#path-to-ardagen-ov-extension" title="Permalink to this heading">#</a></h2>
+<p>Path to <em>Metron AI ArDaGen Omniverse Extension</em> <strong>must be set either for existing scenarios or new ones</strong>.
+Set <code class="docutils literal notranslate"><span class="pre">fs_path</span></code> option for <code class="docutils literal notranslate"><span class="pre">settings.ardagen_extension</span></code> in <code class="docutils literal notranslate"><span class="pre">metron_ai_ardagen_config.yaml</span></code> to a valid path. The path is supposed to be absolute and should point to <code class="docutils literal notranslate"><span class="pre">metron_ai_ardagen_omni_ext</span></code> folder of git cloned extension.</p>
 </section>
 <section id="new-scenario">
 <h2>New Scenario<a class="headerlink" href="#new-scenario" title="Permalink to this heading">#</a></h2>
@@ -516,6 +522,7 @@ using <em>Hydra’s</em> override <em>defaults</em> synthax at the very begginin
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-logic">Configuration Logic</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-files-structure">Config Files Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-to-ardagen-ov-extension">Path to ArDaGen OV Extension</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-scenario">New Scenario</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cameras">Cameras</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-camera">Single Camera</a></li>
