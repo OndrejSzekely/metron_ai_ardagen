@@ -153,6 +153,9 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Configuration</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="guides/docs_generation.html">Documentation Generation Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/run_dummy_scenario.html">Run Dummy Scenario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/run_demo_scenario.html">Run Demo Scenario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/run_config_composition.html">Run Config Composition</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="development_notes.html">Development Notes</a></li>
@@ -312,6 +315,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-camera">Single Camera</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-workers">Synthetic Workers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dummy-synthesizer">Dummy Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-synthesizer">Ground Synthesizer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-new-scenario">Execute New Scenario</a></li>
 </ul>
             </nav>
         </div>
@@ -415,7 +424,7 @@ default camera <code class="docutils literal notranslate"><span class="pre">came
 <div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>Default camera’s name and config option can be overridden by <code class="docutils literal notranslate"><span class="pre">&lt;CAMERA_TYPE&gt;</span></code> type and <code class="docutils literal notranslate"><span class="pre">&lt;CAMERA_NAME&gt;</span></code> camera name
-using <em>Hydra’s</em> override <em>defaults</em> synthax at the very beggining of a <em>Scenario</em> file.</p>
+using <em>Hydra’s</em> override <em>defaults</em> syntax at the very beginning of a <em>Scenario</em> file.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/cameras/&lt;CAMERA_TYPE&gt;@cameras.camera</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cameras.camera@cameras.&lt;CAMERA_NAME&gt;</span><span class="w"></span>
@@ -455,7 +464,7 @@ using <em>Hydra’s</em> override <em>defaults</em> synthax at the very begginin
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (<strong>required</strong>)</p>
 <ul>
-<li><p>World coordinate of camera defined by 3 float values. Metric system depends on OV stage setup. Defualt metric unit is cm.</p></li>
+<li><p>World coordinate of camera defined by 3 float values. Metric system depends on OV stage setup. Default metric unit is cm.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rotation</span></code> (<strong>required</strong>)</p>
@@ -465,7 +474,7 @@ using <em>Hydra’s</em> override <em>defaults</em> synthax at the very begginin
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">clipping_range</span></code> (<strong>required</strong>)</p>
 <ul>
-<li><p>Clipping range from/up to which distance objects are captured in the camera. Metric system depends on OV stage setup. Defualt metric unit is cm. The frist float value sets the minimal distance from camera at which objects are captured. The second float value sets the maximal distance up to which are objects captured.</p></li>
+<li><p>Clipping range from/up to which distance objects are captured in the camera. Metric system depends on OV stage setup. Default metric unit is cm. The first float value sets the minimal distance from camera at which objects are captured. The second float value sets the maximal distance up to which are objects captured.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">resolution</span></code> (<strong>required</strong>)</p>
@@ -475,6 +484,97 @@ using <em>Hydra’s</em> override <em>defaults</em> synthax at the very begginin
 </li>
 </ul>
 </section>
+</section>
+<section id="synthetic-workers">
+<h2>Synthetic Workers<a class="headerlink" href="#synthetic-workers" title="Permalink to this heading">#</a></h2>
+<p>The most important part of each <em>Scenario</em> is <em>Synthesizer Workers</em> which defines the whole <em>Scenario</em>.</p>
+<p><em>Synthesizer Workers</em> are specified under <code class="docutils literal notranslate"><span class="pre">synthesizer_workers</span></code> config group option.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;SCENARIO_NAME&gt;</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">synthesizer_workers</span><span class="p">:</span><span class="w"></span>
+</pre></div>
+</div>
+<p>There can be only config group value (<code class="docutils literal notranslate"><span class="pre">&lt;SYNTHESIZER_WORKER_TYPE&gt;</span></code>) under the same name. It is allowed to have more instances of the same group config option for a <em>Scenario</em> (<code class="docutils literal notranslate"><span class="pre">&lt;SCENARIO_NAME&gt;</span></code>), but it’s name has to be overridden (<code class="docutils literal notranslate"><span class="pre">&lt;INSTANCE_NAME&gt;</span></code>) during default import.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/synthesizer_workers/&lt;SYNTHESIZER_WORKER_TYPE&gt;@&lt;SCENARIO_NAME&gt;.synthesizer_workers.&lt;INSTANCE_NAME&gt;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Then you have to define missing values or override existing ones for the imported <em>Synthesizer Workers</em>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Sample Config</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_scenario@dummy_scenario</span><span class="w"> </span><span class="c1"># do not touch</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/synthesizer_workers/single_item_synthesizer@dummy_scenario.synthesizer_workers.box1</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/synthesizer_workers/single_item_synthesizer@dummy_scenario.synthesizer_workers.box2</span><span class="w"></span>
+<span class="nt">sample_scenario</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">frames_number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">  </span><span class="nt">frames_readout_offset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w"></span>
+<span class="w">  </span><span class="nt">synthesizer_workers</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">box1</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">position</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w"> </span><span class="c1">#X</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w"> </span><span class="c1">#Y</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#Z</span><span class="w"></span>
+<span class="w">      </span><span class="nt">usd_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/2022.1/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxB_01_1344.usd</span><span class="w"></span>
+<span class="w">      </span><span class="nt">semantics</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foreground</span><span class="w"></span>
+<span class="w">    </span><span class="nt">box2</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">position</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.5</span><span class="w"> </span><span class="c1">#X</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.5</span><span class="w"> </span><span class="c1">#Y</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#Z</span><span class="w"></span>
+<span class="w">      </span><span class="nt">usd_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/2022.1/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxD_05_947.usd</span><span class="w"></span>
+<span class="w">      </span><span class="nt">semantics</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foreground</span><span class="w"></span>
+<span class="nt">cameras</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">camera</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">position</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#X</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#Y</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"> </span><span class="c1">#Z</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rotation</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#X</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-90</span><span class="w"> </span><span class="c1">#Y</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#Z</span><span class="w"></span>
+<span class="w">    </span><span class="nt">clipping_range</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.01</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">resolution</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1280</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">720</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<section id="dummy-synthesizer">
+<h3>Dummy Synthesizer<a class="headerlink" href="#dummy-synthesizer" title="Permalink to this heading">#</a></h3>
+<p>Defined in <code class="docutils literal notranslate"><span class="pre">synthesizer_workers/dummy_synthesizer.yaml</span></code> file. It does not provide any config options.</p>
+</section>
+<section id="ground-synthesizer">
+<h3>Ground Synthesizer<a class="headerlink" href="#ground-synthesizer" title="Permalink to this heading">#</a></h3>
+<p>Defined in <code class="docutils literal notranslate"><span class="pre">synthesizer_workers/ground_synthesizer.yaml</span></code> file. It provides following config options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">materials</span></code></p>
+<ul>
+<li><p>List of <code class="docutils literal notranslate"><span class="pre">yaml</span></code> files from <code class="docutils literal notranslate"><span class="pre">materials</span></code> config group.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">semantics</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>String name of a semantic class which is given to the object. Based on that, particular class is written into label records.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>X, Y, Z metric float coordinate in the scene.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>X, Y, Z float scale of the object size.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="execute-new-scenario">
+<h2>Execute New Scenario<a class="headerlink" href="#execute-new-scenario" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -528,6 +628,12 @@ using <em>Hydra’s</em> override <em>defaults</em> synthax at the very begginin
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-camera">Single Camera</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-workers">Synthetic Workers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dummy-synthesizer">Dummy Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-synthesizer">Ground Synthesizer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-new-scenario">Execute New Scenario</a></li>
 </ul>
   </nav></div>
 
