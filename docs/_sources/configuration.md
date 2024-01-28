@@ -106,7 +106,7 @@ default camera `camera` which is of `comon_single_camera` config option.
 :class: note
 
 Default camera's name and config option can be overridden by `<CAMERA_TYPE>` type and `<CAMERA_NAME>` camera name
-using *Hydra's* override *defaults* synthax at the very beggining of a *Scenario* file.
+using *Hydra's* override *defaults* syntax at the very beginning of a *Scenario* file.
 
 ```yaml
 defaults:
@@ -152,10 +152,95 @@ Following `cameras` *Config Group* options are defined:
 Defined in `cameras/common_single_camera.yaml` file. It provides following config options:
 
 - `position` (**required**)
-  - World coordinate of camera defined by 3 float values. Metric system depends on OV stage setup. Defualt metric unit is cm.
+  - World coordinate of camera defined by 3 float values. Metric system depends on OV stage setup. Default metric unit is cm.
 - `rotation` (**required**)
   - Camera rotation given by 3 float values - roll, pitch, yaw.
 - `clipping_range` (**required**)
-  - Clipping range from/up to which distance objects are captured in the camera. Metric system depends on OV stage setup. Defualt metric unit is cm. The frist float value sets the minimal distance from camera at which objects are captured. The second float value sets the maximal distance up to which are objects captured.
+  - Clipping range from/up to which distance objects are captured in the camera. Metric system depends on OV stage setup. Default metric unit is cm. The first float value sets the minimal distance from camera at which objects are captured. The second float value sets the maximal distance up to which are objects captured.
 - `resolution` (**required**)
   - Camera pixel resolution given by two int values - width and height.
+
+## Synthetic Workers
+
+The most important part of each *Scenario* is *Synthesizer Workers* which defines the whole *Scenario*.
+
+*Synthesizer Workers* are specified under `synthesizer_workers` config group option.
+
+```yaml
+<SCENARIO_NAME>:
+  synthesizer_workers:
+```
+
+There can be only config group value (`<SYNTHESIZER_WORKER_TYPE>`) under the same name. It is allowed to have more instances of the same group config option for a *Scenario* (`<SCENARIO_NAME>`), but it's name has to be overridden (`<INSTANCE_NAME>`) during default import.
+
+```yaml
+defaults:
+  - /synthesizer_workers/<SYNTHESIZER_WORKER_TYPE>@<SCENARIO_NAME>.synthesizer_workers.<INSTANCE_NAME>
+```
+
+Then you have to define missing values or override existing ones for the imported *Synthesizer Workers*.
+
+:::{admonition} Sample Config
+:class: tip, dropdown
+
+```yaml
+defaults:
+  - common_scenario@dummy_scenario # do not touch
+  - /synthesizer_workers/single_item_synthesizer@dummy_scenario.synthesizer_workers.box1
+  - /synthesizer_workers/single_item_synthesizer@dummy_scenario.synthesizer_workers.box2
+sample_scenario:
+  frames_number: 5
+  frames_readout_offset: 60
+  synthesizer_workers:
+    box1:
+      position:
+        - 0.5 #X
+        - 0.5 #Y
+        - 0 #Z
+      usd_path: omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/2022.1/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxB_01_1344.usd
+      semantics: foreground
+    box2:
+      position:
+        - -0.5 #X
+        - -0.5 #Y
+        - 0 #Z
+      usd_path: omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/2022.1/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxD_05_947.usd
+      semantics: foreground
+cameras:
+  camera:
+    position:
+      - 0 #X
+      - 0 #Y
+      - 10 #Z
+    rotation:
+      - 0 #X
+      - -90 #Y
+      - 0 #Z
+    clipping_range:
+      - 0.01
+      - 100.0
+    resolution:
+      - 1280
+      - 720
+```
+
+:::
+
+### Dummy Synthesizer
+
+Defined in `synthesizer_workers/dummy_synthesizer.yaml` file. It does not provide any config options.
+
+### Ground Synthesizer
+
+Defined in `synthesizer_workers/ground_synthesizer.yaml` file. It provides following config options:
+
+- `materials`
+  - List of `yaml` files from `materials` config group.
+- `semantics` (**required**)
+  - String name of a semantic class which is given to the object. Based on that, particular class is written into label records.
+- `position` (**required**)
+  - X, Y, Z metric float coordinate in the scene.
+- `scale` (**required**)
+  - X, Y, Z float scale of the object size.
+
+## Execute New Scenario
