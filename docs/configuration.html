@@ -318,6 +318,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-workers">Synthetic Workers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dummy-synthesizer">Dummy Synthesizer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-synthesizer">Ground Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#light-synthesizer">Light Synthesizer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#items-scatter-synthesizer">Items Scatter Synthesizer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assets-synthesizers">Assets Synthesizers</a></li>
 </ul>
@@ -574,6 +575,32 @@ using <em>Hydra’s</em> override <em>defaults</em> syntax at the very beginning
 </li>
 </ul>
 </section>
+<section id="light-synthesizer">
+<h3>Light Synthesizer<a class="headerlink" href="#light-synthesizer" title="Permalink to this heading">#</a></h3>
+<p>Defined in <code class="docutils literal notranslate"><span class="pre">synthesizer_workers/light_synthesizer.yaml</span></code> file. It provides following config options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>X, Y, Z metric float coordinate in the scene.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rotation</span></code></p>
+<ul>
+<li><p>X, Y, Z float of rotation angle. Default is 0 along all axis.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale</span></code></p>
+<ul>
+<li><p>X, Y, Z float scale. Default value is 1.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">light_type</span></code></p>
+<ul>
+<li><p>Light type. See supported light types in <em>Omniverse</em> documentation. Default value is <code class="docutils literal notranslate"><span class="pre">distant</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="items-scatter-synthesizer">
 <h3>Items Scatter Synthesizer<a class="headerlink" href="#items-scatter-synthesizer" title="Permalink to this heading">#</a></h3>
 <p>Defined in <code class="docutils literal notranslate"><span class="pre">synthesizer_workers/items_scatter_synthesizer.yaml</span></code> file. It provides following config options:</p>
@@ -668,6 +695,7 @@ of provided assets by <code class="docutils literal notranslate"><span class="pr
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-workers">Synthetic Workers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dummy-synthesizer">Dummy Synthesizer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-synthesizer">Ground Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#light-synthesizer">Light Synthesizer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#items-scatter-synthesizer">Items Scatter Synthesizer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assets-synthesizers">Assets Synthesizers</a></li>
 </ul>

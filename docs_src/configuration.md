@@ -243,6 +243,19 @@ Defined in `synthesizer_workers/ground_synthesizer.yaml` file. It provides follo
 - `scale` (**required**)
   - X, Y, Z float scale of the object size.
 
+### Light Synthesizer
+
+Defined in `synthesizer_workers/light_synthesizer.yaml` file. It provides following config options:
+
+- `position` (**required**)
+  - X, Y, Z metric float coordinate in the scene.
+- `rotation`
+  - X, Y, Z float of rotation angle. Default is 0 along all axis.
+- `scale`
+  - X, Y, Z float scale. Default value is 1.
+- `light_type`
+  - Light type. See supported light types in *Omniverse* documentation. Default value is `distant`.
+
 ### Items Scatter Synthesizer
 
 Defined in `synthesizer_workers/items_scatter_synthesizer.yaml` file. It provides following config options:
