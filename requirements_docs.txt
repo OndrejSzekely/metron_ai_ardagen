@@ -1,4 +1,4 @@
-sphinxemoji ==0.2.0
-sphinx-design ==0.3.0
-sphinx-book-theme ==1.0.0
+sphinxemoji == 0.2.0
+sphinx-design ==0 .3.0
+sphinx-book-theme == 1.0.0
 sphinx-togglebutton == 0.3.2
