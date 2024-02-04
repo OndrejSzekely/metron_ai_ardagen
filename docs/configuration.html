@@ -318,6 +318,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-workers">Synthetic Workers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dummy-synthesizer">Dummy Synthesizer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-synthesizer">Ground Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#items-scatter-synthesizer">Items Scatter Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assets-synthesizers">Assets Synthesizers</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-new-scenario">Execute New Scenario</a></li>
@@ -572,6 +574,41 @@ using <em>Hydra’s</em> override <em>defaults</em> syntax at the very beginning
 </li>
 </ul>
 </section>
+<section id="items-scatter-synthesizer">
+<h3>Items Scatter Synthesizer<a class="headerlink" href="#items-scatter-synthesizer" title="Permalink to this heading">#</a></h3>
+<p>Defined in <code class="docutils literal notranslate"><span class="pre">synthesizer_workers/items_scatter_synthesizer.yaml</span></code> file. It provides following config options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">assets</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>List of config group options which provide assets.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">number_of_assets_displayed_at_once</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>Number of assets which are displayed at once. It has to be lower equal than <code class="docutils literal notranslate"><span class="pre">assets_pool_size</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">assets_pool_size</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>Number of assets which are deployed to the stage. The number has to be be lower equal than the total number
+of provided assets by <code class="docutils literal notranslate"><span class="pre">assets</span></code>. It is good practice to limit a number of assets in the stage because of memory reasons.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">placement_synths</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>Name of <em>Synthesizer Worker</em> instance in the <code class="docutils literal notranslate"><span class="pre">synthesizer_workers</span></code> section whose prims are used for placement.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">semantics</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>String name of a semantic class which is given to the object. Based on that, particular class is written into label records.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="assets-synthesizers">
+<h3>Assets Synthesizers<a class="headerlink" href="#assets-synthesizers" title="Permalink to this heading">#</a></h3>
+</section>
 </section>
 <section id="execute-new-scenario">
 <h2>Execute New Scenario<a class="headerlink" href="#execute-new-scenario" title="Permalink to this heading">#</a></h2>
@@ -631,6 +668,8 @@ using <em>Hydra’s</em> override <em>defaults</em> syntax at the very beginning
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-workers">Synthetic Workers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dummy-synthesizer">Dummy Synthesizer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-synthesizer">Ground Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#items-scatter-synthesizer">Items Scatter Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assets-synthesizers">Assets Synthesizers</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-new-scenario">Execute New Scenario</a></li>

@@ -243,4 +243,22 @@ Defined in `synthesizer_workers/ground_synthesizer.yaml` file. It provides follo
 - `scale` (**required**)
   - X, Y, Z float scale of the object size.
 
+### Items Scatter Synthesizer
+
+Defined in `synthesizer_workers/items_scatter_synthesizer.yaml` file. It provides following config options:
+
+- `assets` (**required**)
+  - List of config group options which provide assets.
+- `number_of_assets_displayed_at_once` (**required**)
+  - Number of assets which are displayed at once. It has to be lower equal than `assets_pool_size`.
+- `assets_pool_size` (**required**)
+  - Number of assets which are deployed to the stage. The number has to be be lower equal than the total number
+    of provided assets by `assets`. It is good practice to limit a number of assets in the stage because of memory reasons.
+- `placement_synths` (**required**)
+  - Name of *Synthesizer Worker* instance in the `synthesizer_workers` section whose prims are used for placement.
+- `semantics` (**required**)
+  - String name of a semantic class which is given to the object. Based on that, particular class is written into label records.
+
+### Assets Synthesizers
+
 ## Execute New Scenario
