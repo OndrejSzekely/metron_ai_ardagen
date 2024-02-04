@@ -272,6 +272,13 @@ Defined in `synthesizer_workers/items_scatter_synthesizer.yaml` file. It provide
 - `semantics` (**required**)
   - String name of a semantic class which is given to the object. Based on that, particular class is written into label records.
 
+### Scene Synthesizer
+
+Defined in `synthesizer_workers/scene_synthesizer.yaml` file. It provides following config options:
+
+- `scene_path` (**required**)
+  - *Omniverse Nucleus* path to scene which is loaded during the initialization stage of *ArDaGen*.
+
 ### Assets Synthesizers
 
 ## Execute New Scenario
