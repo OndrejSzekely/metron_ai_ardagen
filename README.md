@@ -25,6 +25,7 @@ images and annotations to train Metron AI.
 - [Status](#status)
 - [Documentation](#documentation)
   - [Building \& running documentation locally](#building--running-documentation-locally)
+  
 ## How to run
 
 After you install the solution, go into *Isaac Sim* root folder in a terminal and run
