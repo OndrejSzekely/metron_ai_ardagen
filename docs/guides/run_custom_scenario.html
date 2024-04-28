@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>tools.scenarios_manager module &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
+    <title>Run Custom Scenario &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
   
   
   
@@ -55,9 +55,11 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/tools.scenarios_manager';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'guides/run_custom_scenario';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Run Config Composition" href="run_config_composition.html" />
+    <link rel="prev" title="Run Demo Scenario" href="run_demo_scenario.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -135,7 +137,7 @@
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project_installation.html">Project Installation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -149,12 +151,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../synthesizers.html">Synthesizers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demo_scenarios.html">Demo Scenarios</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration.html">Configuration</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../guides/docs_generation.html">Documentation Generation Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guides/run_dummy_scenario.html">Run Dummy Scenario</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guides/run_demo_scenario.html">Run Demo Scenario</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guides/run_custom_scenario.html">Run Custom Scenario</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guides/run_config_composition.html">Run Config Composition</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../guides.html">Guides</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="docs_generation.html">Documentation Generation Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run_dummy_scenario.html">Run Dummy Scenario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run_demo_scenario.html">Run Demo Scenario</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Run Custom Scenario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run_config_composition.html">Run Config Composition</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development_notes.html">Development Notes</a></li>
@@ -214,7 +216,7 @@
       
       
       
-      <li><a href="../_sources/api/tools.scenarios_manager.rst" target="_blank"
+      <li><a href="../_sources/guides/run_custom_scenario.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -224,7 +226,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.rst</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -294,7 +296,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>tools.scenarios_manager module</h1>
+    <h1>Run Custom Scenario</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -308,92 +310,20 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="module-tools.scenarios_manager">
-<span id="tools-scenarios-manager-module"></span><h1>tools.scenarios_manager module<a class="headerlink" href="#module-tools.scenarios_manager" title="Permalink to this heading">#</a></h1>
-<p>Defines <cite>Scenarios Manager</cite> class which iterates over all scenarios.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="tools.scenarios_manager.ScenariosManager">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tools.scenarios_manager.</span></span><span class="sig-name descname"><span class="pre">ScenariosManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenarios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">omegaconf.DictConfig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isaac_sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="tools.isaac_sim.html#tools.isaac_sim.IsaacSimApp" title="tools.isaac_sim.IsaacSimApp"><span class="pre">IsaacSimApp</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tools.scenarios_manager.ScenariosManager" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Defines <cite>Scenarios Manager</cite> class which iterates over all scenarios.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.scenarios_manager.ScenariosManager.scenarios">
-<span class="sig-name descname"><span class="pre">scenarios</span></span><a class="headerlink" href="#tools.scenarios_manager.ScenariosManager.scenarios" title="Permalink to this definition">#</a></dt>
-<dd><p>Dict Config of all passed in scenarios.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>DictConfig</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.scenarios_manager.ScenariosManager.scenario_names">
-<span class="sig-name descname"><span class="pre">scenario_names</span></span><a class="headerlink" href="#tools.scenarios_manager.ScenariosManager.scenario_names" title="Permalink to this definition">#</a></dt>
-<dd><p>List of scenario names. Instantiated on &lt;__iter__&gt; call, till that contains
-empty iterator.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Iterable[str]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tools.scenarios_manager.ScenariosManager.isaac_sim">
-<span class="sig-name descname"><span class="pre">isaac_sim</span></span><a class="headerlink" href="#tools.scenarios_manager.ScenariosManager.isaac_sim" title="Permalink to this definition">#</a></dt>
-<dd><p>Issac Sim App wrapper instance.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="tools.isaac_sim.html#tools.isaac_sim.IsaacSimApp" title="tools.isaac_sim.IsaacSimApp">IsaacSimApp</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="tools.scenarios_manager.ScenariosManager.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenarios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">omegaconf.DictConfig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isaac_sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="tools.isaac_sim.html#tools.isaac_sim.IsaacSimApp" title="tools.isaac_sim.IsaacSimApp"><span class="pre">IsaacSimApp</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tools.scenarios_manager.ScenariosManager.__init__" title="Permalink to this definition">#</a></dt>
-<dd><p>Init.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>scenarios</strong> (<em>DictConfig</em>) – Dict Config of all passed in scenarios.</p></li>
-<li><p><strong>isaac_sim</strong> (<a class="reference internal" href="tools.isaac_sim.html#tools.isaac_sim.IsaacSimApp" title="tools.isaac_sim.IsaacSimApp"><em>IsaacSimApp</em></a>) – Issac Sim App wrapper instance.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="tools.scenarios_manager.ScenariosManager.__iter__">
-<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#tools.scenarios_manager.ScenariosManager" title="tools.scenarios_manager.ScenariosManager"><span class="pre">ScenariosManager</span></a></span></span><a class="headerlink" href="#tools.scenarios_manager.ScenariosManager.__iter__" title="Permalink to this definition">#</a></dt>
-<dd><p>Implements iterator magic method.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Instance of itself.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#tools.scenarios_manager.ScenariosManager" title="tools.scenarios_manager.ScenariosManager">ScenariosManager</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="tools.scenarios_manager.ScenariosManager.__next__">
-<span class="sig-name descname"><span class="pre">__next__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="tools.scenario.html#tools.scenario.Scenario" title="tools.scenario.Scenario"><span class="pre">Scenario</span></a></span></span><a class="headerlink" href="#tools.scenarios_manager.ScenariosManager.__next__" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns next scenario to be executed.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Scenario describing the what should be generated.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="tools.scenario.html#tools.scenario.Scenario" title="tools.scenario.Scenario">Scenario</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+  <section class="tex2jax_ignore mathjax_ignore" id="run-custom-scenario">
+<h1>Run Custom Scenario<a class="headerlink" href="#run-custom-scenario" title="Permalink to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>In <code class="docutils literal notranslate"><span class="pre">conf/writer.yaml</span></code> config set <code class="docutils literal notranslate"><span class="pre">fs_store_path</span></code> to a folder (absolute path) where generated images will be stored.</p></li>
+<li><p><em>Dummy Scenario</em> is a default <em>Scenario</em> set for <em>ArDaGen</em> configuration. Go into <code class="docutils literal notranslate"><span class="pre">conf/metron_ai_ardagen_config.yaml</span></code>
+file and replace <code class="docutils literal notranslate"><span class="pre">dummy_scenario</span></code> with the new <em>Scenario</em>.</p></li>
+<li><p>Go into <em>Isaac Sim</em> root folder in terminal and run following command:</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./python.sh  metron_ai_ardagen/metron_ai_ardagen_run.py
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Find generated images in the <code class="docutils literal notranslate"><span class="pre">fs_store_path</span></code> folder.</p></li>
+</ol>
 </section>
 
 
@@ -405,6 +335,24 @@ empty iterator.</p>
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="run_demo_scenario.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Run Demo Scenario</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="run_config_composition.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Run Config Composition</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
