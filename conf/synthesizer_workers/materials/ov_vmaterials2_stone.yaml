@@ -1,0 +1,8 @@
+ov_vmaterials2_stone:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Stone/Devil_Black.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Stone/Granite_Polished.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Stone/Rosa_Beta.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Stone/Steel_Grey.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Stone/Stone_Mediterranean.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Stone/Stone_Natural_Black.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Stone/Terrazzo.mdl

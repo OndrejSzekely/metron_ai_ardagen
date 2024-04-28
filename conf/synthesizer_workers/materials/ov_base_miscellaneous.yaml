@@ -1,0 +1,8 @@
+ov_base_miscellaneous:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Miscellaneous/Chain_Link_Fence.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Miscellaneous/Paint_Gloss_Finish.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Miscellaneous/Paint_Gloss.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Miscellaneous/Paint_Matte_Finish.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Miscellaneous/Paint_Matte.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Miscellaneous/Paint_Satin_Finish.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Miscellaneous/Paint_Satin.mdl

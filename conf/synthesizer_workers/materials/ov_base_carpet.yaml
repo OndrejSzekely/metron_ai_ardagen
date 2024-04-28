@@ -1,0 +1,13 @@
+ov_base_carpet:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Carpet/Carpet_Beige.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Carpet/Carpet_Berber_Gray.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Carpet/Carpet_Berber_Multi.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Carpet/Carpet_Cream.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Carpet/Carpet_Diamond_Olive.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Carpet/Carpet_Charcoal.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Carpet/Carpet_Diamond_Yellow.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Carpet/Carpet_Forest.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Carpet/Carpet_Gray.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Carpet/Carpet_Pattern_Leaf_Squares_Tan.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Carpet/Carpet_Pattern_Loop.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Carpet/Carpet_Pattern_Squares_Multi.mdl

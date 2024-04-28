@@ -1,0 +1,4 @@
+ov_vmaterials2_mansory:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Masonry/Sandstone_Brick_Vintage.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Masonry/Facade_Brick_Red_Clinker.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Masonry/Facade_Brick_Grey.mdl

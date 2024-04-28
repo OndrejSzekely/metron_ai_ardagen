@@ -1,0 +1,11 @@
+ov_base_masonry:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Masonry/Adobe_Brick.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Masonry/Brick_Pavers.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Masonry/Brick_Wall_Brown.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Masonry/Brick_Wall_Red.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Masonry/Concrete_Block.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Masonry/Concrete_Formed.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Masonry/Concrete_Polished.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Masonry/Concrete_Rough.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Masonry/Concrete_Smooth.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Masonry/Stucco.mdl

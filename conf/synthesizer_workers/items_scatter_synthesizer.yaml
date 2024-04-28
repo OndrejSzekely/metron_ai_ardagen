@@ -1,0 +1,10 @@
+defaults:
+  - assets: 
+    - ???
+
+target_class: synthesizers.synth_workers.items_scatter_synthesizer.ItemsScatterSynthesizer # do not touch
+number_of_assets_displayed_at_once: ???
+assets_pool_size: ???
+placement_synths: ???
+semantics: ???
+

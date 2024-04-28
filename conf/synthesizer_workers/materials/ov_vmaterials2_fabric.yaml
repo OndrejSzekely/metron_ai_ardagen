@@ -1,0 +1,6 @@
+ov_vmaterials2_fabric:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Fabric/Cotton_Roughly_Woven.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Fabric/Fabric_Cotton_Fine_Woven.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Fabric/Fabric_Cotton_Pique_Weave.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Fabric/Tweed_Herringbone.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Fabric/Felt_Plain.mdl

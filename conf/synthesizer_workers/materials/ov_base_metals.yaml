@@ -1,0 +1,25 @@
+ov_base_metals:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Aluminum_Anodized_Black.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Aluminum_Anodized_Blue.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Aluminum_Anodized_Charcoal.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Aluminum_Anodized_Red.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Aluminum_Anodized.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Aluminum_Cast.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Aluminum_Polished.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Brass.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Bronze.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Brushed_Antique_Copper.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Cast_Metal_Silver_Vein.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Chrome.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Copper.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/CorrugatedMetal.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Gold.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Iron.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Metal_Door.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Metal_Seamed_Roof.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/RustedMetal.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Silver.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Steel_Blued.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Steel_Carbon.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Steel_Cast.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Metals/Steel_Stainless.mdl

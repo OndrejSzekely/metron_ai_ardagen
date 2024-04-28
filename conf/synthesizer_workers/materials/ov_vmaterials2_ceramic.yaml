@@ -1,0 +1,11 @@
+ov_vmaterials2_ceramic:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Ceramic/Ceramic_Tiles_Glazed_Diamond_Offset.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Ceramic/Ceramic_Tiles_Glazed_Diamond.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Ceramic/Ceramic_Tiles_Glazed_Mosaic_Shifted.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Ceramic/Ceramic_Tiles_Glazed_Paseo.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Ceramic/Ceramic_Tiles_Glazed_Penny.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Ceramic/Ceramic_Tiles_Glazed_Pinwheel.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Ceramic/Ceramic_Tiles_Glazed_Square_Brick.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Ceramic/Ceramic_Tiles_Glazed_Square.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Ceramic/Ceramic_Tiles_Glazed_Subway.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Ceramic/Grog_Fired_Clay.mdl

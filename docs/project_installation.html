@@ -1,0 +1,558 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Project Installation &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'project_installation';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Architecture" href="architecture.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Metron AI - ArDaGen 0.1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Project Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="arch/high_level_arch.html">High Level Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch/activity_diag.html">Activity Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch/sequence_diag_arch.html">Sequence Diagram Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch/class_diag_arch.html">Class Diagram Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch/docs_arch.html">Documentation Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="synthesizers.html">Synthesizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demo_scenarios.html">Demo Scenarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/docs_generation.html">Documentation Generation Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/run_dummy_scenario.html">Run Dummy Scenario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/run_demo_scenario.html">Run Demo Scenario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/run_custom_scenario.html">Run Custom Scenario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/run_config_composition.html">Run Config Composition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development_notes.html">Development Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_docs.html">API Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_page.html">Release Page</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/project_installation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Project Installation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end-user-installation">End User Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose">Docker Compose</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-installation">Development Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug Fixes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-1-ov-replicator-camera-detach-fails-at-the-end-of-data-generation">Bug #1: OV Replicator camera detach fails at the end of data generation</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="project-installation">
+<h1>Project Installation<a class="headerlink" href="#project-installation" title="Permalink to this heading">#</a></h1>
+<p>Solution is based on <a class="reference external" href="https://developer.nvidia.com/nvidia-omniverse-platform">NVIDIA Omniverse</a> with Python interface.
+There are two ways of installation. End user installation and development installation. <em>The guide follows Linux based
+installation steps</em>, which is also the recommended option.</p>
+<section id="end-user-installation">
+<h2>End User Installation<a class="headerlink" href="#end-user-installation" title="Permalink to this heading">#</a></h2>
+<section id="docker-compose">
+<h3>Docker Compose<a class="headerlink" href="#docker-compose" title="Permalink to this heading">#</a></h3>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p><em>Docker Compose</em> guide is not complete!</p>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Attention</p>
+<p>❗ NVIDIA GPU is required. ❗</p>
+</div>
+<p>To be able to run ArDaGen using Docker Compose, perform following steps:</p>
+<ol class="arabic simple">
+<li><p>Install Docker (<a class="reference external" href="https://docs.docker.com/get-docker/">how to install</a>).</p></li>
+<li><p>Install Docker Compose (<a class="reference external" href="https://docs.docker.com/compose/install/">how to install</a>).</p></li>
+<li><p>Pull <a class="reference external" href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/isaac-sim">NVIDIA Omniverse Isaac Sim Docker image</a>.</p></li>
+</ol>
+</section>
+</section>
+<section id="development-installation">
+<h2>Development Installation<a class="headerlink" href="#development-installation" title="Permalink to this heading">#</a></h2>
+<p>Follow the instruction steps.
+<strong>Linux (Ubuntu 22.04) installation was tested only. The installation might not work on Windows.</strong></p>
+<div class="warning admonition">
+<p class="admonition-title">Attention</p>
+<p>❗ NVIDIA GPU is required. ❗</p>
+</div>
+<ol class="arabic">
+<li><p>Download and install NVIDIA Omniverse Launcher from <a class="reference external" href="https://developer.nvidia.com/nvidia-omniverse-platform">here</a>.</p></li>
+<li><p>Run Omniverse Launcher and install Isaac Sim application.
+<a class="reference external" href="https://docs.omniverse.nvidia.com/app_isaacsim/app_isaacsim/install_basic.html">See the link.</a></p></li>
+<li><p>Install <a class="reference external" href="https://code.visualstudio.com/">Microsoft Visual Studio Code</a>.
+<strong>Other IDEs are not supported out of the box, nor tested.</strong></p></li>
+<li><p>Download the repository using</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/OndrejSzekely/metron_ai_ardagen.git
+</pre></div>
+</div>
+</li>
+<li><p>Move ArDaGen repository into Isaac Sim’s root folder.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># a sample command, your paths will be different and also Isaac Sim version might not match</span>
+mv  /ssd_crucial/projects/metron_ai_ardagen /ssd_crucial/omniverse/isaac_sim-2022.1.0/
+</pre></div>
+</div>
+</li>
+<li><p>Install <em>pre-commit</em> in your environment and then install the hook by running <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">install</span></code>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Reference Installation Steps</p>
+<p>Perform steps <strong>1</strong> and <strong>2</strong> in <a class="reference internal" href="guides/docs_generation.html#manual-documentation-building"><span class="std std-ref"><em>Manual Documentation Building</em> section</span></a>.</p>
+<p>In the activated <code class="docutils literal notranslate"><span class="pre">dev_37</span></code> environment run following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge pre_commit
+</pre></div>
+</div>
+<p>and install <em>pre-commit</em> in the repo root folder:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pre-commit install
+</pre></div>
+</div>
+<p>Detach the environment and add following lines</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> &lt;ANACONDA_ROOT_PATH&gt;/etc/profile.d/conda.sh
+conda activate dev_37
+</pre></div>
+</div>
+<p>right after <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">start</span> <span class="pre">templated</span></code> comment line in the file <code class="docutils literal notranslate"><span class="pre">.git/hooks/pre-commit</span></code>. Replace <code class="docutils literal notranslate"><span class="pre">&lt;ANACONDA_ROOT_PATH&gt;</span></code> with your <em>Anaconda</em> install dir.</p>
+</div>
+</li>
+<li><p><em>(optional)</em> Download <a class="reference external" href="https://shapenet.org/">Shapenet’s</a> ShapeNetCore v2 dataset.
+You have to register on the page to be allowed to download the dataset. Place the
+downloaded dataset into any arbitraty location, but a fast storage is recommended.</p></li>
+<li><p>To start Visual Studio project, go into Isaac Sim’s root folder and run <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">.</span></code>. It will open a setup Visual
+Studio project with everything predefined.</p>
+<p>In the <em>Explorer</em> tab whole Isaac Sim folder is present, but everything else, except <em>metron_ai_garden</em> folder,
+is irrelevant for the development.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>📋 ✋ Be aware that debuging is performed using the <em>Python: Current File</em> option in <em>Run &amp; Debug</em>.</p>
+</div>
+</li>
+<li><p>Append</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>&quot;./metron_ai_ardagen&quot;,
+</pre></div>
+</div>
+<p>into <code class="docutils literal notranslate"><span class="pre">python.analysis.extraPaths</span></code> list in
+<code class="docutils literal notranslate"><span class="pre">&lt;ISAAC_SIM_ROOT_FOLDER_PATH&gt;/.vscode/settings.json</span></code> file.</p>
+</li>
+<li><p>Install missing Python requirements. Go into Isaac Sim’s root folder and run
+<code class="docutils literal notranslate"><span class="pre">./python.sh</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">metron_ai_ardagen/requirements.txt</span></code>.</p></li>
+<li><p>Download <em>Metron AI ArDaGen Omniverse Extension</em> which is an <em>Omniverse</em> Extension</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recurse</span><span class="o">-</span><span class="n">submodules</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">OndrejSzekely</span><span class="o">/</span><span class="n">metron_ai_ardagen_omni_ext</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run <em>Isaac Sim</em> and open Extension window (<em>window</em> ⟶ <em>Extensions</em>). Click on the <em>gear icon</em>
+and in <em>Extension Seatch Paths</em> add the path to <code class="docutils literal notranslate"><span class="pre">exts</span></code> folder in the cloned
+<em>Metron AI ArDaGen Omniverse Extension</em> repository.</p>
+<p><img alt="Installation of Metron AI ArDaGen OV Extension" src="_images/metron_ai_ardagen_extension_installation.jpg" /></p>
+</li>
+</ol>
+</section>
+<section id="bug-fixes">
+<h2>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this heading">#</a></h2>
+<section id="bug-1-ov-replicator-camera-detach-fails-at-the-end-of-data-generation">
+<h3>Bug #1: OV Replicator camera detach fails at the end of data generation<a class="headerlink" href="#bug-1-ov-replicator-camera-detach-fails-at-the-end-of-data-generation" title="Permalink to this heading">#</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;dict&#39;</span> object has no attribute <span class="s1">&#39;discard&#39;</span>
+  File <span class="s2">&quot;/ssd_crucial/omniverse/library/isaac_sim-2022.1.0/exts/omni.replicator.core-1.2.0+cp37/omni/replicator/core/scripts/writer_registry.py&quot;</span>, line &lt;line_num&gt;, <span class="k">in</span> detach
+</pre></div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">exts/omni.replicator.core&lt;VERSION&gt;/omni/replicator/core/scripts/writer_registry.py</span></code> on line <strong>&lt;line_num&gt;</strong> change</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">cls</span><span class="o">.</span><span class="n">_render_product_writer_mapping</span><span class="p">[</span><span class="n">render_product</span><span class="p">]</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">writer_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>into</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">cls</span><span class="o">.</span><span class="n">_render_product_writer_mapping</span><span class="p">[</span><span class="n">render_product</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">writer_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="architecture.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Architecture</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end-user-installation">End User Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose">Docker Compose</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-installation">Development Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug Fixes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-1-ov-replicator-camera-detach-fails-at-the-end-of-data-generation">Bug #1: OV Replicator camera detach fails at the end of data generation</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ondra.szekely@gmail.com
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, ondra.szekely@gmail.com.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,3 @@
+ov_vmaterials2_liquids:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Liquids/Water_Blue_Ocean_Perlinwaves.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Liquids/Water_Murky_Perlinwaves.mdl

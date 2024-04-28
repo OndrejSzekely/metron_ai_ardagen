@@ -1,0 +1,2 @@
+_target_: tools.isaac_sim.IsaacSimApp # do not touch
+debug: False

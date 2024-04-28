@@ -1,0 +1,46 @@
+defaults:
+  - materials:
+    - ov_base_architecture.yaml
+    - ov_base_carpet.yaml
+    - ov_base_emissives.yaml
+    - ov_base_glass.yaml
+    - ov_base_masonry.yaml
+    - ov_base_metals.yaml
+    - ov_base_miscellaneous.yaml
+    - ov_base_natural.yaml
+    - ov_base_plastics.yaml
+    - ov_base_stone.yaml
+    - ov_base_styles.yaml
+    - ov_base_textiles.yaml
+    - ov_base_wall_board.yaml
+    - ov_base_wood.yaml
+    - ov_vmaterials2_carpet.yaml
+    - ov_vmaterials2_ceramic.yaml
+    - ov_vmaterials2_composite.yaml
+    - ov_vmaterials2_concrete.yaml
+    - ov_vmaterials2_fabric.yaml
+    - ov_vmaterials2_glass.yaml
+    - ov_vmaterials2_ground.yaml
+    - ov_vmaterials2_leather.yaml
+    - ov_vmaterials2_liquids.yaml
+    - ov_vmaterials2_mansory.yaml
+    - ov_vmaterials2_metal.yaml
+    - ov_vmaterials2_paint.yaml
+    - ov_vmaterials2_paper.yaml
+    - ov_vmaterials2_plaster.yaml
+    - ov_vmaterials2_plastic.yaml
+    - ov_vmaterials2_stone.yaml
+    - ov_vmaterials2_wood.yaml      
+
+target_class: synthesizers.synth_workers.ground_synthesizer.GroundSynthesizer # do not touch
+semantics: ???
+scale:
+  - ??? #X
+  - ??? #Y
+  - ??? #Z
+position:
+  - ??? #X
+  - ??? #Y
+  - ??? #Z
+  
+

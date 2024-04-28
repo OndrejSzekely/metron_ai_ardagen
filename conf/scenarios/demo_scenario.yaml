@@ -1,0 +1,91 @@
+defaults:
+  - common_scenario@demo_scenario # Take the boilerplate *Common Scenario* to be filled.
+  # Use *Ground Synthesizer* to generate ground.
+  - /synthesizer_workers/ground_synthesizer@demo_scenario.synthesizer_workers.ground
+  # Use *Light Synthesizer* to place an instance of distant light.
+  - /synthesizer_workers/light_synthesizer@demo_scenario.synthesizer_workers.distant_light
+  # Use *Single Item Synthesizer* to place a box on the fixed stage location. We use the same *Synthesizer* as two
+  # instances with unique names to place two individual boxes.
+  - /synthesizer_workers/single_item_synthesizer@demo_scenario.synthesizer_workers.box1
+  - /synthesizer_workers/single_item_synthesizer@demo_scenario.synthesizer_workers.box2
+  # Use *Items Scatter Synthesizer* to randomly sample boxes from the given pool and place them on the ground at
+  # random locations.
+  - /synthesizer_workers/items_scatter_synthesizer@demo_scenario.synthesizer_workers.mess_synthesizer
+  # Override materials collections *defaults list* defined for the *Ground Synthesizer* with a small subset
+  # for our *Synthesizer* instance.
+  - override /synthesizer_workers/materials@demo_scenario.synthesizer_workers.ground.materials:
+    - ov_base_carpet.yaml
+    - ov_base_metals.yaml
+    - ov_base_natural.yaml
+    - ov_base_stone.yaml
+    - ov_base_wood.yaml
+    - ov_vmaterials2_carpet.yaml
+    - ov_vmaterials2_ceramic.yaml
+    - ov_vmaterials2_fabric.yaml
+    - ov_vmaterials2_leather.yaml
+    - ov_vmaterials2_metal.yaml
+    - ov_vmaterials2_stone.yaml
+    - ov_vmaterials2_wood.yaml
+    # Populate missing *defaults list* value of the *assets* config parameter in *Items Scatter Synthesizer*.
+    # Defined assets collections list is used as a pool of asests for our instance *Items Scatter Synthesizer* instance.
+    # Use only one collection with card boxes for sampling.
+  - override /synthesizer_workers/assets@demo_scenario.synthesizer_workers.mess_synthesizer.assets:
+    - ov_card_box_assets
+
+# Populate the missing values from the configs or overwrite them.
+demo_scenario:
+  frames_number: 10
+  frames_readout_offset: 25
+  synthesizer_workers:
+    distant_light:
+      position:
+        - 2 #X
+        - 2 #Y
+        - 25 #Z
+    mess_synthesizer:
+      placement_synths:
+        - ground
+      number_of_assets_displayed_at_once: 5
+      assets_pool_size: 10
+      semantics: foreground
+    box1:
+      position:
+        - 0.5 #X
+        - 0.5 #Y
+        - 0 #Z
+      usd_path: omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/2022.1/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxB_01_1344.usd
+      semantics: foreground
+    box2:
+      position:
+        - -0.5 #X
+        - -0.5 #Y
+        - 0 #Z
+      usd_path: omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/2022.1/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxD_05_947.usd
+      semantics: foreground
+    ground:
+      position:
+        - 0 #X
+        - 0 #Y
+        - 0 #Z
+      semantics:
+        background
+      scale:
+        - 5 #X
+        - 8.8 #Y
+        - 1 #Z
+  cameras:
+    camera:
+      position:
+        - 0 #X
+        - 0 #Y
+        - 10 #Z
+      rotation:
+        - 0 #X
+        - -90 #Y
+        - 0 #Z
+      clipping_range:
+        - 0.01
+        - 100.0
+      resolution:
+        - 1280
+        - 720

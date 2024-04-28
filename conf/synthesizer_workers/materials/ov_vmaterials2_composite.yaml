@@ -1,0 +1,4 @@
+ov_vmaterials2_composite:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Composite/Carbon_Fiber.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Composite/Fiberglass.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Composite/Fiberglass_Imperfections.mdl

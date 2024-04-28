@@ -1,0 +1,4 @@
+ov_vmaterials2_paper:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Paper/Cardboard_Low_Quality.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Paper/Cardboard.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/vMaterials_2/Paper/Paper_Plain.mdl

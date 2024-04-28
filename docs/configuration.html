@@ -1,0 +1,826 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Configuration &#8212; Metron AI - ArDaGen 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'configuration';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Guides" href="guides.html" />
+    <link rel="prev" title="Demo Scenarios" href="demo_scenarios.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Metron AI - ArDaGen 0.1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_installation.html">Project Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="architecture.html">Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="arch/high_level_arch.html">High Level Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch/activity_diag.html">Activity Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch/sequence_diag_arch.html">Sequence Diagram Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch/class_diag_arch.html">Class Diagram Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch/docs_arch.html">Documentation Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="synthesizers.html">Synthesizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demo_scenarios.html">Demo Scenarios</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Configuration</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/docs_generation.html">Documentation Generation Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/run_dummy_scenario.html">Run Dummy Scenario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/run_demo_scenario.html">Run Demo Scenario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/run_custom_scenario.html">Run Custom Scenario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/run_config_composition.html">Run Config Composition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development_notes.html">Development Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_docs.html">API Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_page.html">Release Page</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/configuration.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Configuration</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-logic">Configuration Logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-files-structure">Config Files Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-to-ardagen-ov-extension">Path to ArDaGen OV Extension</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-scenario">New Scenario</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cameras">Cameras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-camera">Single Camera</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-workers">Synthetic Workers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dummy-synthesizer">Dummy Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-synthesizer">Ground Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#light-synthesizer">Light Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#items-scatter-synthesizer">Items Scatter Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scene-synthesizer">Scene Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-item-synthesizer">Single Item Synthesizer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assets-synthesizers">Assets Synthesizers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ov-assets-synthesizer">OV Assets Synthesizer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-new-scenario">Execute New Scenario</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h1>
+<p>Configuration is done via <a class="reference external" href="https://hydra.cc/">Hydra</a> configuration framework. The configuration is based on
+configuration <em>.yaml</em> files, but also allows override option via command line arguments.
+See <a class="reference external" href="https://hydra.cc/docs/1.3/tutorials/basic/your_first_app/config_file/">Hydra’s overriding docs</a>.</p>
+<section id="configuration-logic">
+<h2>Configuration Logic<a class="headerlink" href="#configuration-logic" title="Permalink to this heading">#</a></h2>
+<p><em>ArDaGen</em> configuration setups are structured into <em>Scenarios</em>. Each <em>Scenario</em> has its own <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> file in
+<code class="docutils literal notranslate"><span class="pre">/conf/scenarios</span></code> folder. <em>Scenario</em> config file defines an interface to be populated. Along mandatory config
+parameters, it is required to define <em>Cameras</em> setup for the scenario. One <em>Scenario</em> can contain multiple camera
+setups. The scenario goes one by one <em>Camera</em> setup and for each generate all the data. Supported camera type <code class="docutils literal notranslate"><span class="pre">.yaml</span></code>
+files are located in <code class="docutils literal notranslate"><span class="pre">/conf/cameras</span></code>. <em>Omniverse</em> stage is composed and for each frame randomized by
+<em>Synthesizer Workers</em> which have to be set up in the <em>Scenario</em> config too. <em>Synthesizer Workers</em> <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> config files
+are located in <code class="docutils literal notranslate"><span class="pre">/conf/synthesizer_workers</span></code>.</p>
+</section>
+<section id="config-files-structure">
+<h2>Config Files Structure<a class="headerlink" href="#config-files-structure" title="Permalink to this heading">#</a></h2>
+<p><em>ArDaGen’s</em> configuration files are located in <code class="docutils literal notranslate"><span class="pre">conf</span></code> folder. The configuration folder structure is following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>/conf
+    /cameras <span class="c1"># Contains camera template config file. </span>
+             <span class="c1"># User can add here custom camera definition config files.</span>
+    /scenarios <span class="c1"># Contains scenario template config file. </span>
+               <span class="c1"># User can add here custom scenario definition config files.</span>
+    /synthesizer_workers <span class="c1"># Contains all defined Synthesizer Worker config files.</span>
+        /assets <span class="c1"># Contain config files of Synthesizer Workers responsible</span>
+                <span class="c1"># for stage assets.</span>
+        /materials <span class="c1"># Contains config files defining material groups.</span>
+                   <span class="c1"># Each config file defines a list of the materials of the group.</span>
+    isaac_sim.yaml <span class="c1"># Contains Isaac Sim app specific parameters.</span>
+    metron_ai_ardagen_config.yaml <span class="c1"># Root config file which puts all config files together.</span>
+                                  <span class="c1"># This is the root config file for Hydra.</span>
+    writer.yaml <span class="c1"># Config file defining what label outputs are produced.</span>
+</pre></div>
+</div>
+</section>
+<section id="path-to-ardagen-ov-extension">
+<h2>Path to ArDaGen OV Extension<a class="headerlink" href="#path-to-ardagen-ov-extension" title="Permalink to this heading">#</a></h2>
+<p>Path to <em>Metron AI ArDaGen Omniverse Extension</em> <strong>must be set either for existing scenarios or new ones</strong>.
+Set <code class="docutils literal notranslate"><span class="pre">fs_path</span></code> option for <code class="docutils literal notranslate"><span class="pre">settings.ardagen_extension</span></code> in <code class="docutils literal notranslate"><span class="pre">metron_ai_ardagen_config.yaml</span></code> to a valid path. The path is supposed to be absolute and should point to <code class="docutils literal notranslate"><span class="pre">metron_ai_ardagen_omni_ext</span></code> folder of git cloned extension.</p>
+</section>
+<section id="new-scenario">
+<h2>New Scenario<a class="headerlink" href="#new-scenario" title="Permalink to this heading">#</a></h2>
+<p>This section guides through a new <em>Scenario</em> configuration setup. <em>The whole configuration process follows <a class="reference external" href="https://hydra.cc/">Hydra’s</a> paradigm. All Hydra’s features can be used.</em></p>
+<p>New <em>Scenario</em> <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> file has to be put into <code class="docutils literal notranslate"><span class="pre">conf/scenarios</span></code> folder. New <em>Scenario’s</em> has to include <em>Common Scenario</em>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_scenario@dummy_scenario</span><span class="w"> </span><span class="c1"># do not touch</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Sample Config</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_scenario@dummy_scenario</span><span class="w"> </span><span class="c1"># do not touch</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>Then <em>Scenario’s</em> name has to be defined:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;SCENARIO_NAME&gt;</span><span class="p">:</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Sample Config</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_scenario@dummy_scenario</span><span class="w"> </span><span class="c1"># do not touch</span><span class="w"></span>
+<span class="nt">sample_scenario</span><span class="p">:</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>By default a new <em>Scenario</em> will generate <code class="docutils literal notranslate"><span class="pre">100</span></code> frames with <code class="docutils literal notranslate"><span class="pre">20</span></code> offset frames between each generated frame. Offset frames improves visual quality, because it gives time to denoisers to stabilize ray-trayced effects/images.
+Use higher <code class="docutils literal notranslate"><span class="pre">&lt;FRAMES_OFFSET&gt;</span></code> value for more complex scenes and higher output resolution.
+To override the values use following parameters:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">frames_number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;GENERATED_FRAMES_NUM&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">frames_readout_offset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;FRAMES_OFFSET&gt;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Sample Config</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_scenario@dummy_scenario</span><span class="w"> </span><span class="c1"># do not touch</span><span class="w"></span>
+<span class="nt">sample_scenario</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">frames_number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">  </span><span class="nt">frames_readout_offset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="cameras">
+<h2>Cameras<a class="headerlink" href="#cameras" title="Permalink to this heading">#</a></h2>
+<p>Each <em>Scenario</em> must have <em>at least one</em> camera setup (rig) in <code class="docutils literal notranslate"><span class="pre">cameras</span></code> <em>Config Group</em>. <code class="docutils literal notranslate"><span class="pre">common_scenario</span></code> defines a
+default camera <code class="docutils literal notranslate"><span class="pre">camera</span></code> which is of <code class="docutils literal notranslate"><span class="pre">comon_single_camera</span></code> config option.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Default camera’s name and config option can be overridden by <code class="docutils literal notranslate"><span class="pre">&lt;CAMERA_TYPE&gt;</span></code> type and <code class="docutils literal notranslate"><span class="pre">&lt;CAMERA_NAME&gt;</span></code> camera name
+using <em>Hydra’s</em> override <em>defaults</em> syntax at the very beginning of a <em>Scenario</em> file.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/cameras/&lt;CAMERA_TYPE&gt;@cameras.camera</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cameras.camera@cameras.&lt;CAMERA_NAME&gt;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Sample Config</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_scenario@dummy_scenario</span><span class="w"> </span><span class="c1"># do not touch</span><span class="w"></span>
+<span class="nt">sample_scenario</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">frames_number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">  </span><span class="nt">frames_readout_offset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w"></span>
+<span class="nt">cameras</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">camera</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">position</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#X</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#Y</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"> </span><span class="c1">#Z</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rotation</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#X</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-90</span><span class="w"> </span><span class="c1">#Y</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#Z</span><span class="w"></span>
+<span class="w">    </span><span class="nt">clipping_range</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.01</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">resolution</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1280</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">720</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>Following <code class="docutils literal notranslate"><span class="pre">cameras</span></code> <em>Config Group</em> options are defined:</p>
+<section id="single-camera">
+<h3>Single Camera<a class="headerlink" href="#single-camera" title="Permalink to this heading">#</a></h3>
+<p>Defined in <code class="docutils literal notranslate"><span class="pre">cameras/common_single_camera.yaml</span></code> file. It provides following config options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>World coordinate of camera defined by 3 float values. Metric system depends on OV stage setup. Default metric unit is cm.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rotation</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>Camera rotation given by 3 float values - roll, pitch, yaw.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clipping_range</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>Clipping range from/up to which distance objects are captured in the camera. Metric system depends on OV stage setup. Default metric unit is cm. The first float value sets the minimal distance from camera at which objects are captured. The second float value sets the maximal distance up to which are objects captured.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resolution</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>Camera pixel resolution given by two int values - width and height.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="synthetic-workers">
+<h2>Synthetic Workers<a class="headerlink" href="#synthetic-workers" title="Permalink to this heading">#</a></h2>
+<p>The most important part of each <em>Scenario</em> is <em>Synthesizer Workers</em> which defines the whole <em>Scenario</em>.</p>
+<p><em>Synthesizer Workers</em> are specified under <code class="docutils literal notranslate"><span class="pre">synthesizer_workers</span></code> config group option.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;SCENARIO_NAME&gt;</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">synthesizer_workers</span><span class="p">:</span><span class="w"></span>
+</pre></div>
+</div>
+<p>There can be only config group value (<code class="docutils literal notranslate"><span class="pre">&lt;SYNTHESIZER_WORKER_TYPE&gt;</span></code>) under the same name. It is allowed to have more instances of the same group config option for a <em>Scenario</em> (<code class="docutils literal notranslate"><span class="pre">&lt;SCENARIO_NAME&gt;</span></code>), but it’s name has to be overridden (<code class="docutils literal notranslate"><span class="pre">&lt;INSTANCE_NAME&gt;</span></code>) during default import.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/synthesizer_workers/&lt;SYNTHESIZER_WORKER_TYPE&gt;@&lt;SCENARIO_NAME&gt;.synthesizer_workers.&lt;INSTANCE_NAME&gt;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Then you have to define missing values or override existing ones for the imported <em>Synthesizer Workers</em>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Sample Config</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_scenario@dummy_scenario</span><span class="w"> </span><span class="c1"># do not touch</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/synthesizer_workers/single_item_synthesizer@dummy_scenario.synthesizer_workers.box1</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/synthesizer_workers/single_item_synthesizer@dummy_scenario.synthesizer_workers.box2</span><span class="w"></span>
+<span class="nt">sample_scenario</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">frames_number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">  </span><span class="nt">frames_readout_offset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w"></span>
+<span class="w">  </span><span class="nt">synthesizer_workers</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">box1</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">position</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w"> </span><span class="c1">#X</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w"> </span><span class="c1">#Y</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#Z</span><span class="w"></span>
+<span class="w">      </span><span class="nt">usd_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/2022.1/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxB_01_1344.usd</span><span class="w"></span>
+<span class="w">      </span><span class="nt">semantics</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foreground</span><span class="w"></span>
+<span class="w">    </span><span class="nt">box2</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">position</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.5</span><span class="w"> </span><span class="c1">#X</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.5</span><span class="w"> </span><span class="c1">#Y</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#Z</span><span class="w"></span>
+<span class="w">      </span><span class="nt">usd_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/Isaac/2022.1/Isaac/Environments/Simple_Warehouse/Props/SM_CardBoxD_05_947.usd</span><span class="w"></span>
+<span class="w">      </span><span class="nt">semantics</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foreground</span><span class="w"></span>
+<span class="nt">cameras</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">camera</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">position</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#X</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#Y</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"> </span><span class="c1">#Z</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rotation</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#X</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-90</span><span class="w"> </span><span class="c1">#Y</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#Z</span><span class="w"></span>
+<span class="w">    </span><span class="nt">clipping_range</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.01</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">resolution</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1280</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">720</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<section id="dummy-synthesizer">
+<h3>Dummy Synthesizer<a class="headerlink" href="#dummy-synthesizer" title="Permalink to this heading">#</a></h3>
+<p>Defined in <code class="docutils literal notranslate"><span class="pre">synthesizer_workers/dummy_synthesizer.yaml</span></code> file. It does not provide any config options.</p>
+</section>
+<section id="ground-synthesizer">
+<h3>Ground Synthesizer<a class="headerlink" href="#ground-synthesizer" title="Permalink to this heading">#</a></h3>
+<p>Defined in <code class="docutils literal notranslate"><span class="pre">synthesizer_workers/ground_synthesizer.yaml</span></code> file. It provides following config options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">materials</span></code></p>
+<ul>
+<li><p>List of <code class="docutils literal notranslate"><span class="pre">yaml</span></code> files from <code class="docutils literal notranslate"><span class="pre">materials</span></code> config group.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">semantics</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>String name of a semantic class which is given to the object. Based on that, particular class is written into label records.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>X, Y, Z metric float coordinate in the scene.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>X, Y, Z float scale of the object size.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="light-synthesizer">
+<h3>Light Synthesizer<a class="headerlink" href="#light-synthesizer" title="Permalink to this heading">#</a></h3>
+<p>Defined in <code class="docutils literal notranslate"><span class="pre">synthesizer_workers/light_synthesizer.yaml</span></code> file. It provides following config options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>X, Y, Z metric float coordinate in the scene.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rotation</span></code></p>
+<ul>
+<li><p>X, Y, Z float of rotation angle. Default is 0 along all axis.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale</span></code></p>
+<ul>
+<li><p>X, Y, Z float scale. Default value is 1.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">light_type</span></code></p>
+<ul>
+<li><p>Light type. See supported light types in <em>Omniverse</em> documentation. Default value is <code class="docutils literal notranslate"><span class="pre">distant</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="items-scatter-synthesizer">
+<h3>Items Scatter Synthesizer<a class="headerlink" href="#items-scatter-synthesizer" title="Permalink to this heading">#</a></h3>
+<p>Defined in <code class="docutils literal notranslate"><span class="pre">synthesizer_workers/items_scatter_synthesizer.yaml</span></code> file. It provides following config options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">assets</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>List of config group options which provide assets. Selected from <code class="docutils literal notranslate"><span class="pre">assets</span></code> <em>Config Group</em> representing
+<em>Assets Synthesizers</em>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">number_of_assets_displayed_at_once</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>Number of assets which are displayed at once. It has to be lower equal than <code class="docutils literal notranslate"><span class="pre">assets_pool_size</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">assets_pool_size</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>Number of assets which are deployed to the stage. The number has to be be lower equal than the total number
+of provided assets by <code class="docutils literal notranslate"><span class="pre">assets</span></code>. It is good practice to limit a number of assets in the stage because of memory reasons.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">placement_synths</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>Name of <em>Synthesizer Worker</em> instance in the <code class="docutils literal notranslate"><span class="pre">synthesizer_workers</span></code> section whose prims are used for placement.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">semantics</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>String name of a semantic class which is given to the object. Based on that, particular class is written into label records.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="scene-synthesizer">
+<h3>Scene Synthesizer<a class="headerlink" href="#scene-synthesizer" title="Permalink to this heading">#</a></h3>
+<p>Defined in <code class="docutils literal notranslate"><span class="pre">synthesizer_workers/scene_synthesizer.yaml</span></code> file. It provides following config options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scene_path</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p><em>Omniverse Nucleus</em> path to scene which is loaded during the initialization stage of <em>ArDaGen</em>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="single-item-synthesizer">
+<h3>Single Item Synthesizer<a class="headerlink" href="#single-item-synthesizer" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>X, Y, Z metric float coordinate in the scene.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">usd_path</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p><em>Nucleus</em> asset path.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">semantics</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>String name of semantic class of the asset.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="assets-synthesizers">
+<h2>Assets Synthesizers<a class="headerlink" href="#assets-synthesizers" title="Permalink to this heading">#</a></h2>
+<p><em>Assets Synthesizers Workers</em> are special group of <em>Synthesizers</em> which are responsible for assets list provisioning to
+caller <em>Synthesizer Workers</em>.</p>
+</section>
+<section id="ov-assets-synthesizer">
+<h2>OV Assets Synthesizer<a class="headerlink" href="#ov-assets-synthesizer" title="Permalink to this heading">#</a></h2>
+<p>Defined in <code class="docutils literal notranslate"><span class="pre">synthesizer_workers/assets/ov_card_box_assets.yaml</span></code> file.</p>
+<p>It provides list box-like assets.</p>
+</section>
+<section id="execute-new-scenario">
+<h2>Execute New Scenario<a class="headerlink" href="#execute-new-scenario" title="Permalink to this heading">#</a></h2>
+<p>Once the <em>Scenario</em> is ready the only thing needed is to add it to the the root <em>ArDaGen</em> config <code class="docutils literal notranslate"><span class="pre">metron_ai_ardagen_config.yaml</span></code>
+into <code class="docutils literal notranslate"><span class="pre">defaults.scenarios</span></code> package. It can be added more <em>Scenarios</em> into the list. <em>Scenarios</em> are then executed one by
+one in a sequence.</p>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p>Check if used <em>Omniverse</em> version matches the one set in <code class="docutils literal notranslate"><span class="pre">settings.issac_sim_version</span></code>.</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scenarios</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">new_scenario_1</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">new_scenario_2</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">isaac_sim@isaac_sim</span><span class="w"> </span><span class="c1"># do not touch</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">writer@writer</span><span class="w"></span>
+
+<span class="nt">settings</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ov_nucleus_ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span><span class="w"></span>
+<span class="w">  </span><span class="nt">issac_sim_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022.2.0</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ardagen_extension</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metron.ai.ardagen</span><span class="w"></span>
+<span class="w">    </span><span class="nt">fs_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/ssd_crucial/projects/metron_ai_ardagen_omni_ext</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The root config is automatically loaded when <em>ArDaGen</em> is started.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="demo_scenarios.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Demo Scenarios</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="guides.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Guides</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-logic">Configuration Logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-files-structure">Config Files Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-to-ardagen-ov-extension">Path to ArDaGen OV Extension</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-scenario">New Scenario</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cameras">Cameras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-camera">Single Camera</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-workers">Synthetic Workers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dummy-synthesizer">Dummy Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-synthesizer">Ground Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#light-synthesizer">Light Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#items-scatter-synthesizer">Items Scatter Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scene-synthesizer">Scene Synthesizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-item-synthesizer">Single Item Synthesizer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assets-synthesizers">Assets Synthesizers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ov-assets-synthesizer">OV Assets Synthesizer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-new-scenario">Execute New Scenario</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ondra.szekely@gmail.com
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, ondra.szekely@gmail.com.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+_target_: tools.single_camera.SingleCamera # do not touch
+position:
+  - ??? # world coordinate x
+  - ??? # world coordinate y
+  - ??? # world coordinate z
+rotation:
+  - ??? # degrees roll
+  - ??? # degrees pitch
+  - ??? # degrees yaw
+clipping_range:
+  - ???
+  - ???
+resolution:
+  - ??? # width
+  - ??? # height

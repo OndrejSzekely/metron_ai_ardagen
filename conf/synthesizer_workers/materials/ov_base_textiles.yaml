@@ -1,0 +1,9 @@
+ov_base_textiles:
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Textiles/Cloth_Black.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Textiles/Leather_Black.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Textiles/Cloth_Gray.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Textiles/Leather_Brown.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Textiles/Leather_Pumpkin.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Textiles/Linen_Beige.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Textiles/Linen_White.mdl
+- omniverse://${settings.ov_nucleus_ip}/NVIDIA/Materials/Base/Textiles/Linen_Blue.mdl
