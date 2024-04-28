@@ -321,9 +321,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#light-synthesizer">Light Synthesizer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#items-scatter-synthesizer">Items Scatter Synthesizer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scene-synthesizer">Scene Synthesizer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assets-synthesizers">Assets Synthesizers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-item-synthesizer">Single Item Synthesizer</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assets-synthesizers">Assets Synthesizers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ov-assets-synthesizer">OV Assets Synthesizer</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-new-scenario">Execute New Scenario</a></li>
 </ul>
             </nav>
@@ -608,7 +610,8 @@ using <em>Hydra’s</em> override <em>defaults</em> syntax at the very beginning
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">assets</span></code> (<strong>required</strong>)</p>
 <ul>
-<li><p>List of config group options which provide assets.</p></li>
+<li><p>List of config group options which provide assets. Selected from <code class="docutils literal notranslate"><span class="pre">assets</span></code> <em>Config Group</em> representing
+<em>Assets Synthesizers</em>.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">number_of_assets_displayed_at_once</span></code> (<strong>required</strong>)</p>
@@ -645,12 +648,62 @@ of provided assets by <code class="docutils literal notranslate"><span class="pr
 </li>
 </ul>
 </section>
-<section id="assets-synthesizers">
-<h3>Assets Synthesizers<a class="headerlink" href="#assets-synthesizers" title="Permalink to this heading">#</a></h3>
+<section id="single-item-synthesizer">
+<h3>Single Item Synthesizer<a class="headerlink" href="#single-item-synthesizer" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>X, Y, Z metric float coordinate in the scene.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">usd_path</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p><em>Nucleus</em> asset path.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">semantics</span></code> (<strong>required</strong>)</p>
+<ul>
+<li><p>String name of semantic class of the asset.</p></li>
+</ul>
+</li>
+</ul>
 </section>
+</section>
+<section id="assets-synthesizers">
+<h2>Assets Synthesizers<a class="headerlink" href="#assets-synthesizers" title="Permalink to this heading">#</a></h2>
+<p><em>Assets Synthesizers Workers</em> are special group of <em>Synthesizers</em> which are responsible for assets list provisioning to
+caller <em>Synthesizer Workers</em>.</p>
+</section>
+<section id="ov-assets-synthesizer">
+<h2>OV Assets Synthesizer<a class="headerlink" href="#ov-assets-synthesizer" title="Permalink to this heading">#</a></h2>
+<p>Defined in <code class="docutils literal notranslate"><span class="pre">synthesizer_workers/assets/ov_card_box_assets.yaml</span></code> file.</p>
+<p>It provides list box-like assets.</p>
 </section>
 <section id="execute-new-scenario">
 <h2>Execute New Scenario<a class="headerlink" href="#execute-new-scenario" title="Permalink to this heading">#</a></h2>
+<p>Once the <em>Scenario</em> is ready the only thing needed is to add it to the the root <em>ArDaGen</em> config <code class="docutils literal notranslate"><span class="pre">metron_ai_ardagen_config.yaml</span></code>
+into <code class="docutils literal notranslate"><span class="pre">defaults.scenarios</span></code> package. It can be added more <em>Scenarios</em> into the list. <em>Scenarios</em> are then executed one by
+one in a sequence.</p>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p>Check if used <em>Omniverse</em> version matches the one set in <code class="docutils literal notranslate"><span class="pre">settings.issac_sim_version</span></code>.</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scenarios</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">new_scenario_1</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">new_scenario_2</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">isaac_sim@isaac_sim</span><span class="w"> </span><span class="c1"># do not touch</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">writer@writer</span><span class="w"></span>
+
+<span class="nt">settings</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ov_nucleus_ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span><span class="w"></span>
+<span class="w">  </span><span class="nt">issac_sim_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022.2.0</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ardagen_extension</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metron.ai.ardagen</span><span class="w"></span>
+<span class="w">    </span><span class="nt">fs_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/ssd_crucial/projects/metron_ai_ardagen_omni_ext</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The root config is automatically loaded when <em>ArDaGen</em> is started.</p>
 </section>
 </section>
 
@@ -710,9 +763,11 @@ of provided assets by <code class="docutils literal notranslate"><span class="pr
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#light-synthesizer">Light Synthesizer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#items-scatter-synthesizer">Items Scatter Synthesizer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scene-synthesizer">Scene Synthesizer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assets-synthesizers">Assets Synthesizers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-item-synthesizer">Single Item Synthesizer</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assets-synthesizers">Assets Synthesizers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ov-assets-synthesizer">OV Assets Synthesizer</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-new-scenario">Execute New Scenario</a></li>
 </ul>
   </nav></div>

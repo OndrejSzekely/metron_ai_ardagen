@@ -261,7 +261,8 @@ Defined in `synthesizer_workers/light_synthesizer.yaml` file. It provides follow
 Defined in `synthesizer_workers/items_scatter_synthesizer.yaml` file. It provides following config options:
 
 - `assets` (**required**)
-  - List of config group options which provide assets.
+  - List of config group options which provide assets. Selected from `assets` *Config Group* representing
+   *Assets Synthesizers*.
 - `number_of_assets_displayed_at_once` (**required**)
   - Number of assets which are displayed at once. It has to be lower equal than `assets_pool_size`.
 - `assets_pool_size` (**required**)
@@ -279,6 +280,52 @@ Defined in `synthesizer_workers/scene_synthesizer.yaml` file. It provides follow
 - `scene_path` (**required**)
   - *Omniverse Nucleus* path to scene which is loaded during the initialization stage of *ArDaGen*.
 
-### Assets Synthesizers
+### Single Item Synthesizer
+
+- `position` (**required**)
+  - X, Y, Z metric float coordinate in the scene.
+- `usd_path` (**required**)
+  - *Nucleus* asset path.
+- `semantics` (**required**)
+  - String name of semantic class of the asset.
+
+## Assets Synthesizers
+
+*Assets Synthesizers Workers* are special group of *Synthesizers* which are responsible for assets list provisioning to
+caller *Synthesizer Workers*.
+
+## OV Assets Synthesizer
+
+Defined in `synthesizer_workers/assets/ov_card_box_assets.yaml` file.
+
+It provides list box-like assets.
 
 ## Execute New Scenario
+
+Once the *Scenario* is ready the only thing needed is to add it to the the root *ArDaGen* config `metron_ai_ardagen_config.yaml`
+into `defaults.scenarios` package. It can be added more *Scenarios* into the list. *Scenarios* are then executed one by
+one in a sequence.
+
+  :::{admonition} Tip
+  :class: tip
+
+  Check if used *Omniverse* version matches the one set in `settings.issac_sim_version`.
+  :::
+
+```yaml
+defaults:
+  - scenarios:
+    - new_scenario_1
+    - new_scenario_2
+  - isaac_sim@isaac_sim # do not touch
+  - writer@writer
+
+settings:
+  ov_nucleus_ip: localhost
+  issac_sim_version: 2022.2.0
+  ardagen_extension:
+    name: metron.ai.ardagen
+    fs_path: /ssd_crucial/projects/metron_ai_ardagen_omni_ext
+```
+
+The root config is automatically loaded when *ArDaGen* is started.
