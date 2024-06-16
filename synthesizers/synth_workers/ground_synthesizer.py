@@ -66,7 +66,7 @@ class GroundSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-meth
         self._stage = omni.usd.get_context().get_stage()
         self._stage_plane_path = (
             self._stage.GetPrimAtPath(plane_node.node.get_prim_path())
-            .GetRelationship("inputs:prims")
+            .GetRelationship("inputs:primsIn")
             .GetTargets()[0]
             .pathString
         )

@@ -1,5 +1,5 @@
-synthesizers.synth\_workers.scene\_synthesizer module
-=====================================================
+synthesizers.synth\_workers.nvidia\_scene\_synthesizer module
+=============================================================
 
 .. automodule:: synthesizers.synth_workers.nvidia_scene_synthesizer
    :members:

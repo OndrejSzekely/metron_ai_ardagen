@@ -1,5 +1,5 @@
 # This file is part of the Metron AI ArDaGen (https://github.com/OndrejSzekely/metron_ai_ardagen).
-# Copyright (c) 2023 Ondrej Szekely.
+# Copyright (c) 2023-2024 Ondrej Szekely.
 #
 # This program is free software: you can redistribute it and/or modify it under the terms of the
 # GNU General Public License as published by the Free Software Foundation, version 3. This program
@@ -9,18 +9,18 @@
 # License along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 """
-Defines *Scene Synthesizer* class which is responsible for scene loading.
+Defines *NVIDIA Scene Synthesizer* class which is responsible for scene loading from NVIDIA assets.
 """
 
 from typing import Any, List, Dict
-from omni.isaac.core.utils.nucleus import get_assets_root_path
+from omni.isaac.core.utils.nucleus import get_nvidia_asset_root_path
 from metron_shared import param_validators as param_val
 from .base_synthesizer import BaseSynthesizer
 
 
-class SceneSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-methods
+class NVIDIASceneSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-methods
     """
-    Defines *Scene Synthesizer* class which is responsible for scene loading.
+    Defines *NVIDIA Scene Synthesizer* class which is responsible for scene loading from NVIDIA assets.
 
     Attributes:
             _scene_node (og.Node, but can't be used as annotation): Scene stage node.
@@ -54,7 +54,7 @@ class SceneSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-metho
         # Isaac Sim app has to be created before modules can be imported, so called in here.
         import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
 
-        nucleus_root_path = get_assets_root_path()
+        nucleus_root_path = get_nvidia_asset_root_path()
         param_val.check_type(nucleus_root_path, str)
 
         self._scene_node = rep.create.from_usd(nucleus_root_path + self.scene_path)

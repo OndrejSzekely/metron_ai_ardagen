@@ -1,11 +1,11 @@
 defaults:
   - common_scenario@dummy_scenario # do not touch
-  - /synthesizer_workers/scene_synthesizer@dummy_scenario.synthesizer_workers.scene_synthesizer # do not touch
+  - /synthesizer_workers/nvidia_scene_synthesizer@dummy_scenario.synthesizer_workers.nvidia_scene_synthesizer # do not touch
   - /synthesizer_workers/dummy_synthesizer@dummy_scenario.synthesizer_workers.dummy_synthesizer # do not touch
 dummy_scenario:
   synthesizer_workers:
-    scene_synthesizer:
-      scene_path: /Isaac/Environments/Simple_Warehouse/full_warehouse.usd
+    nvidia_scene_synthesizer:
+      scene_path: /Assets/Isaac/2022.2.0/Isaac/Environments/Simple_Warehouse/full_warehouse.usd
   frames_number: 5
   frames_readout_offset: 60
   cameras:
