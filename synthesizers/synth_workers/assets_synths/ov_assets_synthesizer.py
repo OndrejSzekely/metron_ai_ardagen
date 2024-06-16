@@ -66,7 +66,7 @@ class OVAssetsSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-me
             self._created_assets.append(asset_node)
             stage_asset_path = (
                 self._stage.GetPrimAtPath(asset_node.node.get_prim_path())
-                .GetRelationship("inputs:prims")
+                .GetRelationship("inputs:primsIn")
                 .GetTargets()[0]
                 .pathString
             )

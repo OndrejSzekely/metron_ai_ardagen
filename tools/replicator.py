@@ -80,7 +80,7 @@ class OVReplicator:  # pylint: disable=too-few-public-methods
 
                     with rep.trigger.on_frame(
                         interval=scenario.frames_readout_offset + 1,  # On <frames_readout_offset> + 1 randomize
-                        num_frames=rep_frames_to_generate,
+                        max_execs=rep_frames_to_generate,
                     ):
                         for synthesizer_worker_name in scenario.master_synthesizer.synthesizers_worker_names:
                             getattr(rep.randomizer, synthesizer_worker_name)(camera_setup)

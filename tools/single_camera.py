@@ -74,5 +74,5 @@ class SingleCamera:  # pylint: disable=too-few-public-methods
         render_product = rep.create.render_product(camera, self.cam_resolution)
         stage = omni.usd.get_context().get_stage()
         yield [
-            stage.GetPrimAtPath(camera.node.get_prim_path()).GetRelationship("inputs:prims").GetTargets()[0].pathString
+            stage.GetPrimAtPath(camera.node.get_prim_path()).GetRelationship("inputs:primsIn").GetTargets()[0].pathString
         ], [render_product]

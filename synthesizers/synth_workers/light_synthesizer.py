@@ -72,7 +72,7 @@ class LightSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-metho
         self._light_node = light_node.node.get_prim_path()
         stage = omni.usd.get_context().get_stage()
         self._stage_light_path = (
-            stage.GetPrimAtPath(self._light_node).GetRelationship("inputs:prims").GetTargets()[0].pathString
+            stage.GetPrimAtPath(self._light_node).GetRelationship("inputs:primsIn").GetTargets()[0].pathString
         )
 
     def __call__(self, camera_setup: List[str]) -> None:
