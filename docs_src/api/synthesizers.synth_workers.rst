@@ -25,4 +25,5 @@ Submodules
    synthesizers.synth_workers.light_synthesizer
    synthesizers.synth_workers.nvidia_scene_synthesizer
    synthesizers.synth_workers.physics_synthesizer
+   synthesizers.synth_workers.scene_synthesizer
    synthesizers.synth_workers.single_item_synthesizer
