@@ -23,10 +23,10 @@ frame it randomly shows/hides the box.
     Demo Scenario output based on Dummy Synthesizer.
 ```
 
-## Scene Synthesizer
+## NVIDIA Scene Synthesizer
 
-Loads a scene into the stage. Scene is assumed to be stored in *OV Nucleus* in a USD file. It doesn't perform any
-randomizations.
+Loads a scene from NVIDIA assets into the stage. Scene is assumed to be stored in *OV Nucleus* in a USD file under
+`omniverse://localhost/NVIDIA` root folder. It doesn't perform any randomizations.
 
 ```{eval-rst}
 .. subfigure:: A

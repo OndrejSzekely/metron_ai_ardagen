@@ -469,7 +469,7 @@ BaseSynthesizer &lt;|-- DummySynthesizer
 BaseSynthesizer &lt;|-- GroundSynthesizer
 BaseSynthesizer &lt;|-- ItemsScatterSynthesizer
 BaseSynthesizer &lt;|-- LightSynthesizer
-BaseSynthesizer &lt;|-- SceneSynthesizer
+BaseSynthesizer &lt;|-- NVIDIASceneSynthesizer
 BaseSynthesizer &lt;|-- SingleItemSynthesizer
 BaseSynthesizer &lt;|-- OVAssetsSynthesizer
 
@@ -530,7 +530,7 @@ class LightSynthesizer{
     +register_synthesizers_prims(synthesizer_workers) None
 }
 
-class SceneSynthesizer{
+class NVIDIASceneSynthesizer{
     +str scenario_owner
     +str scene_path
     -str __name__

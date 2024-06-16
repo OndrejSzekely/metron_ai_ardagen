@@ -308,17 +308,17 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="module-synthesizers.synth_workers.scene_synthesizer">
-<span id="synthesizers-synth-workers-scene-synthesizer-module"></span><h1>synthesizers.synth_workers.scene_synthesizer module<a class="headerlink" href="#module-synthesizers.synth_workers.scene_synthesizer" title="Permalink to this heading">#</a></h1>
-<p>Defines <em>Scene Synthesizer</em> class which is responsible for scene loading.</p>
+  <section id="module-synthesizers.synth_workers.nvidia_scene_synthesizer">
+<span id="synthesizers-synth-workers-scene-synthesizer-module"></span><h1>synthesizers.synth_workers.scene_synthesizer module<a class="headerlink" href="#module-synthesizers.synth_workers.nvidia_scene_synthesizer" title="Permalink to this heading">#</a></h1>
+<p>Defines <em>NVIDIA Scene Synthesizer</em> class which is responsible for scene loading from NVIDIA assets.</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">synthesizers.synth_workers.scene_synthesizer.</span></span><span class="sig-name descname"><span class="pre">SceneSynthesizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_owner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scene_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">synthesizers.synth_workers.nvidia_scene_synthesizer.</span></span><span class="sig-name descname"><span class="pre">NVIDIASceneSynthesizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_owner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scene_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="synthesizers.synth_workers.base_synthesizer.html#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSynthesizer</span></code></a></p>
-<p>Defines <em>Scene Synthesizer</em> class which is responsible for scene loading.</p>
+<p>Defines <em>NVIDIA Scene Synthesizer</em> class which is responsible for scene loading from NVIDIA assets.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer._scene_node">
-<span class="sig-name descname"><span class="pre">_scene_node</span></span><a class="headerlink" href="#synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer._scene_node" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer._scene_node">
+<span class="sig-name descname"><span class="pre">_scene_node</span></span><a class="headerlink" href="#synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer._scene_node" title="Permalink to this definition">#</a></dt>
 <dd><p>Scene stage node.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -328,8 +328,8 @@ document.write(`
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.scene_path">
-<span class="sig-name descname"><span class="pre">scene_path</span></span><a class="headerlink" href="#synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.scene_path" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer.scene_path">
+<span class="sig-name descname"><span class="pre">scene_path</span></span><a class="headerlink" href="#synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer.scene_path" title="Permalink to this definition">#</a></dt>
 <dd><p>Path of a USD scene to be loaded inside OV Nucleus.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -339,8 +339,8 @@ document.write(`
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_setup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.__call__" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_setup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer.__call__" title="Permalink to this definition">#</a></dt>
 <dd><p>With this magic function, a command is executed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -351,8 +351,8 @@ one camera, e.g. stereo camera or more complicated camera rigs.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_owner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scene_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.__init__" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_owner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scene_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer.__init__" title="Permalink to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -365,8 +365,8 @@ one camera, e.g. stereo camera or more complicated camera rigs.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer._load_from_nucleus">
-<span class="sig-name descname"><span class="pre">_load_from_nucleus</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer._load_from_nucleus" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer._load_from_nucleus">
+<span class="sig-name descname"><span class="pre">_load_from_nucleus</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer._load_from_nucleus" title="Permalink to this definition">#</a></dt>
 <dd><p>Loads the scene from OV Nucleus server.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -379,8 +379,8 @@ one camera, e.g. stereo camera or more complicated camera rigs.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.get_prims">
-<span class="sig-name descname"><span class="pre">get_prims</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.get_prims" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer.get_prims">
+<span class="sig-name descname"><span class="pre">get_prims</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer.get_prims" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns paths in stage to <cite>Synthesizer’s</cite> created prims.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -393,8 +393,8 @@ one camera, e.g. stereo camera or more complicated camera rigs.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.register_synthesizers_prims">
-<span class="sig-name descname"><span class="pre">register_synthesizers_prims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synthesizer_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="synthesizers.synth_workers.base_synthesizer.html#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><span class="pre">BaseSynthesizer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.scene_synthesizer.SceneSynthesizer.register_synthesizers_prims" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer.register_synthesizers_prims">
+<span class="sig-name descname"><span class="pre">register_synthesizers_prims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synthesizer_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="synthesizers.synth_workers.base_synthesizer.html#synthesizers.synth_workers.base_synthesizer.BaseSynthesizer" title="synthesizers.synth_workers.base_synthesizer.BaseSynthesizer"><span class="pre">BaseSynthesizer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer.register_synthesizers_prims" title="Permalink to this definition">#</a></dt>
 <dd><p>Allows an access to other <cite>Synthesizer’s</cite> prims if needed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
