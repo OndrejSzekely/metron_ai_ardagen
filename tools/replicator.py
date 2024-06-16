@@ -1,5 +1,5 @@
 # This file is part of the Metron AI ArDaGen (https://github.com/OndrejSzekely/metron_ai_ardagen).
-# Copyright (c) 2023 Ondrej Szekely.
+# Copyright (c) 2023-2024 Ondrej Szekely.
 #
 # This program is free software: you can redistribute it and/or modify it under the terms of the
 # GNU General Public License as published by the Free Software Foundation, version 3. This program
@@ -80,7 +80,7 @@ class OVReplicator:  # pylint: disable=too-few-public-methods
 
                     with rep.trigger.on_frame(
                         interval=scenario.frames_readout_offset + 1,  # On <frames_readout_offset> + 1 randomize
-                        num_frames=rep_frames_to_generate,
+                        max_execs=rep_frames_to_generate,
                     ):
                         for synthesizer_worker_name in scenario.master_synthesizer.synthesizers_worker_names:
                             getattr(rep.randomizer, synthesizer_worker_name)(camera_setup)

@@ -154,7 +154,7 @@ Synthesizer Workers Class Architecture
     BaseSynthesizer <|-- GroundSynthesizer
     BaseSynthesizer <|-- ItemsScatterSynthesizer
     BaseSynthesizer <|-- LightSynthesizer
-    BaseSynthesizer <|-- SceneSynthesizer
+    BaseSynthesizer <|-- NVIDIASceneSynthesizer
     BaseSynthesizer <|-- SingleItemSynthesizer
     BaseSynthesizer <|-- OVAssetsSynthesizer
 
@@ -215,7 +215,7 @@ Synthesizer Workers Class Architecture
         +register_synthesizers_prims(synthesizer_workers) None
     }
 
-    class SceneSynthesizer{
+    class NVIDIASceneSynthesizer{
         +str scenario_owner
         +str scene_path
         -str __name__

@@ -1,5 +1,5 @@
 # This file is part of the Metron AI ArDaGen (https://github.com/OndrejSzekely/metron_ai_ardagen).
-# Copyright (c) 2023 Ondrej Szekely.
+# Copyright (c) 2023-2024 Ondrej Szekely.
 #
 # This program is free software: you can redistribute it and/or modify it under the terms of the
 # GNU General Public License as published by the Free Software Foundation, version 3. This program
@@ -25,7 +25,7 @@ class DummySynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-metho
                 uses to register a method. It returns `Synthesizer's` name as defined in the config.
     """
 
-    _box_primitive_path = "SM_CardBoxA_3"
+    _box_primitive_path = "SM_CardBoxA_3/SM_CardBoxA_02"
 
     def __init__(self, class_name: str, scenario_owner: str) -> None:  # pylint: disable=useless-super-delegation
         super().__init__(class_name, scenario_owner)
@@ -41,7 +41,7 @@ class DummySynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-metho
         # Isaac Sim app has to be created before modules can be imported, so called in here.
         import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
 
-        box = rep.get.prims(path_pattern=self._box_primitive_path)
+        box = rep.get.prims(path_match=self._box_primitive_path)
         with box:
             rep.modify.semantics([("class", "box")])
             rep.modify.visibility(rep.distribution.choice([True, False]))

@@ -1,5 +1,5 @@
 # This file is part of the Metron AI ArDaGen (https://github.com/OndrejSzekely/metron_ai_ardagen).
-# Copyright (c) 2023 Ondrej Szekely.
+# Copyright (c) 2023-2024 Ondrej Szekely.
 #
 # This program is free software: you can redistribute it and/or modify it under the terms of the
 # GNU General Public License as published by the Free Software Foundation, version 3. This program
@@ -72,7 +72,7 @@ class LightSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-metho
         self._light_node = light_node.node.get_prim_path()
         stage = omni.usd.get_context().get_stage()
         self._stage_light_path = (
-            stage.GetPrimAtPath(self._light_node).GetRelationship("inputs:prims").GetTargets()[0].pathString
+            stage.GetPrimAtPath(self._light_node).GetRelationship("inputs:primsIn").GetTargets()[0].pathString
         )
 
     def __call__(self, camera_setup: List[str]) -> None:

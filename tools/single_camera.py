@@ -1,5 +1,5 @@
 # This file is part of the Metron AI ArDaGen (https://github.com/OndrejSzekely/metron_ai_ardagen).
-# Copyright (c) 2023 Ondrej Szekely.
+# Copyright (c) 2023-2024 Ondrej Szekely.
 #
 # This program is free software: you can redistribute it and/or modify it under the terms of the
 # GNU General Public License as published by the Free Software Foundation, version 3. This program
@@ -74,5 +74,8 @@ class SingleCamera:  # pylint: disable=too-few-public-methods
         render_product = rep.create.render_product(camera, self.cam_resolution)
         stage = omni.usd.get_context().get_stage()
         yield [
-            stage.GetPrimAtPath(camera.node.get_prim_path()).GetRelationship("inputs:prims").GetTargets()[0].pathString
+            stage.GetPrimAtPath(camera.node.get_prim_path())
+            .GetRelationship("inputs:primsIn")
+            .GetTargets()[0]
+            .pathString
         ], [render_product]

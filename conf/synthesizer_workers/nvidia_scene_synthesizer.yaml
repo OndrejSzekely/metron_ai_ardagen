@@ -1,0 +1,2 @@
+target_class: synthesizers.synth_workers.nvidia_scene_synthesizer.NVIDIASceneSynthesizer # do not touch
+scene_path: ???

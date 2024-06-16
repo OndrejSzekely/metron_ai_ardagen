@@ -1,5 +1,5 @@
 # This file is part of the Metron AI ArDaGen (https://github.com/OndrejSzekely/metron_ai_ardagen).
-# Copyright (c) 2023 Ondrej Szekely.
+# Copyright (c) 2023-2024 Ondrej Szekely.
 #
 # This program is free software: you can redistribute it and/or modify it under the terms of the
 # GNU General Public License as published by the Free Software Foundation, version 3. This program
@@ -66,7 +66,7 @@ class OVAssetsSynthesizer(BaseSynthesizer):  # pylint: disable=too-few-public-me
             self._created_assets.append(asset_node)
             stage_asset_path = (
                 self._stage.GetPrimAtPath(asset_node.node.get_prim_path())
-                .GetRelationship("inputs:prims")
+                .GetRelationship("inputs:primsIn")
                 .GetTargets()[0]
                 .pathString
             )
