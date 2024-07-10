@@ -1,3 +1,4 @@
 hydra-core == 1.2.0
 PyYAML == 6.*
 typeguard == 2.13.3
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
