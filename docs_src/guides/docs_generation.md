@@ -13,11 +13,11 @@
     command to create a new virtual environment:
     :::
     ```shell
-    conda create -n metron_dev_37 python=3.7
+    conda create -n metron_dev_311 python=3.11
     ```
     Run following command to attach created virtual environment in which all further steps are executed:
     ```shell
-    conda activate metron_dev_37
+    conda activate metron_dev_311
     ```
     ::::
 
@@ -95,7 +95,7 @@
    |:point_right:| In repository's root folder activate the environment:
    :::
    ```shell
-   conda activate metron_dev_37
+   conda activate metron_dev_311
    ```
    ::::
 2. Execute following command:

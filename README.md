@@ -51,11 +51,11 @@ Online documentation of the latest commit on the *main* branch can be found [her
     which also provides installation management of non-Python software components, and Python. Run following
     command to create a new virtual environment:
     ```shell
-    conda create -n metron_dev_37 python=3.7
+    conda create -n metron_dev_311 python=3.11
     ```
     Run following command to attach created virtual environment in which all further steps are executed:
     ```shell
-    conda activate metron_dev_37
+    conda activate metron_dev_311
     ```
 
 3. Install following frameworks in the environment.

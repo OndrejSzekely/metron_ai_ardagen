@@ -66,7 +66,7 @@ Follow the instruction steps.
 
     Perform steps **1** and **2** in [*Manual Documentation Building* section](./guides/docs_generation.md#manual-documentation-building).
 
-    In the activated `dev_37` environment run following command:
+    In the activated `dev_311` environment run following command:
     ```shell
     conda install -c conda-forge pre_commit
     ```
@@ -77,7 +77,7 @@ Follow the instruction steps.
     Detach the environment and add following lines
     ```sh
     source <ANACONDA_ROOT_PATH>/etc/profile.d/conda.sh
-    conda activate dev_37
+    conda activate dev_311
     ```
     right after `# start templated` comment line in the file `.git/hooks/pre-commit`. Replace `<ANACONDA_ROOT_PATH>` with your *Anaconda* install dir.
     ::::
