@@ -1,22 +1,27 @@
-[tool.pylint.messages_control]
-disable = "C0330, C0326, E0401"
+[project]
+name = "metron_ai_ardagen"
+requires-python = ">=3.11,<3.12"
+version = "0.2"
 
-[tool.pylint.format]
-max-line-length = "120"
+[tool.ruff]
+line-length = 150
+include = ["*.py"]
 
-[tool.black]
-line-length = 120
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-)/
-'''
+[project.optional-dependencies]
+docs = [
+    "myst-parser==1.0.0",
+    "sphinx~=5.2",
+    "sphinx-book-theme==1.1.0",
+    "sphinx-copybutton==0.5.1",
+    "sphinx-design==0.3.0",
+    "sphinx-subfigure==0.2.4",
+    "sphinx-togglebutton==0.3.2",
+    "sphinxcontrib-mermaid==0.8.1",
+    "sphinxemoji==0.2.0",
+]
+
+[dependency-groups]
+devtools = [
+    "pre-commit>=4.2.0",
+    "ruff>=0.11.12",
+]

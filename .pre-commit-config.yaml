@@ -12,48 +12,24 @@ repos:
         exclude: docs
     -   id: end-of-file-fixer
         types:
-          - python
+            - python
         exclude: docs
     -   id: check-yaml
         exclude: docs
     -   id: check-added-large-files
         args: ['--maxkb=2000']
         exclude: docs
-
--   repo: https://github.com/psf/black
-    rev: 22.3.0
+-   repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.12
     hooks:
-    -   id: black
-        types:
-            - python
-        args: [--line-length=120]
-        exclude: docs
--   repo: https://gitlab.com/PyCQA/flake8
-    rev: 3.9.2
+    -   id: ruff-check
+        args: [ --fix ]
+    -   id: ruff-format
+-   repo: https://github.com/RobertCraigie/pyright-python
+    rev: v1.1.393
     hooks:
-    -   id: flake8
-        types:
-            - python
-        args: ['--max-line-length=120', '--extend-ignore=E203']
-        exclude: docs
--   repo: https://github.com/PyCQA/pylint
-    rev: v2.13.7
-    hooks:
-    -   id: pylint
-        types:
-            - python
-        args: ['--disable=C0330, C0326, E0401, duplicate-code', '--max-line-length=120']
-        exclude: docs
--   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: 'v0.950'
-    hooks:
-    -   id: mypy
-        types:
-            - python
-        args: ['--show-error-codes', '--disallow-untyped-calls', '--disallow-untyped-defs',
-               '--disallow-incomplete-defs', '--disallow-untyped-decorators', '--no-implicit-optional', '--warn-redundant-casts',
-               '--ignore-missing-imports']
-        exclude: docs
+    -   id: pyright
+        language: system
 -   repo: https://github.com/PyCQA/bandit
     rev: 1.7.4
     hooks:
@@ -87,9 +63,11 @@ repos:
         name: create API docs
         language: system
         entry: bash -c 'sphinx-apidoc -o docs_src/api -f -t docs_src/_template  --private --module-first -d 1 --no-toc -e  . || true'
+        files: \.py$
 -   repo: local
     hooks:
     -   id: sphinx
         name: build sphinx docs
         language: system
         entry: bash -c 'sphinx-build -b html docs_src docs || true'
+        files: ^docs_src
