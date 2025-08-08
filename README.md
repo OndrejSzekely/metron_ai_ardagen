@@ -48,22 +48,17 @@ Online documentation of the latest commit on the *main* branch can be found [on 
 ### Building & running documentation locally
 
 1. Download the repository using `git clone https://github.com/OndrejSzekely/metron_ai_ardagen.git`
-2. It is recommended to use virtual environment, to encapsulate the dev tools (Python frameworks and other software components). Create Python **3.7** virtual environment using Python dependency management tool you are using (e.g. Conda, Pipenv, etc...).
+2. It is recommended to use virtual environment managed by [*uv*](https://docs.astral.sh/uv), to encapsulate the dev tools
+   (Python frameworks and other software components) from the system. Create Python **3.11** virtual environment using Python
+   dependency management tool you are using (e.g. Conda, Pipenv, etc...).
 
     ##### :bulb: Reference Installation Steps :point_down:  <!-- markdownlint-disable MD001 MD023--> <!-- omit in toc -->
 
-    It is recommended to use Anaconda channel ([how to get Anaconda](https://www.anaconda.com/products/individual)),
-    which also provides installation management of non-Python software components, and Python. Run following
+    Reference installation steps use [*uv*](https://docs.astral.sh/uv) management tool. Run following
     command to create a new virtual environment:
 
     ```shell
-    conda create -n metron_dev_311 python=3.11
-    ```
-
-    Run following command to attach created virtual environment in which all further steps are executed:
-
-    ```shell
-    conda activate metron_dev_311
+    uv venv
     ```
 
 3. Install following frameworks in the environment.
@@ -79,12 +74,10 @@ Online documentation of the latest commit on the *main* branch can be found [on 
 
     ##### :bulb: Reference Installation Steps :point_down:  <!-- markdownlint-disable MD023 MD024--> <!-- omit in toc -->
 
-    In the activated environment run following commands:
+    Run following command:
 
     ```shell
-    conda install -y -c anaconda sphinx=5.0.2
-    conda install -y -c conda-forge myst-parser=1.0.0 sphinx-copybutton=0.5.1 sphinxcontrib-mermaid=0.8.1 sphinx-subfigure=0.2.4
-    pip install -r requirements_docs.txt
+    uv sync --all-extras --frozen
     ```
 
 4. Go into repository's root folder and in the activated environment build the documentation:
@@ -95,10 +88,10 @@ Online documentation of the latest commit on the *main* branch can be found [on 
 
    ##### :bulb: Reference Installation Steps :point_down:  <!-- markdownlint-disable MD024--> <!-- omit in toc -->
 
-   In the activated environment run following command:
+   Run following command:
 
    ```shell
-   sphinx-build -b html docs_src docs
+   uv run sphinx-build -b html docs_src docs
    ```
 
 5. In repository's root folder run a HTTP server with the documentation:
