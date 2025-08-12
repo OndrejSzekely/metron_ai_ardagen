@@ -1,12 +1,5 @@
 # This file is part of the Metron AI ArDaGen (https://github.com/OndrejSzekely/metron_ai_ardagen).
-# Copyright (c) 2023-2024 Ondrej Szekely.
-#
-# This program is free software: you can redistribute it and/or modify it under the terms of the
-# GNU General Public License as published by the Free Software Foundation, version 3. This program
-# is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
-# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
-# Public License for more details. You should have received a copy of the GNU General Public
-# License along with this program. If not, see <http://www.gnu.org/licenses/>.
+# Copyright (c) 2025 Ondrej Szekely (ondra.szekely@gmail.com).
 
 """
 Implements Omniverse Replicator handler class.
@@ -56,37 +49,36 @@ class OVReplicator:  # pylint: disable=too-few-public-methods
         Runs the whole OV Replicator data generation.
         """
         # Isaac Sim app has to be created before modules can be imported, so called in here.
-        import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
+        import omni.replicator.core as rep  # type: ignore[reportMissingImports]
+        import omni.usd  # type: ignore[reportMissingImports]
 
         for scenario in self.scenarios_manager:
-            with rep.new_layer():
-                # We do this such that all of the randomization and changes to the scene are self contained within
-                # the new layer. Without adding the new layer to the USD file, the changes made via the script will
-                # alter the scene permanently.
+            omni.usd.get_context().new_stage()
+            # We do this such that all of the randomization and changes to the scene are self contained within
+            # the new layer. Without adding the new layer to the USD file, the changes made via the script will
+            # alter the scene permanently.
 
-                scenario.prepare(scenario.scenario_name)
+            scenario.prepare(scenario.scenario_name)
 
-                for synthesizer in scenario.master_synthesizer:
-                    rep.randomizer.register(synthesizer)
+            for synthesizer in scenario.master_synthesizer:
+                rep.randomizer.register(synthesizer)
 
-                for camera_setup, render_product_setup in scenario.get_cameras():
-                    scenario_writer_name = self.ov_writer.create(scenario.scenario_name, scenario.frames_readout_offset)
-                    self.ov_writer.attach(render_product_setup)
+            for camera_setup, render_product_setup in scenario.get_cameras():
+                scenario_writer_name = self.ov_writer.create(scenario.scenario_name, scenario.frames_readout_offset)
+                self.ov_writer.attach(render_product_setup)
 
-                    # OV Replicator takes <num_frames> as exclusive, which doesn't work for <interval> equal to `1`
-                    rep_frames_to_generate = (
-                        scenario.frames_number if scenario.frames_readout_offset > 1 else scenario.frames_number + 1
-                    )
+                # OV Replicator takes <num_frames> as exclusive, which doesn't work for <interval> equal to `1`
+                rep_frames_to_generate = scenario.frames_number if scenario.frames_readout_offset > 1 else scenario.frames_number + 1
 
-                    with rep.trigger.on_frame(
-                        interval=scenario.frames_readout_offset + 1,  # On <frames_readout_offset> + 1 randomize
-                        max_execs=rep_frames_to_generate,
-                    ):
-                        for synthesizer_worker_name in scenario.master_synthesizer.synthesizers_worker_names:
-                            getattr(rep.randomizer, synthesizer_worker_name)(camera_setup)
+                with rep.trigger.on_frame(
+                    interval=scenario.frames_readout_offset + 1,  # On <frames_readout_offset> + 1 randomize
+                    max_execs=rep_frames_to_generate,
+                ):
+                    for synthesizer_worker_name in scenario.master_synthesizer.synthesizers_worker_names:
+                        getattr(rep.randomizer, synthesizer_worker_name)(camera_setup)
 
-                    self._run_orchestration()
-                    self._remove_camera(camera_setup, scenario_writer_name)
+                self._run_orchestration()
+                self._remove_camera(camera_setup, scenario_writer_name)
 
     def _remove_camera(self, camera_setup: List[str], writer_name: str) -> None:  # pylint: disable=no-self-use
         """
@@ -97,8 +89,8 @@ class OVReplicator:  # pylint: disable=too-few-public-methods
             writer_name (str): Writer which is removed.
         """
         # Isaac Sim app has to be created before modules can be imported, so called in here.
-        import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
-        import omni.usd  # pylint: disable=import-outside-toplevel
+        import omni.replicator.core as rep  # type: ignore[reportMissingImports]
+        import omni.usd  # type: ignore[reportMissingImports]
 
         param_val.check_type(camera_setup, List[str])
         param_val.check_type(writer_name, str)
@@ -115,9 +107,8 @@ class OVReplicator:  # pylint: disable=too-few-public-methods
             while True:
                 self.isaac_sim.update()
         else:
-
             # Isaac Sim app has to be created before modules can be imported, so called in here.
-            import omni.replicator.core as rep  # pylint: disable=import-outside-toplevel
+            import omni.replicator.core as rep  # type: ignore[reportMissingImports]
 
             rep.orchestrator.run()
 
