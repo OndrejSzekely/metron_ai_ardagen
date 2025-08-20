@@ -6,16 +6,16 @@ ov_blue_container_assets:
     - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f05/container_f05.usd
     - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f08/container_f08.usd
     - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f09/container_f09.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f010/container_010.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f013/container_013.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f014/container_014.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f015/container_015.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f016/container_016.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f017/container_017.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f018/container_018.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f020/container_020.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f021/container_021.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f023/container_023.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f024/container_024.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f026/container_026.usd
-    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f027/container_027.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f10/container_f10.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f13/container_f13.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f14/container_f14.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f15/container_f15.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f16/container_f16.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f17/container_f17.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f18/container_f18.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f20/container_f20.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f21/container_f21.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f23/container_f23.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f24/container_f24.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f26/container_f26.usd
+    - omniverse://${settings.ov_nucleus_ip}/NVIDIA/Assets/simready_content/common_assets/props/container_f27/container_f27.usd
